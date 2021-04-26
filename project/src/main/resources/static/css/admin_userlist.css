@@ -1,0 +1,217 @@
+:root {
+    --nav-main-color : #2a3f54;
+    --nav-font-color : #e5e5e5;
+    --table-line-color : #dee2e6;
+    --table-head-color : #405467;
+    --caption-color : #73879c;
+    --section-background-color : #f7f7f7;
+    --item-background-color : #ffffff;
+    --item-border-color : #e6e9ed;
+    --checkbox-color : #d7dcde;
+    --btn-blue: #007bff;
+    --btn-red: #ef5350;
+    --pagenation-color: #dddddd;
+}
+*{
+    box-sizing: border-box;
+}
+body, html{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+}
+/*nav*/
+nav a {
+    text-decoration: none;
+    color: var(--nav-font-color);
+}
+ul {
+    list-style-type: none;
+    padding: 0;    
+}
+
+nav {
+    float: left;
+    padding: 15px 0;
+    background-color: var(--nav-main-color);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+nav .side-title {
+    font-size: 25px;
+    margin-left: 15px;
+}
+
+nav .side-menu {
+    display: flex;
+    flex-direction: column;
+}
+
+nav .side-menu > li{
+    width: 230px;
+    padding: 10px 15px;
+    font-size: 16px;
+}
+
+
+nav .side-menu .menu-dropdown > a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+nav .side-menu .menu-dropdown > a .fa-chevron-down {
+    font-size: 11px;
+}
+
+nav .side-menu .menu-dropdown .dropdown {
+    display: flex;
+    flex-direction: column;
+}
+
+nav .side-menu .menu-dropdown .dropdown li {
+    padding: 5px 5px;
+    font-size: 14px;
+}
+
+nav .side-menu .menu-dropdown .dropdown li a::before{
+    content: '';
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    background-color: #425668;
+    border-radius: 50%;
+    margin: 0 12px 1px 0;
+}
+
+nav .side-menu .menu-dropdown .dropdown { /*toggle을 위함*/
+    display: none;
+}
+
+
+/*section*/
+section {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--section-background-color);
+    height: 100%;
+    align-items: center;
+    padding: 80px;
+}
+
+section .search-form{
+    display: flex;
+    justify-content: center;
+    padding: 30px 0 30px 0;
+    border: 1px solid var(--item-border-color);
+    background-color : var(--item-background-color);
+    width: 80%;
+}
+
+section .search-form .search-item {
+    margin: 0 5px;
+    border: 1px solid var(--table-line-color);
+    font-size:14px;
+}
+section .search-form .search-input {
+    width: 200px;
+}
+
+section .search-form .search-submit {
+    padding: 7px 25px;
+    background-color: var(--btn-blue); 
+    color: var(--nav-font-color);
+    border-radius: 5px;
+    font-weight: bold;
+    outline: none;
+}
+section .search-form .search-submit:hover {
+    filter: brightness(80%);
+}
+
+
+section .user-box{
+    margin-top: 25px;
+    width: 80%;
+}
+section .user-box .num-searched-box {
+    padding: 5px 5px;
+}
+
+table{
+    width: 100%;
+    background-color: var(--item-background-color);
+    border: 1px solid var(--item-border-color);
+    border-collapse: collapse;
+    font-size: 14px;
+}
+td, th {
+    text-align: center;
+    padding: 10px 0;
+}
+
+th {
+    background-color: var(--table-head-color);
+    color:var(--nav-font-color)
+}
+td {
+    border-top: 1px solid var(--table-line-color)
+}
+input[type=checkbox] {
+    zoom: 1.5;
+}
+input[type='button'] {
+    color: var(--nav-font-color);
+    border: 1px solid var(--item-border-color);
+    border-radius: 5px;
+    padding: 3px 10px;
+    font-size: 13px;
+    font-weight: bold;
+}
+input[type='button']:hover {
+    filter: brightness(80%);
+}
+.modifybtn {
+    background-color: var(--btn-blue);
+}
+.deletebtn {
+    background-color: var(--btn-red);
+}
+
+section .user-box .bottombtn-box {
+    margin-top: 10px;
+}
+section .user-box .bottombtn-box .bottombtn {
+    padding : 5px 10px;
+}
+section .user-box .bottombtn-box .selectallbtn {
+    background-color: var(--btn-blue);
+}
+section .user-box .bottombtn-box .bottom-deletebtn {
+    background-color: var(--btn-red);
+}
+
+section .user-box .pagenate {
+    display: flex;
+    justify-content: center;
+}
+
+section .user-box .pagenation {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: var(--pagenation-color);
+    align-items: center;
+    border-radius: 3px;
+}
+
+section .user-box .pagenation li {
+    padding: 5px 10px;
+}
+
+section .user-box .pagenation a{
+    text-decoration: none;
+    color: var(--caption-color);
+}
