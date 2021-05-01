@@ -1,5 +1,5 @@
 package com.page27.project.domain;
 
 public enum OrderStatus {
-    READY,COMPLETE,CANCEL,changwan
+    READY,COMPLETE,CANCEL,changwan,suhyeong123123
 }
