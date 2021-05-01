@@ -3,6 +3,8 @@ package com.page27.project.controller;
 import com.page27.project.domain.Member;
 import com.page27.project.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -31,9 +33,9 @@ public class MemberController {
     }
 
     @GetMapping("adminUserlist")
-    public String adminUserlist(Model model) {
-        List<Member> members = memberService.findMembers();
-        model.addAttribute("userList",members);
+    public String adminUserlist(Model model, Pageable pageable) {
+        Page<Member> page = memberService.findMembers();
+        model.addAttribute("userList",page.getContent());
         return "admin_userlist";
     }
 
