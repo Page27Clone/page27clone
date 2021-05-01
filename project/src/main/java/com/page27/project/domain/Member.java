@@ -6,6 +6,8 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -21,9 +23,6 @@ public class Member extends Timestamped{
 
     private String password;
 
-    @Embedded
-    private Address address;
-
     private String phoneNumber;
 
     private String email;
@@ -37,7 +36,10 @@ public class Member extends Timestamped{
 
     private int orderCount;
 
-    private int reserve;
+    @OneToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    @JoinColumn(name = "mileage_id")
+    private Mileage mileage;
 
-    private LocalDateTime createdAt;
+    @OneToMany(mappedBy = "member")
+    private List<Order> orderList = new ArrayList<>();
 }
