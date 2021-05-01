@@ -1,6 +1,7 @@
 package com.page27.project.repository;
 
 import com.page27.project.domain.Member;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -29,6 +30,7 @@ public class MemberRepository {
     public List<Member> findByName(String name){
         return em.createQuery("select m from Member m where m.name = :name",Member.class)
                 .setParameter("name",name)
+
                 .getResultList();
     }
 }
