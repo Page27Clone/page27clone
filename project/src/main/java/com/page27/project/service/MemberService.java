@@ -1,16 +1,17 @@
 package com.page27.project.service;
 
 import com.page27.project.domain.Member;
+import com.page27.project.dto.MemberDto;
 import com.page27.project.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Service
-@Transactional(readOnly = true)
 @RequiredArgsConstructor
 public class MemberService {
 
@@ -30,13 +31,8 @@ public class MemberService {
         }
     }
 
-    public Page<Member> findMembers(){
+
+    public List<Member> findMembers(){
         return memberRepository.findAll();
     }
-
-    public Member findOne(Long id){
-        return memberRepository.findOne(id);
-    }
-
-
 }

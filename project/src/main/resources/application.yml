@@ -7,11 +7,7 @@ spring:
 
   jpa:
     hibernate:
-<<<<<<< HEAD
-      #ddl-auto: create
-=======
-#      ddl-auto: create
->>>>>>> e0d1c902929976ccb7262b38d62f6362744bdb90
+      ddl-auto: create
     properties:
       hibernate:
        # show_sql: true

@@ -11,7 +11,7 @@ import java.util.List;
 
 @Entity
 @Getter @Setter
-public class Member extends Timestamped{
+public class Member extends BasetTImeEntity{
     @Id
     @GeneratedValue
     @Column(name = "member_id")
@@ -40,6 +40,4 @@ public class Member extends Timestamped{
     @JoinColumn(name = "mileage_id")
     private Mileage mileage;
 
-    @OneToMany(mappedBy = "member")
-    private List<Order> orderList = new ArrayList<>();
 }
