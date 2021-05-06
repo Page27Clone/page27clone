@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class Mileage {
+public class Mileage extends BaseTimeEntity {
     @Id
     @GeneratedValue
     @Column(name = "mileage_id")
@@ -16,7 +16,12 @@ public class Mileage {
 
     private int mileagePrice;
 
-    @OneToOne(mappedBy = "mileage",fetch = FetchType.LAZY)
-    public Member member;
+    private String mileageContent;
 
+    @OneToOne(mappedBy = "mileage",fetch = FetchType.LAZY)
+    private Member member;
+
+    protected Mileage(){
+        this.mileagePrice = 0;
+    }
 }

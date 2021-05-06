@@ -11,100 +11,131 @@
     <link rel="stylesheet" href="./css/admin_userlist.css">
 </head>
 <body>
-    <nav>
-        <div class="side-title"><a href="#">관리자 모드</a></div>
-        <ul class="side-menu">
-            <li><a href="#">HOME</a></li>
-            <li><a href="#">회원관리</a></li>
-            <li class="menu-dropdown">
-                <a href="#">게시판 관리 <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown">
-                    <li><a href="#">Q&A</a></li>
-                    <li><a href="#">Review</a></li>
-                    <li><a href="#">공지사항</a></li>
-                </ul>
-            </li>
-            <li class="menu-dropdown">
-                <a href="#">상품관리 <i class="fas fa-chevron-down"></i></a>
-                <ul class="dropdown hide">
-                    <li><a href="#">상품 등록</a></li>
-                    <li><a href="#">상품 목록</a></li>
-                </ul>
-            </li>
-            <li><a href='#'>주문관리</a></li>
-            <li><a href='#'>운영설정</a></li>
-            <li><a href='#'>관리자 정보수정</a></li>
-            <li><a href='#'>LOGOUT</a></li>
-        </ul>
-    </nav>
-    <section>
-        <form class= "search-form" id="search-form" method="get" action="#">
-            <select name="smode" class="search-mode search-item" form="search-form">
-                <option value="userid">아이디</option>
-                <option value="username">이름</option>
-                <option value="phone">휴대전화</option>
-                <option value="visit">방문횟수</option>
-                <option value="order">주문횟수</option>
-                <option value="joindate">가입일</option>
-            </select>
-            <input type="text" name="sinput" class="search-input search-item">
-            <input type="submit" class="search-submit search-item" value="검색">
-        </form>
-        <div class="user-box">
-            <div class="num-searched-box">
-                총 <b class="num-searched">0</b> 명의 회원이 검색되었습니다
-            </div>
-            <table class="user-table">
-                <thead>
-                    <tr>
-                        <th><input type="checkbox" class="checkbox-selectall"></th>
-                        <th>기본정보</th>
-                        <th>등급</th>
-                        <th>휴대전화</th>
-                        <th>방문횟수</th>
-                        <th>주문횟수</th>
-                        <th>적립금</th>
-                        <th>가입일</th>
-                        <th>상세보기</th>
-                        <th>삭제</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="user : ${userList}">
-
-                            <td><input type="checkbox" class="checkbox-select"></td>
-                            <td th:text = "${user.name} + '(' + ${user.loginId}+ ')'">채창완(sejchae)</td>
-                            <td th:text = "${user.memberGrade}">일반회원</td>
-                            <td th:text = "${user.phoneNumber}">010-1234-5678</td>
-                            <td th:text = "${user.visitCount}">11</td>
-                            <td th:text = "${user.orderCount}">2</td>
-                            <td>2000원</td>
-                            <td th:text="${#temporals.format(user.createdAt, 'yyyy-MM-dd')}">2021-05-12</td>
-                            <td><input type="button" value="보기" class="modifybtn table-btn"></td>
-                            <td><input type="button" value="삭제" class="deletebtn table-btn"></td>
-
-                    </tr>
-                </tbody>
-            </table>
-            <div class="bottombtn-box">
-                <input type="button" value="전체선택" class="selectallbtn bottombtn">
-                <input type="button" value="선택삭제" class="bottom-deletebtn bottombtn">
-            </div>
-            <div class="pagenate">
-                <ul class="pagenation">
-                    <li class="pagenatebtn-prev"><a href="#">prev</a></li>
-                    <li class="pagenatebtn"><a href="#">1</a></li>
-                    <li class="pagenatebtn"><a href="#">2</a></li>
-                    <li class="pagenatebtn"><a href="#">3</a></li>
-                    <li class="pagenatebtn"><a href="#">4</a></li>
-                    <li class="pagenatebtn"><a href="#">5</a></li>
-                    <li class="pagenatebtn-next"><a href="#">next</a></li>
-                </ul>
-            </div>     
+<nav>
+    <div class="side-title"><a href="#">관리자 모드</a></div>
+    <ul class="side-menu">
+        <li><a href="#">HOME</a></li>
+        <li><a href="#">회원관리</a></li>
+        <li class="menu-dropdown">
+            <a href="#">게시판 관리 <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown">
+                <li><a href="#">Q&A</a></li>
+                <li><a href="#">Review</a></li>
+                <li><a href="#">공지사항</a></li>
+            </ul>
+        </li>
+        <li class="menu-dropdown">
+            <a href="#">상품관리 <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown hide">
+                <li><a href="#">상품 등록</a></li>
+                <li><a href="#">상품 목록</a></li>
+            </ul>
+        </li>
+        <li><a href='#'>주문관리</a></li>
+        <li><a href='#'>운영설정</a></li>
+        <li><a href='#'>관리자 정보수정</a></li>
+        <li><a href='#'>LOGOUT</a></li>
+    </ul>
+</nav>
+<section>
+    <form class= "search-form" id="search-form" method="get" action="#">
+        <select name="smode" class="search-mode search-item" form="search-form">
+            <option value="userid">아이디</option>
+            <option value="username">이름</option>
+            <option value="phone">휴대전화</option>
+            <option value="visit">방문횟수</option>
+            <option value="order">주문횟수</option>
+            <option value="joindate">가입일</option>
+        </select>
+        <input type="text" name="sinput" class="search-input search-item">
+        <input type="submit" class="search-submit search-item" value="검색">
+    </form>
+    <div class="user-box">
+        <div class="num-searched-box">
+            총 <b class="num-searched">0</b> 명의 회원이 검색되었습니다
         </div>
-    </section>
-    <script src="js/admin.js"></script>
-    <script src="js/admin_userlist.js"></script>
+        <table class="user-table">
+            <thead>
+            <tr>
+                <th><input type="checkbox" class="checkbox-selectall"></th>
+                <th>기본정보</th>
+                <th>등급</th>
+                <th>휴대전화</th>
+                <th>방문횟수</th>
+                <th>주문횟수</th>
+                <th>적립금</th>
+                <th>가입일</th>
+                <th>상세보기</th>
+                <th>삭제</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="user : ${memberList}">
+
+                <td><input type="checkbox" class="checkbox-select"></td>
+                <td th:text = "${user.name} + '(' + ${user.loginId}+ ')'">채창완(sejchae)</td>
+                <td th:text = "${user.memberGrade}">일반회원</td>
+                <td th:text = "${user.phoneNumber}">010-1234-5678</td>
+                <td th:text = "${user.visitCount}">11</td>
+                <td th:text = "${user.orderCount}">2</td>
+                <td th:text = "${user.mileage}">2000원</td>
+                <td th:text="${#temporals.format(user.createdAt, 'yyyy-MM-dd')}">2021-05-12</td>
+                <td><input type="button" value="보기" class="modifybtn table-btn"></td>
+                <td><input type="button" value="삭제" class="deletebtn table-btn"></td>
+
+            </tr>
+            </tbody>
+        </table>
+        <div class="bottombtn-box">
+            <input type="button" value="전체선택" class="selectallbtn bottombtn">
+            <input type="button" value="선택삭제" class="bottom-deletebtn bottombtn">
+        </div>
+        <div class="pagenate">
+            <ul class="pagination"
+                th:with="start=${T(Math).floor(memberList.number/10)*10 + 1},
+                last=(${start + 9 < memberList.totalPages ? start + 9 : memberList.totalPages})">
+                <th:block th:with="        firstAddr=@{/chart(page=1)},
+                prevAddr=@{/chart(page=${memberList.number})},
+                nextAddr=@{/chart(page=${memberList.number + 2})},
+                lastAddr=@{/chart(page=${memberList.totalPages})}">
+                    <li>
+                        <a th:href="${firstAddr}" aria-label="First">
+                            <span aria-hidden="true">First</span>
+                        </a>
+                    </li>
+                    <!-- 이전 페이지로 가기 버튼 -->
+                    <li th:class="${memberList.first} ? 'disabled'">
+                        <a th:href="${memberList.first} ? '#' :${prevAddr}"
+                           aria-label="Previous">
+                            <span aria-hidden="true">&lt;</span>
+                        </a>
+                    </li>
+                    <!--1,2,3,4,.. 등 페이지-->
+                    <li th:each="page: ${#numbers.sequence(start, last)}"
+                        th:class="${page == memberList.number + 1} ? 'active'">
+                        <a th:text="${page}" th:href="@{/chart(page=${page})}"></a>
+                    </li>
+                    <!--다음 페이지로 -->
+                    <li th:class="${memberList.last} ? 'disabled'">
+                        <a th:href="${memberList.last} ? '#' : ${nextAddr}"
+                           aria-label="Next">
+                            <span aria-hidden="true">&gt;</span>
+                        </a>
+                    </li>
+                    <!--맨 마지막 페이지로 이동 -->
+                    <li>
+                        <a th:href="${lastAddr}" aria-label="Last">
+                            <span aria-hidden="true">Last</span>
+                        </a>
+                    </li>
+                </th:block>
+            </ul>
+
+        </div>
+    </div>
+</section>
+<script src="js/admin.js"></script>
+<script src="js/admin_userlist.js"></script>
 
 </body>
 </html>

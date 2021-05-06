@@ -1,17 +1,17 @@
 package com.page27.project.domain;
 
-import lombok.Getter;
-import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
+import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter @Setter
-public class Member extends BasetTImeEntity{
+//@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Getter
+@Setter
+//@ToString(of = {"id","name","loginId","password","phoneNumber","email","birthday","memberGrade","visitCount","orderCount"})
+public class Member extends BaseTimeEntity {
     @Id
     @GeneratedValue
     @Column(name = "member_id")
@@ -36,8 +36,12 @@ public class Member extends BasetTImeEntity{
 
     private int orderCount;
 
-    @OneToOne(cascade = CascadeType.ALL , fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
     @JoinColumn(name = "mileage_id")
     private Mileage mileage;
+
+    @OneToMany(mappedBy = "member")
+    private List<Order> orderList = new ArrayList<>();
+
 
 }

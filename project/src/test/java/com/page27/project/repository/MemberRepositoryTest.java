@@ -30,6 +30,7 @@ public class MemberRepositoryTest {
         member1.setLoginId("memberAId");
         member1.setPassword("1234");
         member1.setPhoneNumber("010-1234-1234");
+       // member1.getMileage().setMileagePrice(9999);
         memberRepository.save(member1);
 
         //데이터 넣기
