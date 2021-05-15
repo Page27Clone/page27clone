@@ -1,9 +1,9 @@
 package com.page27.project.repository;
 
+import com.page27.project.domain.Address;
 import com.page27.project.domain.Member;
 import com.page27.project.domain.MemberGrade;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
@@ -11,11 +11,11 @@ import org.springframework.test.annotation.Rollback;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
 
-@RunWith(SpringRunner.class)
+
+
 @SpringBootTest
-public class MemberRepositoryTest {
+public class DataInsertTest {
     @Autowired
     MemberRepository memberRepository;
 
@@ -23,17 +23,8 @@ public class MemberRepositoryTest {
     @Transactional
     @Rollback(false)
     public void testMember(){
-        Member member1 = new Member();
-        member1.setEmail("skyey94@naver.com");
-        member1.setMemberGrade(MemberGrade.USER);
-        member1.setName("memberA");
-        member1.setLoginId("memberAId");
-        member1.setPassword("1234");
-        member1.setPhoneNumber("010-1234-1234");
-       // member1.getMileage().setMileagePrice(9999);
-        memberRepository.save(member1);
-
         //데이터 넣기
+        addMember("skyey94@naver.com","memberA","memberA_Id","1234","010-1234-1234");
         addMember("skyey94@naver.com","memberB","memberB_Id","1234","010-1234-1234");
         addMember("skyey94@naver.com","memberC","memberC_Id","1234","010-1234-1234");
         addMember("skyey94@naver.com","memberD","memberD_Id","1234","010-1234-1234");
@@ -66,12 +57,17 @@ public class MemberRepositoryTest {
         member.setEmail(email);
         member.setMemberGrade(MemberGrade.USER);
         member.setName(name);
+
         member.setLoginId(loginId);
         member.setPassword(password);
         member.setPhoneNumber(phonenumber);
 
+        Address address = new Address("성남시","수내로","13600");
+        member.setAddress(address);
+
         memberRepository.save(member);
     }
+    // 여기까지 Member data 삽입
 
 
 

@@ -1,0 +1,73 @@
+/*section*/
+
+section {
+    height: 100%;
+    padding: 50px 30px;
+    background-color: var(--section-background-color);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 30px 30px;
+    align-items: stretch;
+}
+.item {
+    background-color: var(--item-background-color);
+    border: 1px solid var(--item-border-color);
+    padding: 15px 20px;
+}
+
+.item .item-caption {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--table-line-color);
+    margin-bottom: 15px;
+    color : var(--caption-color);
+}
+.item .item-caption .item-title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-top: 1px solid var(--table-line-color);
+    border-collapse: collapse;
+    font-size: 14px;
+}
+tr {
+    border-top: 1px solid var(--table-line-color);
+}
+th, td {
+    padding: 10px 0;
+    text-align: center;
+}
+th {
+    border-bottom: 2px solid var(--table-line-color);
+}
+
+.num-visitors .item-content {
+    padding-top: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.num-visitors .item-content div:first-child{
+    padding:0;
+    font-size: 100px;
+}
+.num-visitors .item-content div:last-child{
+    font-size: 30px;
+    padding-bottom: 20px;
+}
+
+.recent-review table {
+    table-layout: fixed;
+}
+
+.recent-review table td{
+    padding: 10px 5px;
+}
+
+

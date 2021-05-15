@@ -7,17 +7,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-//@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Getter
 @Setter
-//@ToString(of = {"id","name","loginId","password","phoneNumber","email","birthday","memberGrade","visitCount","orderCount"})
+@NoArgsConstructor
 public class Member extends BaseTimeEntity {
+
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "member_id")
     private Long id;
 
     private String name;
+
+    //private String sex;
 
     private String loginId;
 
@@ -32,16 +34,22 @@ public class Member extends BaseTimeEntity {
     @Enumerated(EnumType.STRING)
     private MemberGrade memberGrade;
 
+    @Embedded
+    private Address address;
+
     private int visitCount;
 
     private int orderCount;
 
-    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    @JoinColumn(name = "mileage_id")
-    private Mileage mileage;
+    //private String HomePhoneNumber;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private List<Mileage> mileageList = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
     private List<Order> orderList = new ArrayList<>();
 
+
+    //연관 관계 메소드
 
 }

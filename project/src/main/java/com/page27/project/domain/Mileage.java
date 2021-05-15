@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Setter
 public class Mileage extends BaseTimeEntity {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "mileage_id")
     private Long id;
 
@@ -18,10 +18,13 @@ public class Mileage extends BaseTimeEntity {
 
     private String mileageContent;
 
-    @OneToOne(mappedBy = "mileage",fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
     private Member member;
 
-    protected Mileage(){
-        this.mileagePrice = 0;
+    //연관 관계 메소드
+    public void setMember(Member member){
+        this.member = member;
+        member.getMileageList().add(this);
     }
 }

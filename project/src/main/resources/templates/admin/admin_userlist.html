@@ -34,7 +34,8 @@
         <li><a href='#'>주문관리</a></li>
         <li><a href='#'>운영설정</a></li>
         <li><a href='#'>관리자 정보수정</a></li>
-        <li><a href='#'>LOGOUT</a></li>
+        <li><a href='#'>LOGO
+            UT</a></li>
     </ul>
 </nav>
 <section>
@@ -45,7 +46,6 @@
             <option value="phone">휴대전화</option>
             <option value="visit">방문횟수</option>
             <option value="order">주문횟수</option>
-            <option value="joindate">가입일</option>
         </select>
         <input type="text" name="sinput" class="search-input search-item">
         <input type="submit" class="search-submit search-item" value="검색">
@@ -78,7 +78,7 @@
                 <td th:text = "${user.phoneNumber}">010-1234-5678</td>
                 <td th:text = "${user.visitCount}">11</td>
                 <td th:text = "${user.orderCount}">2</td>
-                <td th:text = "${user.mileage}">2000원</td>
+                <td>2000원</td>
                 <td th:text="${#temporals.format(user.createdAt, 'yyyy-MM-dd')}">2021-05-12</td>
                 <td><input type="button" value="보기" class="modifybtn table-btn"></td>
                 <td><input type="button" value="삭제" class="deletebtn table-btn"></td>
@@ -94,10 +94,10 @@
             <ul class="pagination"
                 th:with="start=${T(Math).floor(memberList.number/10)*10 + 1},
                 last=(${start + 9 < memberList.totalPages ? start + 9 : memberList.totalPages})">
-                <th:block th:with="        firstAddr=@{/chart(page=1)},
-                prevAddr=@{/chart(page=${memberList.number})},
-                nextAddr=@{/chart(page=${memberList.number + 2})},
-                lastAddr=@{/chart(page=${memberList.totalPages})}">
+                <th:block th:with="        firstAddr=@{/adminUserlistPaging(page=1)},
+                prevAddr=@{/adminUserlistPaging(page=${memberList.number})},
+                nextAddr=@{/adminUserlistPaging(page=${memberList.number + 2})},
+                lastAddr=@{/adminUserlistPaging(page=${memberList.totalPages})}">
                     <li>
                         <a th:href="${firstAddr}" aria-label="First">
                             <span aria-hidden="true">First</span>
@@ -113,7 +113,7 @@
                     <!--1,2,3,4,.. 등 페이지-->
                     <li th:each="page: ${#numbers.sequence(start, last)}"
                         th:class="${page == memberList.number + 1} ? 'active'">
-                        <a th:text="${page}" th:href="@{/chart(page=${page})}"></a>
+                        <a th:text="${page}" th:href="@{/adminUserlistPaging(page=${page})}"></a>
                     </li>
                     <!--다음 페이지로 -->
                     <li th:class="${memberList.last} ? 'disabled'">

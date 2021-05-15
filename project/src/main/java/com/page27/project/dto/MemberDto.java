@@ -40,6 +40,6 @@ public class MemberDto {
         this.birthday = member.getBirthday();
         this.visitCount = member.getVisitCount();
         this.orderCount = member.getOrderCount();
-        this.mileage = member.getMileage();
+        //this.mileage = member.getMileage();
     }
 }

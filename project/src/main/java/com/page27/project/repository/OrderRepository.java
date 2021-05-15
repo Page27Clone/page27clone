@@ -1,10 +1,10 @@
 package com.page27.project.repository;
 
-import com.page27.project.domain.Mileage;
+import com.page27.project.domain.Order;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MileageRepository extends JpaRepository<Mileage, Long> {
+public interface OrderRepository extends JpaRepository<Order, Long> {
 
 }
