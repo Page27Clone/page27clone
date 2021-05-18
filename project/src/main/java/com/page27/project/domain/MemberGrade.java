@@ -1,5 +1,5 @@
 package com.page27.project.domain;
 
 public enum MemberGrade {
-    ADMIN,USER
+    ROLE_ADMIN,ROLE_USER
 }

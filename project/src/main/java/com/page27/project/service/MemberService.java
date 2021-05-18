@@ -3,12 +3,15 @@ package com.page27.project.service;
 import com.page27.project.domain.Member;
 import com.page27.project.exception.DuplicateException;
 import com.page27.project.repository.MemberRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
 import java.util.List;
 
 @Service
@@ -46,4 +49,5 @@ public class MemberService {
     public Member findOneMember(Long id){
         return memberRepository.findById(id).get();
     }
+
 }
