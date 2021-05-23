@@ -65,5 +65,4 @@ public class MemberController {
         return "admin/admin_main";
     }
 
-
 }
