@@ -30,9 +30,9 @@ public class Member extends BaseTimeEntity {
 
     private String birthday;
 
-//    @Enumerated(EnumType.STRING)
-//    private MemberGrade memberGrade;
-    private String memberGrade;
+    @Enumerated(EnumType.STRING)
+    private MemberGrade memberGrade;
+    //private String memberGrade;
 
     @Embedded
     private Address address;
