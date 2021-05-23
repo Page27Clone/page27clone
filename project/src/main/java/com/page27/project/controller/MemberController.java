@@ -47,15 +47,12 @@ public class MemberController {
         return "admin/admin_userlist";
     }// 페이징 O 전체 멤버 조회 페이지
 
-
-
     @DeleteMapping("/userlist/{id}")
     public @ResponseBody String test(@PathVariable Long id){
         System.out.println("here delete part");
         memberService.deleteById(id);
         return "Ajax 통신완료";
     }
-
 
     @GetMapping("/main")
     public String adminMainPage(){

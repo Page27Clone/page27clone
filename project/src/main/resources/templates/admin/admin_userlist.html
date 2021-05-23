@@ -71,7 +71,6 @@
             </thead>
             <tbody>
             <tr th:each="user : ${memberList}">
-
                 <td><input type="checkbox" class="checkbox-select"></td>
                 <td th:text = "${user.name} + '(' + ${user.loginId}+ ')'">채창완(sejchae)</td>
                 <td th:text = "${user.memberGrade}">일반회원</td>
