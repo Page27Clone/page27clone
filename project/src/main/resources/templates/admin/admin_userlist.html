@@ -64,7 +64,7 @@
         </table>
 
         <div class="bottombtn-box">
-            <input type="button" value="전체선택" class="selectallbtn bottombtn">
+            <input type="button" value="전체선택" class="selectallbtn bottombtn" th:onclick="|checkall()|">
             <input type="button" value="선택삭제" class="bottom-deletebtn bottombtn" th:onclick="|deleteCheckedUsers()|">
 
         </div>

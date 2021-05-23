@@ -21,15 +21,20 @@ function deleteCheckedUsers(){
     console.log(list)
         $.ajax({
             type: 'DELETE',
-            url: '/admin/userlist/' + id,
-            data: {"idlist" : list}
-            contentType :   "application/x-www-form-urlencoded; charset=UTF-8"
+            url: '/admin/userlist2',
+            data: {idList : list},
+            traditional: true
+            //contentType :   "application/x-www-form-urlencoded; charset=UTF-8"
         }).done(function(word){
             alert(word);
             window.location.href = '/admin/userlist';
         }).fail(function (error){
             alert(JSON.stringify(error));
         })
+}
+
+function checkall(){
+    $('.checkbox-select').prop('checked', true);
 }
 
 $(function(){
