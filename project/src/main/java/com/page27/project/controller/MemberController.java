@@ -5,6 +5,7 @@ import com.page27.project.domain.Search;
 import com.page27.project.dto.MemberDto;
 import com.page27.project.repository.MemberRepository;
 import com.page27.project.service.MemberService;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -57,6 +58,11 @@ public class MemberController {
         System.out.println("here delete part");
         memberService.deleteById(id);
         return "Ajax 통신완료";
+    }
+
+    @GetMapping("/main")
+    public String adminMainPage(){
+        return "admin/admin_main";
     }
 
 

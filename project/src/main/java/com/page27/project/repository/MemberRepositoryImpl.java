@@ -80,13 +80,13 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
         if (loginIdCondition == null) {
             return null;
         }
-        return QMember.member.loginId.eq(loginIdCondition);
+        return QMember.member.loginId.like("%" + loginIdCondition + "%");
     }
 
     private BooleanExpression nameEq(String nameCondition) {
         if (nameCondition == null) {
             return null;
         }
-        return QMember.member.name.eq(nameCondition);
+        return QMember.member.name.like("%" + nameCondition + "%");
     }
 }
