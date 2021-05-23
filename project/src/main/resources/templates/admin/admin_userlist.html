@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>admin userlist</title>
     <script src="https://kit.fontawesome.com/e6f78261b2.js" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="/js/jquery.js"></script>
     <link rel="stylesheet" href="/css/admin_userlist.css">
     <link rel="stylesheet" href="/css/admin_nav.css">
 </head>
@@ -56,18 +56,7 @@
                 <td th:text="${#temporals.format(user.createdAt, 'yyyy-MM-dd')}">2021-05-12</td>
                 <td><input type="button" value="보기" class="modifybtn table-btn"></td>
                 <td><input type="button" value="삭제" class="deletebtn table-btn" th:onclick="|deleteUser('${user.id}')|"></td>
-            </tr>
-            <tr th:each="user : ${memberList}">
-                <td><input type="checkbox" class="checkbox-select"></td>
-                <td th:text = "${user.name} + '(' + ${user.loginId}+ ')'">채창완(sejchae)</td>
-                <td th:text = "${user.memberGrade}">일반회원</td>
-                <td th:text = "${user.phoneNumber}">010-1234-5678</td>
-                <td th:text = "${user.visitCount}">11</td>
-                <td th:text = "${user.orderCount}">2</td>
-                <td>2000원</td>
-                <td th:text="${#temporals.format(user.createdAt, 'yyyy-MM-dd')}">2021-05-12</td>
-                <td><input type="button" value="보기" class="modifybtn table-btn"></td>
-                <td><input type="button" value="삭제" class="deletebtn table-btn" th:onclick="|deleteUser('${user.id}')|"></td>
+                <input type="hidden" th:value="${user.id}">
             </tr>
             </tbody>
 
@@ -76,7 +65,7 @@
 
         <div class="bottombtn-box">
             <input type="button" value="전체선택" class="selectallbtn bottombtn">
-            <input type="button" value="선택삭제" class="bottom-deletebtn bottombtn">
+            <input type="button" value="선택삭제" class="bottom-deletebtn bottombtn" th:onclick="|deleteCheckedUsers()|">
 
         </div>
         <!-- 여기 수정 -->

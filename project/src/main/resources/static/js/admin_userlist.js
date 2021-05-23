@@ -10,3 +10,34 @@ function deleteUser(id){
     })
 }
 
+function deleteCheckedUsers(){
+    let list = [];
+    $('.checkbox-select').each(function(){
+        if($(this).is(':checked')){
+            let val1 = $(this).closest('tr').find('input[type=hidden]').val();
+            list.push(val1)
+        }
+    })
+    console.log(list)
+        $.ajax({
+            type: 'DELETE',
+            url: '/admin/userlist/' + id,
+            data: {"idlist" : list}
+            contentType :   "application/x-www-form-urlencoded; charset=UTF-8"
+        }).done(function(word){
+            alert(word);
+            window.location.href = '/admin/userlist';
+        }).fail(function (error){
+            alert(JSON.stringify(error));
+        })
+}
+
+$(function(){
+    $('.checkbox-selectall').click(function(){
+        if($(this).is(':checked')){
+            $('.checkbox-select').prop('checked', true);
+        }else{
+            $('.checkbox-select').prop('checked', false);
+        }
+    })
+})
