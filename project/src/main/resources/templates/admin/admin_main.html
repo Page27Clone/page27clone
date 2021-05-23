@@ -8,11 +8,11 @@
     <title>admin</title>
     <script src="https://kit.fontawesome.com/e6f78261b2.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="./css/admin_nav.css">
-    <link rel="stylesheet" href="./css/admin.css">
+    <link rel="stylesheet" href="/css/admin_nav.css">
+    <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
-    <nav th:replace="admin_nav.html :: admin_nav"></nav>
+    <nav th:replace="admin/admin_nav :: navFragment"></nav>
     <section>
         <div class="recent-order item">
             <div class="item-caption">
@@ -142,6 +142,6 @@
             </div>
         </div>
     </section>
-    <script src="js/admin_nav.js"></script>
+    <script src="/js/admin_nav.js"></script>
 </body>
 </html>

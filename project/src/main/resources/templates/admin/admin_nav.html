@@ -1,4 +1,6 @@
-<nav>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<nav th:fragment="navFragment">
     <div class="side-title"><a href="#">관리자 모드</a></div>
     <ul class="side-menu">
         <li><a href="#">HOME</a></li>
@@ -18,9 +20,10 @@
                 <li><a href="#">상품 목록</a></li>
             </ul>
         </li>
-        <li><a href='#''>주문관리</a></li>
+        <li><a href='#'>주문관리</a></li>
         <li><a href='#'>운영설정</a></li>
         <li><a href='#'>관리자 정보수정</a></li>
         <li><a href='#'>LOGOUT</a></li>
     </ul>
 </nav>
+</html>
