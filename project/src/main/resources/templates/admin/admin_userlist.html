@@ -9,35 +9,10 @@
     <script src="https://kit.fontawesome.com/e6f78261b2.js" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/css/admin_userlist.css">
-
+    <link rel="stylesheet" href="/css/admin_nav.css">
 </head>
 <body>
-<nav>
-    <div class="side-title"><a href="#">관리자 모드</a></div>
-    <ul class="side-menu">
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">회원관리</a></li>
-        <li class="menu-dropdown">
-            <a href="#">게시판 관리 <i class="fas fa-chevron-down"></i></a>
-            <ul class="dropdown">
-                <li><a href="#">Q&A</a></li>
-                <li><a href="#">Review</a></li>
-                <li><a href="#">공지사항</a></li>
-            </ul>
-        </li>
-        <li class="menu-dropdown">
-            <a href="#">상품관리 <i class="fas fa-chevron-down"></i></a>
-            <ul class="dropdown hide">
-                <li><a href="#">상품 등록</a></li>
-                <li><a href="#">상품 목록</a></li>
-            </ul>
-        </li>
-        <li><a href='#'>주문관리</a></li>
-        <li><a href='#'>운영설정</a></li>
-        <li><a href='#'>관리자 정보수정</a></li>
-        <li><a href='#'>LOGOUT</a></li>
-    </ul>
-</nav>
+<nav th:replace="admin/admin_nav :: navFragment"></nav>
 <section>
     <form class= "search-form" id="search-form" method="GET" th:action="@{/admin/userlist}">
         <select name="searchCondition" class="search-mode search-item" form="search-form">
@@ -81,7 +56,7 @@
                 <td>2000원</td>
                 <td th:text="${#temporals.format(user.createdAt, 'yyyy-MM-dd')}">2021-05-12</td>
                 <td><input type="button" value="보기" class="modifybtn table-btn"></td>
-                <td><input type="button" value="삭제" class="deletebtn table-btn" th:onclick="|test('${user.id}')|"></td>
+                <td><input type="button" value="삭제" class="deletebtn table-btn" th:onclick="|deleteUser('${user.id}')|"></td>
             </tr>
             </tbody>
 
