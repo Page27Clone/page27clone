@@ -55,13 +55,12 @@ public class DataInsertTest {
     public void addMember(String email, String name,String loginId,String password, String phonenumber){
         Member member = new Member();
         member.setEmail(email);
-        member.setMemberGrade(MemberGrade.ROLE_USER);
+        //member.setMemberGrade(MemberGrade.ROLE_USER);
         member.setName(name);
 
         member.setLoginId(loginId);
         member.setPassword(password);
         member.setPhoneNumber(phonenumber);
-
         Address address = new Address("성남시","수내로","13600");
         member.setAddress(address);
 

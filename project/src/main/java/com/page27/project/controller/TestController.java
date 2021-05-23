@@ -1,41 +1,72 @@
 package com.page27.project.controller;
 
-import com.page27.project.domain.Member;
-import com.page27.project.domain.Search;
-import com.page27.project.dto.MemberSearchCondition;
-import com.page27.project.repository.MemberRepository;
+import com.page27.project.dto.MemberInfoDto;
 import com.page27.project.service.MemberService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.List;
 
 @Controller
-@RequestMapping("/board")
+@AllArgsConstructor
 public class TestController {
-
-    @Autowired
     private MemberService memberService;
-    @Autowired
-    private MemberRepository memberRepository;
 
-    @RequestMapping("/list")
-    public String list(Model model, Pageable pageable){
-        //Page<Member> boards = memberRepository.findAll(PageRequest.of(0,10));
-        Page<Member> boards = memberRepository.findAll(pageable);
-        int startPage = Math.max(0,boards.getPageable().getPageNumber() - 4);
-        int endPage = Math.min(boards.getTotalPages(),boards.getPageable().getPageNumber() + 4);
-        model.addAttribute("startPage",startPage);
-        model.addAttribute("endPage",endPage);
-        model.addAttribute("boards",boards);
-
-        return "admin/admin_userlist";
+    // 메인 페이지
+    @GetMapping("/")
+    public String index() {
+        return "/index";
     }
 
+    // 회원가입 페이지
+    @GetMapping("/user/signup")
+    public String dispSignup() {
+        return "/signup";
+    }
 
+    // 회원가입 처리
+    @PostMapping("/user/signup")
+    public String execSignup(MemberInfoDto memberInfoDto) {
+        memberService.joinUser(memberInfoDto);
+
+        return "redirect:/user/login";
+    }
+
+    // 로그인 페이지
+    @GetMapping("/user/login")
+    public String dispLogin() {
+        //memberService.loadUserByUsername();
+        return "/login";
+    }
+
+    // 로그인 결과 페이지
+    @GetMapping("/user/login/result")
+    public String dispLoginResult() {
+        return "/loginSuccess";
+    }
+
+    // 로그아웃 결과 페이지
+    @GetMapping("/user/logout/result")
+    public String dispLogout() {
+        return "/logout";
+    }
+
+    // 접근 거부 페이지
+    @GetMapping("/user/denied")
+    public String dispDenied() {
+        return "/denied";
+    }
+
+    // 내 정보 페이지
+    @GetMapping("/user/info")
+    public String dispMyInfo() {
+        return "/myinfo";
+    }
+
+    // 어드민 페이지
+    @GetMapping("/admin")
+    public String dispAdmin() {
+        return "/admin";
+    }
 }

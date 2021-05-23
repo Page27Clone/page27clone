@@ -12,8 +12,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -46,5 +45,19 @@ public class MemberController {
 
         return "admin/admin_userlist";
     }// 페이징 O 전체 멤버 조회 페이지
+
+//    @GetMapping("/userlist/{id}")
+//    public String test(@PathVariable Long id){
+//         memberService.findOneMember(id);
+//         return "lo";
+//    }
+
+    @DeleteMapping("/userlist/{id}")
+    public @ResponseBody String adminDelete(@PathVariable Long id){
+        System.out.println("here delete part");
+        memberService.deleteById(id);
+        return "Ajax 통신완료";
+    }
+
 
 }

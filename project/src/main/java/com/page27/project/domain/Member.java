@@ -3,8 +3,7 @@ package com.page27.project.domain;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Entity
 @Getter
@@ -31,8 +30,9 @@ public class Member extends BaseTimeEntity {
 
     private String birthday;
 
-    @Enumerated(EnumType.STRING)
-    private MemberGrade memberGrade;
+//    @Enumerated(EnumType.STRING)
+//    private MemberGrade memberGrade;
+    private String memberGrade;
 
     @Embedded
     private Address address;
@@ -41,15 +41,28 @@ public class Member extends BaseTimeEntity {
 
     private int orderCount;
 
-    //private String HomePhoneNumber;
+//    private String HomePhoneNumber;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Mileage> mileageList = new ArrayList<>();
 
     @OneToMany(mappedBy = "member")
     private List<Order> orderList = new ArrayList<>();
 
-
     //연관 관계 메소드
+
+
+    public Member(String name, String loginId, String password) {
+        this.name = name;
+        this.loginId = loginId;
+        this.password = password;
+    }
+
+    @Builder
+    public Member(Long id, String loginId, String password){
+        this.id = id;
+        this.loginId = loginId;
+        this.password = password;
+    }
 
 }

@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 public class MemberDto {
+    private Long id;
     private String name;
     private String loginId;
     private MemberGrade memberGrade;
@@ -20,7 +21,8 @@ public class MemberDto {
 
 
     @QueryProjection
-    public MemberDto(String name, String loginId, MemberGrade memberGrade, String phoneNumber, int visitCount, int orderCount, LocalDateTime createdAt) {
+    public MemberDto(Long id, String name, String loginId, MemberGrade memberGrade, String phoneNumber, int visitCount, int orderCount, LocalDateTime createdAt) {
+        this.id = id;
         this.name = name;
         this.loginId = loginId;
         this.memberGrade = memberGrade;

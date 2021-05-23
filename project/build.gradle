@@ -40,13 +40,25 @@ dependencies {
     //querydsl 추가
     implementation 'com.querydsl:querydsl-jpa'
 
+    //spring security 추가
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+
+    //타임리프에도 스프링 시큐리티 통합 모듈을 사용하기 위해 의존성 추가
+    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
+
+    //jwt 추가
+//    implementation 'io.jsonwebtoken:jjwt:0.9.1'
+
     //JUnit4 추가
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: "org.junit.vintage", module: "junit-vintage-engine"
     }
-//    testImplementation("org.junit.vintage:junit-vintage-engine") {
-//        exclude group: "org.hamcrest", module: "hamcrest-core"
-//    }
+
+    //테스트 코드에 spring security 적용하기
+    testImplementation 'org.springframework.security:spring-security-test'
+    testImplementation("org.junit.vintage:junit-vintage-engine") {
+        exclude group: "org.hamcrest", module: "hamcrest-core"
+    }
 }
 
 test {
