@@ -32,7 +32,6 @@ public class Member extends BaseTimeEntity {
 
     @Enumerated(EnumType.STRING)
     private MemberGrade memberGrade;
-    //private String memberGrade;
 
     @Embedded
     private Address address;
@@ -50,8 +49,6 @@ public class Member extends BaseTimeEntity {
     private List<Order> orderList = new ArrayList<>();
 
     //연관 관계 메소드
-
-
     public Member(String name, String loginId, String password) {
         this.name = name;
         this.loginId = loginId;

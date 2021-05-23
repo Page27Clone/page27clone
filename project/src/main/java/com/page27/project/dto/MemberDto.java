@@ -31,4 +31,4 @@ public class MemberDto {
         this.orderCount = orderCount;
         this.createdAt = createdAt;
     }
-}
+}// Querydsl을 위한 Dto

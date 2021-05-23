@@ -64,9 +64,9 @@ public class TestController {
         return "/myinfo";
     }
 
-    // 어드민 페이지
-    @GetMapping("/admin")
-    public String dispAdmin() {
-        return "/admin";
-    }
+     //어드민 페이지
+//    @GetMapping("/testadmin")
+//    public String dispAdmin() {
+//        return "/admin";
+//    }
 }

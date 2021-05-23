@@ -2,12 +2,13 @@ package com.page27.project.controller;
 
 import com.page27.project.domain.Order;
 import com.page27.project.dto.OrderInfo;
+import com.page27.project.service.MemberService;
 import com.page27.project.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ import java.util.List;
 public class OrderController {
 
     private final OrderService orderService;
+    private final MemberService memberService;
 
     @GetMapping("orders/list")
     public String showOrderList(Model model){
@@ -35,5 +37,7 @@ public class OrderController {
         model.addAttribute("orderInfoList",orderInfoList);
 
         return "admin/admin";
+
+
     }
 }

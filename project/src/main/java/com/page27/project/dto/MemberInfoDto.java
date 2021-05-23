@@ -28,4 +28,4 @@ public class MemberInfoDto {
         this.loginId = loginId;
         this.password = password;
     }
-}
+}// 회원가입을 위한 Dto

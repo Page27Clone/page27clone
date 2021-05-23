@@ -5,6 +5,10 @@ spring:
     password:
     driver-class-name: org.h2.Driver
 
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
   jpa:
     hibernate:
       #ddl-auto: create

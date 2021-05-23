@@ -3,10 +3,7 @@ package com.page27.project.querydsl;
 import com.page27.project.domain.Member;
 import com.page27.project.domain.QMember;
 import com.page27.project.dto.MemberDto;
-import com.page27.project.dto.QMemberDto;
-import com.page27.project.dto.UserDto;
 import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.types.Predicate;
 import com.querydsl.core.types.Projections;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
@@ -122,21 +119,6 @@ public class QuerydslBasicTest {
         }
     }
 
-    @Test
-    public void findDtoByConstructor(){
-        JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-
-        List<UserDto> result = queryFactory
-                .select(Projections.fields(UserDto.class,
-                        QMember.member.name.as("username"),
-                        QMember.member.loginId))
-                .from(QMember.member)
-                .fetch();
-
-        for(UserDto userDto : result){
-            System.out.println("memberDto = " + userDto);
-        }
-    }
 
 //    @Test
 //    public void findDtoByQueryProjection(){
