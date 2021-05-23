@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin</title>
+    <script src="https://kit.fontawesome.com/e6f78261b2.js" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./css/admin_nav.css">
+    <link rel="stylesheet" href="./css/admin.css">
+</head>
+<body>
+    <nav th:replace="admin_nav.html :: admin_nav"></nav>
+    <section>
+        <div class="recent-order item">
+            <div class="item-caption">
+                <div class="item-title">최근 주문</div>
+                <div>more +</div>
+            </div>
+            <div class="item-content">
+                <table>
+                    <thead>
+                        <th>구매자</th>
+                        <th>상품정보</th>
+                        <th>결제금액</th>
+                        <th>상태</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>채창완</td>
+                            <td>홀릭 카고 조거팬츠</td>
+                            <td>15,000원</td>
+                            <td>배송준비중</td>
+                        </tr>
+                        <tr>
+                            <td>채창완</td>
+                            <td>홀릭 카고 조거팬츠</td>
+                            <td>15,000원</td>
+                            <td>배송준비중</td>
+                        </tr>
+                        <tr>
+                            <td>채창완</td>
+                            <td>홀릭 카고 조거팬츠</td>
+                            <td>15,000원</td>
+                            <td>배송준비중</td>
+                        </tr>
+                        <tr>
+                            <td>채창완</td>
+                            <td>홀릭 카고 조거팬츠</td>
+                            <td>15,000원</td>
+                            <td>배송준비중</td>
+                        </tr>
+                        <tr>
+                            <td>채창완</td>
+                            <td>홀릭 카고 조거팬츠</td>
+                            <td>15,000원</td>
+                            <td>배송준비중</td>
+                        </tr> 
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="num-visitors item">
+            <div class="item-caption">
+                <div class="item-title">누적 방문자수</div>
+                
+            </div>
+            <div class="item-content">
+                <div>0</div>
+                <div>명</div>
+            </div>
+        </div>
+        <div class="recent-QandA item">
+            <div class="item-caption">
+                <div class="item-title">Q&A</div>
+                <div>more +</div>
+            </div>
+            <div class="item-content">
+                <table>
+                    <thead>
+                        <th>상품/배송</th>
+                        <th>상품정보</th>
+                        <th>문의내용</th>
+                        <th>작성자</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>상품</td>
+                            <td>단가라 셔츠</td>
+                            <td>셔츠가 색깔이 어떤...</td>
+                            <td>채창완(changdoll)</td>
+                        </tr>
+                        <tr>
+                            <td>배송</td>
+                            <td></td>
+                            <td>제주도 배송 계획을...</td>
+                            <td>배송준비중</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="recent-review item">
+            <div class="item-caption">
+                <div class="item-title">REVIEW</div>
+                <div>more +</div>
+            </div>
+            <div class="item-content">
+                <table>
+                    <colgroup>
+                        <col width="15%"/>
+                        <col width="25%"/>
+                        <col width="60%"/>
+                    </colgroup>
+                    <tr>
+                        <td class="goods-img">
+                            <img src="./image/리뷰사진.JPG">
+                        </td>
+                        <td class="goods-info">
+                            <div>소프트반팔셔츠</div>
+                            <img src="./image/별점.JPG">
+                        </td>
+                        <td class="goods-review">
+                            키:168 몸무게: 72 구매사이즈: XL 구매색상:카키 상품평: 너무 예뻐...
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="goods-img">
+                            <img src="./image/리뷰사진.JPG">
+                        </td>
+                        <td class="goods-info">
+                            <div>소프트반팔셔츠</div>
+                            <img src="./image/별점.JPG">
+                        </td>
+                        <td class="goods-review">
+                            키:168 몸무게: 72 구매사이즈: XL 구매색상:카키 상품평: 너무 예뻐...
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </section>
+    <script src="js/admin_nav.js"></script>
+</body>
+</html>
