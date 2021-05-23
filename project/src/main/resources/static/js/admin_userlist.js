@@ -1,4 +1,4 @@
-function test(id){
+function deleteUser(id){
     $.ajax({
         type: 'DELETE',
         url: '/admin/userlist/' + id
