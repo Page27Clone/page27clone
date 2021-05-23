@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 @Controller
@@ -58,5 +59,10 @@ public class MemberController {
     public String adminMainPage(){
         return "admin/admin_main";
     }
+
+//    @DeleteMapping("/sample")
+//    public String deleteChecked(HttpServletRequest request){
+//        Long[] testArr = request.getParameterValues()
+//    }
 
 }
