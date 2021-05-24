@@ -1,0 +1,100 @@
+/*section*/
+
+body, html {
+    height: 100%;
+}
+
+section {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--section-background-color);
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item {
+    width: 70%;
+    background-color: var(--item-background-color);
+    border: 1px solid var(--item-border-color);
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+
+.item .item-caption {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--table-line-color);
+    margin-bottom: 20px;
+    color : var(--caption-color);
+}
+
+.item .item-caption .item-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.item .item-content {
+    color: var(--caption-color);
+    font-size: 15px;
+}
+
+.item .item-content .form-group {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.item .item-content .form-group .form-label{
+    flex-basis: 15%;
+    font-weight: bold;
+     /*옆에 input창과 줄 간격을 맞추기 위함*/
+}
+.item .item-content .form-group span{
+    flex-basis: 85%;
+}
+
+    
+    /*input 요소*/
+textarea {
+    width: 90%;
+    border: 1px solid var(--input-color);
+}
+
+select {
+    height: 35px;
+    border: 1px solid var(--input-color);
+    margin-right: 15px;
+    padding: 0px 10px;
+    width: 20%;
+}
+
+input[type='text'] {
+    height: 30px;
+    width: 100px;
+    border: 1px solid var(--input-color);
+}
+
+input[type='button'], input[type='submit']{
+    color: var(--nav-font-color);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-blue);
+}
+
+input[type='button']:hover {
+    filter: brightness(80%);
+}
+
+
+

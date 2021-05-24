@@ -54,7 +54,7 @@
                 <td th:text = "${user.orderCount}">2</td>
                 <td>2000원</td>
                 <td th:text="${#temporals.format(user.createdAt, 'yyyy-MM-dd')}">2021-05-12</td>
-                <td><input type="button" value="보기" class="modifybtn table-btn"></td>
+                <td><input type="button" value="보기" class="userdetailbtn table-btn" th:onclick="|openUserDetail('${user.id}')|"></td>
                 <td><input type="button" value="삭제" class="deletebtn table-btn" th:onclick="|deleteUser('${user.id}')|"></td>
                 <input type="hidden" th:value="${user.id}">
             </tr>

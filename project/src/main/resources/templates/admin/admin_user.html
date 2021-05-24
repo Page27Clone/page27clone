@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin user</title>
+    <script src="https://kit.fontawesome.com/e6f78261b2.js" crossorigin="anonymous"></script>
+    <script src="/js/jquery.js"></script>
+    <link rel="stylesheet" href="/css/admin_nav.css">
+    <link rel="stylesheet" href="/css/admin_user.css">
+</head>
+<body>
+    <nav th:replace="admin/admin_nav :: navFragment"></nav>
+    <section>
+        <div class="item">
+            <div class="item-caption">
+                <div class="item-title">회원 기본 정보</div>
+            </div>
+            <div class="item-content">
+                <table>
+                    <colgroup>
+                        <col width="15%"/>
+                        <col width="85%"/>
+                    </colgroup>
+                    <tr>
+                        <th>아이디</th>
+                        <td th:text="${Member.userid}">sejchae</td>
+                    </tr>
+                    <tr>
+                        <th>이름</th>
+                        <td th:text="${Member.username}">채창완</td>
+                    </tr>
+                    <tr>
+                        <th>생년월일</th>
+                        <td th:text="${Member.birthday}">1994-04-06</td>
+                    </tr>
+                    <tr>
+                        <th>성별</th>
+                        <td th:text="${Member.sex}">남자</td>
+                    </tr>
+                    <tr>
+                        <th>방문횟수</th>
+                        <td th:text="${Member.visited}">11</td>
+                    </tr>
+                    <tr>
+                        <th>주문횟수</th>
+                        <td th:text="${Member.ordered}">2</td>
+                    </tr>
+                    <tr>
+                        <th>적립금</th>
+                        <td th:text="${Member.reserve}">2000원</td>
+                    </tr>
+                    <tr>
+                        <th>가입일</th>
+                        <td th:text="${#temporals.createDate(Member.regdate, 'yyyy-MM-dd')}">2021-04-12</td>
+                    </tr>
+                    <tr>
+                        <th>이메일</th>
+                        <td th:text="${Member.email}">changwani@gmail.com</td>
+                    </tr>
+                    <tr>
+                        <th>휴대전화</th>
+                        <td th:text="${Member.phone}">010-1234-5678</td>
+                    </tr>
+                    <tr>
+                        <th>일반전화</th>
+                        <td th:text="${Member.tel}">02-1234-5678</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="bottombtn">
+                <input type="button" value="뒤로가기" onclick="history.back()">
+            </div>
+        </div>
+    </section>
+    <script src="/js/admin_nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+/*html, body*/
+html {
+    display: flex;
+}
+body, html {
+    height: auto;
+}
+body {
+    width: 100%;
+}
+
+/*section*/
+section {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--section-background-color);
+    height: 100%;
+}
+
+form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item {
+    width: 70%;
+    background-color: var(--item-background-color);
+    border: 1px solid var(--item-border-color);
+    padding: 15px 20px;
+    margin-bottom: 20px;
+}
+
+.item .item-caption {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--table-line-color);
+    margin-bottom: 20px;
+    color : var(--caption-color);
+}
+
+.item .item-caption .item-title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.item .item-content {
+    color: var(--caption-color);
+    font-size: 15px;
+}
+
+.item .item-content .form-group {
+    display: flex;
+    margin-bottom: 10px;
+    align-items: center;
+}
+.item .item-content .form-group .form-label{
+    flex-basis: 15%;
+    font-weight: bold;
+}
+.item .item-content .form-group span{
+    flex-basis: 85%;
+}
+
+.item .item-content .form-group .color-size input[type='text']{
+    width: 20%;
+}
+
+textarea {
+    width: 90%;
+    border: 1px solid var(--input-color);
+}
+select {
+    height: 35px;
+    border: 1px solid var(--input-color);
+    margin-right: 15px;
+    padding: 0px 10px;
+    width: 20%;
+}
+input[type='file'] {
+    display: none;
+}
+
+.imgupload {
+    margin-bottom: 5px;
+}
+
+.img-box {
+    margin-bottom: 5px;
+}
+
+.img-box img {
+    width: 80px;
+    margin-right: 10px;
+}
+
+.imgupload .imguploadbtn {
+    display: inline-block;
+    color: var(--nav-font-color);
+    border-radius: 5px;
+    padding: 5px 8px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: var(--btn-blue);
+}
+
+.discription-box {
+    font-size: 14px; 
+}
+.discription-box .discription-blue {
+    color: var(--btn-blue)
+}
+.discription-box .discription-red {
+    color: var(--btn-red);
+}
+
+
+
+/*input 요소*/
+
+input[type='text'] {
+    height: 35px;
+    border: 1px solid var(--input-color);
+    width: 90%;
+}
+
+input[type='button'], input[type='submit'] {
+    color: var(--nav-font-color);
+    border: none;
+    border-radius: 5px;
+    padding: 8px 16px;
+    font-size: 15px;
+    font-weight: bold;
+    background-color: var(--btn-blue);
+}
+input[type='submit'] {
+    background-color: var(--btn-green);
+}
+
+input[type='button']:hover {
+    filter: brightness(80%);
+}
+input[type='submit']:hover {
+    filter: brightness(80%);
+}
+
+input[type='button'].itembtn{
+    font-size: 14px;
+    padding: 5px 8px;   
+}
+
+input[type='button'].deletesizebtn{
+    background-color: var(--btn-red);
+}
+
+
+

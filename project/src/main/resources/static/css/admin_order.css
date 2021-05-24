@@ -1,0 +1,134 @@
+/*section*/
+section {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--section-background-color);
+    height: 100%;
+    align-items: center;
+    padding: 80px;
+}
+
+/*form*/
+section .search-form{
+    background-color: var(--item-background-color);
+    border: 1px solid var(--item-border-color);
+    width: 80%;
+    padding: 20px;
+    color: var(--caption-color);
+}
+
+select {
+    border: 1px solid var(--input-color);
+    height: 30px;
+}
+
+section .search-form .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+section .search-form .form-group .form-label {
+    font-weight: bold;
+    flex-basis: 15%;
+}
+
+section .search-form .form-group span {
+    flex-basis: 85%;
+}
+
+section .search-form .form-group .date {
+    border: 1px solid var(--input-color);
+    height: 30px;
+}
+
+section .search-form .form-group .search-input {
+    width: 60%;
+}
+
+section .search-form .search-submit-box{
+    width: 100%;
+    text-align: center;
+}
+
+section .search-form .search-submit-box .search-submit {
+    padding: 7px 15px;
+} 
+
+/*order-box */
+section .order-box {
+    width: 80%;
+    margin-top: 25px;
+}
+
+table{
+    width: 100%;
+    background-color: var(--item-background-color);
+    border: 1px solid var(--item-border-color);
+    border-collapse: collapse;
+    font-size: 14px;
+}
+td, th {
+    text-align: center;
+    padding: 5px 0;
+}
+
+th {
+    background-color: var(--table-head-color);
+    color:var(--nav-font-color)
+}
+td {
+    border-top: 1px solid var(--table-line-color)
+}
+
+
+/*pagination*/
+section .order-box  .pagenate {
+    display: flex;
+    justify-content: center;
+}
+
+section .order-box  .pagenation {
+    display: flex;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: var(--pagenation-color);
+    align-items: center;
+    border-radius: 3px;
+}
+
+section .order-box  .pagenation li {
+    padding: 5px 10px;
+}
+
+section .order-box  .pagenation a{
+    text-decoration: none;
+    color: var(--caption-color);
+}
+
+
+/*input 요소*/
+
+input[type="text"]{
+    border: 1px solid var(--input-color);
+    height: 30px;
+    width: 90%;
+}
+
+input[type=checkbox] {
+    zoom: 1.5;
+}
+
+input[type='button'], input[type='submit'] {
+    color: var(--nav-font-color);
+    background-color: var(--btn-blue);
+    border: none;
+    border-radius: 5px;
+    padding: 5px 12px;
+    font-size: 13px;
+    font-weight: bold;
+}
+input[type='button']:hover {
+    filter: brightness(80%);
+}
