@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>admin registerGoods</title>
+    <script src="https://kit.fontawesome.com/e6f78261b2.js" crossorigin="anonymous"></script>
+    <script src="/js/jquery.js"></script>
+    <link rel="stylesheet" href="/css/admin_nav.css">
+    <link rel="stylesheet" href="/css/admin_registerGoods.css">
+</head>
+<body>
+    <nav th:replace="admin/admin_nav :: navFragment"></nav>
+    <section>
+        <form action="#" method="POST" enctype="multipart/form-data" onsubmit="return sendToServer()">
+        <!-- 상품 기본정보 -->
+        <div class="basic-info item">
+            <div class="item-caption">
+                <div class="item-title">상품 기본 정보</div>
+            </div>
+            <div class="item-content">
+                <div class="form-group">
+                    <label class="form-label">상품분류</label>
+                    <span class="cmode-box">
+                        <select name="cmode1" class="cmode1">
+                            <option value="">1차 분류</option>
+                            <option value="outer">OUTER</option>
+                            <option value="top">TOP</option>
+                            <option value="shirts">SHIRTS</option>
+                            <option value="bottom">BOTTOM</option>
+                            <option value="acc">ACC</option>
+                            <option value="shoes">SHOES</option>
+                        </select>
+                        <select name="cmode2" class="cmode2">
+                            <option value="">2차 분류</option>
+                        </select>
+                        <select name="cmode3" class="cmode3">
+                            <option value="">3차 분류</option>
+                            <option value="7dc">NEW 7% DC</option>
+                            <option value="best30">BEST30</option>
+                            <option value="sale">SALE</option>
+                        </select>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">상품명</label>
+                    <span><input type="text" name="item_name"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">판매가격</label>
+                    <span><input type="text" name="price"></span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">상품 이미지</label>
+                    <span>
+                        <div class="imgupload">
+                            <label class=imguploadbtn for="upload_image">
+                                이미지 찾기
+                            </label>
+                            <input type="file" name="upload_image[]" id="upload_image" multiple="multiple">
+                        </div>
+                        <div class="img-box"></div>
+                        <div class="discription-box">
+                            <div class="discription-blue">권장 이미지 사이즈(가로: 450px, 세로: 370px)</div>
+                            <div class="discription-blue">파일 저장시 상품내용 저장 후 적용됩니다</div>
+                        </div>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">판매상태</label>
+                    <span>
+                        <label><input type="radio" name="salestatus" value="onsale" checked>정상판매</label>
+                        <label><input type="radio" name="salestatus" value="soldout">품절</label>
+                    </span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 상품 상세정보 -->
+        <div class="detail-info item">
+            <div class="item-caption">
+                <div class="item-title">상품 상세 정보</div>
+            </div>
+            <div class="item-content">
+                <div class="form-group">
+                    <label class="form-label">INFO</label>
+                    <span>
+                        <textarea rows="7" name="info"></textarea>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">COLOR/SIZE</label>
+                    <span>
+                        <div class="color-size">
+                            <label>COLOR <input type="text" name="color"></label>
+                            <label>SIZE <input type="text" name="size" id=""></label>
+                            <label>재고수량 <input type="text" name="stock_quantitiy" id=""></label>
+                        </div>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">FABRIC</label>
+                    <span>
+                        <textarea rows="7" name="fabric"></textarea>
+                    </span>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">MODEL</label>
+                    <span>
+                        <textarea rows="7" name="model"></textarea>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- 저장, 목록 돌아가기 버튼-->
+        <div class="bottom">
+            <div class="bottombtn">
+                <input type="submit" value="저장">
+                <input type="button" value="목록">   
+            </div>
+        </div>
+    </form>
+    </section>
+    <script src="/js/admin_nav.js"></script>
+    <script src="/js/admin_registerGoods.js"></script>
+</body>
+</html>

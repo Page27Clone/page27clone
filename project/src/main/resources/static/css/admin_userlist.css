@@ -80,7 +80,7 @@ input[type='button'] {
 input[type='button']:hover {
     filter: brightness(80%);
 }
-.modifybtn {
+.userdetailbtn {
     background-color: var(--btn-blue);
 }
 .deletebtn {
