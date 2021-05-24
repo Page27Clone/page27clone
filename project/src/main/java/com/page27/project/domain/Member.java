@@ -16,15 +16,13 @@ public class Member extends BaseTimeEntity {
     @Column(name = "member_id")
     private Long id;
 
-    private String name;
-
-    //private String sex;
-
     private String loginId;
 
     private String password;
 
-    private String phoneNumber;
+    private String name;
+
+    private String sex;
 
     private String email;
 
@@ -40,7 +38,9 @@ public class Member extends BaseTimeEntity {
 
     private int orderCount;
 
-//    private String HomePhoneNumber;
+    private String phoneNumber;
+
+    private String HomePhoneNumber;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Mileage> mileageList = new ArrayList<>();

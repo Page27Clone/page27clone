@@ -26,11 +26,11 @@
                     </colgroup>
                     <tr>
                         <th>아이디</th>
-                        <td th:text="${Member.userid}">sejchae</td>
+                        <td th:text="${Member.loginId}">sejchae</td>
                     </tr>
                     <tr>
                         <th>이름</th>
-                        <td th:text="${Member.username}">채창완</td>
+                        <td th:text="${Member.name}">채창완</td>
                     </tr>
                     <tr>
                         <th>생년월일</th>
@@ -42,19 +42,20 @@
                     </tr>
                     <tr>
                         <th>방문횟수</th>
-                        <td th:text="${Member.visited}">11</td>
+                        <td th:text="${Member.visitCount}">11</td>
                     </tr>
                     <tr>
                         <th>주문횟수</th>
-                        <td th:text="${Member.ordered}">2</td>
+                        <td th:text="${Member.orderCount}">2</td>
                     </tr>
                     <tr>
                         <th>적립금</th>
-                        <td th:text="${Member.reserve}">2000원</td>
+<!--                        <td th:text="${Member.mileageList}">2000원</td>-->
+                        <td>2000원</td>
                     </tr>
                     <tr>
                         <th>가입일</th>
-                        <td th:text="${#temporals.createDate(Member.regdate, 'yyyy-MM-dd')}">2021-04-12</td>
+                        <td th:text="${#temporals.format(Member.createdAt, 'yyyy-MM-dd')}">2021-04-12</td>
                     </tr>
                     <tr>
                         <th>이메일</th>
@@ -62,11 +63,11 @@
                     </tr>
                     <tr>
                         <th>휴대전화</th>
-                        <td th:text="${Member.phone}">010-1234-5678</td>
+                        <td th:text="${Member.phoneNumber}">010-1234-5678</td>
                     </tr>
                     <tr>
                         <th>일반전화</th>
-                        <td th:text="${Member.tel}">02-1234-5678</td>
+                        <td th:text="${Member.homePhoneNumber}">02-1234-5678</td>
                     </tr>
                 </table>
             </div>

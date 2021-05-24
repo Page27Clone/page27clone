@@ -1,5 +1,5 @@
 function openUserDetail(id){ //유저 상세정보 페이지 open (컨트롤러 만들어야함)
-    location.href='/admin/user/' + id;
+    location.href='/admin/userlist/user/' + id;
 }
 
 function deleteUser(id){

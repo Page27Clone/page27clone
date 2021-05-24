@@ -48,6 +48,13 @@ public class MemberController {
         return "admin/admin_userlist";
     }// 페이징 O 전체 멤버 조회 페이지
 
+    @GetMapping("/userlist/user/{id}")
+    public String pageUser(@PathVariable Long id, Model model){
+        model.addAttribute("Member",memberService.findOneMember(id));
+
+        return "admin/admin_user";
+    }
+
     @DeleteMapping("/userlist/{id}")
     public @ResponseBody String test(@PathVariable Long id){
         System.out.println("here delete part");
