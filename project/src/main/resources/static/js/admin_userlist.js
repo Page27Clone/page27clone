@@ -21,10 +21,9 @@ function deleteCheckedUsers(){
     console.log(list)
         $.ajax({
             type: 'DELETE',
-            url: '/admin/userlist2',
+            url: '/admin/userlist',
             data: {idList : list},
             traditional: true
-            //contentType :   "application/x-www-form-urlencoded; charset=UTF-8"
         }).done(function(word){
             alert(word);
             window.location.href = '/admin/userlist';

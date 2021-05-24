@@ -60,17 +60,13 @@ public class MemberController {
         return "admin/admin_main";
     }
 
-    @DeleteMapping("/userlist2")
-    public @ResponseBody String deleteChecked(@RequestParam(value="idList", required=true) List<Long> idList) {
-        System.out.println("size1 = ");
-        //String[] testArr = request.getParameterValues("idList");
+    @DeleteMapping("/userlist")
+    public @ResponseBody String deleteChecked(@RequestParam(value="idList", required = false) List<Long> idList) {
         int size = idList.size();
 
-        System.out.println("size2 = " + size);
         for(int i = 0;i < size;i++){
             memberService.deleteById(idList.get(i));
         }
         return "선택 삭제 완료";
     }
-
 }
