@@ -1,0 +1,174 @@
+nav {
+    position: fixed;
+    top:0;
+    right: -200px;
+    width: 200px;
+    height: 100vh;
+    z-index: 2;
+    background-color: white;
+    border-left: 1px solid var(--border-color-basic);
+    transition: all 0.5s ease-in-out;
+}
+
+nav .nav_content { /*여기를 기준으로 열고닫는 자식버튼 만들면됨*/
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*네비바 옆에 튀어나와있는 사이드 버튼*/
+.sidebtn_box {
+    position: absolute;
+    left:-36px;
+    top: 320px;
+}
+
+.sidebtn_box .sidebtn {
+    background-color: white;
+    width: 35px;
+    height: 35px;
+    font-size: 18px;
+    padding: 3px;
+    text-align: center;
+    cursor: pointer;
+    border-left: 1px solid var(--border-color-basic);
+    border-bottom: 1px solid var(--border-color-basic);
+    color: #acacac;
+}
+
+.sidebtn_box .slidebtn {
+    background-color: #333333;
+    border-left: 1px solid #333333;
+    color: lightgray;
+}
+
+
+
+
+nav .login_form {
+    border-bottom: 1px solid var(--border-color-basic);
+    width: 180px;
+    padding: 30px 0;
+}
+
+
+nav .login_form .login_join_btn_box {
+    margin-top: 10px;
+}
+
+nav .login_form .login_join_btn_box .l_jbtn{
+    width: 180px;
+    height: 30px;
+    margin-top: 3px;
+    border: 1px solid var(--border-color-basic2);
+    color: white;
+    font-size: 12px;
+}
+nav .login_form .login_join_btn_box .loginbtn{
+    background-color: #333333;
+}
+nav .login_form .login_join_btn_box .joinbtn{
+    background-color: #9c9c9c;
+}
+
+nav .login_form .findbtn_box {
+    margin-top: 4px;
+    text-align: center;
+}
+nav .login_form .findbtn_box .findbtn {
+    width: 49%;
+    border: 1px solid var(--border-color-basic);
+    background-color: white;
+    height: 30px;
+    font-size: 12px;
+    color: var(--font-color-gray);
+}
+
+nav .rightmenu {
+    padding: 30px 0;
+    border-bottom: 1px solid var(--border-color-basic);
+    width: 180px;
+}
+
+nav .rightmenu .delivery_check {
+    width: 180px;
+    height: 40px;
+    background-color: white;
+    font-size: 12px;
+    border: 1px solid var(--border-color-basic);
+    color: var(--font-color-gray);
+}
+
+nav .rightmenu .rightmenubtn {
+    width: 49%;
+    border: 1px solid var(--border-color-basic);
+    background-color: white;
+    height: 40px;
+    font-size: 12px;
+    color: var(--font-color-gray);
+    margin-top: 3px;
+}
+
+nav .cs_center {
+    padding: 30px 0;
+    width: 180px;
+}
+
+nav .cs_center .cs_center_caption {
+    font-size: 12px;
+    color: var(--font-color-gray);
+}
+
+nav .cs_center .cs_center_phone {
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+nav .cs_center .cs_center_desc {
+    font-size: 12px;
+    color: var(--font-color-gray);
+    margin-top: 10px;
+}
+
+nav .bank {
+    width: 180px;
+    font-size: 12px;
+    color: var(--font-color-gray);
+    line-height: 25px;
+}
+
+nav .bank .line {
+    width: 12px;
+    height: 1px;
+    border: 1px solid black;
+    margin-bottom: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+nav input[type=text] {
+    width: 180px;
+    border: 1px solid var(--border-color-basic2);
+    height: 30px;
+    padding-left: 10px;
+}
+nav input[type=password] {
+    width: 180px;
+    border: 1px solid var(--border-color-basic2);
+    height: 30px;
+    margin-top: 5px;
+    padding-left: 10px;
+}

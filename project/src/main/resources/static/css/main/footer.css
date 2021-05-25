@@ -1,0 +1,77 @@
+/*footer*/
+footer {
+    margin-top: 200px;
+    border-top: 1px solid var(--border-color-basic);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.footer_content {
+    padding-top: 60px;
+    width: 1260px;
+    display: flex;
+    justify-content: space-between;
+}
+.footer_content_left {
+    width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.footer_content_right {
+    width: 680px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.footer_info {
+    margin-bottom: 60px;
+    height:130px; /* 아랫줄 footer_info 줄 맞추기 위함*/
+}
+.footer_info .footer_info_caption {
+    font-size: 13px;
+    padding: 10px 0px;
+    border-bottom: 1px solid var(--border-color-basic);
+}
+
+.footer_info .footer_info_content {
+    margin-top: 10px;
+    color: var(--font-color-gray);
+    font-size: 12px;
+}
+
+.footer_cs {
+    width: 240px;
+}
+
+.footer_bank {
+    width: 200px;
+}
+
+.footer_addr {
+    width: 360px;
+}
+
+.footer_about {
+    width: 240px;
+}
+
+.footer_another, .footer_company {
+    width: 100%;
+}
+
+
+.footer_banner {
+    width:100%;
+    min-width: 1260px;
+    padding: 10px;
+    background-color: #222222;
+    color:gray;
+    font-size:10px;
+}
+.footer_banner .copyright {
+    margin-left: 100px;
+    width: 230px;
+}
+

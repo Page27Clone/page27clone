@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<header th:fragment="main_headerFragment">
+    <div class="top_menuArea">
+        <div class="top_menu">
+            <div class="top_list">
+                <a href="#" class="top_list_first">로그인</a>
+                <a href="#" class="arrow_box_wrapper">
+                    회원가입
+                    <div class="arrow_box_wrap">
+                        <div class="arrow_box">
+                            + 2000 P
+                        </div>
+                    </div>
+                </a>
+                <a href="#">장바구니</a>
+                <a href="#">주문조회</a>
+                <a href="#">마이페이지</a>
+            </div>
+            <div class="logo_between">
+                <a href="#"><img src="img/logo-removebg-preview.png" alt="로고사진"></a>
+            </div>
+            <div class="top_board">
+                <a href="#">포토리뷰</a>
+                <a href="#">고객문의</a>
+                <span class="top_board_drop">
+                        <a href="#">커뮤니티</a>
+                        <ul class="top_board_dropdown">
+                            <li class="tbd_border_bottom"><a href="#">NOTICE</a><i class="fas fa-check"></i></li>
+                            <li class="tbd_border_bottom"><a href="#">Q&A</a><i class="fas fa-check"></i></li>
+                            <li class="tbd_border_bottom"><a href="#">REVIEW</a><i class="fas fa-check"></i></li>
+                            <li><a href="#">EVENT</a><i class="fas fa-check"></i></li>
+                        </ul>
+                    </span>
+                <a href="#">고객센터</a>
+                <a href="#" class="top_sns" onclick="location.href='https://www.facebook.com'"><img src="./img/facebook.png" alt="페이스북"></a>
+                <a href="#" class="top_sns" onclick="location.href='https://www.instagram.com'"><img src="./img/instagram.png" alt="인스타그램"></a>
+                <a href="#" class="top_sns" onclick="location.href='https://www.youtube.com'"><img src="./img/youtube.png" alt="유투브"></a>
+
+            </div>
+        </div>
+    </div>
+    <div class="top_logoArea">
+        <a href="#"><img src="img/logo-removebg-preview.png" alt="로고사진"></a>
+    </div>
+    <div class="top_categoryArea">
+        <div class="top_category">
+            <div class="menu_cell menu_cell_drop">
+                <i class="fas fa-bars"></i>
+                <!-- sub category 전부 나오는 드롭다운 메뉴-->
+                <div class="menu_cell_dropdown">
+                    <div class="menu_cell_dropdown_left menu_cell_dropdown_sub">
+                        <div class="submenu">
+                            <div class="submenu_caption">NEW7%DC</div>
+                        </div>
+                        <div class="submenu">
+                            <div class="submenu_caption">BEST30</div>
+                        </div>
+                        <div class="submenu">
+                            <div class="submenu_caption">OUTER</div>
+                            <ul>
+                                <li><a href="#">자켓/점퍼</a></li>
+                                <li><a href="#">가디건</a></li>
+                                <li><a href="#">코트</a></li>
+                                <li><a href="#">조끼</a></li>
+                                <li><a href="#">슈트</a></li>
+                            </ul>
+                        </div>
+                        <div class="submenu">
+                            <div class="submenu_caption">TOP</div>
+                            <ul>
+                                <li><a href="#">긴팔</a></li>
+                                <li><a href="#">반팔</a></li>
+                                <li><a href="#">니트</a></li>
+                                <li><a href="#">나시</a></li>
+                                <li><a href="#">7부</a></li>
+                            </ul>
+                        </div>
+                        <div class="submenu">
+                            <div class="submenu_caption">SHIRTS</div>
+                            <ul>
+                                <li><a href="#">베이직</a></li>
+                                <li><a href="#">체크/패턴</a></li>
+                                <li><a href="#">스트라이프</a></li>
+                            </ul>
+                        </div>
+                        <div class="submenu">
+                            <div class="submenu_caption">BOTTOM</div>
+                            <ul>
+                                <li><a href="#">면바지</a></li>
+                                <li><a href="#">데님</a></li>
+                                <li><a href="#">슬랙스</a></li>
+                                <li><a href="#">반바지</a></li>
+                            </ul>
+                        </div>
+                        <div class="submenu">
+                            <div class="submenu_caption">ACC</div>
+                            <ul>
+                                <li><a href="#">CAP</a></li>
+                                <li><a href="#">SOCKS</a></li>
+                                <li><a href="#">SCARF & MUFFLER</a></li>
+                                <li><a href="#">TIE & HANDKERCHIEF</a></li>
+                                <li><a href="#">JEWELLERY</a></li>
+                                <li><a href="#">BAG</a></li>
+                                <li><a href="#">BELT</a></li>
+                            </ul>
+                        </div>
+                        <div class="submenu">
+                            <div class="submenu_caption">SHOES</div>
+                        </div>
+                        <div class="submenu">
+                            <div class="submenu_caption">SALE</div>
+                        </div>
+
+                    </div>
+                    <div class="menu_cell_dropdown_right menu_cell_dropdown_sub">
+                        <div class="submenu">
+                            <div class="submenu_caption">COMMUNITY</div>
+                            <ul>
+                                <li><a href="#">NOTICE</a></li>
+                                <li><a href="#">Q&A</a></li>
+                                <li><a href="#">REVIEW</a></li>
+                                <li><a href="#">EVENT</a></li>
+                            </ul>
+                        </div>
+                        <div class="submenu">
+                            <div class="submenu_caption">ABOUT US</div>
+                            <ul>
+                                <li><a href="#">OUR COMPANY</a></li>
+                                <li><a href="#">AGREEMENT</a></li>
+                                <li><a href="#">PRIVACYPOLICY</a></li>
+                                <li><a href="#">SHOPGUIDE</a></li>
+                            </ul>
+                        </div>
+                        <div class="submenu customer_center">
+                            <div class="submenu_caption">CUSTOMER CENTER</div>
+                            <ul>
+                                <li>010 - 2270 - 6149</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- sub category-->
+            <div class="menu_cell menu_cell_category">
+                <span><a href="#">NEW 7% DC</a></span>
+                <span><a href="#">BEST 30</a></span>
+                <span class="menu_cell_category_drop">
+                        <a href="#">OUTER</a>
+                        <div class="menu_cell_category_dropdown">
+                            <div class="in_category">
+                                <div class="in_category_caption">IN CATEGORY</div>
+                                <ul>
+                                    <li><a href="#">자켓/점퍼</a></li>
+                                    <li><a href="#">가디건</a></li>
+                                    <li><a href="#">코트</a></li>
+                                    <li><a href="#">조끼</a></li>
+                                    <li><a href="#">수트</a></li>
+                                </ul>
+                            </div>
+                            <div class="category_img_box">
+                                <a href="#">
+                                    <img src="./img/categorydrop/categorydropimg1.JPG" alt="카테고리 대표 사진">
+                                </a>
+                            </div>
+                        </div>
+                    </span>
+                <span class="menu_cell_category_drop">
+                        <a href="#">TOP</a>
+                        <div class="menu_cell_category_dropdown">
+                            <div class="in_category">
+                                <div class="in_category_caption">IN CATEGORY</div>
+                                <ul>
+                                    <li><a href="#">긴팔</a></li>
+                                    <li><a href="#">반팔</a></li>
+                                    <li><a href="#">니트</a></li>
+                                    <li><a href="#">나시</a></li>
+                                    <li><a href="#">7부</a></li>
+                                </ul>
+                            </div>
+                            <div class="category_img_box">
+                                <a href="#">
+                                    <img src="./img/categorydrop/categorydropimg2.JPG" alt="카테고리 대표 사진">
+                                </a>
+                            </div>
+                        </div>
+                    </span>
+                <span class="menu_cell_category_drop">
+                        <a href="#">SHIRTS</a>
+                        <div class="menu_cell_category_dropdown">
+                            <div class="in_category">
+                                <div class="in_category_caption">IN CATEGORY</div>
+                                <ul>
+                                    <li><a href="#">베이직</a></li>
+                                    <li><a href="#">체크/패턴</a></li>
+                                    <li><a href="#">스트라이프</a></li>
+                                </ul>
+                            </div>
+                            <div class="category_img_box">
+                                <a href="#">
+                                    <img src="./img/categorydrop/categorydropimg2.JPG" alt="카테고리 대표 사진">
+                                </a>
+                            </div>
+                        </div>
+                    </span>
+                <span class="menu_cell_category_drop">
+                        <a href="#">BOTTOM</a>
+                        <div class="menu_cell_category_dropdown">
+                            <div class="in_category">
+                                <div class="in_category_caption">IN CATEGORY</div>
+                                <ul>
+                                    <li><a href="#">면바지</a></li>
+                                    <li><a href="#">데님</a></li>
+                                    <li><a href="#">슬랙스</a></li>
+                                    <li><a href="#">반바지</a></li>
+                                </ul>
+                            </div>
+                            <div class="category_img_box">
+                                <a href="#">
+                                    <img src="./img/categorydrop/categorydropimg2.JPG" alt="카테고리 대표 사진">
+                                </a>
+                            </div>
+                        </div>
+                    </span>
+                <span class="menu_cell_category_drop">
+                        <a href="#">ACC</a>
+                        <div class="menu_cell_category_dropdown">
+                            <div class="in_category">
+                                <div class="in_category_caption">IN CATEGORY</div>
+                                <ul>
+                                    <li><a href="#">CAP</a></li>
+                                    <li><a href="#">SOCKS</a></li>
+                                    <li><a href="#">SKARF & MUFFLER</a></li>
+                                    <li><a href="#">TIE & HANDKERCHIEF</a></li>
+                                    <li><a href="#">JEWELLERY</a></li>
+                                    <li><a href="#">BAG</a></li>
+                                    <li><a href="#">BELT</a></li>
+                                </ul>
+                            </div>
+                            <div class="category_img_box">
+                                <a href="#">
+                                    <img src="./img/categorydrop/categorydropimg2.JPG" alt="카테고리 대표 사진">
+                                </a>
+                            </div>
+                        </div>
+                    </span>
+
+                <span><a href="#">SHOES</a></span>
+                <span><a href="#">SALE</a></span>
+            </div>
+            <div class="search_all menu_cell">
+                <i class="fas fa-search"></i>&nbsp;<span>SEARCH</span>
+                <form action="#" method="GET" class="search_form_dropdown">
+                    <div class="search_box"><input type="text" name="search_word"><i class="fas fa-search"></i></div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</header>
+</html>
