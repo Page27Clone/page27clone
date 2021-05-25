@@ -23,7 +23,7 @@ body, html{
     height: 100%;
 }
 /*nav*/
-nav a {
+nav a, nav span {
     text-decoration: none;
     color: var(--nav-font-color);
 }
@@ -58,12 +58,12 @@ nav .side-menu > li{
 }
 
 
-nav .side-menu .menu-dropdown > a {
+nav .side-menu .menu-dropdown > span {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-nav .side-menu .menu-dropdown > a .fa-chevron-down {
+nav .side-menu .menu-dropdown > span .fa-chevron-down {
     font-size: 11px;
 }
 
