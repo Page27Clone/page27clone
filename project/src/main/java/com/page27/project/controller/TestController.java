@@ -64,6 +64,11 @@ public class TestController {
         return "/myinfo";
     }
 
+    @GetMapping("/image/test")
+    public String imageTestPage(){
+        return "/imageTest";
+    }
+
      //어드민 페이지
 //    @GetMapping("/testadmin")
 //    public String dispAdmin() {
