@@ -14,7 +14,7 @@
 <body>
     <nav th:replace="admin/admin_nav :: navFragment"></nav>
     <section>
-        <form action="#" method="POST" enctype="multipart/form-data" onsubmit="return sendToServer()">
+        <form action="/admin/register" method="POST" enctype="multipart/form-data" onsubmit="return sendToServer()">
         <!-- 상품 기본정보 -->
         <div class="basic-info item">
             <div class="item-caption">
@@ -59,7 +59,7 @@
                             <label class=imguploadbtn for="upload_image">
                                 이미지 찾기
                             </label>
-                            <input type="file" name="upload_image[]" id="upload_image" multiple="multiple">
+                            <input type="file" name="upload_image" id="upload_image" multiple="multiple">
                         </div>
                         <div class="img-box"></div>
                         <div class="discription-box">
@@ -96,7 +96,7 @@
                         <div class="color-size">
                             <label>COLOR <input type="text" name="color"></label>
                             <label>SIZE <input type="text" name="size" id=""></label>
-                            <label>재고수량 <input type="text" name="stock_quantitiy" id=""></label>
+                            <label>재고수량 <input type="text" name="stock_quantity" id=""></label>
                         </div>
                     </span>
                 </div>

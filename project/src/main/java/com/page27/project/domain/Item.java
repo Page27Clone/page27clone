@@ -12,15 +12,16 @@ import java.util.List;
 @Getter
 @Setter
 public class Item {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "item_id")
     private Long id;
 
-    private String headerCategory;
+    private String firstCategory;
 
-    private String subCategory;
+    private String secondCategory;
+
+    private String thirdCategory;
 
     private String itemName;
 
@@ -38,6 +39,12 @@ public class Item {
 
     private int stockQuantity;
 
+    private String imgUrl;
+
+    private String saleStatus;
+
+    private Long itemIdx;
+
     @OneToMany(mappedBy = "item")
     private List<OrderItem> orderItemList = new ArrayList<>();
 
@@ -45,6 +52,26 @@ public class Item {
     public void plusStockQuantity(int plusQuantity){
         this.stockQuantity += plusQuantity;
     }// 재고가 증가하는 메소드
+
+    public Item(){
+
+    }
+
+    public Item(String firstCategory, String secondCategory, String thirdCategory, String itemName, int price, String itemInfo, String color, String fabric, String model, String size, int stockQuantity, String imgUrl, String saleStatus) {
+        this.firstCategory = firstCategory;
+        this.secondCategory = secondCategory;
+        this.thirdCategory = thirdCategory;
+        this.itemName = itemName;
+        this.price = price;
+        this.itemInfo = itemInfo;
+        this.color = color;
+        this.fabric = fabric;
+        this.model = model;
+        this.size = size;
+        this.stockQuantity = stockQuantity;
+        this.imgUrl = imgUrl;
+        this.saleStatus = saleStatus;
+    }
 
     public void minusStockQuantity(int minusQuantity){
         int resultStock = this.stockQuantity - minusQuantity;
