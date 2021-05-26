@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.security.Principal;
@@ -26,8 +27,8 @@ public class AdminController {
         return "admin/admin_changePassword";
     }
 
-    @GetMapping("/admin/changepaswword_ok")
-    public String changeAdminPasswordPage(Principal principal){
+    @PutMapping("/admin/changepaswword_ok")
+    public String changeAdminPasswordPage(Principal principal,@RequestParam("password")String newPassword){
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //        User user = (User) authentication.getPrincipal();
 //
@@ -49,7 +50,8 @@ public class AdminController {
         System.out.println(tempMember.getLoginId());
         System.out.println(tempMember.getPassword());
 
+        tempMember.setPassword(newPassword);
 
-        return "admin/admin_changePassword";
+        return "ajax 수정 완료";
     }
 }

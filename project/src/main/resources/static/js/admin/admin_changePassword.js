@@ -33,7 +33,7 @@ $(function(){
         }
 
         $.ajax({
-            type: 'PATCH',
+            type: 'PUT',
             url: '/admin/changepassword_ok',
             data: {password : user_pw},
         }).done(function(word){

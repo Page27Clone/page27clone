@@ -36,20 +36,39 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
 //        http
 //                .csrf().disable();
-        http
-                .authorizeRequests()
-                // 페이지 권한 설정
-                .antMatchers("/admin/**")
+//        http
+//                .authorizeRequests()
+//                // 페이지 권한 설정
+//                .antMatchers("/admin/**")
 //                .permitAll()
-                .hasRole("ADMIN")
+//                //.hasRole("ADMIN")
+//                //.antMatchers("/user/myinfo").hasRole("MEMBER")
+//                .antMatchers("/**").permitAll()
+//                .and() // 로그인 설정
+//                .formLogin()
+//                .loginPage("/user/login")
+//                .defaultSuccessUrl("/user/login/result")
+//                .permitAll()
+//                .usernameParameter("loginId")
+//                .and() // 로그아웃 설정
+//                .logout()
+//                .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
+//                .logoutSuccessUrl("/user/logout/result")
+//                .invalidateHttpSession(true)
+//                .and()
+//                // 403 예외처리 핸들링
+//                .exceptionHandling().accessDeniedPage("/user/denied");
+        http.authorizeRequests()
+                // 페이지 권한 설정
+                .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/user/myinfo").hasRole("MEMBER")
                 .antMatchers("/**").permitAll()
                 .and() // 로그인 설정
                 .formLogin()
                 .loginPage("/user/login")
+                .usernameParameter("loginId")
                 .defaultSuccessUrl("/user/login/result")
                 .permitAll()
-                .usernameParameter("loginId")
                 .and() // 로그아웃 설정
                 .logout()
                 .logoutRequestMatcher(new AntPathRequestMatcher("/user/logout"))
