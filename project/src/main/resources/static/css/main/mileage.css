@@ -1,0 +1,110 @@
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section_caption {
+    padding: 45px 0;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+/*summary*/
+.mileage_summary {
+    display: flex;
+    font-size: 12px;
+    width: 1260px;
+}
+
+.mileage_summary_left {
+    flex-basis: 50%;
+    border: 1px solid var(--border-color-basic);
+    padding: 10px 40px;
+}
+.mileage_summary_right {
+    flex-basis: 50%;
+    border: 1px solid var(--border-color-basic);
+    border-left: none;
+    padding: 10px 40px;
+}
+.summary_item {
+    display: flex;
+    justify-content: space-between;
+    margin: 15px 0;
+}
+.summary_item > span > i{
+    font-size: 8px;
+}
+
+.section_content {
+    margin-top: 20px;
+    width: 1260px;
+}
+
+.mileage_caption {
+    border-bottom: 1px solid black;
+}
+.mileage_caption_desc {
+    background-color: #555555;
+    color: white;
+    font-size: 12px;
+    width: 195px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/*mileagelist*/
+.mileagelist {
+    margin-top: 20px;
+}
+table{
+    width: 100%;
+    font-size: 12px;   
+    color: var(--font-color-gray2);
+    border-top: 1px solid var(--border-color-basic);
+    border-collapse: collapse;
+}
+
+td {
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color-basic2);
+}
+
+.mileagelist .mileagelist_content .nosearch {
+    padding: 50px 0px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--font-color-gray2);
+    border-bottom: 1px solid var(--border-color-basic);
+}
+
+
+
+/*pagenation*/
+.mileagelist .pagenation {
+    margin-top: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagenation .bracket {
+    font-size: 9px;
+    margin: 8px;
+    font-weight: bold;
+}
+
+.pagenation span {
+    display: inline-block;
+    font-size: 12px;
+    background-color: var(--pagenation-color);
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding-top: 3px;
+    margin: 0 8px;
+}
