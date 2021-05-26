@@ -50,7 +50,7 @@ public class DataInsertTest {
         addMember("MemberX_Id","1234","MemberX","남자","MemberX@naver.com","1994-08-09",5,10,"010-1234-1234","031-555-7777");
         addMember("MemberY_Id","1234","MemberY","남자","MemberY@naver.com","1994-08-09",5,10,"010-1234-1234","031-555-7777");
         addMember("MemberZ_Id","1234","MemberZ","남자","MemberZ@naver.com","1994-08-09",5,10,"010-1234-1234","031-555-7777");
-
+        addMember("Admin_Id","1234","Admin","남자","Admin@naver.com","1994-08-09",5,0,"010-1234-1234","031-555-7777");
     }
 
     public void addMember(String loginId, String password, String name, String sex, String email, String birthday, int visitCount, int orderCount,

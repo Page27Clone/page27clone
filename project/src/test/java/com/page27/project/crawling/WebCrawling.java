@@ -42,13 +42,13 @@ public class WebCrawling {
 
             String itemName = doc.select(".name").text();
             //System.out.println(itemName);
-            String totalUrl;
             Elements img = doc.select(".cont img");
             ArrayList<String> url = new ArrayList<String>();
             for(int i = 1; i<img.size();i++){
                 //System.out.println(img.get(i).attr("ec-data-src"));
                 url.add("http://page27.co.kr" + img.get(i).attr("ec-data-src"));
             }
+            String direction = "";
             for(int i = 0;i<url.size();i++){
                 String tempUrl = url.get(i);
                 if(tempUrl.substring(tempUrl.length()-3,tempUrl.length()).equals("png")){
@@ -60,6 +60,9 @@ public class WebCrawling {
 
                 BufferedImage image = ImageIO.read(imgUrl);
                 FileOutputStream out = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName  + i + ".jpg");
+                String totalUrl = "/image/Item/OUTER/자켓/" + itemName  + i + ".jpg";
+                direction += totalUrl + ',';
+                //FileOutputStream out = new FileOutputStream("/image/Item/OUTER/자켓/" + itemName  + i + ".jpg");
                 ImageIO.write(image,"jpg",out);
             }
 
@@ -71,11 +74,7 @@ public class WebCrawling {
             String info = temp.substring(temp.indexOf("INFO") + 4,temp.indexOf("Color") - 4).trim();
             System.out.println(info);
 
-            Elements color = doc.select("#product_option_id1 option");
-            for(int i = 0 ; i<color.size(); i++){
-                if(i < 2) continue;
-                System.out.println(color.get(i).attr("value"));
-            }
+
 
             String size = "FREE";
 
@@ -93,8 +92,16 @@ public class WebCrawling {
 //            System.out.println(Category.select("li:nth-child(2)").text());
 //            System.out.println(Category.select("li:nth-child(3)").text());
 
-//            Item item = new Item(firstCategory,secondCategory,"",itemName,price,info,)
+            Long idx = 1L;
 
+            Elements color = doc.select("#product_option_id1 option");
+            for(int i = 0 ; i<color.size(); i++){
+                if(i < 2) continue;
+                String itemColor = color.get(i).attr("value");
+                System.out.println(color.get(i).attr("value"));
+                Item item = new Item(firstCategory,secondCategory,"",itemName,price,info,itemColor,fabric,model,size,quantity,direction,"판매중",idx);
+                itemRepository.save(item);
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }

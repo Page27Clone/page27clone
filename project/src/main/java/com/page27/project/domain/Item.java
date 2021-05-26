@@ -27,6 +27,7 @@ public class Item {
 
     private int price;
 
+    @Column(columnDefinition = "TEXT")
     private String itemInfo;
 
     private String color;
@@ -39,6 +40,7 @@ public class Item {
 
     private int stockQuantity;
 
+    @Column(columnDefinition = "TEXT")
     private String imgUrl;
 
     private String saleStatus;
@@ -57,7 +59,7 @@ public class Item {
 
     }
 
-    public Item(String firstCategory, String secondCategory, String thirdCategory, String itemName, int price, String itemInfo, String color, String fabric, String model, String size, int stockQuantity, String imgUrl, String saleStatus) {
+    public Item(String firstCategory, String secondCategory, String thirdCategory, String itemName, int price, String itemInfo, String color, String fabric, String model, String size, int stockQuantity, String imgUrl, String saleStatus,Long itemIdx) {
         this.firstCategory = firstCategory;
         this.secondCategory = secondCategory;
         this.thirdCategory = thirdCategory;
@@ -71,6 +73,7 @@ public class Item {
         this.stockQuantity = stockQuantity;
         this.imgUrl = imgUrl;
         this.saleStatus = saleStatus;
+        this.itemIdx = itemIdx;
     }
 
     public void minusStockQuantity(int minusQuantity){

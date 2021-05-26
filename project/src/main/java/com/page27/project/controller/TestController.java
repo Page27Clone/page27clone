@@ -6,6 +6,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -29,14 +30,13 @@ public class TestController {
     @PostMapping("/user/signup")
     public String execSignup(MemberInfoDto memberInfoDto) {
         memberService.joinUser(memberInfoDto);
-
         return "redirect:/user/login";
     }
 
     // 로그인 페이지
     @GetMapping("/user/login")
     public String dispLogin() {
-        //memberService.loadUserByUsername();
+
         return "/login";
     }
 

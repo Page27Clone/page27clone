@@ -104,9 +104,9 @@ public class ItemController {
 
             //String safeFile = path + System.currentTimeMillis() + originFileName;
             String safeFile = path + System.currentTimeMillis() + originFileName;
-            Item item = new Item(firstCategory,secondCategory,thirdCategory,itemName,itemPrice,itemInfo,itemColor,itemFabric,itemModel,itemSize,itemQuantity,safeFile,saleStatus);
-            itemRepository.save(item);
-            System.out.println("File path : " + safeFile);
+//            Item item = new Item(firstCategory,secondCategory,thirdCategory,itemName,itemPrice,itemInfo,itemColor,itemFabric,itemModel,itemSize,itemQuantity,safeFile,saleStatus);
+//            itemRepository.save(item);
+//            System.out.println("File path : " + safeFile);
 
             try{
                 mf.transferTo(new File(safeFile));

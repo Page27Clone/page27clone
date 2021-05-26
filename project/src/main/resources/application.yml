@@ -23,6 +23,7 @@ spring:
       max-request-size: 10MB
       location: C:/Temp
 
+
 logging:
   level:
     org.hibernate.SQL: debug

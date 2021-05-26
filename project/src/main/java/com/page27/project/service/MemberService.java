@@ -96,7 +96,6 @@ public class MemberService implements UserDetailsService {
         } else {
             authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
         }
-
         return new User(userEntity.getLoginId(), userEntity.getPassword(), authorities);
     }
 
