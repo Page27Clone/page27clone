@@ -2,16 +2,15 @@ package com.page27.project.controller;
 
 import com.page27.project.domain.Member;
 import com.page27.project.repository.MemberRepository;
+import com.page27.project.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PatchMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.util.Optional;
@@ -21,14 +20,15 @@ import java.util.Optional;
 public class AdminController {
 
     private final MemberRepository memberRepository;
+    private final MemberService memberService;
 
     @GetMapping("/admin/changepassword")
     public String adminChangePassword(){
         return "admin/admin_changePassword";
     }
 
-    @PutMapping("/admin/changepaswword_ok")
-    public String changeAdminPasswordPage(Principal principal,@RequestParam("password")String newPassword){
+    @PutMapping("/admin/changepassword_ok")
+    public @ResponseBody String changeAdminPasswordPage(Principal principal, @RequestParam("password")String newPassword){
 //        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 //        User user = (User) authentication.getPrincipal();
 //
@@ -49,8 +49,18 @@ public class AdminController {
 
         System.out.println(tempMember.getLoginId());
         System.out.println(tempMember.getPassword());
+        System.out.println(newPassword);
 
         tempMember.setPassword(newPassword);
+
+
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        Long resultId = memberService.changePassword(tempMember.getId(), passwordEncoder.encode(newPassword));
+
+
+
+
+        System.out.println(resultId);
 
         return "ajax 수정 완료";
     }

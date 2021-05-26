@@ -58,9 +58,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .and()
 //                // 403 예외처리 핸들링
 //                .exceptionHandling().accessDeniedPage("/user/denied");
-        http.authorizeRequests()
+        http
+                .csrf().ignoringAntMatchers("/admin/changepassword")
+
+                .ignoringAntMatchers("/admin/changepassword_ok");
+        http
+                .authorizeRequests()
                 // 페이지 권한 설정
-                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/admin/**").permitAll()
                 .antMatchers("/user/myinfo").hasRole("MEMBER")
                 .antMatchers("/**").permitAll()
                 .and() // 로그인 설정

@@ -80,6 +80,13 @@ public class MemberService implements UserDetailsService {
         return memberRepository.save(memberInfoDto.toEntity()).getId();
     }
 
+    @Transactional
+    public Long changePassword(Long id , String password){
+        Member oneMember = findOneMember(id);
+        oneMember.setPassword(password);
+        return oneMember.getId();
+    }
+
     @Override
     public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
         System.out.println("Login Id = " + loginId);
