@@ -1,0 +1,125 @@
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section_caption {
+    padding: 45px 0;
+    font-size: 19px;
+    font-weight: bold;
+}
+/*member_type*/
+
+
+.member_type {
+    border: 1px solid var(--border-color-basic);
+    width: 1135px;
+    padding: 10px 0;
+    display: flex;
+    font-size: 12px;
+}
+
+.member_type .member_type_img{
+    padding: 0 15px;
+    border-right: 1px solid var(--border-color-basic);
+}
+
+.member_type img{
+    display: block;
+}
+
+.member_type .member_type_desc{
+    padding: 13px 25px;
+}
+
+.member_type .member_type_desc .member_milage{
+    margin-top: 5px;
+}
+
+.member_type .member_type_desc button{
+    font-size: 12px; 
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid lightgray;
+    padding: 2px 7px;
+}
+
+/*myshop_orderstate*/
+.myshop_orderstate {
+    width: 1135px;
+    border: 1px solid var(--border-color-basic);
+    margin-top: 20px;
+}
+.myshop_orderstate .myshop_orderstate_caption {
+    padding: 10px 20px;
+    font-size: 12px;
+    border-bottom: 1px solid var(--border-color-basic);
+}
+.myshop_orderstate .myshop_orderstate_container {
+    display: flex;
+    padding: 25px 0;
+}
+.mymyshop_orderstate_item {
+    width:230px;
+    border-right: 1px solid var(--border-color-basic);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.mymyshop_orderstate_item .item_caption {
+    font-size: 13px;
+}
+.mymyshop_orderstate_item .item_content a{
+    color: black;
+    font-size: 20px;
+    font-weight: bold;
+}
+.last_item {
+    border: none;
+}
+
+.mymyshop_orderstate_item ul{
+    font-size: 12px;
+}
+
+.mymyshop_orderstate_item ul span a{
+    font-weight: bold;
+    color: #a01212;
+}
+
+/* myshop_main*/
+.myshop_main {
+    width: 1135px;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+.myshop_main_item {
+    width: 275px;
+    border: 1px solid var(--border-color-basic);
+    padding: 0 3px;
+    cursor: pointer;
+}
+.myshop_main_item:hover {
+    border-bottom: 1px solid black;
+}
+.myshop_main_item .item_caption{
+    border-bottom: 1px solid var(--border-color-basic);
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 2px;
+    padding: 8px 0px;
+}
+
+.myshop_main_item .item_content{
+    padding: 40px 50px;
+    font-size: 12px;
+    text-align: center;
+    color: var(--font-color-gray2);
+}
+
+.myshop_main_item .item_content .item_content_desc {
+    margin-top: 10px;
+}

@@ -1,0 +1,427 @@
+:root {
+    --border-color-basic: #e9e9e9;
+    --border-color-basic2: #d5d5d5;
+    --font-color-gray: #455a64;
+    --font-color-gray2: #666;
+    --pagenation-color: #333333;
+}
+
+* {
+    box-sizing: border-box;
+    margin:0;
+    padding:0;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+/* header */
+
+a {
+    color: #455a64;
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/*top_menuArea*/
+.top_menuArea {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-color-basic);
+    background-color: white;
+    z-index: 2;
+}
+
+.top_menuArea_fixed {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+}
+
+.top_menu {
+    width: 1260px;
+    height: 45px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+.top_menu a{
+    font-size: 12px;
+    margin: 20px;
+}
+
+.top_menu .top_sns{
+    margin: 0;
+}
+
+.top_list {
+    display: flex;
+    align-items: center;
+}
+
+.top_menu a.top_list_first {
+    margin-left: 0px;
+}
+
+.top_menu .logo_between img{
+    display: block;
+    width: 50px;
+    display: none;
+}
+
+.top_board {
+    display: flex;
+    align-items: center;
+}
+
+.top_board_drop { /*코드가 먼가 잘못 작성됨. 바꾸기 귀찮으므로 그냥 쓴다*/
+    position: relative;
+    height:45px;
+    padding-top:9px;
+}
+.top_board_drop:hover .top_board_dropdown{
+    display: block;
+}
+.top_board_dropdown {
+    width: 150px;
+    border: 1px solid var(--border-color-basic);
+    border-top: 1px solid #333;
+    background-color: white;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    transform: translate(-20%);
+    padding: 5px 10px;
+    display: none;
+}
+
+.top_board_dropdown li.tbd_border_bottom {
+    border-bottom: 1px solid var(--border-color-basic);
+}
+
+.top_board_dropdown li {
+    display: flex;
+    padding: 7px 0px;
+    justify-content: space-between;
+    font-size: 11px;
+    align-items: center;
+}
+
+.top_board_dropdown li a{
+    margin: 0;
+
+}
+.top_board_dropdown li a::before {
+    content: '· ';
+}
+
+.top_board_dropdown li i{
+    display: none;
+}
+
+.top_board_dropdown li:hover i{
+    display: block;
+}
+
+.top_board img{
+    width: 17px;
+    margin-left: 10px;
+}
+/*top_logoArea*/
+.top_logoArea {
+    height: 200px;
+    border-bottom: 1px solid var(--border-color-basic);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+/*top_categoryArea*/
+.top_categoryArea {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid var(--border-color-basic);
+    background-color: white;
+    z-index: 1;
+}
+
+.top_categoryArea_fixed {
+    width: 100%;
+    position: fixed;
+    top: 45px;
+    left: 0px;
+}
+
+.top_category {
+    width: 1260px;
+    height: 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+
+.top_category .menu_cell {
+    display: flex;
+    align-items: center;
+}
+
+.top_category .menu_cell_drop {
+    padding: 0 20px;
+    border-left: 1px solid var(--border-color-basic);
+    border-right: 1px solid var(--border-color-basic);
+    height: 100%;
+    font-size: 12px;
+}
+
+.top_category .menu_cell_category {
+    height: 100%;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.top_category .menu_cell_category span {
+    height: 100%;
+    padding: 10px 0px;
+    position: relative;
+}
+
+/*카테고리 hover시 밑줄이 가운데서 밖으로 그어지는 부분 */
+.top_category .menu_cell_category span::after{
+    position: absolute;
+    content:'';
+    height:1px;
+    width:0%;
+    border-bottom: 2px solid black;
+    bottom: -1px;
+    left:50%;
+    transition: all 0.3s ease;
+}
+
+
+.top_category .menu_cell_category span:hover::after{
+    position: absolute;
+    content:'';
+    height:1px;
+    width:100%;
+    border-bottom: 2px solid black;
+    bottom: -1px;
+    left:0%;
+}
+
+.top_category .menu_cell_category span a{
+    font-size: 12px;
+}
+
+
+/*category dropdown*/
+.menu_cell_category_drop .menu_cell_category_dropdown{
+    background-color: white;
+    width:430px;
+    position:absolute;
+    display: flex;
+    top:50px;
+    left:0;
+    display: none;
+}
+.menu_cell_category_drop .menu_cell_category_dropdown .in_category{
+    flex-basis: 40%;
+    padding: 10px;
+    border: 1px solid var(--border-color-basic);
+}
+
+.in_category .in_category_caption {
+    font-size: 12px;
+    border-bottom: 1px solid var(--border-color-basic);
+    padding-bottom: 10px;
+    padding-left: 5px;
+}
+
+.in_category ul li {
+    display: flex;
+    align-items: center;
+    padding: 5px 5px;
+    transition: background 0.5s ease;
+}
+
+.in_category ul li:hover {
+    background-color: #eceff1;
+    border-radius: 5px;
+    
+}
+
+.menu_cell_category_drop .menu_cell_category_dropdown .category_img_box {
+    flex-basis: 60%;
+    padding: 15px;
+    border: 1px solid var(--border-color-basic);
+    border-left: none;
+}
+
+.menu_cell_category_drop .menu_cell_category_dropdown .category_img_box img{
+    display: block;
+}
+
+
+/*search*/
+.top_category .search_all {
+    font-size: 11px;
+    width: 90px;
+    height: 100%;
+    border-left: 1px solid var(--border-color-basic);
+    border-right: 1px solid var(--border-color-basic);
+    background-color: #f9f9f9;
+    padding: 0px 20px;
+    position: relative;
+    cursor: pointer;
+}
+
+.search_form_dropdown {
+    width: 400px;
+    border: 1px solid var(--border-color-basic);
+    background-color: white;
+    position: absolute;
+    right:-1px;
+    top:50px;
+    padding: 20px;
+    display: none;
+}
+
+.search_form_dropdown .search_box {
+    width: 100%;
+    border: 1px solid var(--border-color-basic);
+    padding: 5px;
+}
+.search_form_dropdown .search_box input {
+    width: 95%;
+    height: 22px;
+    border:none;
+}
+
+/*항등기호 dropdown*/
+.menu_cell_drop:hover > .menu_cell_dropdown{
+    display: flex;
+}
+
+.menu_cell_dropdown {
+    background-color: white;
+    width: 100%;
+    position: absolute;
+    top: 100%;
+    left:0;
+    border: 1px solid var(--border-color-basic);
+    display: flex;
+    display: none;
+}
+
+.menu_cell_dropdown_sub {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 30px;
+    justify-content: space-between;
+}
+
+.menu_cell_dropdown_left {
+
+    flex-basis: 65%;
+}
+
+.menu_cell_dropdown_right {
+
+    flex-basis: 35%;  
+    align-content: flex-start;
+}
+
+.submenu {
+    width: 160px;
+    margin-bottom: 20px;
+}
+
+.submenu .submenu_caption {
+    color: #bf4b4b;
+    font-size: 10px;
+    padding: 5px;
+    border-bottom : 1px solid var(--border-color-basic);
+    margin-bottom: 5px;
+}
+.menu_cell_dropdown_right .submenu .submenu_caption{
+    color: black;
+}
+
+.submenu ul li {
+    padding: 2px 5px;
+    display: flex;
+    transition: background 0.3s ease-in-out;
+}
+.submenu ul li a {
+    font-size: 10px;
+}
+
+.submenu ul li:hover {
+    background-color: #eceff1;
+    border-radius: 5px;
+}
+
+.submenu.customer_center {
+    width: 100%;
+}
+
+.submenu.customer_center ul li{
+    font-size: 15px;
+    font-family: 'Antonio', sans-serif;
+}
+
+/*menu 말풍선*/
+.arrow_box_wrapper {
+    position: relative;
+}
+
+.arrow_box_wrap {
+    position: absolute;
+    top: 25px;
+    left: -25%;
+    animation: motion 0.5s linear 0s infinite alternate; margin-top: 0;
+}
+
+.arrow_box {
+	position: relative;
+	border: 2px solid #333333;
+    font-size: 8px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: white;
+    background-color: #333333;
+    letter-spacing: 2px;;
+    border-radius: 10px;
+    width: 70px;
+    text-align: center;
+}
+.arrow_box:before {
+    position: absolute;
+	bottom: 100%;
+	left: 50%;
+	border: solid transparent;
+	content: "";
+	height: 0;
+	width: 0;
+	pointer-events: none;
+    border-bottom-color: #333333;;
+	border-width: 7px;
+	margin-left: -7px;
+}
+@keyframes motion {
+	0% {margin-top: 0px;}
+	100% {margin-top: 5px;}
+}
+@-webkit-keyframes motion { /*crome, safari*/
+	0% {margin-top: 0px;}
+	100% {margin-top: 5px;}
+}
+@-ms-keyframes motion { /*IE*/
+	0% {margin-top: 0px;}
+	100% {margin-top: 5px;}
+}

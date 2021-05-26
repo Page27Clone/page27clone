@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/main/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/register_user.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>register</title>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/main/header.js"></script>
+    <script src="/js/main/nav.js"></script>
+    <script src="/js/main/register_user.js"></script>
+</head>
+<body>
+    <!--header start-->
+    <header th:replace="main/header :: main_headerFragment">
+    </header>
+    <!--header end-->
+
+    <!--section-->
+    <section>
+        <div class="section_caption">
+            MEMBER JOIN
+        </div>
+        <div class="section_content">
+            <form action="" method="POST" onsubmit="return sendit()">
+                <table class="basicdata">
+                    <colgroup>
+                        <col width="120px"/>
+                        <col width="auto"/>
+                    </colgroup>
+                    <tr>
+                        <th><label for="user_id">아이디<span>＊</span></label></th>
+                        <td><input type="text" name="user_id" id="user_id"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="user_password">비밀번호<span>＊</span></label></th>
+                        <td><input type="password" name="user_password" id="user_password">&nbsp; (영문 대소문자/숫자/특수문자 중2가지 이상 조합, 10~16자)</td>
+                    </tr>
+                    <tr>
+                        <th><label for="user_password_ok">비밀번호확인<span>＊</span></label></th>
+                        <td><input type="password" id="user_password_ok"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="user_name">이름<span>＊</span></label></th>
+                        <td><input type="text" name="user_name" id="user_name"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="home_number">일반전화</label></th>
+                        <td>
+                            <select name="home_number[]" id="home_number" class="home_number">
+                                <option value="02">02</option>
+                                <option value="02">031</option>
+                                <option value="02">032</option>
+                                <option value="02">033</option>
+                                <option value="02">041</option>
+                                <option value="02">042</option>
+                                <option value="02">043</option>
+                                <option value="02">044</option>
+                                <option value="02">051</option>
+                                <option value="02">052</option>
+                                <option value="02">053</option>
+                                <option value="02">054</option>
+                                <option value="02">055</option>
+                            </select>
+                            -
+                            <input type="text" name="home_number[]" class="home_number">
+                            -
+                            <input type="text" name="home_number[]" class="home_number">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="phone_number">휴대전화<span>＊</span></label></th>
+                        <td>
+                            <select name="phone_number[]" id="phone_number" class="phone_number">
+                                <option value="02">010</option>
+                                <option value="02">011</option>
+                                <option value="02">016</option>
+                                <option value="02">017</option>
+                                <option value="02">018</option>
+                                <option value="02">019</option>
+                            </select>
+                            -
+                            <input type="text" name="phone_number[]" class="phone_number">
+                            -
+                            <input type="text" name="phone_number[]" class="phone_number">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="email">이메일<span>＊</span></label></th>
+                        <td><input type="text" name="email" id="email"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="birth_year">생년월일</label></th>
+                        <td>
+                            <input type="text" name="birthday[]" id="birth_year">
+                            년&nbsp;&nbsp;&nbsp;
+                            <input type="text" name="birthday[]" id="birth_month">
+                            월&nbsp;&nbsp;&nbsp;
+                            <input type="text" name="birthday[]" id="birth_date">
+                            일
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="bottombtn_box">
+                    <input type="submit" class="registerbtn bottombtn" value="회원가입">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!--nav-->
+    <nav th:replace="main/nav :: main_navFragment">
+    </nav>
+
+    <!--footer-->
+    <footer th:replace="main/footer :: main_footerFragment">
+    </footer>
+</body>
+</html>

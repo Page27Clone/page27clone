@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/main/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/nav.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet"> <!-- 맨위 말풍선 폰트-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>index</title>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/main/header.js"></script>
+    <script src="/js/main/index.js"></script>
+    <script src="/js/main/nav.js"></script>
+</head>
+<body>
+    <!--header start-->
+    <header th:replace="main/header :: main_headerFragment">
+    </header>
+    <!--header end-->
+
+    <!--section-->
+    <section>
+        <!--main-->
+        <div class="carousel_container main_top">
+            <input type="radio" id="radio1" name="radio" checked>
+            <input type="radio" id="radio2" name="radio">
+            <input type="radio" id="radio3" name="radio">
+            <input type="radio" id="radio4" name="radio">
+            <input type="radio" id="radio5" name="radio">
+
+            
+            <a href="#" class="first_img"><img src="img/main_carousel/carousel1.jpg" alt="메인 캐러샐 이미지1"></a>
+            <a href="#"><img src="img/main_carousel/carousel2.jpg" alt="메인 캐러샐 이미지2"></a>
+            <a href="#"><img src="img/main_carousel/carousel3.jpg" alt="메인 캐러샐 이미지3"></a>
+            <a href="#"><img src="img/main_carousel/carousel4.jpg" alt="메인 캐러샐 이미지4"></a>
+            <a href="#"><img src="img/main_carousel/carousel5.jpg" alt="메인 캐러샐 이미지5"></a>
+            
+
+            <div class="manualbtns">
+                <label for="radio1" class="manualbtn"></label>
+                <label for="radio2" class="manualbtn"></label>
+                <label for="radio3" class="manualbtn"></label>
+                <label for="radio4" class="manualbtn"></label>
+                <label for="radio5" class="manualbtn"></label>
+            </div>
+            <div class="arrowbtns">
+                <i class="fas fa-chevron-left"></i>
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            
+        </div>
+        <div class="main_bottom">
+            <a href="#"><img src="img/bestitem.JPG" alt="best item"></a>
+            <a href="#"><img src="img/joinus.JPG" alt="join us"></a>
+            <div class="main_bottom_board">
+                <img src="img/qanda.JPG" alt="Q and A">
+                <div class="notice">
+                    <a href="#" id="more">+</a>
+                    <a href="#">+ 사이즈 측정 방법</a>
+                    <a href="#">+ 회원 가입 시 적립금 및 예치금 안내</a>
+                    <a href="#">+ 배송 / 교환 및 반품 절차</a>
+                </div>
+            </div>
+        </div>
+        <!--weeklybest-->
+        <div class="weeklybest">
+            <div class="weeklybest_caption">
+                WEEKLY BEST
+            </div>
+            <div class="weeklybest_container">
+                <div class="weeklybest_menu">
+                    <span class="active">OUTER</span>
+                    <span>TOP</span>
+                    <span>SHIRTS</span>
+                    <span>KNIT</span>
+                    <span>BOTTOM</span>
+                    <span>SHOES</span>
+                </div>
+                <div class="weeklybest_carousel">
+                    <div class="w_carousel_mdpick">
+                        <div class="mdpick_caption"><b>MD's</b> PICK</div>
+                        <div class="mdpick_img">
+                            <a href="#">
+                                <img src="./img/main_weeklybest/md_pick1.JPG" alt="md's pick">
+                            </a>
+                        </div>
+                        <div class="mdpick_name"><a href="#">로예 나일론 바람막이 집업</a></div>
+                        <div class="mdpick_info">10컬러의 다양한 색감들과 가격대비 퀄리티 좋은 제품으로 간절기시즌에 가볍고</div>
+                        <div class="mdpick_price"><b>₩27,000</b></div>
+                    </div>
+                    <div class="w_carousel_item_box">
+                        <div class="w_carousel_item">
+                            <img src="./img/main_weeklybest/main_weeklybest1.JPG" alt="상품사진">
+                            <a href="#">
+                                <div class="w_carousel_item_desc">
+                                    <div class="w_carousel_item_name">오디너리 워싱 후드 자켓</div>
+                                    <div class="w_carousel_item_price"><b>₩39,900</b></div>
+                                    <div class="w_carouesl_item_button">
+                                        <button class="buyitnowbtn hoverbtn" onclick="location.href=''">BUY IT NOW</button>
+                                        <button class="basketbtn hoverbtn" onclick="location.href='#'"><i class="fas fa-shopping-basket"></i></button>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest2.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest1.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest2.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest1.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest2.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest1.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest2.JPG" alt="상품사진"></div>
+                    </div>
+                </div>
+                <div class="weeklybest_carousel">
+                    <div class="w_carousel_mdpick">
+                        <div class="mdpick_caption"><b>MD's</b> PICK</div>
+                        <div class="mdpick_img">
+                            <img src="./img/main_weeklybest/md_pick2.JPG" alt="md's pick">
+                        </div>
+                        <div class="mdpick_name">리버풀 링클프리 반팔티</div>
+                        <div class="mdpick_info">기획 역대급 가성비 제품으로 일반적인 면소재와는 다른 짱짱하고 부드러운 촉감</div>
+                        <div class="mdpick_price"><b>₩16,000</b></div>
+                    </div>
+                    <div class="w_carousel_item_box">
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest3.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest4.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest3.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest4.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest3.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest4.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest3.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest4.JPG" alt="상품사진"></div>
+                    </div>
+                </div>
+                <div class="weeklybest_carousel">
+                    <div class="w_carousel_mdpick">
+                        <div class="mdpick_caption"><b>MD's</b> PICK</div>
+                        <div class="mdpick_img">
+                            <img src="./img/main_weeklybest/md_pick3.JPG" alt="md's pick">
+                        </div>
+                        <div class="mdpick_name">로예 나일론 바람막이 집업</div>
+                        <div class="mdpick_info">10컬러의 다양한 색감들과 가격대비 퀄리티 좋은 제품으로 간절기시즌에 가볍고</div>
+                        <div class="mdpick_price"><b>₩27,000</b></div>
+                    </div>
+                    <div class="w_carousel_item_box">
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest5.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest6.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest5.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest6.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest5.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest6.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest5.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest6.JPG" alt="상품사진"></div>
+                    </div>
+                </div>
+                <div class="weeklybest_carousel">
+                    <div class="w_carousel_mdpick">
+                        <div class="mdpick_caption"><b>MD's</b> PICK</div>
+                        <div class="mdpick_img">
+                            <img src="./img/main_weeklybest/md_pick1.JPG" alt="md's pick">
+                        </div>
+                        <div class="mdpick_name">로예 나일론 바람막이 집업</div>
+                        <div class="mdpick_info">10컬러의 다양한 색감들과 가격대비 퀄리티 좋은 제품으로 간절기시즌에 가볍고</div>
+                        <div class="mdpick_price"><b>₩27,000</b></div>
+                    </div>
+                    <div class="w_carousel_item_box">
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest1.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest2.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest1.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest2.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest1.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest2.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest1.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest2.JPG" alt="상품사진"></div>
+                    </div>
+                </div>
+                <div class="weeklybest_carousel">
+                    <div class="w_carousel_mdpick">
+                        <div class="mdpick_caption"><b>MD's</b> PICK</div>
+                        <div class="mdpick_img">
+                            <img src="./img/main_weeklybest/md_pick2.JPG" alt="md's pick">
+                        </div>
+                        <div class="mdpick_name">리버풀 링클프리 반팔티</div>
+                        <div class="mdpick_info">기획 역대급 가성비 제품으로 일반적인 면소재와는 다른 짱짱하고 부드러운 촉감</div>
+                        <div class="mdpick_price"><b>₩16,000</b></div>
+                    </div>
+                    <div class="w_carousel_item_box">
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest3.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest4.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest3.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest4.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest3.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest4.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest3.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest4.JPG" alt="상품사진"></div>
+                    </div>
+                </div>
+                <div class="weeklybest_carousel">
+                    <div class="w_carousel_mdpick">
+                        <div class="mdpick_caption"><b>MD's</b> PICK</div>
+                        <div class="mdpick_img">
+                            <img src="./img/main_weeklybest/md_pick3.JPG" alt="md's pick">
+                        </div>
+                        <div class="mdpick_name">로예 나일론 바람막이 집업</div>
+                        <div class="mdpick_info">10컬러의 다양한 색감들과 가격대비 퀄리티 좋은 제품으로 간절기시즌에 가볍고</div>
+                        <div class="mdpick_price"><b>₩27,000</b></div>
+                    </div>
+                    <div class="w_carousel_item_box">
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest5.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest6.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest5.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest6.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest5.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest6.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest5.JPG" alt="상품사진"></div>
+                        <div class="w_carousel_item"><img src="./img/main_weeklybest/main_weeklybest6.JPG" alt="상품사진"></div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        <!--weeklybest end-->
+        <!--newarrivals-->
+        <div class="newarrivals">
+            <div class="newarrivals_caption">
+                NEW ARRIVALS
+                <div class="newarrivals_caption_desc">더 좋은 제품으로 찾아온 신상품, 만나보세요</div>
+            </div>
+            <div class="newarrivals_container">
+                <div class="newarrivals_item">
+                    <div class="newarrivals_item_img">
+                        <a href="#"><img src="img/main_newarrivals/newarrival1.JPG" alt="상품사진"></a>
+                        <div class="newarrivals_item_hover">
+                            <div class="quickview hoveritem"><i class="far fa-clone" onclick="location.href=''"></i></div>
+                            <div class="backet hoveritem"><i class="fas fa-shopping-basket" onclick="location.href=''"></i></div>
+                            <div class="priview hoveritem"><i class="far fa-sticky-note"></i></div>
+                        </div>
+                    </div>
+                    <div class="newarrivals_item_name">1+1 콕스 텐션 반팔티셔츠(15color)-주문폭주-</div>
+                    <hr/>
+                    <div class="newarrivals_item_price"><b>₩17,000</b></div>
+                    <div class="newarrivals_item_milage">170원(1%)</div>
+                </div>
+                <div class="newarrivals_item">
+                    <div class="newarrivals_item_img"><img src="img/main_newarrivals/newarrival2.JPG" alt="상품사진"></div>
+                    <div class="newarrivals_item_name">아레스 선글라스(2color)</div>
+                    <hr/>
+                    <div class="newarrivals_item_price"><b>₩15,000</b></div>
+                    <div class="newarrivals_item_milage">150원(1%)</div>
+                </div>
+                <div class="newarrivals_item">
+                    <div class="newarrivals_item_img"><img src="img/main_newarrivals/newarrival3.JPG" alt="상품사진"></div>
+                    <div class="newarrivals_item_name">이지 핀턱 와이드 슬랙스(3color)</div>
+                    <hr/>
+                    <div class="newarrivals_item_price"><b>₩37,000</b></div>
+                    <div class="newarrivals_item_milage">370원(1%)</div>
+                </div>
+                <div class="newarrivals_item">
+                    <div class="newarrivals_item_img"><img src="img/main_newarrivals/newarrival4.JPG" alt="상품사진"></div>
+                    <div class="newarrivals_item_name">데일리 퀄리티 밴딩반바지(5color)</div>
+                    <hr/>
+                    <div class="newarrivals_item_price"><b>₩23,000</b></div>
+                    <div class="newarrivals_item_milage">230원(1%)</div>
+                </div>
+                <div class="newarrivals_item">
+                    <div class="newarrivals_item_img"><img src="img/main_newarrivals/newarrival5.JPG" alt="상품사진"></div>
+                    <div class="newarrivals_item_name">클리어 베이직 맨투맨(11color)</div>
+                    <hr/>
+                    <div class="newarrivals_item_price"><b>₩23,000</b></div>
+                    <div class="newarrivals_item_milage">230원(1%)</div>
+                </div>
+                <div class="newarrivals_item">
+                    <div class="newarrivals_item_img"><img src="img/main_newarrivals/newarrival1.JPG" alt="상품사진"></div>
+                    <div class="newarrivals_item_name">1+1 콕스 텐션 반팔티셔츠(15color)-주문폭주-</div>
+                    <hr/>
+                    <div class="newarrivals_item_price"><b>₩17,000</b></div>
+                    <div class="newarrivals_item_milage">170원(1%)</div>
+                </div>
+                <div class="newarrivals_item">
+                    <div class="newarrivals_item_img"><img src="img/main_newarrivals/newarrival2.JPG" alt="상품사진"></div>
+                    <div class="newarrivals_item_name">아레스 선글라스(2color)</div>
+                    <hr/>
+                    <div class="newarrivals_item_price"><b>₩15,000</b></div>
+                    <div class="newarrivals_item_milage">150원(1%)</div>
+                </div>
+                <div class="newarrivals_item">
+                    <div class="newarrivals_item_img"><img src="img/main_newarrivals/newarrival3.JPG" alt="상품사진"></div>
+                    <div class="newarrivals_item_name">이지 핀턱 와이드 슬랙스(3color)</div>
+                    <hr/>
+                    <div class="newarrivals_item_price"><b>₩37,000</b></div>
+                    <div class="newarrivals_item_milage">370원(1%)</div>
+                </div>
+                <div class="newarrivals_item">
+                    <div class="newarrivals_item_img"><img src="img/main_newarrivals/newarrival4.JPG" alt="상품사진"></div>
+                    <div class="newarrivals_item_name">데일리 퀄리티 밴딩반바지(5color)</div>
+                    <hr/>
+                    <div class="newarrivals_item_price"><b>₩23,000</b></div>
+                    <div class="newarrivals_item_milage">230원(1%)</div>
+                </div>
+            </div>
+        </div>
+        <!--newarrivals end-->
+    </section>
+
+    <!--nav-->
+    <nav th:replace="main/nav :: main_navFragment">
+    </nav>
+
+    <!--footer-->
+    <footer th:replace="main/footer :: main_footerFragment">
+    </footer>
+
+</body>
+</html>
