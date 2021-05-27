@@ -24,7 +24,11 @@ spring:
       location: C:/Temp
 
 
+#logging:
+#  level:
+#    root: info
+#    org.hibernate.SQL: debug
 logging:
   level:
-    org.hibernate.SQL: debug
+    org.springframework: INFO
 
