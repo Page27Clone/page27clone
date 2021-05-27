@@ -38,4 +38,4 @@ out/
 .vscode/
 
 
-!/src/test/java/com/page27/project/crawling/
+#!/src/test/java/com/page27/project/crawling/
