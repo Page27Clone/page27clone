@@ -25,7 +25,6 @@ bin/
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-!**/src/test/**/WebCrawling/
 
 
 ### NetBeans ###
@@ -37,3 +36,6 @@ out/
 
 ### VS Code ###
 .vscode/
+
+
+/src/test/java/com/page27/project/crawling
