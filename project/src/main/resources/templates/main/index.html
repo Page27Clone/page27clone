@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -36,12 +37,12 @@
             <input type="radio" id="radio4" name="radio">
             <input type="radio" id="radio5" name="radio">
 
-            
-            <a href="#" class="first_img"><img src="img/main_carousel/carousel1.jpg" alt="메인 캐러샐 이미지1"></a>
-            <a href="#"><img src="img/main_carousel/carousel2.jpg" alt="메인 캐러샐 이미지2"></a>
-            <a href="#"><img src="img/main_carousel/carousel3.jpg" alt="메인 캐러샐 이미지3"></a>
-            <a href="#"><img src="img/main_carousel/carousel4.jpg" alt="메인 캐러샐 이미지4"></a>
-            <a href="#"><img src="img/main_carousel/carousel5.jpg" alt="메인 캐러샐 이미지5"></a>
+            <!--서버로부터 main_carousel 배열 받기 -->
+            <a href="#" class="first_img"><img th:src="@{${main_carousel[0]}}" src="img/main_carousel/carousel1.jpg" alt="메인 캐러샐 이미지1"></a>
+            <a href="#"><img th:src="@{${main_carousel[1]}}" src="img/main_carousel/carousel2.jpg" alt="메인 캐러샐 이미지2"></a>
+            <a href="#"><img th:src="@{${main_carousel[2]}}" src="img/main_carousel/carousel3.jpg" alt="메인 캐러샐 이미지3"></a>
+            <a href="#"><img th:src="@{${main_carousel[3]}}" src="img/main_carousel/carousel4.jpg" alt="메인 캐러샐 이미지4"></a>
+            <a href="#"><img th:src="@{${main_carousel[4]}}" src="img/main_carousel/carousel5.jpg" alt="메인 캐러샐 이미지5"></a>
             
 
             <div class="manualbtns">
@@ -58,10 +59,10 @@
             
         </div>
         <div class="main_bottom">
-            <a href="#"><img src="img/bestitem.JPG" alt="best item"></a>
-            <a href="#"><img src="img/joinus.JPG" alt="join us"></a>
+            <a href="#"><img th:src="@{${bestitem_img}}" src="img/bestitem.JPG" alt="best item"></a>
+            <a href="#"><img th:src="@{${joinus_img}}" src="img/joinus.JPG" alt="join us"></a>
             <div class="main_bottom_board">
-                <img src="img/qanda.JPG" alt="Q and A">
+                <img th:src="@{${qanda_img}}" src="img/qanda.JPG" alt="Q and A">
                 <div class="notice">
                     <a href="#" id="more">+</a>
                     <a href="#">+ 사이즈 측정 방법</a>
@@ -89,7 +90,7 @@
                         <div class="mdpick_caption"><b>MD's</b> PICK</div>
                         <div class="mdpick_img">
                             <a href="#">
-                                <img src="./img/main_weeklybest/md_pick1.JPG" alt="md's pick">
+                                <img th:src="@{${}}" src="./img/main_weeklybest/md_pick1.JPG" alt="md's pick">
                             </a>
                         </div>
                         <div class="mdpick_name"><a href="#">로예 나일론 바람막이 집업</a></div>

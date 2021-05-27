@@ -83,7 +83,7 @@
                 <tbody>
                     <tr th:each="product : ${productList}">
                         <td><input type="checkbox" class="checkbox-select"></td>
-                        <td><img src="image/basket1.JPG" width="70px"></td>
+                        <td><img src="@{${product.path}}" width="70px"></td>
                         <td>
                             <div class="item-name item-info"><a href="#" th:text = "${product.name}">베이직 카고 팬츠</a></div>
                             <div class="item-classification item-info" th:text = "'분류 : ' + ${product.category}">분류 : BOTTOM</div>
