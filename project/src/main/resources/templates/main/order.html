@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"></html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/main/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/order.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/nav.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>order</title>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/main/header.js"></script>
+    <script src="/js/main/order.js"></script>
+    <script src="/js/main/nav.js"></script>
+</head>
+<body>
+    <!--header start-->
+    <header th:replace="main/header :: main_headerFragment">
+    </header>
+    <!--header end-->
+
+    <!--section-->
+    <section>
+        <div class="section_caption">
+            ORDER
+        </div>
+        <div class="section_content">
+
+            <div class="order_caption">
+                <div class="order_caption_desc">주문내역조회(<span class="num_orders">0</span>)</div>
+            </div>
+            <form action="#" method="GET">
+                <select name="omode">
+                    <option value="whole">전체 주문처리상태</option>
+                    <option value="pay-waiting">입금대기</option>
+                    <option value="pay-complete">결제완료</option>
+                    <option value="pre-ship">발송준비중</option>
+                    <option value="in-ship">배송중</option>
+                    <option value="complete-ship">배송완료</option>
+                    <option value="order-cancel">주문취소</option>
+                    <option value="order-exchange">주문취소</option>
+                    <option value="order-return">주문취소</option>
+                </select>
+                <span class="period">
+                    <span class="period_item" days="0">오늘</span>
+                    <span class="period_item" days="7">일주일</span>
+                    <span class="period_item" days="30">1개월</span>
+                    <span class="period_item" days="90">3개월</span>
+                    <span class="period_item lastitem" days="180">6개월</span>
+                </span>
+                <input type="date" name="firstdate" class="firstdate">
+                &nbsp;~&nbsp;
+                <input type="date" name="lastdate" class="lastdate">
+                <input type="submit" value="조회">
+            </form>
+            <div class="order_desc">· 기본적으로 최근 3개월간의 자료가 조회되며, 기간 검색 시 지난 주문내역을 조회하실 수 있습니다.<br>· 주문번호를 클릭하시면 해당 주문에 대한 상세내역을 확인하실 수 있습니다.</div>
+
+            <div class="orderlist">
+                <div class="orderlist_caption">주문 상품 정보</div>
+                <div class="orderlist_content">
+                    <table>
+                        <colgroup>
+                            <col width="135px">
+                            <col width="93px">
+                            <col width="auto">
+                            <col width="61px">
+                            <col width="111px">
+                            <col width="111px">
+                            <col width="111px">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <td>주문일자<br>[주문번호]</td>
+                                <td>이미지</td>
+                                <td>상품정보</td>
+                                <td>수량</td>
+                                <td>상품구매금액</td>
+                                <td>주문처리상태</td>
+                                <td>취소/교환/반품</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="order:${orderList}">
+                                <td><span th:text="${#dates.format(order.date, 'yyyy-MM-dd')}">2021-03-18</span><br><span th:text="${order.number}">202103180000205</span></td>
+                                <td><img th:src="@{${order.imgpath}}" src="img/main_newarrivals/newarrival1.JPG" alt="상품 사진" class="orderditemimg"></td>
+                                <td><span th:text="${order.name}">라인 배색 양말(2color)</span><br><span th:text="'[옵션:'+${order.color}+']'">[옵션:화이트]</span></td>
+                                <td th:text="${order.quantity}">1</td>
+                                <td th:text="'₩'+${order.price}">₩4,000</td>
+                                <td th:text="${order.status}">배송중</td>
+                                <td th:text="${order.status}"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--검색결과가 있는 경우 없는 영역-->
+                    <!-- <div class="nosearch">
+                        주문내역이 없습니다.
+                    </div> -->
+                </div>
+                <div class="pagenation">
+                    <a href="#" class="first bracket">
+                        <i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i>
+                    </a>
+                    <a href="#" class="prev bracket">
+                        <i class="fas fa-chevron-left"></i> PREV
+                    </a>
+                    <a href="#" class="pagenums">
+                        <span class="pagenum">1</span>
+                        <span class="pagenum">2</span>
+                        <span class="pagenum">3</span>
+                    </a>
+                    <a href="#" class="next bracket">
+                        NEXT <i class="fas fa-chevron-right"></i>
+                    </a>
+                    <a href="#" class="last bracket">
+                        <i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i>
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!--nav-->
+    <nav th:replace="main/nav :: main_navFragment">
+    </nav>
+
+    <!--footer-->
+    <footer th:replace="main/footer :: main_footerFragment">
+    </footer>
+
+
+
+</body>
+</html>

@@ -229,6 +229,19 @@ section {
     width: 250px;
     font-size: 12px;
     text-align: center;
+    /*overflow시 숨기기*/
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis; 
+    /* 여러 줄 자르기 추가 스타일 */ 
+    white-space: normal; 
+    line-height: 1.4; 
+    height: 2.8em;
+    /* 숨김 부분 처리 스타일*/
+    word-wrap: break-word;
+    display: -webkit-box; 
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
 }
 
 .weeklybest_carousel .w_carousel_mdpick .mdpick_price {
