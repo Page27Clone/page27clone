@@ -128,12 +128,12 @@ public class ItemController {
 
     @GetMapping("/admin/itemList")
     public String itemListPage(Model model, @PageableDefault(size=8) Pageable pageable){
-        Page<Item> itemBoards = itemRepository.findAll(pageable);
-        int homeStartPage = Math.max(1,memberBoards.getPageable().getPageNumber() - 4);
-        int homeEndPage = Math.min(memberBoards.getTotalPages(),memberBoards.getPageable().getPageNumber() + 4);
-        model.addAttribute("startPage",homeStartPage);
-        model.addAttribute("endPage",homeEndPage);
-        model.addAttribute("memberList",memberBoards);
+//        Page<Item> itemBoards = itemRepository.findAll(pageable);
+//        int homeStartPage = Math.max(1,memberBoards.getPageable().getPageNumber() - 4);
+//        int homeEndPage = Math.min(memberBoards.getTotalPages(),memberBoards.getPageable().getPageNumber() + 4);
+//        model.addAttribute("startPage",homeStartPage);
+//        model.addAttribute("endPage",homeEndPage);
+//        model.addAttribute("memberList",memberBoards);
 
         return "admin/admin_Goodslist";
     }
