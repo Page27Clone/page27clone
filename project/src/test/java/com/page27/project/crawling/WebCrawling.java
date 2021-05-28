@@ -42,6 +42,13 @@ public class WebCrawling {
     public void webCrawlingTest() {
         webCrawlingMethod("http://page27.co.kr/product/%EC%85%80%EB%A6%B0-%EB%82%98%EC%9D%BC%EB%A1%A0-%EB%B0%94%EB%9E%8C%EB%A7%89%EC%9D%B4-%ED%9B%84%EB%93%9C%EC%9E%90%EC%BC%933color/2989/category/45/display/1/",1L);
         webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%ED%95%98-%EB%A6%B0%EB%84%A8-%EB%B8%94%EB%A0%88%EC%9D%B4%EC%A0%B8-%EC%9E%90%EC%BC%935color/2593/category/45/display/1/",2L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%9D%BC%EC%9D%B4%ED%8A%B8-%EC%9C%88%EB%93%9C%EB%B8%8C%EB%A0%88%EC%9D%B4%EC%BB%A4%EC%A1%B0%EA%B1%B0%ED%8C%AC%EC%B8%A0-%EC%85%8B%EC%97%852color/2977/category/45/display/1/",3L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%B0%94%EC%8A%A4%EB%9D%BD-%ED%80%84%EB%A6%AC%ED%8B%B0-%EC%95%84%EB%85%B8%EB%9D%BD-%EC%85%8B%EC%97%852color-%EB%8B%B9%EC%9D%BC%EB%B0%B0%EC%86%A1/2972/category/45/display/1/",4L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%9D%BC%EC%9D%B4%EC%A7%95-%EC%95%84%EB%85%B8%EB%9D%BD-%EB%B0%98%EB%B0%94%EC%A7%80-%EC%85%8B%EC%97%854color/2964/category/45/display/1/",5L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%EC%98%88-%EB%82%98%EC%9D%BC%EB%A1%A0-%EB%B0%94%EB%9E%8C%EB%A7%89%EC%9D%B4-%EC%A7%91%EC%97%8510color/2954/category/45/display/1/",6L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A0%88%EC%98%A4-%ED%88%AC%EC%9B%A8%EC%9D%B4-%ED%9B%84%EB%93%9C%EC%A7%91%EC%97%85%EC%A1%B0%EA%B1%B0%ED%8C%AC%EC%B8%A04color/2953/category/45/display/1/",7L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%EB%82%98-%EB%B8%94%EB%A0%88%EC%9D%B4%EC%A0%80-%EC%9E%90%EC%BC%932color/2945/category/45/display/1/",8L);
+
     }
 
     public Long webCrawlingMethod(String itemUrl, Long idx){
@@ -62,9 +69,9 @@ public class WebCrawling {
 
             File newFile = new File("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName);
             if (newFile.mkdir()){
-                logger.info("dir ok");
+                logger.info("directory make ok");
             }else{
-                logger.info("dir no");
+                logger.warn("directory can't make");
             }
 
             String direction = "";

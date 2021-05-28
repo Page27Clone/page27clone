@@ -1,10 +1,15 @@
 package com.page27.project.controller;
 
 import com.page27.project.domain.Item;
+import com.page27.project.domain.Member;
 import com.page27.project.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -122,7 +127,14 @@ public class ItemController {
     }
 
     @GetMapping("/admin/itemList")
-    public String itemListPage(){
+    public String itemListPage(Model model, @PageableDefault(size=8) Pageable pageable){
+        Page<Item> itemBoards = itemRepository.findAll(pageable);
+        int homeStartPage = Math.max(1,memberBoards.getPageable().getPageNumber() - 4);
+        int homeEndPage = Math.min(memberBoards.getTotalPages(),memberBoards.getPageable().getPageNumber() + 4);
+        model.addAttribute("startPage",homeStartPage);
+        model.addAttribute("endPage",homeEndPage);
+        model.addAttribute("memberList",memberBoards);
+
         return "admin/admin_Goodslist";
     }
 
