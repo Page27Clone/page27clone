@@ -67,7 +67,8 @@ public class WebCrawling {
                 url.add("http://page27.co.kr" + img.get(i).attr("ec-data-src"));
             }
 
-            File newFile = new File("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName);
+//            File newFile = new File("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName);
+            File newFile = new File("C:\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName);
             if (newFile.mkdir()){
                 logger.info("directory make ok");
             }else{
@@ -84,7 +85,8 @@ public class WebCrawling {
 //                System.out.println(imgUrl);
 
                 BufferedImage image = ImageIO.read(imgUrl);
-                FileOutputStream out = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName  + i + ".jpg");
+//                FileOutputStream out = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName  + i + ".jpg");
+                FileOutputStream out = new FileOutputStream("C:\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName  + i + ".jpg");
 //                FileOutputStream out = new FileOutputStream("/image/Item/OUTER/자켓/" + itemName  + i + ".jpg");
                 String totalUrl = "/image/Item/OUTER/자켓/" + itemName + "/" + itemName  + i + ".jpg";
                 direction += totalUrl + ',';
