@@ -8,14 +8,10 @@ import org.springframework.data.domain.Pageable;
 
 @RequiredArgsConstructor
 public class ItemRepositoryImpl implements ItemRepositoryCustom{
+
+    private final JPAQueryFactory queryFactory;
     @Override
     public Page<ItemDto> searchAll(Pageable pageable) {
         return null;
     }
-
-//    private final JPAQueryFactory queryFactory;
-//    @Override
-//    public Page<ItemDto> searchAll(Pageable pageable) {
-//        return null;
-//    }
 }
