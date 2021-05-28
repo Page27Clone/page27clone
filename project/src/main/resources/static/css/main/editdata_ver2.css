@@ -1,0 +1,158 @@
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section_caption {
+    padding: 45px 0;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+/*member_type*/
+.member_type {
+    border: 1px solid var(--border-color-basic);
+    width: 1135px;
+    padding: 10px 0;
+    display: flex;
+    font-size: 12px;
+}
+
+.member_type .member_type_img{
+    padding: 0 15px;
+    border-right: 1px solid var(--border-color-basic);
+}
+
+.member_type img{
+    display: block;
+}
+
+.member_type .member_type_desc{
+    padding: 25px 25px;
+}
+
+.section_content {
+    margin-top: 20px;
+    width: 1260px;
+}
+
+/*table*/
+table{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    color: var(--font-color-gray2);
+}
+
+th, td {
+    font-weight: normal;
+    padding: 7px 10px;
+    border: 1px solid var(--border-color-basic);
+    text-align: left;
+    vertical-align: text-top;
+}
+
+th {
+    border-left: none;
+}
+
+td {
+    border-right: none;
+}
+
+th label span {
+    font-size: 10px;
+    color: red;
+}
+
+td .address_margin { /*주소, 상세주소 부분*/
+    margin-top: 5px;
+    width: 460px;
+}
+
+#postbtn {
+    padding: 3px 10px;
+    font-size: 13px;
+    background-color: white;
+    border: 1px solid #b4b4b4;
+    border-radius: 3px;
+}
+
+#postbtn:hover {
+    filter: brightness(90%);
+}
+
+#postbtn i {
+    font-size: 10px;
+    color: red;
+    margin-left: 5px;
+}
+
+#sample6_postcode {
+    width: 70px;
+}
+
+td .home_number {
+    width: 70px;
+}
+
+td .phone_number {
+    width: 70px;
+}
+
+/*추가정보*/
+.additionaldata_caption {
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+#birth_year {
+    width: 70px;
+}
+#birth_month, #birth_date {
+    width: 45px;
+}
+
+
+/*bottombtn*/
+.bottombtn_box {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.bottombtn {
+    padding: 7px 30px;
+    background-color: white;
+    border: 1px solid var(--border-color-basic2);
+    font-size: 12px;
+    color: var(--font-color-gray2);
+}
+
+.registerbtn {
+    background-color: #333333;
+    color: white;
+    margin-right: 5px;
+}
+
+.withdrawbtn {
+    position: absolute;
+    right: 0;
+}
+
+
+/*input, select, placeholder*/
+
+input[type="text"],input[type="password"], select {
+    height: 25px;
+    border:1px solid var(--border-color-basic2);
+    font-size: 12px;
+    padding: 3px;
+}
+
+input[type="text"]::placeholder {
+    font-size: 12px;
+}

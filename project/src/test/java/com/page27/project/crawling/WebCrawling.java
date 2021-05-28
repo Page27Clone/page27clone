@@ -57,7 +57,7 @@ public class WebCrawling {
             Document doc = Jsoup.connect(itemUrl).get();
 //            String url = "http:" + doc.select(".BigImage").attr("src").trim();
 
-            String itemName = doc.select(".name").text();
+            String itemName = doc.select(".name").get(0).text();
 //            System.out.println(itemName);
 
             Elements img = doc.select(".cont img");

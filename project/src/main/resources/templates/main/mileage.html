@@ -32,17 +32,17 @@
         <div class="mileage_summary">
             <div class="mileage_summary_left">
                 <div class="summary_item">
-                    <span><i class="fas fa-chevron-right"></i> 총 적립금</span>
+                    <span><i class="fas fa-chevron-right"></i> <span th:text="${totalmileage}">총 적립금</span></span>
                     <span>2,000원</span>
                 </div>
                 <div class="summary_item">
-                    <span><i class="fas fa-chevron-right"></i> 사용된 적립금</span>
+                    <span><i class="fas fa-chevron-right"></i> <span th:text="${usedmileage}">사용된 적립금</span></span>
                     <span>0원</span>
                 </div>
             </div>
             <div class="mileage_summary_right">
                 <div class="summary_item">
-                    <span><i class="fas fa-chevron-right"></i> 사용가능 적립금</span>
+                    <span><i class="fas fa-chevron-right"></i> <span th:text="${restmileage}">사용가능 적립금</span></span>
                     <span>2,000원</span>
                 </div>
             </div>
@@ -67,18 +67,18 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>2021-05-11</td>
-                                <td>2,000원</td>
-                                <td>신규회원 적립금</td>
+                            <tr th:each="mileage:${mileageList}">
+                                <td th:text="${#dates.format(mileage.date, 'yyyy-MM-dd')}">2021-05-11</td>
+                                <td th:text="${mileage.price}+'원'">2,000원</td>
+                                <td th:text="${mileage.content}">신규회원 적립금</td>
                             </tr>
                         </tbody>
                     </table>
 
                     <!--검색결과가 있는 경우 없는 영역-->
-                    <!-- <div class="nosearch">
-                        적립내역이 없습니다.
-                    </div> -->
+<!--                    <div class="nosearch" th:if="${#lists.isEmpty(mileageList)}">-->
+<!--                        적립내역이 없습니다.-->
+<!--                    </div>-->
 
                 </div>
                 <div class="pagenation">

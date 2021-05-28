@@ -60,7 +60,7 @@ section {
     display: flex;
     padding: 25px 0;
 }
-.mymyshop_orderstate_item {
+.myshop_orderstate_item {
     width:230px;
     border-right: 1px solid var(--border-color-basic);
     display: flex;
@@ -68,10 +68,10 @@ section {
     justify-content: center;
     align-items: center;
 }
-.mymyshop_orderstate_item .item_caption {
+.myshop_orderstate_item .item_caption {
     font-size: 13px;
 }
-.mymyshop_orderstate_item .item_content a{
+.myshop_orderstate_item .item_content a{
     color: black;
     font-size: 20px;
     font-weight: bold;
@@ -80,11 +80,11 @@ section {
     border: none;
 }
 
-.mymyshop_orderstate_item ul{
+.myshop_orderstate_item ul{
     font-size: 12px;
 }
 
-.mymyshop_orderstate_item ul span a{
+.myshop_orderstate_item ul span a{
     font-weight: bold;
     color: #a01212;
 }

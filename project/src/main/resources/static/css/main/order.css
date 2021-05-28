@@ -1,0 +1,153 @@
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section_caption {
+    padding: 45px 0;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.section_content {
+    width: 1260px;
+}
+
+.order_caption {
+    border-bottom: 1px solid black;
+}
+.order_caption_desc {
+    background-color: #555555;
+    color: white;
+    font-size: 12px;
+    width: 195px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/*form*/
+
+form {
+    margin-top: 20px;
+    padding: 20px;
+    border: 1px solid var(--border-color-basic);
+}
+
+form select {
+    height: 25px;
+    border: 1px solid var(--border-color-basic2);
+    font-size: 12px;
+    margin-right: 20px;
+}
+
+form .period {
+    display: inline-block;
+    font-size: 11px;
+    background-color: #f8f8f8;
+    border: 1px solid var(--border-color-basic2);
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+form .period .period_item {
+    display: inline-block;
+    padding: 3px 6px;
+    border-right: 1px solid var(--border-color-basic2);
+    color: var(--font-color-gray2);
+    cursor: pointer;
+}
+
+form .period .lastitem {
+    border: none;
+}
+
+input[type='date'] {
+    height: 25px;
+    border: 1px solid var(--border-color-basic2);
+    font-size: 12px;
+    text-align: center;
+}
+
+input[type='submit'] {
+    background-color: #495164;
+    border: 1px solid #495164;
+    color:white;
+    height: 25px;
+    width: 40px; 
+    border-radius: 3px;
+    font-size: 12px;
+    margin-left: 10px;
+}
+.order_desc {
+    font-size: 12px;
+    color: var(--font-color-gray2);
+    margin-top: 10px;
+}
+
+/*orderlist*/
+.orderlist {
+    margin-top: 40px;
+}
+
+.orderlist .orderlist_caption{
+    font-size: 12px;
+}
+
+.orderlist .orderlist_content{
+    margin-top: 10px;
+}
+
+table{
+    width: 100%;
+    font-size: 12px;   
+    color: var(--font-color-gray2);
+    border-top: 1px solid var(--border-color-basic);
+    
+    border-collapse: collapse;
+}
+
+td {
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color-basic2);
+}
+.orderlist .orderlist_content table tr td .orderditemimg {
+    width: 80px;
+}
+
+.orderlist .orderlist_content .nosearch {
+    padding: 50px 0px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--font-color-gray2);
+    border-bottom: 1px solid var(--border-color-basic);
+}
+
+
+/*pagenation*/
+.orderlist .pagenation {
+    margin-top: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagenation .bracket {
+    font-size: 9px;
+    margin: 8px;
+    font-weight: bold;
+}
+
+.pagenation span {
+    display: inline-block;
+    font-size: 12px;
+    background-color: var(--pagenation-color);
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding-top: 3px;
+    margin: 0 8px;
+}

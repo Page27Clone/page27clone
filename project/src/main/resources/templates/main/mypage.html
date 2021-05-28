@@ -31,11 +31,11 @@
         </div>
         <!--member_type-->
         <div class="member_type">
-            <div class="member_type_img"><img src="img/myshop/member.JPG" alt="사진"></div>
+            <div class="member_type_img"><img src="/image/etc/member.JPG" alt="사진"></div>
             <div class="member_type_desc">
-                <div>저희 쇼핑몰을 이용해 주셔서 감사합니다. <b>홍길동</b> 님은 <b>[일반회원]</b> 이십니다</div>
+                <div>저희 쇼핑몰을 이용해 주셔서 감사합니다. <b th:text="${member.name}">홍길동</b> 님은 <b th:text="${member.memberGrade}">[일반회원]</b> 이십니다</div>
                 <div class="member_milage">
-                    가용적립금&nbsp;&nbsp;&nbsp;<b>></b>&nbsp;&nbsp;&nbsp;<b>2,000원</b>&nbsp;&nbsp;&nbsp;<button onclick="location.href='#'">조회</button>
+                    가용적립금&nbsp;&nbsp;&nbsp;<b>></b>&nbsp;&nbsp;&nbsp;<b th:text="${member.mileage} + '원'">2,000원</b>&nbsp;&nbsp;&nbsp;<button onclick="location.href='#'" th:onclick="'location.href=\''+ @{/main/mileage/{id}(id=${member.id})} + '\''">조회</button>
                 </div>          
             </div>
         </div>
@@ -44,27 +44,27 @@
         <div class="myshop_orderstate">
             <div class="myshop_orderstate_caption">나의 주문처리 현황 (최근 3개월 기준)</div>
             <div class="myshop_orderstate_container">
-                <div class="mymyshop_orderstate_item">
+                <div class="myshop_orderstate_item">
                     <div class="item_caption">입금전</div>
-                    <div class="item_content"><a href="#">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderstatus.pay_waiting}">0</a></div>
                 </div>
-                <div class="mymyshop_orderstate_item">
+                <div class="myshop_orderstate_item">
                     <div class="item_caption">배송준비중</div>
-                    <div class="item_content"><a href="#">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderstatus.pay_complete}">0</a></div>
                 </div>
-                <div class="mymyshop_orderstate_item">
+                <div class="myshop_orderstate_item">
                     <div class="item_caption">배송중</div>
-                    <div class="item_content"><a href="#">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderstatus.in_ship}">0</a></div>
                 </div>
-                <div class="mymyshop_orderstate_item">
+                <div class="myshop_orderstate_item">
                     <div class="item_caption">배송완료</div>
-                    <div class="item_content"><a href="#">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderstatus.complete_ship}">0</a></div>
                 </div>
-                <div class="mymyshop_orderstate_item last_item">
+                <div class="myshop_orderstate_item last_item">
                     <ul>
-                        <li>· 취소 &nbsp;:&nbsp;&nbsp; <span><a href="#">0</a></span></li>
-                        <li>· 교환 &nbsp;:&nbsp;&nbsp; <span><a href="#">0</a></span></li>
-                        <li>· 반품 &nbsp;:&nbsp;&nbsp; <span><a href="#">0</a></span></li>
+                        <li>· 취소 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order/{id}(id=${member.id})}" href="#" th:text="${orderstatus.order_cancel}">0</a></span></li>
+                        <li>· 교환 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order/{id}(id=${member.id})}" href="#" th:text="${orderstatus.order_exchange}">0</a></span></li>
+                        <li>· 반품 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order/{id}(id=${member.id})}" href="#" th:text="${orderstatus.order_return}">0</a></span></li>
                     </ul>
                 </div>
 
@@ -72,45 +72,45 @@
         </div>
         <!-- myshop_main-->
         <div class="myshop_main">
-            <div class="myshop_main_item" onclick="location.href=''">
+            <div class="myshop_main_item" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/order/{id}(id=${member.id})} + '\''">
                 <div class="item_caption">
                     ORDER
                 </div>
                 <div class="item_content">
-                    <img src="./img/myshop/myshop_order.JPG" alt="주문 사진">
+                    <img src="/image/etc/myshop_order.JPG" alt="주문 사진">
                     <div class="item_content_desc">
                         고객님께서 주문하신<br>주문내역을 확인하실 수 있습니다.
                     </div>
                 </div>
             </div>
-            <div class="myshop_main_item" onclick="location.href=''">
+            <div class="myshop_main_item" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/editdata/{id}(id=${member.id})} + '\''">
                 <div class="item_caption">
                     PROFILE
                 </div>
                 <div class="item_content">
-                    <img src="./img/myshop/myshop_profile.JPG" alt="자물쇠 사진">
+                    <img src="/image/etc/myshop_profile.JPG" alt="자물쇠 사진">
                     <div class="item_content_desc">
                         회원이신 고객님의<br>개인정보를 관리하는 공간입니다.
                     </div>
                 </div>
             </div>
-            <div class="myshop_main_item" onclick="location.href=''">
+            <div class="myshop_main_item" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/mileage/{id}(id=${member.id})} + '\''">
                 <div class="item_caption">
-                    MILAGE
+                    MILEAGE
                 </div>
                 <div class="item_content">
-                    <img src="./img/myshop/myshop_milage.JPG" alt="적립금 사진">
+                    <img src="/image/etc/myshop_milage.JPG" alt="적립금 사진">
                     <div class="item_content_desc">
                         적립금은 상품 구매시<br>사용하실 수 있습니다.
                     </div>
                 </div>
             </div>
-            <div class="myshop_main_item" onclick="location.href=''">
+            <div class="myshop_main_item" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/address/{id}(id=${member.id})} + '\''">
                 <div class="item_caption">
                     ADDRESS
                 </div>
                 <div class="item_content">
-                    <img src="./img/myshop/myshop_address.JPG" alt="주소 사진">
+                    <img src="/image/etc/myshop_address.JPG" alt="주소 사진">
                     <div class="item_content_desc">
                         자주 사용하는 배송지를 등록하고<br>관리하실 수 있습니다.
                     </div>
