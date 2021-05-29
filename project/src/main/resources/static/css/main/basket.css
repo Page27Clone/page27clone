@@ -1,0 +1,205 @@
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section_caption {
+    padding: 45px 0;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.section_content {
+    margin-top: 20px;
+    width: 1260px;
+}
+
+/*benefit_info*/
+.benefit_info {
+    display: flex;
+    border: 1px solid var(--border-color-basic);
+    padding: 10px 0;
+}
+.benefit_info .benefit_info_caption {
+    width: 105px;
+    border-right: 1px solid var(--border-color-basic);
+    padding: 17px 25px;
+    font-size: 13px;
+}
+
+.benefit_info .benefit_info_desc {
+    width: 100%;
+    padding: 0px 20px;
+    font-size: 12px;
+}
+
+.benefit_info .benefit_info_desc .benefit_info_desc_item {
+    width: 100%;
+    padding-bottom:8px;
+}
+
+.benefit_info .benefit_info_desc .benefit_info_mileage {
+    border-top: 1px solid var(--border-color-basic);
+    padding-bottom: 0;
+    padding-top: 8px;
+}
+
+
+
+/*order_caption*/
+.order_caption {
+    border-bottom: 1px solid black;
+    margin-top: 40px;
+}
+.order_caption_desc {
+    background-color: #555555;
+    color: white;
+    font-size: 12px;
+    width: 195px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+
+/*orderlist*/
+.orderlist {
+    margin-top: 40px;
+}
+
+.orderlist .orderlist_caption{
+    font-size: 12px;
+}
+
+.orderlist .orderlist_content{
+    margin-top: 10px;
+}
+
+table{
+    width: 100%;
+    font-size: 12px;   
+    color: var(--font-color-gray2);
+    border-top: 1px solid var(--border-color-basic);
+    
+    border-collapse: collapse;
+}
+
+td, th {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color-basic2);
+}
+
+
+
+input[type=number] {
+    width: 50px;
+    height: 25px;
+    border: 1px solid var(--border-color-basic2);
+    border-radius: 3px;
+    padding-left: 5px;
+    font-size: 12px;
+}
+.numberupdatebtn {
+    margin-top: 5px;
+    width: 50px;
+    height: 25px;
+    border: 1px solid var(--font-color-gray);
+    border-radius: 3px;
+    font-size: 12px;
+    background-color: white;
+}
+
+.numberupdatebtn:hover {
+    filter: brightness(90%);
+}
+
+.order_mileage::before {
+    font-size: 10px;
+    content: '적';
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    background-color: #b88cc5;
+    color: white;
+    border-radius: 3px;
+    text-align: center;
+    margin-right: 2px;
+}
+
+.optionbtn {
+    width: 80px;
+    background-color: white;
+    border: 1px solid var(--border-color-basic);
+    font-size: 12px;
+    padding: 5px 0px;
+    
+}
+
+.optionbtn.buyitbtn {
+    background-color: #b8b8b8;
+    color: white;
+    margin-bottom: 5px;
+}
+
+/*bottombtn_box1*/
+
+.bottombtn_box1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    margin-top: 10px;
+}
+
+.bottombtn_box1 .basketclearbtn {
+    background-color: white;
+    color: var(--font-color-gray);
+}
+
+.bottombtn {
+    font-size: 12px;
+    background-color: #999999;
+    padding: 7px 30px;
+    color:white;
+    border: 1px solid var(--border-color-basic)
+}
+
+/*calculate_table*/
+.calculate_table {
+    margin-top: 50px;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.calculate_table th{
+    font-weight: normal;
+    padding: 20px 0;
+}
+
+.calculate_table td{
+    border-bottom: none;
+    padding: 20px 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
+
+/*bottombtn_box2*/
+.bottombtn_box2 {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+}
+.bottombtn_box2 .buyallbtn {
+    background-color: #333333;
+}
+
+/*nosearch*/
+.orderlist .orderlist_content .nosearch {
+    padding: 50px 0px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--font-color-gray2);
+    border-bottom: 1px solid var(--border-color-basic);
+}
