@@ -130,7 +130,7 @@ public class ItemController {
 
     @GetMapping("/admin/itemList")
     public String itemListPage(Model model, @PageableDefault(size=4) Pageable pageable){
-        Page<Item> itemBoards = itemRepository.findAll(pageable);
+        Page<ItemDto> itemBoards = itemRepository.searchAll(pageable);
 
 //        System.out.println("here " + itemBoards.get().findFirst().get().getImgUrl());
 //        System.out.println("here6" + itemBoards.stream().findFirst().get().getImgUrl());

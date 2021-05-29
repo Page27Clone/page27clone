@@ -16,7 +16,7 @@ public class TestController {
     // 메인 페이지
     @GetMapping("/")
     public String index() {
-        return "/index";
+        return "/home";
     }
 
     // 회원가입 페이지

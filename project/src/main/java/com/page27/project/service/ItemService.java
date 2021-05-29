@@ -6,13 +6,11 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.Optional;
-
 @Service
 @RequiredArgsConstructor
 public class ItemService {
     private final ItemRepository itemRepository;
+
 
     @Transactional
     public Long save(Item item){
@@ -20,6 +18,4 @@ public class ItemService {
 
         return item.getId();
     }// 상품 저장
-
-
 }

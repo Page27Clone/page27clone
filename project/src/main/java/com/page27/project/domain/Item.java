@@ -7,6 +7,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.awt.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,6 +50,8 @@ public class Item {
 
     private Long itemIdx;
 
+    private Boolean rep;
+
     @OneToMany(mappedBy = "item")
     private List<OrderItem> orderItemList = new ArrayList<>();
 
@@ -61,7 +64,7 @@ public class Item {
 
     }
 
-    public Item(String firstCategory, String secondCategory, String thirdCategory, String itemName, int price, String itemInfo, String color, String fabric, String model, String size, int stockQuantity, String imgUrl, String saleStatus,Long itemIdx) {
+    public Item(String firstCategory, String secondCategory, String thirdCategory, String itemName, int price, String itemInfo, String color, String fabric, String model, String size, int stockQuantity, String imgUrl, String saleStatus,Long itemIdx, Boolean rep) {
         this.firstCategory = firstCategory;
         this.secondCategory = secondCategory;
         this.thirdCategory = thirdCategory;
@@ -76,6 +79,7 @@ public class Item {
         this.imgUrl = imgUrl;
         this.saleStatus = saleStatus;
         this.itemIdx = itemIdx;
+        this.rep = rep;
     }
 
     public void minusStockQuantity(int minusQuantity){
@@ -86,8 +90,4 @@ public class Item {
             this.stockQuantity = +resultStock;
         }
     }// 재고가 감소하는 메소드
-
-
-
-
 }

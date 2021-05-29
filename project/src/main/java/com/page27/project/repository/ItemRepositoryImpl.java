@@ -7,6 +7,7 @@ import com.page27.project.dto.MemberDto;
 import com.page27.project.dto.QItemDto;
 import com.page27.project.dto.QMemberDto;
 import com.querydsl.core.QueryResults;
+import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -31,7 +32,8 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom{
 //        System.out.println("here4" + QItem.item.imgUrl);
 //        System.out.println("here5" + QItem.item.imgUrl.substring(0));
 
-        QueryResults<ItemDto> results = queryFactory
+        QueryResults<ItemDto> results =
+                queryFactory
                 .select(new QItemDto(
                         QItem.item.id,
                         QItem.item.itemName,
@@ -39,9 +41,11 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom{
                         QItem.item.price,
                         QItem.item.saleStatus,
                         QItem.item.imgUrl,
-                        QItem.item.color
+                        QItem.item.color,
+                        QItem.item.rep
                 ))
                 .from(QItem.item)
+                .where(QItem.item.rep.eq(true))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchResults();
