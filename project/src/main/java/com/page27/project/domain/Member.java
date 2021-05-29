@@ -16,10 +16,13 @@ public class Member extends BaseTimeEntity {
     @Column(name = "member_id")
     private Long id;
 
+    @NonNull
     private String loginId;
 
+    @NonNull
     private String password;
 
+    @NonNull
     private String name;
 
     private String sex;

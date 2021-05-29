@@ -1,9 +1,8 @@
 package com.page27.project.repository;
 
 
-
 import com.page27.project.domain.QMember;
-import com.page27.project.domain.Search;
+import com.page27.project.domain.SearchMember;
 import com.page27.project.dto.MemberDto;
 
 import com.page27.project.dto.QMemberDto;
@@ -14,6 +13,7 @@ import org.springframework.data.domain.Page;
 
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+import org.thymeleaf.util.StringUtils;
 
 import javax.persistence.EntityManager;
 import java.util.List;
@@ -47,12 +47,12 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
         List<MemberDto> content = results.getResults();
         long total = results.getTotal();
 
-        return new PageImpl<>(content,pageable,total);
+        return new PageImpl<>(content, pageable, total);
     }
 
-
     @Override
-    public Page<MemberDto> searchByCondition(Search search, Pageable pageable) {
+    public Page<MemberDto> searchByCondition(SearchMember search, Pageable pageable) {
+
         QueryResults<MemberDto> results = queryFactory
                 .select(new QMemberDto(
                         QMember.member.id,
@@ -65,10 +65,11 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
                         QMember.member.createdAt
                 ))
                 .from(QMember.member)
-                .where(nameEq(search.getSearchKeyword()).or(loginIdEq(search.getSearchKeyword())))
+                .where(nameEq(search.getSearchKeyword()),loginIdEq(search.getSearchKeyword()))
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchResults();
+
 
         List<MemberDto> content = results.getResults();
         long total = results.getTotal();
@@ -77,14 +78,14 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
     }
 
     private BooleanExpression loginIdEq(String loginIdCondition) {
-        if (loginIdCondition == null) {
+        if (StringUtils.isEmpty(loginIdCondition)) {
             return null;
         }
         return QMember.member.loginId.likeIgnoreCase("%" + loginIdCondition + "%");
     }
 
     private BooleanExpression nameEq(String nameCondition) {
-        if (nameCondition == null) {
+        if (StringUtils.isEmpty(nameCondition)) {
             return null;
         }
         return QMember.member.name.likeIgnoreCase("%" + nameCondition + "%");

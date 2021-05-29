@@ -35,6 +35,8 @@ public class Order extends BaseTimeEntity {
 
     private LocalDateTime orderedAt;
 
+    private String payment;
+
     //연관관계 메소드
 
     public void setMember(Member member){
@@ -63,6 +65,7 @@ public class Order extends BaseTimeEntity {
         }
         order.setOrderStatus(OrderStatus.READY);
         order.setOrderedAt(LocalDateTime.now());
+        order.setPayment("카드결제");
 
         return order;
     }

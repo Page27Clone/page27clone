@@ -2,6 +2,7 @@ package com.page27.project.controller;
 
 import com.page27.project.domain.Item;
 import com.page27.project.domain.Member;
+import com.page27.project.domain.SearchItem;
 import com.page27.project.dto.ItemDto;
 import com.page27.project.dto.QItemDto;
 import com.page27.project.repository.ItemRepository;
@@ -12,9 +13,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -129,22 +128,34 @@ public class ItemController {
     }
 
     @GetMapping("/admin/itemList")
-    public String itemListPage(Model model, @PageableDefault(size=4) Pageable pageable){
-        Page<ItemDto> itemBoards = itemRepository.searchAll(pageable);
+    public String itemListPage(Model model, @PageableDefault(size=3) Pageable pageable, SearchItem searchItem){
+        if(searchItem.getItem_name() == null) {
+            Page<ItemDto> itemBoards = itemRepository.searchAll(pageable);
 
-//        System.out.println("here " + itemBoards.get().findFirst().get().getImgUrl());
-//        System.out.println("here6" + itemBoards.stream().findFirst().get().getImgUrl());
+            int homeStartPage = Math.max(1, itemBoards.getPageable().getPageNumber() - 4);
+            int homeEndPage = Math.min(itemBoards.getTotalPages(), itemBoards.getPageable().getPageNumber() + 4);
+            model.addAttribute("startPage", homeStartPage);
+            model.addAttribute("endPage", homeEndPage);
+            model.addAttribute("productList", itemBoards);
 
+            return "admin/admin_Goodslist";
+        }
+        Page<ItemDto> itemBoards = itemRepository.searchByCondition(searchItem,pageable);
 
-//        System.out.println("here2" + itemBoards.get().findFirst().get().getImgUrl());
-
-        int homeStartPage = Math.max(1,itemBoards.getPageable().getPageNumber() - 4);
-        int homeEndPage = Math.min(itemBoards.getTotalPages(),itemBoards.getPageable().getPageNumber() + 4);
-        model.addAttribute("startPage",homeStartPage);
-        model.addAttribute("endPage",homeEndPage);
-        model.addAttribute("productList",itemBoards);
+        int startPage = Math.max(1,itemBoards.getPageable().getPageNumber() - 4);
+        int endPage = Math.min(itemBoards.getTotalPages(),itemBoards.getPageable().getPageNumber() + 4);
+        model.addAttribute("startPage", startPage);
+        model.addAttribute("endPage", endPage);
+        model.addAttribute("productList", itemBoards);
 
         return "admin/admin_Goodslist";
+    }
+
+    @PatchMapping("/admin/itemList")
+    public @ResponseBody String changeStatusPage(@RequestParam(value = "change") List<Long> idList){
+        int size = idList.size();
+
+        return null;
     }
 
 }
