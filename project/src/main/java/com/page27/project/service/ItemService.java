@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -20,11 +21,5 @@ public class ItemService {
         return item.getId();
     }// 상품 저장
 
-    public List<Item> findAllItems(){
-        return itemRepository.findAll();
-    }// 모든 상품 조회
 
-    public Item findOneItem(Long id){
-        return itemRepository.findById(id).get();
-    }
 }

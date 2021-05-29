@@ -135,7 +135,6 @@ public class ItemController {
 //        System.out.println("here " + itemBoards.get().findFirst().get().getImgUrl());
 //        System.out.println("here6" + itemBoards.stream().findFirst().get().getImgUrl());
 
-        itemBoards.get().findFirst().get().setImgUrl("/image/Item/OUTER/자켓/셀린 나일론 바람막이 후드자켓(3color)/셀린 나일론 바람막이 후드자켓(3color)0.jpg");
 
 //        System.out.println("here2" + itemBoards.get().findFirst().get().getImgUrl());
 

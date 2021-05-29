@@ -53,6 +53,8 @@ public class WebCrawling {
 
     public Long webCrawlingMethod(String itemUrl, Long idx){
 
+
+
         try {
             Document doc = Jsoup.connect(itemUrl).get();
 //            String url = "http:" + doc.select(".BigImage").attr("src").trim();
@@ -62,7 +64,7 @@ public class WebCrawling {
 
             Elements img = doc.select(".cont img");
             ArrayList<String> url = new ArrayList<String>();
-            for(int i = 1; i<img.size();i++){
+            for(int i = 1; i<img.size();i+=2){
 //                System.out.println(img.get(i).attr("ec-data-src"));
                 url.add("http://page27.co.kr" + img.get(i).attr("ec-data-src"));
             }
@@ -75,25 +77,6 @@ public class WebCrawling {
                 logger.warn("directory can't make");
             }
 
-            String direction = "";
-            for(int i = 0;i<url.size();i++){
-                String tempUrl = url.get(i);
-                if(tempUrl.substring(tempUrl.length()-3,tempUrl.length()).equals("png")){
-                    continue;
-                }
-                URL imgUrl = new URL(tempUrl);
-//                System.out.println(imgUrl);
-
-                BufferedImage image = ImageIO.read(imgUrl);
-                FileOutputStream out = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName  + i + ".jpg");
-//                FileOutputStream out = new FileOutputStream("C:\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName  + i + ".jpg");
-
-
-//                FileOutputStream out = new FileOutputStream("/image/Item/OUTER/자켓/" + itemName  + i + ".jpg");
-                String totalUrl = "/image/Item/OUTER/자켓/" + itemName + "/" + itemName  + i + ".jpg";
-                direction += totalUrl + ',';
-                ImageIO.write(image,"jpg",out);
-            }
 
             String stringPrice = doc.select(".sale_rate").attr("item_price");
             int price = Integer.parseInt(stringPrice);
@@ -119,19 +102,64 @@ public class WebCrawling {
 //            System.out.println(Category.select("li:nth-child(2)").text());
 //            System.out.println(Category.select("li:nth-child(3)").text());
 
-            Elements color = doc.select("#product_option_id1 option");
-            for(int i = 0 ; i<color.size(); i++){
-                if(i < 2) continue;
-                String itemColor = color.get(i).attr("value");
-//                System.out.println(color.get(i).attr("value"));
 
-                Item item = new Item(firstCategory,secondCategory,"",itemName,price,info,itemColor,fabric,model,size,quantity,direction,"판매중",idx);
-                itemRepository.save(item);
+
+            String direction = "";
+            for(int i = 0;i<url.size();i++){
+                String tempUrl = url.get(i);
+                if(tempUrl.substring(tempUrl.length()-3,tempUrl.length()).equals("png")){
+                    continue;
+                }
+                URL imgUrl = new URL(tempUrl);
+//                System.out.println(imgUrl);
+
+                BufferedImage image = ImageIO.read(imgUrl);
+                FileOutputStream out = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName  + i + ".jpg");
+//                FileOutputStream out = new FileOutputStream("C:\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName  + i + ".jpg");
+
+//                FileOutputStream out = new FileOutputStream("/image/Item/OUTER/자켓/" + itemName  + i + ".jpg");
+                String totalUrl = "/image/Item/OUTER/자켓/" + itemName + "/" + itemName  + i + ".jpg";
+//                direction += totalUrl + ',';
+
+
+
+
+                ImageIO.write(image,"jpg",out);
+
+                Elements color = doc.select("#product_option_id1 option");
+
+                for(int j = 0 ; j<color.size(); j++){
+                    if(j < 2) continue;
+                    String itemColor = color.get(j).attr("value");
+//                System.out.println(color.get(i).attr("value"));
+                    Item item = new Item();
+                    item.setImgUrl(totalUrl);
+                    item.setFirstCategory(firstCategory);
+                    item.setSecondCategory(secondCategory);
+                    item.setThirdCategory("");
+                    item.setItemName(itemName);
+                    item.setPrice(price);
+                    item.setItemInfo(info);
+                    item.setColor(itemColor);
+                    item.setFabric(fabric);
+                    item.setModel(model);
+                    item.setSize(size);
+                    item.setStockQuantity(quantity);
+                    item.setSaleStatus("판매중");
+                    item.setItemIdx(idx);
+
+                    //itemRepository.save(item);
+                    itemRepository.save(item);
+                }
+
+
             }
+
+
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return idx;
     }
 }
