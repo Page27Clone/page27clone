@@ -15,20 +15,22 @@ public class ItemDto {
     private int price;
     private String saleStatus;
     private String imgUrl;
+    private String color;
 
 
 
     @QueryProjection
-    public ItemDto(Long id, String itemName, String firstCategory, int price, String saleStatus,String imgUrl) {
-
+    public ItemDto(Long id, String itemName, String firstCategory, int price, String saleStatus,String imgUrl,String color) {
+//        System.out.println(imgUrl.split(",")[0]);
 //        String[] imgArr = imgUrl.split(",");
-
         this.id = id;
         this.itemName = itemName;
         this.firstCategory = firstCategory;
         this.price = price;
         this.saleStatus = saleStatus;
         this.imgUrl = imgUrl;
+        this.color = color;
+
 //        System.out.println("here test " + imgArr[0]);
 //        System.out.println("here test 7 " + imgArr.toString());
     }

@@ -38,7 +38,8 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom{
                         QItem.item.firstCategory,
                         QItem.item.price,
                         QItem.item.saleStatus,
-                        QItem.item.imgUrl
+                        QItem.item.imgUrl,
+                        QItem.item.color
                 ))
                 .from(QItem.item)
                 .offset(pageable.getOffset())

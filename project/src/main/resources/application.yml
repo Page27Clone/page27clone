@@ -24,6 +24,7 @@ spring:
       location: C:/Temp
 
 
+
 #logging:
 #  level:
 #    root: info
@@ -32,3 +33,5 @@ logging:
   level:
     org.springframework: INFO
 
+server:
+  max-http-header-size: 40000

@@ -3,8 +3,10 @@ package com.page27.project.domain;
 import com.page27.project.exception.NotEnoughStockException;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -84,5 +86,8 @@ public class Item {
             this.stockQuantity = +resultStock;
         }
     }// 재고가 감소하는 메소드
+
+
+
 
 }
