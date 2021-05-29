@@ -2,6 +2,8 @@ package com.page27.project.controller;
 
 import com.page27.project.domain.Item;
 import com.page27.project.domain.Member;
+import com.page27.project.dto.ItemDto;
+import com.page27.project.dto.QItemDto;
 import com.page27.project.repository.ItemRepository;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
@@ -126,16 +128,24 @@ public class ItemController {
         return "redirect:/";
     }
 
-//    @GetMapping("/admin/itemList")
-//    public String itemListPage(Model model, @PageableDefault(size=8) Pageable pageable){
-//        Page<Item> itemBoards = itemRepository.findAll(pageable);
-//        int homeStartPage = Math.max(1,memberBoards.getPageable().getPageNumber() - 4);
-//        int homeEndPage = Math.min(memberBoards.getTotalPages(),memberBoards.getPageable().getPageNumber() + 4);
-//        model.addAttribute("startPage",homeStartPage);
-//        model.addAttribute("endPage",homeEndPage);
-//        model.addAttribute("memberList",memberBoards);
+    @GetMapping("/admin/itemList")
+    public String itemListPage(Model model, @PageableDefault(size=4) Pageable pageable){
+        Page<Item> itemBoards = itemRepository.findAll(pageable);
 
-//        return "admin/admin_Goodslist";
-//    }
+//        System.out.println("here " + itemBoards.get().findFirst().get().getImgUrl());
+//        System.out.println("here6" + itemBoards.stream().findFirst().get().getImgUrl());
+
+        itemBoards.get().findFirst().get().setImgUrl("/image/Item/OUTER/자켓/셀린 나일론 바람막이 후드자켓(3color)/셀린 나일론 바람막이 후드자켓(3color)0.jpg");
+
+//        System.out.println("here2" + itemBoards.get().findFirst().get().getImgUrl());
+
+        int homeStartPage = Math.max(1,itemBoards.getPageable().getPageNumber() - 4);
+        int homeEndPage = Math.min(itemBoards.getTotalPages(),itemBoards.getPageable().getPageNumber() + 4);
+        model.addAttribute("startPage",homeStartPage);
+        model.addAttribute("endPage",homeEndPage);
+        model.addAttribute("productList",itemBoards);
+
+        return "admin/admin_Goodslist";
+    }
 
 }
