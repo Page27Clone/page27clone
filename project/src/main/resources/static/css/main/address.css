@@ -1,0 +1,97 @@
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section_caption {
+    padding: 45px 0;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.section_content {
+    margin-top: 20px;
+    width: 1260px;
+}
+
+.addr_caption {
+    border-bottom: 1px solid black;
+}
+.addr_caption_desc {
+    background-color: #555555;
+    color: white;
+    font-size: 12px;
+    width: 195px;
+    text-align: center;
+    padding: 10px 0;
+}
+
+/*addrlist*/
+.addrlist {
+    margin-top: 20px;
+}
+table{
+    width: 100%;
+    font-size: 12px;   
+    color: var(--font-color-gray2);
+    border-top: 1px solid var(--border-color-basic);
+    border-collapse: collapse;
+}
+
+td {
+    text-align: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color-basic2);
+}
+
+.editaddrbtn {
+    width: 55px;
+    background: white;
+    border: 1px solid var(--border-color-basic2);
+    border-radius: 3px;
+    padding: 2px;
+    font-size: 13px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.editaddrbtn:hover {
+    filter: brightness(90%);
+}
+
+.editaddrbtn i {
+    color: red;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/*선택 주소록 삭제버튼과 배송지 등록버튼*/
+
+.bottombtn_box {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.bottombtn {
+    padding: 7px 30px;
+    background-color: white;
+    border: 1px solid var(--border-color-basic2);
+    font-size: 12px;
+    color: var(--font-color-gray2);
+}
+
+.registerbtn {
+    background-color: #333333;
+    color: white;
+}
+
+/*no search*/
+.addrlist .addrlist_content .nosearch {
+    padding: 50px 0px;
+    text-align: center;
+    font-size: 12px;
+    color: var(--font-color-gray2);
+    border-bottom: 1px solid var(--border-color-basic);
+}

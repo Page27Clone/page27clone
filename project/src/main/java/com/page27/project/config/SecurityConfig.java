@@ -62,6 +62,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().ignoringAntMatchers("/admin/changepassword")
 
                 .ignoringAntMatchers("/admin/changepassword_ok");
+
         http
                 .authorizeRequests()
                 // 페이지 권한 설정

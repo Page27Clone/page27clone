@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/main/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/change_address.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>change address</title>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/main/header.js"></script>
+    <script src="/js/main/nav.js"></script>
+    <script src="/js/main/change_address.js"></script>
+
+</head>
+<body>
+    <!--header start-->
+    <header th:replace="main/header :: main_headerFragment">
+    </header>
+    <!--header end-->
+
+    <!--section-->
+    <section>
+        <div class="section_caption">
+            ADDRESS
+        </div>
+        <div class="section_content">
+            <form action="/changeaddress_ok" th:action="/main/changeaddress_ok" method="POST" onsubmit="return sendit()">
+                <input type="hidden" name="_method" value="put">
+                <table>
+                    <colgroup>
+                        <col width="120px"/>
+                        <col width="auto"/>
+                    </colgroup>
+                    <tr>
+                        <th><label for="address_name">배송지명<span>＊</span></label></th>
+                        <td><input type="text" name="address_name" id="address_name" th:value="${address.name}"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="address_recipient">성명<span>＊</span></label></th>
+                        <td><input type="text" name="address_recipient" id="address_recipient" th:value="${address.recipient}"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="sample6_postcode">주소<span>＊</span></label></th>
+                        <td>
+                            <input type="text" id="sample6_postcode" name="address1" placeholder="우편번호">
+                            <!-- form 안에 버튼이 있으면 default가 submit이기 때문에 type="button"으로 주어야한다.-->
+                            <button type="button" onclick="sample6_execDaumPostcode()" id="postbtn"><span>우편번호</span><i class="fas fa-chevron-right"></i></button><br>
+                            <input type="text" id="sample6_address" name="address2" placeholder="주소" class="address_margin"> 기본주소<br>
+                            <input type="text" id="sample6_detailAddress" name="address3" placeholder="상세주소" class="address_margin"> 나머지주소
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="address_home_number">일반전화<span>＊</span></label></th>
+                        <td>
+                            <select name="address_home_number[]" id="address_home_number" class="address_home_number">
+                                <option value="02">02</option>
+                                <option value="031">031</option>
+                                <option value="032">032</option>
+                                <option value="033">033</option>
+                                <option value="041">041</option>
+                                <option value="042">042</option>
+                                <option value="043">043</option>
+                                <option value="044">044</option>
+                                <option value="051">051</option>
+                                <option value="052">052</option>
+                                <option value="053">053</option>
+                                <option value="054">054</option>
+                                <option value="055">055</option>
+                            </select>
+                            -
+                            <input type="text" name="address_home_number[]" class="address_home_number">
+                            -
+                            <input type="text" name="address_home_number[]" class="address_home_number">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="address_phone_number">휴대전화<span>＊</span></label></th>
+                        <td>
+                            <select name="address_phone_number[]" id="address_phone_number" class="address_phone_number">
+                                <option value="010">010</option>
+                                <option value="011">011</option>
+                                <option value="016">016</option>
+                                <option value="017">017</option>
+                                <option value="018">018</option>
+                                <option value="019">019</option>
+                            </select>
+                            -
+                            <input type="text" name="address_phone_number[]" class="address_phone_number">
+                            -
+                            <input type="text" name="address_phone_number[]" class="address_phone_number">
+                        </td>
+                    </tr>
+                </table>
+                <div class="bottombtn_box">
+                    <input type="submit" class="registerbtn bottombtn" value="등록">
+                    <button class="cancelbtn bottombtn" onclick="history.back()">취소</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!--nav-->
+    <nav th:replace="main/nav :: main_navFragment">
+    </nav>
+
+    <!--footer-->
+    <footer th:replace="main/footer :: main_footerFragment">
+    </footer>
+
+    <!--우편번호 api-->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("sample6_detailAddress").value = extraAddr;
+                
+                } else {
+                    document.getElementById("sample6_detailAddress").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode;
+                document.getElementById("sample6_address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("sample6_detailAddress").focus();
+            }
+        }).open();
+    }
+    </script>
+</body>
+</html>

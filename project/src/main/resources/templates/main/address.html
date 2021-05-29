@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/main/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/address.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>address</title>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/main/header.js"></script>
+    <script src="/js/main/nav.js"></script>
+    <script src="/js/main/address.js"></script>
+</head>
+<body>
+    <!--header start-->
+    <header th:replace="main/header :: main_headerFragment">
+    </header>
+    <!--header end-->
+
+    <!--section-->
+    <section>
+        <div class="section_caption">
+            ADDRESS
+        </div>
+        <div class="section_content">
+            <div class="addr_caption">
+                <div class="addr_caption_desc">배송주소록보기</div>
+            </div>
+            <div class="addrlist">
+                <div class="addrlist_content">
+                    <table>
+                        <colgroup>
+                            <col width="40px">
+                            <col width="120px">
+                            <col width="120px">
+                            <col width="120px">
+                            <col width="120px">
+                            <col width="auto">
+                            <col width="76px">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <td><input type="checkbox" class="check_all"></td>
+                                <td>배송지명</td>
+                                <td>수령인</td>
+                                <td>일반전화</td>
+                                <td>휴대전화</td>
+                                <td>주소</td>
+                                <td>수정</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="address : ${addressList}">
+                                <td><input type="checkbox" class="check"></td>
+                                <td th:text="${address.name}">우리집</td>
+                                <td th:text="${address.recipient}">김사과</td>
+                                <td th:text="${address.homeNumber}">02-7777-7777</td>
+                                <td th:text="${address.phoneNumber}">010-7777-7777</td>
+                                <td th:text="${address.address1} + ' ' + ${address.address2}+ ' ' + ${address.address3}">(05502)서울특별시 송파구 올림픽로 135 (잠실동) 리센츠</td>
+                                <td>
+                                    <button class="editaddrbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/change_address/{addressIdx}(addressIdx=${address.addressIdx})} + '\''"><span>수정</span><i class="fas fa-chevron-right"></i></button>
+                                </td>
+                                <input type="hidden" class="address_key" value="1" th:value="${address.addressIdx}"> <!-- 배송지 index-->
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!--검색결과가 있는 경우 없는 영역-->
+                    <!-- <div class="nosearch">
+                        등록된 배송지가 없습니다.
+                    </div> -->
+                    <div class="bottombtn_box">
+                        <button class="deletebtn bottombtn">선택 주소록 삭제</button>
+                        <button class="registerbtn bottombtn" onclick="location.href=''" th:onclick="'location.href=\'' + @{/main/register_address} + '\''">배송지 등록</button>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--nav-->
+    <nav th:replace="main/nav :: main_navFragment">
+    </nav>
+
+    <!--footer-->
+    <footer th:replace="main/footer :: main_footerFragment">
+    </footer>
+
+
+
+</body>
+</html>
