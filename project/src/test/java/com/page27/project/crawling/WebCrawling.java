@@ -58,6 +58,39 @@ public class WebCrawling {
     public Long webCrawlingMethod(String itemUrl, Long idx) {
         try {
             Document doc = Jsoup.connect(itemUrl).get();
+<<<<<<< HEAD
+=======
+//            String url = "http:" + doc.select(".BigImage").attr("src").trim();
+
+            String itemName = doc.select(".name").get(0).text();
+//            System.out.println(itemName);
+
+            Elements img = doc.select(".cont img");
+            ArrayList<String> url = new ArrayList<String>();
+            for(int i = 1; i<img.size();i+=2){
+//                System.out.println(img.get(i).attr("ec-data-src"));
+                url.add("http://page27.co.kr" + img.get(i).attr("ec-data-src"));
+            }
+
+//            File newFile = new File("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName);
+            File newFile = new File("C:\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName);
+            if (newFile.mkdir()){
+                logger.info("directory make ok");
+            }else{
+                logger.warn("directory can't make");
+            }
+
+
+            String stringPrice = doc.select(".sale_rate").attr("item_price");
+            int price = Integer.parseInt(stringPrice);
+//            System.out.println(price);
+
+            String temp = doc.text();
+            String info = temp.substring(temp.indexOf("INFO") + 4,temp.indexOf("Color") - 4).trim();
+//            System.out.println(info);
+
+            String size = "FREE";
+>>>>>>> 2ed498b09fecc9f5808cf290c3479b7debcaf6ee
 
             Elements color = doc.select("#product_option_id1 option");
 
@@ -73,8 +106,14 @@ public class WebCrawling {
                     url.add("http://page27.co.kr" + img.get(i).attr("ec-data-src"));
                 }
 
+<<<<<<< HEAD
                 String stringPrice = doc.select(".sale_rate").attr("item_price");
                 int price = Integer.parseInt(stringPrice);
+=======
+                BufferedImage image = ImageIO.read(imgUrl);
+//                FileOutputStream out = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName  + i + ".jpg");
+                FileOutputStream out = new FileOutputStream("C:\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName  + i + ".jpg");
+>>>>>>> 2ed498b09fecc9f5808cf290c3479b7debcaf6ee
 
                 String info = doc.text().substring(doc.text().indexOf("INFO") + 4, doc.text().indexOf("Color") - 4).trim();
                 String size = "FREE";

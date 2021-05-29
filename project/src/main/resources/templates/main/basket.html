@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/main/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/basket.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/nav.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>basket</title>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/main/header.js"></script>
+    <script src="/js/main/nav.js"></script>
+    <script src="/js/main/basket.js"></script>
+</head>
+<body>
+    <!--header start-->
+    <header th:replace="main/header :: main_headerFragment">
+    </header>
+    <!--header end-->
+
+    <!--section-->
+    <section>
+        <div class="section_caption">
+            ORDER
+        </div>
+        <div class="section_content">
+
+            <div class="benefit_info">
+                <div class="benefit_info_caption">
+                    혜택정보
+                </div>
+                <div class="benefit_info_desc">
+                    <div class="benefit_info_desc_item"><b th:text="${member.name}">홍길동</b> 님은 <b th:text="'['+${member.memberGrade}+']'">[일반회원]</b> 이십니다</div>
+                    <div class="benefit_info_mileage benefit_info_desc_item">
+                        가용적립금: <b th:text="${member.mileage} + '원'">2,000원</b>
+                    </div>
+                </div>
+            </div>
+            <div class="order_caption">
+                <div class="order_caption_desc">국내배송상품(<span class="num_orders">0</span>)</div>
+            </div>
+
+            <div class="orderlist">
+                <div class="orderlist_caption">일반상품 (<span class="num_orders">0</span>)</div>
+                <div class="orderlist_content">
+                    <table class="orderlist_table">
+                        <colgroup>
+                            <col width="27px">
+                            <col width="92px">
+                            <col width="auto">
+                            <col width="98px">
+                            <col width="75px">
+                            <col width="98px">
+                            <col width="98px">
+                            <col width="85px">
+                            <col width="98px">
+                            <col width="110px">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <td><input type="checkbox" class="check_all"></td>
+                                <td>이미지</td>
+                                <td>상품정보</td>
+                                <td>판매가</td>
+                                <td>수량</td>
+                                <td>적립금</td>
+                                <td>배송구분</td>
+                                <td>배송비</td>
+                                <td>합계</td>
+                                <td>선택</td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each = "item:${basketList}">
+                                <td><input type="checkbox" class="check"></td>
+                                <td><img src="img/basket/basket1.JPG" th:src="@{${item.imgpath}}" alt="상품사진"></td>
+                                <td>
+                                    <div th:text="${item.name}">메카닉 패딩 야상점퍼</div>
+                                    <div th:text="'[옵션:'+${item.color}+']'">[옵션: 그레이]</div>
+                                </td>
+                                <td><b th:text="'₩'+${item.price}">₩32,000</b></td>
+                                <td>
+                                    <input type="number" class="item_quantity" min="0" max="100" value="4" th:value="${item.quantity}">
+                                    <button onclick="" class="numberupdatebtn">변경</button> <!--th:onclick으로 item_key 넘겨주기-->
+                                </td>
+                                <td><span class="order_mileage">320</span>원</td> <!-- js계산 -->
+                                <td>기본배송</td>
+                                <td>배송비</td>
+                                <td>₩<span class="order_price">32,000</span></td> <!--js계산 -->
+                                <td>
+                                    <button class="buyitbtn optionbtn">주문하기</button><br>
+                                    <button class="deleteitbtn optionbtn">삭제</button>
+                                </td>
+                                <input type="hidden" class="basket_id" value="1" th:value="${item.basketIdx}">
+                                <input type="hidden" class="item_price" value="32000" th:value="${item.price}">
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="bottombtn_box1">
+                        <div class="bottombtn_box1_left">
+                            선택상품을 &nbsp;
+                            <button class="deletebtn bottombtn">삭제하기</button>
+                        </div>
+                        <div class="bottombtn_box1_right">
+                            <button class="basketclearbtn bottombtn">장바구니 비우기</button>
+                        </div>
+                    </div>
+                    <table class="calculate_table">
+                        <colgroup>
+                            <col width="17%"/>
+                            <col width="17%"/>
+                            <col width="auto"/>
+                        </colgroup>
+                        <tr>
+                            <th>총 상품금액</th>
+                            <th>총 배송비</th>
+                            <th>결제 예정금액</th>
+                        </tr>
+                        <tr>
+                            <!-- js 계산 -->
+                            <td>₩<span id="total">238,000</span></td>
+                            <td>+ ₩<span id="delivery_charge">0</span></td>
+                            <td>= ₩<span id="tobepaid">238,000</span></td>
+                        </tr>
+                    </table>
+                    <div class="bottombtn_box2">
+                        <button class="buyallbtn bottombtn buymanybtn">전체상품주문</button>
+                        <button class="buyselectedbtn bottombtn buymanybtn">선택상품주문</button>
+                    </div>
+                    <!--검색결과가 있는 경우 없는 영역-->
+                    <!-- <div class="nosearch">
+                        주문내역이 없습니다.
+                    </div> -->
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!--nav-->
+    <nav th:replace="main/nav :: main_navFragment">
+    </nav>
+
+    <!--footer-->
+    <footer th:replace="main/footer :: main_footerFragment">
+    </footer>
+
+</body>
+</html>
