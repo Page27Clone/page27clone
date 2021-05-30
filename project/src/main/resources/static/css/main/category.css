@@ -1,0 +1,120 @@
+/* section */
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/*category_caption*/
+.category_caption {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 40px;
+}
+/*category_list*/
+.category_list {
+    margin-top: 30px;
+    width: 1260px;
+    font-size: 13px;
+    background-color: #f9f9f9;
+    padding: 35px;
+    text-align: center;
+}
+
+.category_list a{
+    margin: 0 20px;
+}
+
+.category_list a:hover{
+    color: #c4605e;
+}
+
+.category_list .separater {
+    font-style: italic;
+    font-size: 12px;
+    color: #b0bec5;
+}
+
+/*product_container*/
+.product_container {
+    margin-top: 80px;
+    width:1260px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.product_container .product_item{
+    font-size: 13px;
+    color: var(--font-color-gray);
+    margin-bottom: 50px;
+}
+
+.product_container .product_item .product_item_img{
+    position: relative;
+}
+
+.product_container .product_item .product_item_img img{
+    width: 300px;
+}
+
+.product_container .product_item .product_item_img:hover .product_item_hover{
+    visibility: visible;
+}
+
+.product_container .product_item .product_item_hover{
+    display: flex;
+    background-color: white;
+    border: 1px solid var(--border-color-basic);
+    position: absolute;
+    bottom: 40px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    visibility: hidden;
+}
+.product_container .product_item .product_item_hover .hoveritem{
+    padding: 5px 18px;
+}
+
+.product_container .product_item .product_item_name{
+    margin-top: 15px;
+}
+
+.product_container .product_item hr {
+    margin-top: 10px;
+    border: 1px solid var(--border-color-basic);
+}
+
+.product_container .product_item .product_item_price{
+    margin-top: 5px;
+    color: black;
+}
+
+/*pagenation*/
+.pagenation {
+    margin-top: 50px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pagenation .bracket {
+    font-size: 9px;
+    margin: 8px;
+    font-weight: bold;
+}
+
+.pagenation span {
+    display: inline-block;
+    font-size: 12px;
+    background-color: var(--pagenation-color);
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    padding-top: 3px;
+    margin: 0 8px;
+}
+
+

@@ -269,13 +269,13 @@
                         <a href="#" th:href="@{/main/product/{itemIdx}(itemIdx=${item.itemIdx})}"><img th:src="@{${item.imgpath}}" src="img/main_newarrivals/newarrival1.JPG" alt="상품사진"></a>
                         <div class="newarrivals_item_hover">
                             <div class="quickview hoveritem"><i class="far fa-clone" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/product/{itemIdx}(itemIdx=${item.itemIdx})} + '\''"></i></div>
-                            <div class="backet hoveritem"><i class="fas fa-shopping-basket" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/product/{itemIdx}(itemIdx=${item.itemIdx})} + '\''"></i></div>
+                            <div class="backet hoveritem"><i class="fas fa-shopping-basket" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/basket/{itemIdx}(itemIdx=${item.itemIdx})} + '\''"></i></div>
                             <div class="priview hoveritem"><i class="far fa-sticky-note"></i></div>
                         </div>
                     </div>
                     <div class="newarrivals_item_name" th:text="${item.name}">1+1 콕스 텐션 반팔티셔츠(15color)-주문폭주-</div>
                     <hr/>
-                    <div class="newarrivals_item_price" th:text="'₩'+${item.price}"><b>₩17,000</b></div>
+                    <div class="newarrivals_item_price" th:text="'₩'+${#numbers.formatInteger(item.price, 0, 'COMMA')}"><b>₩17,000</b></div>
                     <div class="newarrivals_item_milage" th:text="${item.mileage}+'원(1%)'">170원(1%)</div>
                 </div>
             </div>

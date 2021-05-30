@@ -1,0 +1,203 @@
+/* section */
+
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/*product_container*/
+.product_container {
+    margin-top: 70px;
+    display: flex;
+    width: 1260px;
+    justify-content: space-between;
+}
+
+/*product_imgbox*/
+.product_container .product_imgbox{
+    height: auto;
+}
+
+.product_container .product_imgbox img{
+    display: block;
+    position: sticky;
+    top: 100px;
+}
+
+/*product_detail*/
+.product_container .product_detail {
+    width: 560px;
+}
+
+.product_container .product_detail .product_caption{
+    border-bottom: 1px solid var(--border-color-basic);
+    font-size: 17px;
+    color: var(--font-color-gray2);
+    padding-bottom: 10px;
+    padding-left: 10px;
+}
+
+.product_container .product_detail .product_detailinfo{
+    padding: 10px;
+    padding-bottom: 0;
+    font-size: 12px;
+    color: var(--font-color-gray2);
+    border-bottom: 1px solid var(--border-color-basic);
+}
+
+.product_container .product_detail .form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    flex-basis: 20%;
+}
+.form-group span {
+    flex-basis: 60%;
+}
+
+.form-group span font {
+    color:#eb1010;
+    font-size: 12px;
+}
+
+.form-group span div {
+    margin-bottom: 20px;
+}
+
+.form-group span .modelinfo {
+    margin-bottom: 0;
+}
+
+.product_container .product_detail .product_option{
+    padding: 20px 10px;
+    font-size: 12px;
+    color: var(--font-color-gray2);
+    border-bottom: 1px solid var(--border-color-basic);
+}
+
+.product_container .product_detail .product_option .form-group {
+    margin-bottom: 0;
+}
+
+.product_container .product_detail .product_option .form-group span {
+    flex-basis: 80%;
+}
+
+select {
+    width: 100%;
+    border: 1px solid var(--border-color-basic2);
+    height: 30px;
+    font-size: 12px;
+}
+
+/*form*/
+.product_container .product_detail form {
+    margin-top: 20px;
+}
+
+.product_container .product_detail form table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid gray;
+    color: var(--font-color-gray2);
+}
+
+.product_container .product_detail form table td {
+    border-bottom: 1px solid var(--border-color-basic);
+    padding: 10px;
+    font-size: 12px;
+}
+
+.product_container .product_detail form table .td_price {
+    text-align: right;
+}
+
+input[type="number"] {
+    border: 1px solid var(--border-color-basic2);
+    width: 50px;
+    height: 25px;
+    font-size: 12px;
+    padding-left: 10px; 
+}
+
+.product_container .product_detail form .totalprice_box {
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color-basic);
+    font-weight: bold;
+    font-size: 17px;
+    text-align: right;
+}
+
+.product_container .product_detail form .min_quantity {
+    padding: 5px;
+    font-size: 12px;
+    color: var(--font-color-gray);
+    text-align: right;
+}
+
+.product_container .product_detail form .formbtn_box {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+form .formbtn_box .formbtn{
+    border: 1px solid var(--border-color-basic);
+    width: 49%;
+    height: 55px;
+}
+
+form .formbtn_box .buynowbtn{
+    background-color: #222222;
+    font-weight: bold;
+    color: white;
+}
+
+/*sns_talk*/
+.sns_talk {
+    margin-top: 20px;
+}
+
+.sns_talk button{
+    width: 100%;
+    height: 45px;
+    border: none;
+}
+
+.sns_talk button.naver_talk {
+    background-color: #36b044;
+    color: white;
+}
+
+.sns_talk button.kakao_talk {
+    background-color: #ffee2e;
+    margin-top: 3px;
+}
+
+
+/*product_seperate*/
+.product_seperate{
+    width: 1260px;
+    margin-top: 200px;
+    border-top: 1px solid var(--border-color-basic);
+    padding: 10px 20px;
+    font-size: 13px;
+    color: var(--font-color-gray);
+    text-decoration: underline;
+}
+
+/*product_imageArea*/
+.product_imageArea {
+    margin-top: 120px;
+    width: 1260px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product_imageArea img:not(:first-child){
+    margin-top: 140px;
+}
