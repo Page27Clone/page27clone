@@ -85,7 +85,7 @@
                                     <div th:text="${item.name}">메카닉 패딩 야상점퍼</div>
                                     <div th:text="'[옵션:'+${item.color}+']'">[옵션: 그레이]</div>
                                 </td>
-                                <td><b th:text="'₩'+${item.price}">₩32,000</b></td>
+                                <td><b th:text="'₩'+${#numbers.formatInteger(item.price, 0, 'COMMA')}">₩32,000</b></td>
                                 <td>
                                     <input type="number" class="item_quantity" min="0" max="100" value="4" th:value="${item.quantity}">
                                     <button onclick="" class="numberupdatebtn">변경</button> <!--th:onclick으로 item_key 넘겨주기-->
