@@ -98,7 +98,6 @@ public class ItemController {
         File folder = new File(folderPath);
         String path = "C:\\image\\temp\\" + firstCategory + "\\" + secondCategory + "\\" + thirdCategory + "\\";
 
-
         System.out.println("here test" + fileList.size());
         for(MultipartFile mf : fileList){
 
@@ -156,6 +155,11 @@ public class ItemController {
         int size = idList.size();
 
         return null;
+    }
+
+    @GetMapping("/admin/orderList")
+    public String getOrderPage(){
+        return "admin/admin_order";
     }
 
 }
