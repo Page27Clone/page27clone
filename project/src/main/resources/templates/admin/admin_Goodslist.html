@@ -83,7 +83,6 @@
                 <tbody>
                     <tr th:each="product : ${productList}">
                         <td><input type="checkbox" class="checkbox-select"></td>
-<!--                        <td><img src="@{${product.imgUrl}}" width="70px"></td>-->
                         <td><img th:src="@{${product.imgUrl}}" width="70px"></td>
                         <td>
                             <div class="item-name item-info"><a href="#" th:text = "${product.itemName}">베이직 카고 팬츠</a></div>
@@ -95,17 +94,6 @@
                     </tr>
                 </tbody>
             </table>
-<!--            <div class="pagenate">-->
-<!--                <ul class="pagenation">-->
-<!--                    <li class="pagenatebtn-prev"><a href="#">prev</a></li>-->
-<!--                    <li class="pagenatebtn"><a href="#">1</a></li>-->
-<!--                    <li class="pagenatebtn"><a href="#">2</a></li>-->
-<!--                    <li class="pagenatebtn"><a href="#">3</a></li>-->
-<!--                    <li class="pagenatebtn"><a href="#">4</a></li>-->
-<!--                    <li class="pagenatebtn"><a href="#">5</a></li>-->
-<!--                    <li class="pagenatebtn-next"><a href="#">next</a></li>-->
-<!--                </ul>-->
-<!--            </div>     -->
             <ul class="pagination justify-content-center">
                 <li class="page-item" th:classappend="${1 == productList.pageable.pageNumber + 1} ? 'disabled'">
                     <a class="page-link" href="#" th:href="@{/admin/itemList(page=${productList.pageable.pageNumber - 1})}" tabindex="-1" aria-disabled="true">Previous</a>
