@@ -129,7 +129,7 @@ public class ItemController {
     @GetMapping("/admin/itemList")
     public String itemListPage(Model model, @PageableDefault(size=3) Pageable pageable, SearchItem searchItem){
         if(searchItem.getItem_name() == null) {
-            Page<ItemDto> itemBoards = itemRepository.searchAll(pageable);
+            Page<ItemDto> itemBoards = itemRepository.searchAllItem(pageable);
 
             int homeStartPage = Math.max(1, itemBoards.getPageable().getPageNumber() - 4);
             int homeEndPage = Math.min(itemBoards.getTotalPages(), itemBoards.getPageable().getPageNumber() + 4);
@@ -139,7 +139,7 @@ public class ItemController {
 
             return "admin/admin_Goodslist";
         }
-        Page<ItemDto> itemBoards = itemRepository.searchByCondition(searchItem,pageable);
+        Page<ItemDto> itemBoards = itemRepository.searchAllItemByCondition(searchItem,pageable);
 
         int startPage = Math.max(1,itemBoards.getPageable().getPageNumber() - 4);
         int endPage = Math.min(itemBoards.getTotalPages(),itemBoards.getPageable().getPageNumber() + 4);

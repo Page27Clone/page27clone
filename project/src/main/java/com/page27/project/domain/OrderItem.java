@@ -56,5 +56,5 @@ public class OrderItem {
 
     public int getTotalPrice(){
         return this.getOrderPrice() * this.getCount();
-    }// 전체 가격조회회
+    }// 전체 가격조회
 }

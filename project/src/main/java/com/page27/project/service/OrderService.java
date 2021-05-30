@@ -41,9 +41,13 @@ public class OrderService {
         delivery.setAddress(checkedFindMember.getAddress());
         delivery.setDeliveryStatus(DeliveryStatus.READY);
         //배송 정보 생성
+        //delivery 객체를 만들 때 기본적 요소인 Member와 Address를 이용해서 만든다.
 
         OrderItem orderItem = OrderItem.createOrderItem(checkedItem, checkedItem.getPrice(), count);
+        //주문 상품 생성
         Order order = Order.createOrder(checkedFindMember,delivery,orderItem);
+        //주문 생성 -> 여기서 주문상품과 delivery 객체 이용
+        // -> 즉 주문을 생성하기 이전에 주문 상품과 delivery가 만들어져야 한다.
 
         orderRepository.save(order);
 

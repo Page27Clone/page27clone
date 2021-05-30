@@ -7,6 +7,6 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface ItemRepositoryCustom {
-    Page<ItemDto> searchAll(Pageable pageable);
-    Page<ItemDto> searchByCondition(SearchItem searchItem, Pageable pageable);
+    Page<ItemDto> searchAllItem(Pageable pageable);
+    Page<ItemDto> searchAllItemByCondition(SearchItem searchItem, Pageable pageable);
 }

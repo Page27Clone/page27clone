@@ -30,7 +30,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
     }
 
     @Override
-    public Page<ItemDto> searchAll(Pageable pageable) {
+    public Page<ItemDto> searchAllItem(Pageable pageable) {
         QueryResults<ItemDto> results = queryFactory
                 .select(new QItemDto(
                         QItem.item.id,
@@ -56,7 +56,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
     }
 
     @Override
-    public Page<ItemDto> searchByCondition(SearchItem search, Pageable pageable) {
+    public Page<ItemDto> searchAllItemByCondition(SearchItem search, Pageable pageable) {
         QueryResults results = queryFactory
                 .select(new QItemDto(
                         QItem.item.id,
