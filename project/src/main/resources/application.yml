@@ -11,10 +11,10 @@ spring:
         enabled: true
   jpa:
     hibernate:
-      #ddl-auto: create
+#      ddl-auto: create
     properties:
       hibernate:
-       # show_sql: true
+#        show_sql: true
         format_sql: true
   servlet:
     multipart:
@@ -22,7 +22,6 @@ spring:
       max-file-size: 10MB
       max-request-size: 10MB
       location: C:/Temp
-
 
 
 #logging:
