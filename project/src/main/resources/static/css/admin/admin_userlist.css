@@ -100,12 +100,13 @@ section .user-box .bottombtn-box .bottom-deletebtn {
     background-color: var(--btn-red);
 }
 
-section .user-box .pagenate {
+/*페이징*/
+section .user-box .paginate {
     display: flex;
     justify-content: center;
 }
 
-section .user-box .pagenation {
+section .user-box .pagination {
     display: flex;
     justify-content: center;
     font-size: 14px;
@@ -115,13 +116,17 @@ section .user-box .pagenation {
     border-radius: 3px;
 }
 
-section .user-box .pagenation li {
+section .user-box .pagination li {
     padding: 5px 10px;
 }
 
-section .user-box .pagenation a{
+section .user-box .pagination a{
     text-decoration: none;
     color: var(--caption-color);
+}
+
+section .user-box .pagination a:active{
+    color: var(--btn-red);
 }
 
 .disabled {

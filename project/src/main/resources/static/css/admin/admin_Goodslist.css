@@ -103,12 +103,12 @@ td {
 
 
 /*pagination*/
-section .goods-box .pagenate {
-    display: flex;
-    justify-content: center;
+section .goods-box .paginate {
+    display:flex;
+    justify-content:center;
 }
 
-section .goods-box .pagenation {
+section .goods-box .pagination {
     display: flex;
     justify-content: center;
     font-size: 14px;
@@ -118,15 +118,22 @@ section .goods-box .pagenation {
     border-radius: 3px;
 }
 
-section .goods-box .pagenation li {
+section .goods-box .pagination li {
     padding: 5px 10px;
 }
 
-section .goods-box .pagenation a{
+section .goods-box .pagination a{
     text-decoration: none;
     color: var(--caption-color);
 }
 
+section .goods-box .pagination a:active{
+    color: var(--btn-red);
+}
+
+.disabled {
+    pointer-events:none;
+}
 
 /*input 요소*/
 
@@ -152,9 +159,4 @@ input[type='button'], input[type='submit'] {
 }
 input[type='button']:hover {
     filter: brightness(80%);
-}
-
-
-.disabled {
-    pointer-events:none;
 }
