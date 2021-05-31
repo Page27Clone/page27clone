@@ -53,10 +53,7 @@ $(function(){
             $('.checkbox-select').prop('checked', false);
         }
     })
-
-    //총 검색 row 수 구현
-    const totalRows = $('.item-table tbody tr').length;
-    $('.num-searched').html(totalRows);
+    
 
     //처리 버튼 클릭시 옵션에 따라 ajax호출
     $('#managebtn').click(function(){

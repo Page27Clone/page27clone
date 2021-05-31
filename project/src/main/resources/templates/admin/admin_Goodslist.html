@@ -63,7 +63,7 @@
                     <input type="button" id="managebtn" value="변경">
                 </div>
                 <div class="num-searched-box">
-                    총 <b class="num-searched">0</b> 개의 상품이 검색되었습니다.
+                    총 <b class="num-searched"><span th:text="${productList.totalElements}"></span></b> 개의 상품이 검색되었습니다.
                 </div>
             </div>
             <table class="item-table">
