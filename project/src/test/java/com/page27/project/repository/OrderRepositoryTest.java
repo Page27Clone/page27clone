@@ -47,17 +47,15 @@ class OrderRepositoryTest {
     public void 주문목록_조회() throws Exception{
         Member member = createTestMember();
         Item item = createTestItem();
+        int orderCount = 10;
 
-        Delivery delivery = new Delivery();
-        delivery.setAddress(member.getAddress());
-        delivery.setDeliveryStatus(DeliveryStatus.COMPLETE);
+        Long testId = orderService.doOrder(member.getId(), item.getId(), orderCount);
 
-        OrderItem orderItem = OrderItem.createOrderItem(item,item.getPrice(),10);
-        Order order = Order.createOrder(member,delivery,orderItem);
+        Order checkedOrder = orderRepository.findById(testId).get();
 
-        orderRepository.save(order);
+        Assertions.assertThat(checkedOrder.getMember()).isEqualTo(member);
 
-        orderService.doOrder(member.getId(),item.getId(),10);
+
 
     }
 }

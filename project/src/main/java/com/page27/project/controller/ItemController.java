@@ -146,7 +146,9 @@ public class ItemController {
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         model.addAttribute("productList", itemBoards);
-
+        model.addAttribute("saleStatus", searchItem.getSalestatus());
+        model.addAttribute("firstCategory",searchItem.getCmode());
+        model.addAttribute("itemName",searchItem.getItem_name());
         return "admin/admin_Goodslist";
     }
 

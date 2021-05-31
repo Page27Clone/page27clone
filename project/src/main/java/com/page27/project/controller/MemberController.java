@@ -41,6 +41,8 @@ public class MemberController {
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);
         model.addAttribute("memberList",memberBoards);
+        model.addAttribute("searchCondition",searchMember.getSearchCondition());
+        model.addAttribute("searchKeyword",searchMember.getSearchKeyword());
 
         return "admin/admin_userlist";
     }// 페이징 O 전체 멤버 조회 페이지

@@ -49,6 +49,8 @@ public class OrderService {
         //주문 생성 -> 여기서 주문상품과 delivery 객체 이용
         // -> 즉 주문을 생성하기 이전에 주문 상품과 delivery가 만들어져야 한다.
 
+        order.setTotalPrice(checkedItem.getPrice() * count);
+
         orderRepository.save(order);
 
         return order.getId();

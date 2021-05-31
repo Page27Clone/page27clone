@@ -37,6 +37,7 @@ public class Order extends BaseTimeEntity {
 
     private String payment;
 
+    private int totalPrice;
     //연관관계 메소드
 
     public void setMember(Member member){
