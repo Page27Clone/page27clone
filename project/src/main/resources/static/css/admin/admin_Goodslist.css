@@ -101,7 +101,7 @@ td {
     color: var(--btn-blue);
 }
 
-.soldoutbtn {
+#soldoutbtn {
     background-color: var(--btn-red);
 }
 
