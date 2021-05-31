@@ -71,14 +71,14 @@
         <!-- 여기 수정 -->
         <ul class="pagination justify-content-center">
             <li class="page-item" th:classappend="${1 == memberList.pageable.pageNumber + 1} ? 'disabled'">
-                <a class="page-link" href="#" th:href="@{/admin/userlist(page=${memberList.pageable.pageNumber - 1})}" tabindex="-1" aria-disabled="true">Previous</a>
+                <a class="page-link" href="#" th:href="@{/admin/userlist(page=${memberList.pageable.pageNumber - 1},searchCondition=${searchCondition},searchKeyword=${searchKeyword})}" tabindex="-1" aria-disabled="true">Previous</a>
             </li>
 
             <li class="page-item" th:classappend="${i == memberList.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
                 <a class="page-link" href="#" th:href="@{/admin/userlist(page=${i - 1},searchCondition=${searchCondition},searchKeyword=${searchKeyword})}" th:text="${i}">1</a></li>
 
             <li class="page-item" th:classappend="${memberList.totalPages == memberList.pageable.pageNumber + 1} ? 'disabled'">
-                <a class="page-link" href="#" th:href="@{/admin/userlist(page=${memberList.pageable.pageNumber + 1})}">Next</a>
+                <a class="page-link" href="#" th:href="@{/admin/userlist(page=${memberList.pageable.pageNumber + 1},searchCondition=${searchCondition},searchKeyword=${searchKeyword})}">Next</a>
             </li>
         </ul>
         <!-- 여기까지 -->

@@ -123,3 +123,7 @@ section .user-box .pagenation a{
     text-decoration: none;
     color: var(--caption-color);
 }
+
+.disabled {
+    pointer-events:none;
+}

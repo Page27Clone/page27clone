@@ -85,7 +85,7 @@
                         <td><input type="checkbox" class="checkbox-select"></td>
                         <td><img th:src="@{${product.imgUrl}}" width="70px"></td>
                         <td>
-                            <div class="item-name item-info"><a href="#" th:text = "${product.itemName}">베이직 카고 팬츠</a></div>
+                            <div class="item-name item-info"><a href="#" th:text = "${product.itemName} +'<'+ ${product.color}+'>'">베이직 카고 팬츠</a></div>
                             <div class="item-classification item-info" th:text = "'분류 : ' + ${product.firstCategory}">분류 : BOTTOM</div>
                             <div class="item-price item-info" th:text = "'가격 : ' + ${product.price}">가격 : 14000원</div>
                         </td>
@@ -102,14 +102,14 @@
 
             <ul class="pagination justify-content-center">
                 <li class="page-item" th:classappend="${1 == productList.pageable.pageNumber + 1} ? 'disabled'">
-                    <a class="page-link" href="#" th:href="@{/admin/itemList(page=${productList.pageable.pageNumber - 1})}" tabindex="-1" aria-disabled="true">Previous</a>
+                    <a class="page-link" href="#" th:href="@{/admin/itemList(page=${productList.pageable.pageNumber - 1},salestatus=${saleStatus},cmode=${firstCategory},item_name=${itemName})}" tabindex="-1" aria-disabled="true">Previous</a>
                 </li>
 
                 <li class="page-item" th:classappend="${i == productList.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
                     <a class="page-link" href="#" th:href="@{/admin/itemList(page=${i - 1},salestatus=${saleStatus},cmode=${firstCategory},item_name=${itemName})}" th:text="${i}">1</a></li>
 
                 <li class="page-item" th:classappend="${productList.totalPages == productList.pageable.pageNumber + 1} ? 'disabled'">
-                    <a class="page-link" href="#" th:href="@{/admin/itemList(page=${productList.pageable.pageNumber + 1})}">Next</a>
+                    <a class="page-link" href="#" th:href="@{/admin/itemList(page=${productList.pageable.pageNumber + 1},salestatus=${saleStatus},cmode=${firstCategory},item_name=${itemName})}">Next</a>
                 </li>
             </ul>
         </div>

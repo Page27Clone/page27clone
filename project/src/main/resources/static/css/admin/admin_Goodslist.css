@@ -153,3 +153,7 @@ input[type='button'], input[type='submit'] {
 input[type='button']:hover {
     filter: brightness(80%);
 }
+
+.disabled {
+    pointer-events:none;
+}
