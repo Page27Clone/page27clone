@@ -61,7 +61,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().ignoringAntMatchers("/admin/changepassword")
 
-                .ignoringAntMatchers("/admin/changepassword_ok");
+                .ignoringAntMatchers("/admin/changepassword_ok")
+                .ignoringAntMatchers("/admin/itemList1")
+                .ignoringAntMatchers("/admin/itemList2")
+                .ignoringAntMatchers("/admin/itemList3");
 
         http
                 .authorizeRequests()
