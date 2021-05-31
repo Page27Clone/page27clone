@@ -90,7 +90,8 @@
                             <div class="item-price item-info" th:text = "'가격 : ' + ${product.price}">가격 : 14000원</div>
                         </td>
                         <td><input type="button" th:value="${product.saleStatus}"></td>
-                        <input type="hidden" th:value="${product.id}">
+                        <input type="hidden" class="item_idx" th:value="${product.itemIdx}">
+                        <input type="hidden" class="item_color" th:value="${product.color}">
                     </tr>
                 </tbody>
             </table>

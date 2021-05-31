@@ -66,7 +66,8 @@ $(function(){
         let idlist = [];
         $('.checkbox-select').each(function(){
             if($(this).is(':checked')){
-                const id = $(this).closest('tr').find('input[type=hidden]').val();
+                const id = $(this).closest('tr').find('.item_idx').val();
+                const color = $(this).closest('tr').find('.item_color').val();
                 idlist.push(id);
             }
         })
