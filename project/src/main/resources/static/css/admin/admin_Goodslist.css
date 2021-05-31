@@ -101,6 +101,10 @@ td {
     color: var(--btn-blue);
 }
 
+.soldoutbtn {
+    background-color: var(--btn-red);
+}
+
 
 /*pagination*/
 section .goods-box .paginate {

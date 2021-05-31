@@ -89,7 +89,10 @@
                             <div class="item-classification item-info" th:text = "'분류 : ' + ${product.firstCategory}">분류 : BOTTOM</div>
                             <div class="item-price item-info" th:text = "'가격 : ' + ${product.price}">가격 : 14000원</div>
                         </td>
-                        <td><input type="button" th:value="${product.saleStatus}"></td>
+                        <td>
+                            <input type="button" th:if="${product.saleStatus.toString().equals('onsale')}" th:value="판매중">
+                            <input type="button" th:class="soldoutbtn" th:if="${product.saleStatus.toString().equals('soldout')}" th:value="품절">
+                        </td>
                         <input type="hidden" class="item_idx" th:value="${product.itemIdx}">
                         <input type="hidden" class="item_color" th:value="${product.color}">
                     </tr>
