@@ -100,19 +100,20 @@
 <!--            <div th:text="${productList[0].itemName}"></div>-->
 <!--            <div th:text="${productList[0].saleStatus}"></div>-->
 
+            <div class="paginate">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" th:classappend="${1 == productList.pageable.pageNumber + 1} ? 'disabled'">
+                        <a class="page-link" href="#" th:href="@{/admin/itemList(page=${productList.pageable.pageNumber - 1},salestatus=${saleStatus},cmode=${firstCategory},item_name=${itemName})}" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
 
-            <ul class="pagination justify-content-center">
-                <li class="page-item" th:classappend="${1 == productList.pageable.pageNumber + 1} ? 'disabled'">
-                    <a class="page-link" href="#" th:href="@{/admin/itemList(page=${productList.pageable.pageNumber - 1},salestatus=${saleStatus},cmode=${firstCategory},item_name=${itemName})}" tabindex="-1" aria-disabled="true">Previous</a>
-                </li>
+                    <li class="page-item" th:classappend="${i == productList.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                        <a class="page-link" href="#" th:href="@{/admin/itemList(page=${i - 1},salestatus=${saleStatus},cmode=${firstCategory},item_name=${itemName})}" th:text="${i}">1</a></li>
 
-                <li class="page-item" th:classappend="${i == productList.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
-                    <a class="page-link" href="#" th:href="@{/admin/itemList(page=${i - 1},salestatus=${saleStatus},cmode=${firstCategory},item_name=${itemName})}" th:text="${i}">1</a></li>
-
-                <li class="page-item" th:classappend="${productList.totalPages == productList.pageable.pageNumber + 1} ? 'disabled'">
-                    <a class="page-link" href="#" th:href="@{/admin/itemList(page=${productList.pageable.pageNumber + 1},salestatus=${saleStatus},cmode=${firstCategory},item_name=${itemName})}">Next</a>
-                </li>
-            </ul>
+                    <li class="page-item" th:classappend="${productList.totalPages == productList.pageable.pageNumber + 1} ? 'disabled'">
+                        <a class="page-link" href="#" th:href="@{/admin/itemList(page=${productList.pageable.pageNumber + 1},salestatus=${saleStatus},cmode=${firstCategory},item_name=${itemName})}">Next</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </section>
     <script src="/js/admin/admin_nav.js"></script>
