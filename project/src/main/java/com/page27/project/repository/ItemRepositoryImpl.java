@@ -40,7 +40,8 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                         QItem.item.saleStatus,
                         QItem.item.imgUrl,
                         QItem.item.color,
-                        QItem.item.rep
+                        QItem.item.rep,
+                        QItem.item.itemIdx
                 ))
                 .from(QItem.item)
                 .where(QItem.item.rep.eq(true))
@@ -57,7 +58,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
 
     @Override
     public Page<ItemDto> searchAllItemByCondition(SearchItem search, Pageable pageable) {
-        System.out.println("here 1 + " + search.getCmode());
+
         if(search.getCmode().equals("whole")){
             QueryResults results = queryFactory
                     .select(new QItemDto(
@@ -68,14 +69,15 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                             QItem.item.saleStatus,
                             QItem.item.imgUrl,
                             QItem.item.color,
-                            QItem.item.rep
+                            QItem.item.rep,
+                            QItem.item.itemIdx
                     ))
                     .from(QItem.item)
                     .where(QItem.item.rep.eq(true),saleStatusEq(search.getSalestatus()),itemNameEq(search.getItem_name()))
                     .offset(pageable.getOffset())
                     .limit(pageable.getPageSize())
                     .fetchResults();
-            System.out.println("here 2 + " + search.getCmode());
+
             List<ItemDto> content = results.getResults();
             long total = results.getTotal();
 
@@ -91,7 +93,8 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                             QItem.item.saleStatus,
                             QItem.item.imgUrl,
                             QItem.item.color,
-                            QItem.item.rep
+                            QItem.item.rep,
+                            QItem.item.itemIdx
                     ))
                     .from(QItem.item)
                     .where(QItem.item.rep.eq(true), saleStatusEq(search.getSalestatus()),cmodeEq(search.getCmode()), itemNameEq(search.getItem_name()))

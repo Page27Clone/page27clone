@@ -17,13 +17,11 @@ public class ItemDto {
     private String imgUrl;
     private String color;
     private boolean rep;
-
+    private Long itemIdx;
 
 
     @QueryProjection
-    public ItemDto(Long id, String itemName, String firstCategory, int price, String saleStatus,String imgUrl,String color,boolean rep) {
-//        System.out.println(imgUrl.split(",")[0]);
-//        String[] imgArr = imgUrl.split(",");
+    public ItemDto(Long id, String itemName, String firstCategory, int price, String saleStatus, String imgUrl, String color, boolean rep, Long itemIdx) {
         this.id = id;
         this.itemName = itemName;
         this.firstCategory = firstCategory;
@@ -32,6 +30,7 @@ public class ItemDto {
         this.imgUrl = imgUrl;
         this.color = color;
         this.rep = rep;
+        this.itemIdx = itemIdx;
     }
 }
 
