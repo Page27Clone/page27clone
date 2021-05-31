@@ -9,6 +9,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-public interface ItemRepository extends JpaRepository<Item, Long>,ItemRepositoryCustom{
+import java.util.List;
 
+public interface ItemRepository extends JpaRepository<Item, Long>,ItemRepositoryCustom{
+    List<Item> findAllByItemIdxAndColor(Long idx, String color);
 }

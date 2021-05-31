@@ -5,7 +5,7 @@ function changeStatus(manage_option, idlist){ //ajax로 처리;
         case 'onsale': //수정 사항 있음.
             $.ajax({
                 type: 'PATCH',
-                url: '/admin/goodslist1',
+                url: '/admin/itemList1',
                 data: json,
                 contentType : "application/json; charset=UTF-8"
             }).done(function(word){
@@ -18,7 +18,7 @@ function changeStatus(manage_option, idlist){ //ajax로 처리;
         case 'soldout':
             $.ajax({
                 type: 'PATCH',
-                url: '/admin/goodslist2',
+                url: '/admin/itemList2',
                 data: json,
                 contentType : "application/json; charset=UTF-8"
             }).done(function(word){
@@ -31,7 +31,7 @@ function changeStatus(manage_option, idlist){ //ajax로 처리;
         case 'deletegoods':
             $.ajax({
                 type: 'DELETE',
-                url: '/admin/goodslist3',
+                url: '/admin/itemList3',
                 data: json,
                 contentType : "application/json; charset=UTF-8"
             }).done(function(word){

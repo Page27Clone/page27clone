@@ -6,6 +6,7 @@ import com.page27.project.domain.SearchItem;
 import com.page27.project.dto.ItemDto;
 import com.page27.project.dto.QItemDto;
 import com.page27.project.repository.ItemRepository;
+import com.page27.project.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.data.domain.Page;
@@ -20,7 +21,9 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -28,6 +31,7 @@ import java.util.List;
 public class ItemController {
 
     private final ItemRepository itemRepository;
+    private final ItemService itemService;
 
     @GetMapping("/admin/register")
     public String getRegisterItemPage(){
@@ -152,16 +156,36 @@ public class ItemController {
         return "admin/admin_Goodslist";
     }
 
-    @PatchMapping("/admin/itemList")
-    public @ResponseBody String changeStatusPage(@RequestParam(value = "change") List<Long> idList){
-        int size = idList.size();
+    @ResponseBody
+    @PatchMapping("/admin/itemList1")
+    public String itemStatusOnSalePage(@RequestBody List<Map<String,String>> allData){
+        for(Map<String,String> temp : allData){
+            itemService.changeItemStatusOnSale(temp.get("itemIdx"),temp.get("itemColor"));
+        }
+        return "상품 상태 판매 변경완료";
+    }
 
-        return null;
+    @ResponseBody
+    @PatchMapping("/admin/itemList2")
+    public String itemStatusSoldOutPage(@RequestBody List<Map<String,String>> allData ){
+
+        for(Map<String,String> temp : allData){
+            itemService.changeItemStatusSoldOut(temp.get("itemIdx"),temp.get("itemColor"));
+        }
+        return "상품 상태 품절 변경완료";
+    }
+
+    @ResponseBody
+    @DeleteMapping("/admin/itemList3")
+    public String itemdeletePage(@RequestBody List<Map<String,String>> allData){
+        for(Map<String,String> temp : allData){
+            itemService.deleteItemById(temp.get("itemIdx"),temp.get("itemColor"));
+        }
+        return "상품 삭제 완료";
     }
 
     @GetMapping("/admin/orderList")
     public String getOrderPage(){
         return "admin/admin_order";
     }
-
 }
