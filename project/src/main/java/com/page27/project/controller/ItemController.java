@@ -92,7 +92,6 @@ public class ItemController {
                                  ,@RequestParam("stock_quantity")int itemQuantity
                                  ,@RequestParam("fabric")String itemFabric
                                  ,@RequestParam("model")String itemModel
-
     ){
 
         List<MultipartFile> fileList = mtfRequest.getFiles("upload_image");
