@@ -9,6 +9,8 @@ import com.page27.project.repository.ItemRepository;
 import com.page27.project.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.io.FilenameUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -30,54 +32,15 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class ItemController {
 
+    private final Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
+
     private final ItemRepository itemRepository;
     private final ItemService itemService;
 
     @GetMapping("/admin/register")
     public String getRegisterItemPage(){
-
         return "admin/admin_registerGoods";
     }
-
-//    @GetMapping("/admin/test")
-//    public String testPage(){
-//        return "admin/admin_uploadTest";
-//    }
-//
-//    @PostMapping("/admin/test")
-//    public String requestupload2(MultipartHttpServletRequest mtfRequest) {
-//        List<MultipartFile> fileList = mtfRequest.getFiles("file");
-//
-//        if(mtfRequest.getFiles("file").get(0).getSize() != 0){
-//            fileList = mtfRequest.getFiles("file");
-//        }
-//
-//        String src = mtfRequest.getParameter("src");
-//        System.out.println("src value : " + src);
-//        System.out.println("here test " + fileList.size());
-//        String path = "C:\\image\\temp\\";
-//
-//        for (MultipartFile mf : fileList) {
-//            String originFileName = mf.getOriginalFilename(); // 원본 파일 명
-//            long fileSize = mf.getSize(); // 파일 사이즈
-//
-//            System.out.println("originFileName : " + originFileName);
-//            System.out.println("fileSize : " + fileSize);
-//
-//            String safeFile = path + System.currentTimeMillis() + originFileName;
-//            try {
-//                mf.transferTo(new File(safeFile));
-//            } catch (IllegalStateException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            } catch (IOException e) {
-//                // TODO Auto-generated catch block
-//                e.printStackTrace();
-//            }
-//        }
-//
-//        return "redirect:/";
-//    }
 
     @PostMapping("/admin/register")
     public String requestupload2(MultipartHttpServletRequest mtfRequest,@RequestParam("cmode1")String firstCategory
@@ -94,38 +57,39 @@ public class ItemController {
                                  ,@RequestParam("model")String itemModel
     ){
 
-        List<MultipartFile> fileList = mtfRequest.getFiles("upload_image");
-        String src = mtfRequest.getParameter("src");
-        System.out.println("File Upload");
         String folderPath = "C:\\image\\temp\\" + firstCategory + "\\" + secondCategory + "\\" + thirdCategory + "\\";
-        File folder = new File(folderPath);
-        String path = "C:\\image\\temp\\" + firstCategory + "\\" + secondCategory + "\\" + thirdCategory + "\\";
+        File newFile = new File(folderPath);
+        if(newFile.mkdirs()){
+            logger.info("directory make ok");
+        }else{
+            logger.warn("directory can't make");
+        }
 
-        System.out.println("here test" + fileList.size());
-        for(MultipartFile mf : fileList){
+        List<MultipartFile> fileList = mtfRequest.getFiles("upload_image");
+        Long newItemIdx = itemRepository.searchMaxItemIdx();
 
-            String originFileName = mf.getOriginalFilename();
-            long fileSize = mf.getSize();
+        for(int i = 0; i< fileList.size();i++){
+            String originFileName = fileList.get(i).getOriginalFilename();
+//            long fileSize = fileList.get(i).getSize();
+            String safeFile = folderPath + originFileName;
 
-            System.out.println("origin FileName : " + originFileName);
-            System.out.println("file size : " + fileSize);
+            Item item = new Item(firstCategory,secondCategory,thirdCategory,itemName,itemPrice,itemInfo,itemColor,itemFabric,itemModel,itemSize,itemQuantity,safeFile,saleStatus,newItemIdx + 1,true);
 
-            //String safeFile = path + System.currentTimeMillis() + originFileName;
-            String safeFile = path + System.currentTimeMillis() + originFileName;
-//            Item item = new Item(firstCategory,secondCategory,thirdCategory,itemName,itemPrice,itemInfo,itemColor,itemFabric,itemModel,itemSize,itemQuantity,safeFile,saleStatus);
-//            itemRepository.save(item);
-//            System.out.println("File path : " + safeFile);
-
+            if(i == 0){
+                itemRepository.save(item);
+            }
+            else{
+                item.setRep(false);
+                itemRepository.save(item);
+            }
             try{
-                mf.transferTo(new File(safeFile));
+                fileList.get(i).transferTo(new File(safeFile));
             }catch(IllegalStateException e){
                 e.printStackTrace();
             }catch(IOException e){
                 e.printStackTrace();
             }
-
-
-        }// 이미지 파일 업로드
+        }
         return "redirect:/";
     }
 

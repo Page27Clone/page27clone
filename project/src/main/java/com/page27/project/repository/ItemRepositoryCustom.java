@@ -9,4 +9,5 @@ import org.springframework.data.domain.Pageable;
 public interface ItemRepositoryCustom {
     Page<ItemDto> searchAllItem(Pageable pageable);
     Page<ItemDto> searchAllItemByCondition(SearchItem searchItem, Pageable pageable);
+    Long searchMaxItemIdx();
 }

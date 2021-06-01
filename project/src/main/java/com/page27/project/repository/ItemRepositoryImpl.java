@@ -1,5 +1,6 @@
 package com.page27.project.repository;
 
+import com.page27.project.domain.Item;
 import com.page27.project.domain.QItem;
 import com.page27.project.domain.QMember;
 import com.page27.project.domain.SearchItem;
@@ -128,6 +129,20 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
            return null;
        }
        return QItem.item.itemName.likeIgnoreCase("%" + itemNameCondition + "%");
+    }
+
+    @Override
+    public Long searchMaxItemIdx() {
+        QItem itemSub = new QItem("itemSub");
+        List<Item> findItem = queryFactory
+                .selectFrom(QItem.item)
+                .where(QItem.item.itemIdx.eq(
+                        JPAExpressions
+                        .select(itemSub.itemIdx.max())
+                        .from(itemSub)
+                ))
+                .fetch();
+        return findItem.get(0).getItemIdx();
     }
 
 
