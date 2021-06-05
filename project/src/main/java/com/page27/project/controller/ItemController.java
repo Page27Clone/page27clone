@@ -147,8 +147,5 @@ public class ItemController {
         return "상품 삭제 완료";
     }
 
-    @GetMapping("/admin/orderList")
-    public String getOrderPage(){
-        return "admin/admin_order";
-    }
+
 }

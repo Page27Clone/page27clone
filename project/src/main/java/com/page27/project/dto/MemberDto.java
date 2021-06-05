@@ -5,6 +5,7 @@ import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Data
@@ -17,11 +18,11 @@ public class MemberDto {
     private String phoneNumber;
     private int visitCount;
     private int orderCount;
-    private LocalDateTime createdAt;
+    private LocalDate createdAt;
 
 
     @QueryProjection
-    public MemberDto(Long id, String name, String loginId, MemberGrade memberGrade, String phoneNumber, int visitCount, int orderCount, LocalDateTime createdAt) {
+    public MemberDto(Long id, String name, String loginId, MemberGrade memberGrade, String phoneNumber, int visitCount, int orderCount, LocalDate createdAt) {
         this.id = id;
         this.name = name;
         this.loginId = loginId;

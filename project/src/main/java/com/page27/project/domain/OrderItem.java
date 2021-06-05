@@ -28,6 +28,9 @@ public class OrderItem {
 
     private int count;
 
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
+
     // 관계 메소드
     // 근데 어차피 Item에서는 OrderItem에 CRUD를 할 일이 없을 것 같기는 한데...
     // Order를 하게 되면 OrderItem에 Item이 들어가게 된다.
@@ -40,7 +43,7 @@ public class OrderItem {
     public static OrderItem createOrderItem(Item item, int orderPrice, int count){
         OrderItem orderItem = new OrderItem();
         orderItem.setItem(item);
-        orderItem.setOrderPrice(orderPrice);
+        orderItem.setOrderPrice(orderPrice * count);
         orderItem.setCount(count);
 
         item.minusStockQuantity(count);
@@ -54,7 +57,7 @@ public class OrderItem {
         this.getItem().plusStockQuantity(count);
     }// 취소하면서 재고 복구
 
-    public int getTotalPrice(){
+    public int getCalPrice(){
         return this.getOrderPrice() * this.getCount();
     }// 전체 가격조회
 }

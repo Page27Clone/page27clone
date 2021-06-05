@@ -26,13 +26,12 @@
                 <label class="form-label">주문상태</label>
                 <span>
                     <select name="omode">
-                        <option value="whole">전체</option>
-                        <option value="pay-waiting">입금대기</option>
-                        <option value="pay-complete">결제완료</option>
-                        <option value="pre-ship">발송준비중</option>
-                        <option value="in-ship">배송중</option>
-                        <option value="complete-ship">배송완료</option>
-                        <option value="order-cancel">주문취소</option>
+                        <option value="PAYWAITING">입금대기</option>
+                        <option value="PAYCOMPLETE">결제완료</option>
+                        <option value="PRESHIP">발송준비중</option>
+                        <option value="INSHIP">배송중</option>
+                        <option value="COMPLETESHIP">배송완료</option>
+                        <option value="ORDERCANCEL">주문취소</option>
                     </select>
                 </span>
             </div>
@@ -65,14 +64,14 @@
                 </thead>
                 <tbody>
                     <tr th:each="order : ${orderList}">
-                        <td th:text = "${order.username}">채창완(sejchae)</td>
-                        <td th:text = "${order.productname}">베이직 카고팬츠</td>
-                        <td th:text = "${order.price}">14000원</td>
+                        <td th:text = "${order.name}">채창완(sejchae)</td>
+                        <td th:text = "${order.itemName}">베이직 카고팬츠</td>
+                        <td th:text = "${order.orderPrice}">14000원</td>
                         <td th:text = "${order.payment}">카드결제</td>
-                        <td th:text = "${order.date}">2021-05-03</td>
+                        <td th:text = "${order.orderedAt}">2021-05-03</td>
                         <td>
                             <select name="change-omode" class="omode">
-                                <option value="whole">전체</option>
+<!--                                <option value="whole">전체</option>-->
                                 <option value="pay-waiting">입금전</option>
                                 <option value="pre-ship">배송준비중</option>
                                 <option value="in-ship">배송중</option>
@@ -88,17 +87,20 @@
                     </tr>
                 </tbody>
             </table>
-            <div class="pagenate">
-                <ul class="pagenation">
-                    <li class="pagenatebtn-prev"><a href="#">prev</a></li>
-                    <li class="pagenatebtn"><a href="#">1</a></li>
-                    <li class="pagenatebtn"><a href="#">2</a></li>
-                    <li class="pagenatebtn"><a href="#">3</a></li>
-                    <li class="pagenatebtn"><a href="#">4</a></li>
-                    <li class="pagenatebtn"><a href="#">5</a></li>
-                    <li class="pagenatebtn-next"><a href="#">next</a></li>
+            <div class="paginate">
+                <ul class="pagination justify-content-center">
+                    <li class="page-item" th:classappend="${1 == orderList.pageable.pageNumber + 1} ? 'disabled'">
+                        <a class="page-link" href="#" th:href="@{/admin/orderList(page=${orderList.pageable.pageNumber - 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode},smode=${sMode},sinput=${sInput})}" tabindex="-1" aria-disabled="true">Previous</a>
+                    </li>
+
+                    <li class="page-item" th:classappend="${i == orderList.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                        <a class="page-link" href="#" th:href="@{/admin/orderList(page=${i - 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode},smode=${sMode},sinput=${sInput})}" th:text="${i}">1</a></li>
+
+                    <li class="page-item" th:classappend="${orderList.totalPages == orderList.pageable.pageNumber + 1} ? 'disabled'">
+                        <a class="page-link" href="#" th:href="@{/admin/orderList(page=${orderList.pageable.pageNumber + 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode},smode=${sMode},sinput=${sInput})}">Next</a>
+                    </li>
                 </ul>
-            </div>     
+            </div>
         </div>
     </section>
     <script src="/js/admin/admin_nav.js"></script>
