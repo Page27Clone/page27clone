@@ -1,0 +1,314 @@
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section_caption {
+    padding: 45px 0;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.section_content {
+    margin-top: 20px;
+    width: 1260px;
+}
+
+/*benefit_info*/
+.benefit_info {
+    display: flex;
+    border: 1px solid var(--border-color-basic);
+    padding: 10px 0;
+}
+.benefit_info .benefit_info_caption {
+    width: 105px;
+    border-right: 1px solid var(--border-color-basic);
+    padding: 17px 25px;
+    font-size: 13px;
+}
+
+.benefit_info .benefit_info_desc {
+    width: 100%;
+    padding: 0px 20px;
+    font-size: 12px;
+}
+
+.benefit_info .benefit_info_desc .benefit_info_desc_item {
+    width: 100%;
+    padding-bottom:8px;
+}
+
+.benefit_info .benefit_info_desc .benefit_info_mileage {
+    border-top: 1px solid var(--border-color-basic);
+    padding-bottom: 0;
+    padding-top: 8px;
+}
+
+
+
+/*about_order*/
+.about_order {
+    font-size: 12px;
+    color: var(--font-color-gray);
+    border-top: 1px solid var(--border-color-basic);
+    border-bottom: 1px solid var(--border-color-basic);
+    padding: 10px 10px;
+    margin-top: 20px;
+}
+
+.about_order i {
+    display: inline-block;
+    font-size: 10px;
+    color: red;
+    border: 1px solid var(--border-color-basic2);
+    padding: 1px 4px;
+    border-radius: 3px;
+
+}
+
+/*orderlist*/
+.orderlist {
+    margin-top: 10px;
+}
+
+.orderlist .orderlist_caption{
+    font-size: 13px;
+    padding: 0 10px;
+}
+
+.orderlist .orderlist_content{
+    margin-top: 10px;
+}
+
+table{
+    width: 100%;
+    font-size: 12px;   
+    color: var(--font-color-gray2);
+    border-top: 1px solid var(--border-color-basic);
+    border-collapse: collapse;
+}
+
+.orderlist td, th {
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid var(--border-color-basic2);
+}
+
+
+
+input[type=number] {
+    width: 50px;
+    height: 25px;
+    border: 1px solid var(--border-color-basic2);
+    border-radius: 3px;
+    padding-left: 5px;
+    font-size: 12px;
+}
+.numberupdatebtn {
+    margin-top: 5px;
+    width: 50px;
+    height: 25px;
+    border: 1px solid var(--font-color-gray);
+    border-radius: 3px;
+    font-size: 12px;
+    background-color: white;
+}
+
+.numberupdatebtn:hover {
+    filter: brightness(90%);
+}
+
+.order_mileage::before {
+    font-size: 10px;
+    content: '적';
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    background-color: #b88cc5;
+    color: white;
+    border-radius: 3px;
+    text-align: center;
+    margin-right: 2px;
+}
+
+
+/*bottombtn_box*/
+
+.bottombtn_box {
+    font-size: 13px;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.bottombtn {
+    font-size: 12px;
+    background-color: #999999;
+    padding: 5px 10px;
+    color:white;
+    border: none;
+    border-radius: 5px;
+}
+.bottombtn:hover{
+    filter:brightness(90%);
+}
+
+
+/*orderform*/
+
+
+#orderform {
+    margin-top: 50px;
+}
+
+#orderform .delivery_info_caption {
+    display: flex;
+    justify-content: space-between;
+    padding: 7px 10px;
+    font-size: 13px;
+}
+#orderform .delivery_info_caption .delivery_info_caption_right span{
+    color: red;
+}
+
+#orderform .delivery_info_table {
+    border-top: 1px solid var(--border-color-basic2);
+}
+
+#orderform .delivery_info_table th, td {
+    font-weight: normal;
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--border-color-basic2);
+}
+
+#orderform .delivery_info_table th{
+    text-align: left;
+    border-right: 1px solid var(--border-color-basic2);
+}
+
+#orderform .delivery_info_table th label span {
+    font-size: 10px;
+    color: red;
+}
+
+#orderform .delivery_info_table td .address_margin { /*주소, 상세주소 부분*/
+    margin-top: 5px;
+    width: 460px;
+}
+
+#orderform .delivery_info_table .address_choice {
+    padding: 4px 0;
+}
+
+#orderform .delivery_info_table .address_choice label{
+    position: relative;
+    top: -2px;
+    margin-right: 5px;
+}
+
+#orderform .delivery_info_table .adjust_height {
+    vertical-align: text-top;
+}
+
+#postbtn {
+    padding: 3px 10px;
+    font-size: 13px;
+    background-color: white;
+    border: 1px solid #b4b4b4;
+    border-radius: 3px;
+}
+
+#postbtn:hover {
+    filter: brightness(90%);
+}
+
+#postbtn i {
+    font-size: 10px;
+    color: red;
+    margin-left: 5px;
+}
+
+#sample6_postcode {
+    width: 70px;
+}
+
+#orderform .delivery_info_table td .address_home_number {
+    width: 70px;
+}
+
+#orderform .delivery_info_table td .address_phone_number {
+    width: 70px;
+}
+
+/*payment*/
+.payment_caption {
+    margin-top: 30px;
+    padding: 7px 10px;
+    font-size: 13px;
+}
+
+.payment_table th {
+    font-weight: normal;
+    padding: 20px;
+    color: black;
+}
+
+.payment_table td {
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.mileage_table {
+    margin-top: 20px;
+    border-top: 1px solid var(--border-color-basic2);
+}
+
+.mileage_table th {
+    font-weight: normal;
+    text-align: left;
+    border-right: 1px solid var(--border-color-basic2);
+    vertical-align: text-top;
+}
+
+.mileage_table td {
+    vertical-align: text-top;
+}
+
+.mileage_table .canuse {
+    color: red;
+    font-weight: bold;
+}
+
+/*결제하기 버튼*/
+.payment_submit {
+    margin-top: 20px;
+    text-align: right;
+}
+
+
+/*input, select, placeholder*/
+
+input[type="text"], select {
+    height: 25px;
+    border:1px solid var(--border-color-basic2);
+    font-size: 12px;
+    padding: 3px;
+}
+
+input[type="text"]::placeholder {
+    font-size: 12px;
+}
+
+input[type="submit"] {
+    font-size: 13px;
+    padding: 10px 80px;
+    background-color: #333333;
+    border: none;
+    color: white;
+}
+
+
+

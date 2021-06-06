@@ -83,12 +83,12 @@ td {
 
 
 /*pagination*/
-section .order-box  .pagenate {
+section .order-box  .paginate {
     display: flex;
     justify-content: center;
 }
 
-section .order-box  .pagenation {
+section .order-box  .pagination {
     display: flex;
     justify-content: center;
     font-size: 14px;
@@ -98,16 +98,18 @@ section .order-box  .pagenation {
     border-radius: 3px;
 }
 
-section .order-box  .pagenation li {
+section .order-box  .pagination li {
     padding: 5px 10px;
 }
 
-section .order-box  .pagenation a{
+section .order-box  .pagination a{
     text-decoration: none;
     color: var(--caption-color);
 }
 
-
+.disabled {
+    pointer-events:none;
+}
 /*input 요소*/
 
 input[type="text"]{
