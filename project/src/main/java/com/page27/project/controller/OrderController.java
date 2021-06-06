@@ -1,11 +1,10 @@
 package com.page27.project.controller;
 
-import com.page27.project.domain.Member;
-import com.page27.project.domain.Order;
-import com.page27.project.domain.SearchOrder;
+import com.page27.project.domain.*;
 import com.page27.project.dto.MemberDto;
 import com.page27.project.dto.OrderDto;
 import com.page27.project.dto.OrderInfo;
+import com.page27.project.repository.OrderItemRepository;
 import com.page27.project.repository.OrderRepository;
 import com.page27.project.service.MemberService;
 import com.page27.project.service.OrderService;
@@ -31,6 +30,7 @@ public class OrderController {
 
     private final OrderService orderService;
     private final OrderRepository orderRepository;
+    private final OrderItemRepository orderItemRepository;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
@@ -84,5 +84,18 @@ public class OrderController {
 
         return "admin/admin_order";
 
+    }
+
+    @ResponseBody
+    @PatchMapping("/admin/orderList1/{id}")
+    public String orderStatusChangePage(@PathVariable Long id ,@RequestParam OrderStatus status){
+
+        logger.info("id : " + id.toString());
+
+        OrderItem findOrderItem = orderItemRepository.findById(id).get();
+        findOrderItem.setOrderStatus(status);
+        logger.info("find orderItem price : " + findOrderItem.getOrderPrice());
+
+        return "OrderItem 확인";
     }
 }
