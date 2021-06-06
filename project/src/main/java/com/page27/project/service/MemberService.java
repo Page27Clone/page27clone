@@ -77,6 +77,7 @@ public class MemberService implements UserDetailsService {
         //System.out.println("here is joinUser method " + memberInfoDto.toEntity().getId());
         return memberRepository.save(memberInfoDto.toEntity()).getId();
     }
+//    회원가입을 처리하는 메소드이며 비밀번호를 암호화하여 저장한다.
 
     @Transactional
     public Long changePassword(Long id , String password){
@@ -87,13 +88,13 @@ public class MemberService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
-        System.out.println("Login Id = " + loginId);
+//        System.out.println("Login Id = " + loginId);
         Optional<Member> userEntityWrapper = memberRepository.findByloginId(loginId);
-        System.out.println("why");
-        System.out.println(memberRepository.findByloginId("here check : " + userEntityWrapper .get().getLoginId()));
+//        System.out.println("why");
+//        System.out.println(memberRepository.findByloginId("here check : " + userEntityWrapper .get().getLoginId()));
         Member userEntity = userEntityWrapper.get();
-        System.out.println("userEntity ID = " + userEntity.getLoginId());
-        System.out.println("userEntity Password = " + userEntity.getPassword());
+//        System.out.println("userEntity ID = " + userEntity.getLoginId());
+//        System.out.println("userEntity Password = " + userEntity.getPassword());
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         if (("admin@example.com").equals(loginId)) {
@@ -103,5 +104,12 @@ public class MemberService implements UserDetailsService {
         }
         return new User(userEntity.getLoginId(), userEntity.getPassword(), authorities);
     }
+//    상세정보를 조회하는 메소드이며 사용자의 계정정보와 권한을 갖는 UserDetails 인터페이스를 반환해야한다.
+//    매개변수는 로그인 시 입력한 아이디이다. 엔티티의 PK를 뜻하는게 아니고 유저를 식별할 수 있는 어떤 값을 의미한다.
+//    스프링 시큐리티에서는 username라는 이름으로 사용한다.
+//    로그인을 하는 form에서 name = "username"으로 요청해야 한다.
+//    authorities.add~ 롤을 부여하는 코드이다. 롤 부여 방식에는 여러가지가 있지만, 회원가입할 때 Role을 정할 수 있도록 Role Entity를 만들어서 매핑하는 것이 좋다.
+//    return은 스프링 시큐리티에서 제공하는 UserDetails를 구현한 User를 반환한다.
+//    생성자의 각 매개변수는 순서대로 아이디, 비밀번호, 권한리스트이다.
 
 }
