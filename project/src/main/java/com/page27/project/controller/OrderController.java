@@ -53,12 +53,11 @@ public class OrderController {
     }
 
 
-    @GetMapping("/admin/orderList")
     public String getOrderPage(Model model, @PageableDefault(size=4) Pageable pageable, SearchOrder searchOrder){
 
         if(StringUtils.isEmpty(searchOrder.getFirstdate()) && StringUtils.isEmpty(searchOrder.getLastdate()) && StringUtils.isEmpty(searchOrder.getSinput())){
 
-            Page<OrderDto> orderBoards = orderRepository.searchAllItem(pageable);
+            Page<OrderDto> orderBoards = orderRepository.searchAllOrder(pageable);
             int homeStartPage = Math.max(1,orderBoards.getPageable().getPageNumber() - 4);
             int homeEndPage = Math.min(orderBoards.getTotalPages(),orderBoards.getPageable().getPageNumber() + 4);
             model.addAttribute("startPage",homeStartPage);
@@ -67,7 +66,7 @@ public class OrderController {
 
             return "admin/admin_order";
         }
-        Page<OrderDto> orderBoards = orderRepository.searchByCondition(searchOrder, pageable);
+        Page<OrderDto> orderBoards = orderRepository.searchAllOrderByCondition(searchOrder, pageable);
 
         int startPage = Math.max(1,orderBoards.getPageable().getPageNumber() - 4);
         int endPage = Math.min(orderBoards.getTotalPages(),orderBoards.getPageable().getPageNumber() + 4);
@@ -92,9 +91,12 @@ public class OrderController {
 
         logger.info("id : " + id.toString());
 
-        OrderItem findOrderItem = orderItemRepository.findById(id).get();
-        findOrderItem.setOrderStatus(status);
-        logger.info("find orderItem price : " + findOrderItem.getOrderPrice());
+        orderService.changeOrderStatus(id,status);
+
+//        OrderItem findOrderItem = orderItemRepository.findById(id).get();
+//        logger.info("new status : " + status);
+//        findOrderItem.setOrderStatus(status);
+//        logger.info("find orderItem price : " + findOrderItem.getOrderPrice());
 
         return "OrderItem 확인";
     }

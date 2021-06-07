@@ -1,15 +1,25 @@
 package com.page27.project.controller;
 
 import com.page27.project.domain.Member;
+import com.page27.project.dto.ItemDto;
+import com.page27.project.dto.OrderDto;
+import com.page27.project.repository.ItemRepository;
 import com.page27.project.repository.MemberRepository;
+import com.page27.project.repository.OrderRepository;
 import com.page27.project.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
@@ -21,6 +31,8 @@ public class AdminController {
 
     private final MemberRepository memberRepository;
     private final MemberService memberService;
+    private final ItemRepository itemRepository;
+    private final OrderRepository orderRepository;
 
     @GetMapping("/admin/changepassword")
     public String adminChangePassword(){
@@ -63,5 +75,19 @@ public class AdminController {
         System.out.println(resultId);
 
         return "ajax 수정 완료";
+    }
+
+    @GetMapping("/admin/main")
+    public String getMemberMainPage(Model model, @PageableDefault(size = 5) Pageable pageable){
+        Page<Member> memberBoards = memberRepository.findAllByOrderByCreatedAt(pageable);
+//        memberRepository.searchAll(pageable);
+        Page<ItemDto> itemBoards = itemRepository.searchAllItem(pageable);
+        Page<OrderDto> orderBoards = orderRepository.searchAllOrder(pageable);
+
+        model.addAttribute("memberList",memberBoards);
+        model.addAttribute("itemList",itemBoards);
+        model.addAttribute("orderList",orderBoards);
+
+        return "admin/admin_main";
     }
 }

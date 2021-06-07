@@ -46,6 +46,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 ))
                 .from(QItem.item)
                 .where(QItem.item.rep.eq(true))
+                .orderBy(QItem.item.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchResults();
@@ -75,6 +76,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                     ))
                     .from(QItem.item)
                     .where(QItem.item.rep.eq(true),saleStatusEq(search.getSalestatus()),itemNameEq(search.getItem_name()))
+                    .orderBy(QItem.item.id.desc())
                     .offset(pageable.getOffset())
                     .limit(pageable.getPageSize())
                     .fetchResults();
