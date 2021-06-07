@@ -8,6 +8,7 @@ import com.page27.project.repository.MemberRepository;
 import com.page27.project.repository.OrderRepository;
 import com.page27.project.service.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -79,10 +80,14 @@ public class AdminController {
 //        memberRepository.searchAll(pageable);
         Page<ItemDto> itemBoards = itemRepository.searchAllItem(pageable);
         Page<OrderDto> orderBoards = orderRepository.searchAllOrder(pageable);
+        int allVisitCount = memberRepository.visitCountResult();
 
+
+        System.out.println(allVisitCount);
         model.addAttribute("memberList",memberBoards);
         model.addAttribute("itemList",itemBoards);
         model.addAttribute("orderList",orderBoards);
+        model.addAttribute("numVisitors",allVisitCount);
 
         return "admin/admin_main";
     }

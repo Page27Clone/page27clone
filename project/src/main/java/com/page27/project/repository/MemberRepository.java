@@ -19,4 +19,7 @@ public interface MemberRepository extends JpaRepository<Member, Long>,MemberRepo
     Page<Member> findAllByCreatedAt(LocalDate createdAt, Pageable pageable);
     Page<Member> findAllByOrderByCreatedAt(Pageable pageable);
     Page<Member> findAll(Pageable pageable);
+
+    @Query("select sum(m.visitCount) from Member m")
+    int visitCountResult();
 }

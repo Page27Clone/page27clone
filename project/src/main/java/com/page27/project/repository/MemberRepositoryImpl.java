@@ -1,13 +1,14 @@
 package com.page27.project.repository;
 
 
-import com.page27.project.domain.QMember;
-import com.page27.project.domain.SearchMember;
+import com.page27.project.domain.*;
 import com.page27.project.dto.MemberDto;
 
 import com.page27.project.dto.QMemberDto;
 import com.querydsl.core.QueryResults;
+import com.querydsl.core.Tuple;
 import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.springframework.data.domain.Page;
 
