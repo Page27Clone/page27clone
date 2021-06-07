@@ -198,6 +198,7 @@ input[type=number] {
 
 #orderform .delivery_info_table .address_choice {
     padding: 4px 0;
+    display: flex;
 }
 
 #orderform .delivery_info_table .address_choice label{

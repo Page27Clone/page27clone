@@ -1,259 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="./css/header.css">
-    <link rel="stylesheet" type="text/css" href="./css/footer.css">
-    <link rel="stylesheet" type="text/css" href="./css/payment.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/header.css">
+    <link rel="stylesheet" type="text/css" href="./css/main/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/nav.css">
+    <link rel="stylesheet" type="text/css" href="./css/main/payment.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Antonio&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <title>payment</title>
-    <script src="./js/jquery.js"></script>
-    <script src="./js/header.js"></script>
-    <script src="./js/payment.js"></script>
-    <script src="./js/sendit.js"></script>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/main/header.js"></script>
+    <script src="/js/main/nav.js"></script>
+    <script src="/js/main/payment.js"></script>
+    <script src="/js/main/sendit.js"></script>
 </head>
 <body>
     <!--header start-->
-    <header>
-        <div class="top_menuArea">
-            <div class="top_menu">
-                <div class="top_list">
-                    <a href="#" class="top_list_first">로그인</a>
-                    <a href="#">회원가입</a>
-                    <a href="#">장바구니</a>
-                    <a href="#">주문조회</a>
-                    <a href="#">마이페이지</a>
-                </div>
-                <div class="top_board">
-                    <a href="#">포토리뷰</a>
-                    <a href="#">고객문의</a>
-                    <span class="top_board_drop">
-                        <a href="#">커뮤니티</a>
-                        <ul class="top_board_dropdown">
-                            <li class="tbd_border_bottom"><a href="#">NOTICE</a><i class="fas fa-check"></i></li>
-                            <li class="tbd_border_bottom"><a href="#">Q&A</a><i class="fas fa-check"></i></li>
-                            <li class="tbd_border_bottom"><a href="#">REVIEW</a><i class="fas fa-check"></i></li>
-                            <li><a href="#">EVENT</a><i class="fas fa-check"></i></li>
-                        </ul>
-                    </span>
-                    <a href="#">고객센터</a>
-                    <a href="#" class="top_sns" onclick="location.href='https://www.facebook.com'"><img src="./img/facebook.png" alt=""></a>
-                    <a href="#" class="top_sns" onclick="location.href='https://www.instagram.com'"><img src="./img/instagram.png" alt=""></a>
-                    <a href="#" class="top_sns" onclick="location.href='https://www.youtube.com'"><img src="./img/youtube.png" alt=""></a>
-                    
-                </div>
-            </div>
-        </div>
-        <div class="top_logoArea">
-            <img src="img/logo-removebg-preview.png">
-        </div>
-        <div class="top_categoryArea">
-            <div class="top_category">
-                <div class="menu_cell menu_cell_drop">
-                    <i class="fas fa-bars"></i>
-                    <div class="menu_cell_dropdown">
-                        <div class="menu_cell_dropdown_left menu_cell_dropdown_sub">
-                            <div class="submenu">
-                                <div class="submenu_caption">NEW7%DC</div>
-                            </div>
-                            <div class="submenu">
-                                <div class="submenu_caption">BEST30</div>
-                            </div>
-                            <div class="submenu">
-                                <div class="submenu_caption">OUTER</div>
-                                <ul>
-                                    <li><a href="#">자켓/점퍼</a></li>
-                                    <li><a href="#">가디건</a></li>
-                                    <li><a href="#">코트</a></li>
-                                    <li><a href="#">조끼</a></li>
-                                    <li><a href="#">슈트</a></li>
-                                </ul>
-                            </div>
-                            <div class="submenu">
-                                <div class="submenu_caption">TOP</div>
-                                <ul>
-                                    <li><a href="#">긴팔</a></li>
-                                    <li><a href="#">반팔</a></li>
-                                    <li><a href="#">니트</a></li>
-                                    <li><a href="#">나시</a></li>
-                                    <li><a href="#">7부</a></li>
-                                </ul>
-                            </div>
-                            <div class="submenu">
-                                <div class="submenu_caption">SHIRTS</div>
-                                <ul>
-                                    <li><a href="#">베이직</a></li>
-                                    <li><a href="#">체크/패턴</a></li>
-                                    <li><a href="#">스트라이프</a></li>
-                                </ul>
-                            </div>
-                            <div class="submenu">
-                                <div class="submenu_caption">BOTTOM</div>
-                                <ul>
-                                    <li><a href="#">면바지</a></li>
-                                    <li><a href="#">데님</a></li>
-                                    <li><a href="#">슬랙스</a></li>
-                                    <li><a href="#">반바지</a></li>
-                                </ul>
-                            </div>
-                            <div class="submenu">
-                                <div class="submenu_caption">ACC</div>
-                                <ul>
-                                    <li><a href="#">CAP</a></li>
-                                    <li><a href="#">SOCKS</a></li>
-                                    <li><a href="#">SCARF & MUFFLER</a></li>
-                                    <li><a href="#">TIE & HANDKERCHIEF</a></li>
-                                    <li><a href="#">JEWELLERY</a></li>
-                                    <li><a href="#">BAG</a></li>
-                                    <li><a href="#">BELT</a></li>
-                                </ul>
-                            </div>
-                            <div class="submenu">
-                                <div class="submenu_caption">SHOES</div>
-                            </div>
-                            <div class="submenu">
-                                <div class="submenu_caption">SALE</div>
-                            </div>
-        
-                        </div>
-                        <div class="menu_cell_dropdown_right menu_cell_dropdown_sub">
-                            <div class="submenu">
-                                <div class="submenu_caption">COMMUNITY</div>
-                                <ul>
-                                    <li><a href="#">NOTICE</a></li>
-                                    <li><a href="#">Q&A</a></li>
-                                    <li><a href="#">REVIEW</a></li>
-                                    <li><a href="#">EVENT</a></li>
-                                </ul>
-                            </div>
-                            <div class="submenu">
-                                <div class="submenu_caption">ABOUT US</div>
-                                <ul>
-                                    <li><a href="#">OUR COMPANY</a></li>
-                                    <li><a href="#">AGREEMENT</a></li>
-                                    <li><a href="#">PRIVACYPOLICY</a></li>
-                                    <li><a href="#">SHOPGUIDE</a></li>
-                                </ul>
-                            </div>
-                            <div class="submenu customer_center">
-                                <div class="submenu_caption">CUSTOMER CENTER</div>
-                                <ul>
-                                    <li>010 - 2270 - 6149</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="menu_cell menu_cell_category">
-                    <span><a href="#">NEW 7% DC</a></span>
-                    <span><a href="#">BEST 30</a></span>
-                    <span class="menu_cell_category_drop">
-                        <a href="#">OUTER</a>
-                        <div class="menu_cell_category_dropdown">
-                            <div class="in_category">
-                                <div class="in_category_caption">IN CATEGORY</div>
-                                <ul>
-                                    <li><a href="#">자켓/점퍼</a></li>
-                                    <li><a href="#">가디건</a></li>
-                                    <li><a href="#">코트</a></li>
-                                    <li><a href="#">조끼</a></li>
-                                    <li><a href="#">수트</a></li>
-                                </ul>
-                            </div>
-                            <div class="category_img_box">
-                                <img src="./img/categorydrop/categorydropimg1.JPG" alt="사진">
-                            </div>
-                        </div>
-                    </span>
-                    <span class="menu_cell_category_drop">
-                        <a href="#">TOP</a>
-                        <div class="menu_cell_category_dropdown">
-                            <div class="in_category">
-                                <div class="in_category_caption">IN CATEGORY</div>
-                                <ul>
-                                    <li><a href="#">긴팔</a></li>
-                                    <li><a href="#">반팔</a></li>
-                                    <li><a href="#">니트</a></li>
-                                    <li><a href="#">나시</a></li>
-                                    <li><a href="#">7부</a></li>
-                                </ul>
-                            </div>
-                            <div class="category_img_box">
-                                <img src="./img/categorydrop/categorydropimg2.JPG" alt="사진">
-                            </div>
-                        </div>
-                    </span>
-                    <span class="menu_cell_category_drop">
-                        <a href="#">SHIRTS</a>
-                        <div class="menu_cell_category_dropdown">
-                            <div class="in_category">
-                                <div class="in_category_caption">IN CATEGORY</div>
-                                <ul>
-                                    <li><a href="#">베이직</a></li>
-                                    <li><a href="#">체크/패턴</a></li>
-                                    <li><a href="#">스트라이프</a></li>
-                                </ul>
-                            </div>
-                            <div class="category_img_box">
-                                <img src="./img/categorydrop/categorydropimg2.JPG" alt="사진">
-                            </div>
-                        </div>
-                    </span>
-                    <span class="menu_cell_category_drop">
-                        <a href="#">BOTTOM</a>
-                        <div class="menu_cell_category_dropdown">
-                            <div class="in_category">
-                                <div class="in_category_caption">IN CATEGORY</div>
-                                <ul>
-                                    <li><a href="#">면바지</a></li>
-                                    <li><a href="#">데님</a></li>
-                                    <li><a href="#">슬랙스</a></li>
-                                    <li><a href="#">반바지</a></li>
-                                </ul>
-                            </div>
-                            <div class="category_img_box">
-                                <img src="./img/categorydrop/categorydropimg2.JPG" alt="사진">
-                            </div>
-                        </div>
-                    </span>
-                    <span class="menu_cell_category_drop">
-                        <a href="#">ACC</a>
-                        <div class="menu_cell_category_dropdown">
-                            <div class="in_category">
-                                <div class="in_category_caption">IN CATEGORY</div>
-                                <ul>
-                                    <li><a href="#">CAP</a></li>
-                                    <li><a href="#">SOCKS</a></li>
-                                    <li><a href="#">SKARF & MUFFLER</a></li>
-                                    <li><a href="#">TIE & HANDKERCHIEF</a></li>
-                                    <li><a href="#">JEWELLERY</a></li>
-                                    <li><a href="#">BAG</a></li>
-                                    <li><a href="#">BELT</a></li>
-                                </ul>
-                            </div>
-                            <div class="category_img_box">
-                                <img src="./img/categorydrop/categorydropimg2.JPG" alt="사진">
-                            </div>
-                        </div>
-                    </span>
-
-                    <span><a href="#">SHOES</a></span>
-                    <span><a href="#">SALE</a></span>
-                </div>
-                <div class="search_all menu_cell">
-                    <i class="fas fa-search"></i>&nbsp;<span>SEARCH</span>
-                    <form action="#" method="GET" class="search_form_dropdown">
-                        <div class="search_box"><input type="text" name="search_word"><i class="fas fa-search"></i></div>
-                    </form>
-                </div>
-                
-            </div>
-        </div>
+    <header th:replace="main/header :: main_headerFragment">
     </header>
     <!--header end-->
 
@@ -263,17 +31,17 @@
             ORDER
         </div>
         <div class="section_content">
-            <form action="#" method="GET" onsubmit="return sendit()">
+            <form action="#" th:action="@{/main/payment_ok}" method="GET" onsubmit="return sendit()">
 
                 <div class="benefit_info">
                     <div class="benefit_info_caption">
                         혜택정보
                     </div>
                     <div class="benefit_info_desc">
-                        <div class="benefit_info_desc_item"><b>홍길동</b> 님은 <b>[일반회원]</b> 이십니다</div>
+                        <div class="benefit_info_desc_item"><b th:text="${member.name}">홍길동</b> 님은 <b th:text="'['+${member.memberGrade}+']'">[일반회원]</b> 이십니다</div>
                         <div class="benefit_info_mileage benefit_info_desc_item">
-                            가용적립금: <b>2,000</b>원
-                            <input type="hidden" class="canuse" value="2000"> <!--서버로부터 넘어온 데이터-->
+                            가용적립금: <b th:text="${#numbers.formatInteger(member.mileage, 0, 'COMMA')}">2,000</b>원
+                            <input type="hidden" class="canuse" value="2000" th:value="${member.mileage}"> <!--서버로부터 넘어온 데이터-->
                         </div>
                     </div>
                 </div>
@@ -311,15 +79,15 @@
                                 </tr>
                             </thead>
                             <tbody> 
-                                <tr>
+                                <tr th:each="item:${orderList}">
                                     <td><input type="checkbox" class="check"></td>
-                                    <td><img src="img/basket/basket1.JPG"></td>
+                                    <td><img src="img/basket/basket1.JPG" th:src="@{${item.imgpath}}"></td>
                                     <td>
-                                        <div>메카닉 패딩 야상점퍼</div>
-                                        <div>[옵션: 그레이/M size]</div>
+                                        <div th:text="${item.name}">메카닉 패딩 야상점퍼</div>
+                                        <div th:text="'[옵션:'+${item.color}+']'">[옵션: 그레이]</div>
                                     </td>
-                                    <td><b>₩39,000</b></td>
-                                    <td>
+                                    <td><b th:text="'₩'+${#numbers.formatInteger(item.price, 0, 'COMMA')}">₩39,000</b></td>
+                                    <td th:text="${item.quantity}">
                                         7
                                     </td>
                                     <td><span class="order_mileage">390</span>원</td> <!--js 계산. 한 아이템에 대한 총 예상 적립 마일리지-->
@@ -328,33 +96,10 @@
                                     <td>
                                         ₩<span class="order_price"></span> <!--js 계산. 한 아이템에 대한 총 가격-->
                                     </td>
-                                    <input type="hidden" class="item_idx" value="1"> 
-                                    <input type="hidden" class="item_color" value="네이비">
-                                    <input type="hidden" class="item_quantity" value="7">
-                                    <input type="hidden" class="item_price" value="39000">
-                                </tr>
-                                                           
-                                <tr>
-                                    <td><input type="checkbox" class="check"></td>
-                                    <td><img src="img/basket/basket1.JPG"></td>
-                                    <td>
-                                        <div>메카닉 패딩 야상점퍼</div>
-                                        <div>[옵션: 그레이/M size]</div>
-                                    </td>
-                                    <td><b>₩42,000</b></td>
-                                    <td>
-                                        2
-                                    </td>
-                                    <td><span class="order_mileage">390</span>원</td> <!--js 계산. 한 아이템에 대한 총 예상 적립 마일리지-->
-                                    <td>기본배송</td>
-                                    <td>배송비</td>
-                                    <td>
-                                        ₩<span class="order_price"></span> <!--js 계산. 한 아이템에 대한 총 가격-->
-                                    </td>
-                                    <input type="hidden" class="item_idx" value="3"> 
-                                    <input type="hidden" class="item_color" value="브라운">
-                                    <input type="hidden" class="item_quantity" value="2">
-                                    <input type="hidden" class="item_price" value="42000">
+                                    <input type="hidden" class="item_idx" value="1" th:value="${item.itemIdx}">
+                                    <input type="hidden" class="item_color" value="네이비" th:value="${item.color}">
+                                    <input type="hidden" class="item_quantity" value="7" th:value="${item.quantity}">
+                                    <input type="hidden" class="item_price" value="39000" th:value="${item.price}">
                                 </tr>
                                 
                             </tbody>
@@ -369,7 +114,7 @@
                     <!-- 전송 데이터 모음-->
                     <input type='hidden' name="total_price">
                     <input type='hidden' name="tobepaid_price">
-                    <input type='hidden' name="orderiteminfo"> <!-- value에 상품key, quantity가 Json형식으로 들어감-->
+                    <input type='hidden' name="orderiteminfo"> <!-- value에 상품idx, color, quantity가 Json형식으로 들어감-->
                     <!-- 전송 데이터 모음-->
                                  
                     <div class="delivery_info_caption">
@@ -385,9 +130,10 @@
                             <th>배송지 선택</th>
                             <td>
                                 <div class="address_choice"> <!-- 타임리프 값 넣어주기-->
-                                    <input type="radio" name="address_name" value="new_addr" id = "1" checked> <label for="1">새로운 배송지</label>
-                                    <input type="radio" name="address_name" value="home" id="2"> <label for="2">우리집</label>
-                                    <input type="radio" name="address_name" value="school" id="3"> <label for="3">학교</label>
+                                    <div><input type="radio" name="address_name" value="new_addr" id = "0" checked> <label for="0">새로운 배송지</label></div>
+                                    <div th:each="address, i:${addressList}"><input type="radio" name="address_name" value="home" id="2" th:value="${address.addressIdx}" th:id="${i.count}">
+                                        <label for="2" th:for="${i.count}" th:text="${address.name}">우리집</label>
+                                    </div>
                                 </div>
                             </td>
                         </tr>
@@ -470,7 +216,7 @@
                         </colgroup>
                         <th>적립금</th>
                         <td>
-                            <input type="text" name="used_mileage"> 원 (총 사용가능 적립금 : <span>2,000</span>원) <!-- 티임리프로 데이터 넣어주기-->
+                            <input type="text" name="used_mileage"> 원 (총 사용가능 적립금 : <span th:text="${#numbers.formatInteger(member.mileage, 0, 'COMMA')}">2,000</span>원) <!-- 티임리프로 데이터 넣어주기-->
                             <br>
                             <br>
                             - 적립금은 최소 2,000 이상일 떄 결제가 가능합니다.<br>
@@ -487,63 +233,15 @@
             </form>           
         </div>
     </section>
-    <footer>
-        <div class="footer_content">
-            <div class="footer_content_left">
-                <div class="footer_info footer_cs">
-                    <div class="footer_info_caption"><b style="font-size: 12px;">Ι&nbsp;</b> CS CENTER</div>
-                    <div class="footer_info_content">
-                        <b>010-2270-6149</b><br>
-                        MON-FRI/ 11:00AM-18:00 PM<br>
-                        LUNCH TIME/ 12:00 AM ~ 13:00 PM<br>
-                        SAT, SUN, HOLIDAY OFF
-                    </div>
-                </div>
-                <div class="footer_info footer_bank">
-                    <div class="footer_info_caption"><b style="font-size: 12px;">Ι&nbsp;</b> BANKING ACCOUNT</div>
-                    <div class="footer_info_content">
-                        우리은행: 1000-111-123456<br>
-                        예금주 : 채창완(페이지27)
-                    </div>
-                </div>
-                <div class="footer_info footer_another">
-                    <div class="footer_info_caption"><b style="font-size: 12px;">Ι&nbsp;</b> ANOTHER</div>
-                    <div class="footer_info_content">
-                        구매안전(에스크로)서비스
-                    </div>
-                </div>
-            </div>
-            <div class="footer_content_right">
-                <div class="footer_info footer_addr">
-                    <div class="footer_info_caption"><b style="font-size: 12px;">Ι&nbsp;</b> RETURN ADDRESS</div>
-                    <div class="footer_info_content">
-                        반품 주소: 서울시 송파구 올림픽로 100 잠실APT 265-2041
-                    </div>
-                </div>
-                <div class="footer_info footer_about">
-                    <div class="footer_info_caption"><b style="font-size: 12px;">Ι&nbsp;</b> ABOUT US</div>
-                    <div class="footer_info_content">
-                        OUR COMPANY<br>
-                        AGREEMENT<br>
-                        PRIVACY POLICY[개인정보처리방침]<br>
-                        SHOP GUIDE<br>
-                        CS CENTER
-                    </div>
-                </div>
-                <div class="footer_info footer_company">
-                    <div class="footer_info_caption"><b style="font-size: 12px;">Ι&nbsp;</b> COMPANY INFO</div>
-                    <div class="footer_info_content">
-                        COMPANY.페이지27
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="footer_banner">
-            <div class="copyright">
-                COPYRIGHT &copy; '페이지27' ALL RIGHTS RESERVED 
-            </div>
-        </div>
+
+    <!--nav-->
+    <nav th:replace="main/nav :: main_navFragment">
+    </nav>
+
+    <!--footer-->
+    <footer th:replace="main/footer :: main_footerFragment">
     </footer>
+
     <!--우편번호 api-->
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
     <script>

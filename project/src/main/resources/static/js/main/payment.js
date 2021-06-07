@@ -69,7 +69,7 @@ $(function(){
             $('.address_phone_number:not(:first-child)').val('');
         }else{
 
-            let addr = {addr_name : $(this).val()}
+            let addr = {addr_idx : $(this).val()}
 
             $.ajax({
                 url:"/dataSend",
