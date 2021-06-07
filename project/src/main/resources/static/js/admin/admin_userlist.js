@@ -1,14 +1,14 @@
 function openUserDetail(id){ //유저 상세정보 페이지 open (컨트롤러 만들어야함)
-    location.href='/admin/userlist/user/' + id;
+    location.href='/admin/userList/user/' + id;
 }
 
 function deleteUser(id){
     $.ajax({
         type: 'DELETE',
-        url: '/admin/userlist/' + id
+        url: '/admin/userList/' + id
     }).done(function(word){
         alert(word);
-        window.location.href = '/admin/userlist';
+        location.reload();
     }).fail(function (error){
         alert(JSON.stringify(error));
     })
@@ -25,12 +25,12 @@ function deleteCheckedUsers(){
     console.log(list)
         $.ajax({
             type: 'DELETE',
-            url: '/admin/userlist',
+            url: '/admin/userList',
             data: {idList : list},
             traditional: true
         }).done(function(word){
             alert(word);
-            window.location.href = '/admin/userlist';
+            location.reload();
         }).fail(function (error){
             alert(JSON.stringify(error));
         })
