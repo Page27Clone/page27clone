@@ -48,7 +48,7 @@ public class Member extends BaseTimeEntity {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Mileage> mileageList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<Order> orderList = new ArrayList<>();
 
     //연관 관계 메소드

@@ -1,9 +1,12 @@
 package com.page27.project.controller;
 
 import com.page27.project.domain.Member;
+import com.page27.project.domain.OrderItem;
 import com.page27.project.domain.SearchMember;
 import com.page27.project.dto.MemberDto;
 import com.page27.project.repository.MemberRepository;
+import com.page27.project.repository.OrderItemRepository;
+import com.page27.project.repository.OrderRepository;
 import com.page27.project.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -21,6 +24,8 @@ import java.util.List;
 public class MemberController {
     private final MemberService memberService;
     private final MemberRepository memberRepository;
+    private final OrderRepository orderRepository;
+    private final OrderItemRepository orderItemRepository;
 
     @GetMapping("/userList")
     public String pageList(Model model, @PageableDefault(size=8) Pageable pageable, SearchMember searchMember) {
@@ -58,6 +63,7 @@ public class MemberController {
     public @ResponseBody String test(@PathVariable Long id){
         System.out.println("here delete part");
         memberService.deleteById(id);
+//        orderRepository.find
         return "Ajax 통신완료";
     }
 
