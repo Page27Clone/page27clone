@@ -3,15 +3,20 @@ function openUserDetail(id){ //유저 상세정보 페이지 open (컨트롤러 
 }
 
 function deleteUser(id){
-    $.ajax({
-        type: 'DELETE',
-        url: '/admin/userList/' + id
-    }).done(function(word){
-        alert(word);
-        location.reload();
-    }).fail(function (error){
-        alert(JSON.stringify(error));
-    })
+    if(confirm("해당 회원의 주문정보가 함께 삭제될 수 있습니다. 정말로 삭제하시겠습니까?")){
+        $.ajax({
+            type: 'DELETE',
+            url: '/admin/userList/' + id
+        }).done(function(word){
+            alert(word);
+            location.reload();
+        }).fail(function (error){
+            alert(JSON.stringify(error));
+        })
+    }else{
+        return false;
+    }
+
 }
 
 function deleteCheckedUsers(){
@@ -22,7 +27,7 @@ function deleteCheckedUsers(){
             list.push(val1)
         }
     })
-    console.log(list)
+    if(confirm("해당 회원의 주문정보가 함께 삭제될 수 있습니다. 정말로 삭제하시겠습니까?")){
         $.ajax({
             type: 'DELETE',
             url: '/admin/userList',
@@ -34,6 +39,9 @@ function deleteCheckedUsers(){
         }).fail(function (error){
             alert(JSON.stringify(error));
         })
+    }else{
+        return false;
+    }
 }
 
 function checkall(){
