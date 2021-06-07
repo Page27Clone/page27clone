@@ -3,19 +3,19 @@
 <nav th:fragment="navFragment">
     <div class="side-title"><a href="#">관리자 모드</a></div>
     <ul class="side-menu">
-        <li><a href="#">HOME</a></li>
-        <li><a href="#">회원관리</a></li>
+        <li><a href="#" th:href="@{/admin/main}">HOME</a></li>
+        <li><a href="#" th:href="@{/admin/userList}">회원관리</a></li>
         <li class="menu-dropdown">
             <span>상품관리 <i class="fas fa-chevron-down"></i></span>
             <ul class="dropdown hide">
-                <li><a href="#">상품 등록</a></li>
-                <li><a href="#">상품 목록</a></li>
+                <li><a href="#" th:href="@{/admin/register}">상품 등록</a></li>
+                <li><a href="#" th:href="@{/admin/itemList}">상품 목록</a></li>
             </ul>
         </li>
-        <li><a href='#'>주문관리</a></li>
-        <li><a href='#'>운영설정</a></li>
-        <li><a href='#'>관리자 정보수정</a></li>
-        <li><a href='#'>LOGOUT</a></li>
+        <li><a href='#' th:href="@{/admin/orderList}">주문관리</a></li>
+        <li><a href='#' th:href="@{/admin/operation}">운영설정</a></li>
+        <li><a href='#' th:href="@{/admin/changepassword}">관리자 정보수정</a></li>
+        <li><a href='#' th:href="@{/logout}">LOGOUT</a></li>
     </ul>
 </nav>
 </html>
