@@ -22,7 +22,7 @@ public class MemberController {
     private final MemberService memberService;
     private final MemberRepository memberRepository;
 
-    @GetMapping("/userlist")
+    @GetMapping("/userList")
     public String pageList(Model model, @PageableDefault(size=8) Pageable pageable, SearchMember searchMember) {
         if(searchMember.getSearchKeyword() == null){
             Page<Member> memberBoards = memberRepository.findAll(pageable);
@@ -59,11 +59,6 @@ public class MemberController {
         System.out.println("here delete part");
         memberService.deleteById(id);
         return "Ajax 통신완료";
-    }
-
-    @GetMapping("/main")
-    public String adminMainPage(){
-        return "admin/admin_main";
     }
 
     @DeleteMapping("/userlist")

@@ -18,4 +18,5 @@ public interface MemberRepository extends JpaRepository<Member, Long>,MemberRepo
     Optional<Member> findByloginId(String loginId);
     Page<Member> findAllByCreatedAt(LocalDate createdAt, Pageable pageable);
     Page<Member> findAllByOrderByCreatedAt(Pageable pageable);
+    Page<Member> findAll(Pageable pageable);
 }
