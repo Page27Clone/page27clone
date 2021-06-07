@@ -65,12 +65,8 @@ public class AdminController {
 
         tempMember.setPassword(newPassword);
 
-
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         Long resultId = memberService.changePassword(tempMember.getId(), passwordEncoder.encode(newPassword));
-
-
-
 
         System.out.println(resultId);
 

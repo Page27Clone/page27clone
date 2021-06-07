@@ -47,21 +47,21 @@ public class MemberController {
         return "admin/admin_userlist";
     }// 페이징 O 전체 멤버 조회 페이지
 
-    @GetMapping("/userlist/user/{id}")
+    @GetMapping("/userList/user/{id}")
     public String pageUser(@PathVariable Long id, Model model){
         model.addAttribute("Member",memberService.findOneMember(id));
 
         return "admin/admin_user";
     }
 
-    @DeleteMapping("/userlist/{id}")
+    @DeleteMapping("/userList/{id}")
     public @ResponseBody String test(@PathVariable Long id){
         System.out.println("here delete part");
         memberService.deleteById(id);
         return "Ajax 통신완료";
     }
 
-    @DeleteMapping("/userlist")
+    @DeleteMapping("/userList")
     public @ResponseBody String deleteChecked(@RequestParam(value="idList", required = false) List<Long> idList) {
         int size = idList.size();
 
