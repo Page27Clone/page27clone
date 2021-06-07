@@ -94,23 +94,3 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
         return QMember.member.name.likeIgnoreCase("%" + nameCondition + "%");
     }
 }
-
-MEMBERID
-        FOR(){
-LISTITEM
-LISTCOUNT
-}
-
-ORDERLIST
-
-
-결제 -> ORDERlIST
-
-결제창이 떳어 아이템 쏴줘야해 (lIST)
-
-결제창으로 가면 아이템들 리승트
-이 리스트가
-
-장바구니 리스트에서 아이템을 쏘나는
-
-리스트에 저거 하나들어가야
