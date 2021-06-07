@@ -27,11 +27,12 @@
                 <span>
                     <select name="omode">
                         <option value="PAYWAITING">입금대기</option>
-                        <option value="PAYCOMPLETE">결제완료</option>
-                        <option value="PRESHIP">발송준비중</option>
+                        <option value="PRESHIP">배송준비중</option>
                         <option value="INSHIP">배송중</option>
                         <option value="COMPLETESHIP">배송완료</option>
                         <option value="ORDERCANCEL">주문취소</option>
+                        <option value="ORDERCHANGE">교환</option>
+                        <option value="ORDERREFUND">반품</option>
                     </select>
                 </span>
             </div>
@@ -70,14 +71,13 @@
                         <td th:text = "${order.payment}">카드결제</td>
                         <td th:text = "${order.orderedAt}">2021-05-03</td>
                         <td>
-                            <div th:text="${order.orderStatus}"></div>
                             <select name="change-omode" id="change-omode" class="omode">
 <!--                                <option value="whole">전체</option>-->
-                                <option value="PAYWAITING" th:selected="${#strings.equals( order.orderStatus, 'PAYWAITING' )}">입금전</option>
+                                <option value="PAYWAITING" th:selected="${#strings.equals( order.orderStatus, 'PAYWAITING' )}">입금대기</option>
                                 <option value="PRESHIP" th:selected="${#strings.equals( order.orderStatus, 'PRESHIP' )}">배송준비중</option>
                                 <option value="INSHIP" th:selected="${#strings.equals( order.orderStatus, 'INSHIP' )}">배송중</option>
                                 <option value="COMPLETESHIP" th:selected="${#strings.equals( order.orderStatus, 'COMPLETESHIP' )}">배송완료</option>
-                                <option value="ORDERCANCEL" th:selected="${#strings.equals( order.orderStatus, 'ORDERCANCEL' )}">취소</option>
+                                <option value="ORDERCANCEL" th:selected="${#strings.equals( order.orderStatus, 'ORDERCANCEL' )}">주문취소</option>
                                 <option value="ORDERCHANGE" th:selected="${#strings.equals( order.orderStatus, 'ORDERCHANGE' )}">교환</option>
                                 <option value="ORDERREFUND" th:selected="${#strings.equals( order.orderStatus, 'ORDERREFUND' )}">반품</option>
                             </select>
