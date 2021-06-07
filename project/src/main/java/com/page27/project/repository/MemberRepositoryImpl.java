@@ -40,6 +40,7 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
                         QMember.member.createdAt
                 ))
                 .from(QMember.member)
+                .orderBy(QMember.member.createdAt.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchResults();
@@ -66,6 +67,7 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
                 ))
                 .from(QMember.member)
                 .where(nameEq(search.getSearchKeyword()),loginIdEq(search.getSearchKeyword()))
+                .orderBy(QMember.member.createdAt.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchResults();

@@ -3,6 +3,7 @@ package com.page27.project.service;
 import com.page27.project.domain.*;
 import com.page27.project.repository.ItemRepository;
 import com.page27.project.repository.MemberRepository;
+import com.page27.project.repository.OrderItemRepository;
 import com.page27.project.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -19,6 +20,7 @@ public class OrderService {
     private final MemberRepository memberRepository;
     private final OrderRepository orderRepository;
     private final ItemRepository itemRepository;
+    private final OrderItemRepository orderItemRepository;
 
     public List<Order> findAllOrders() {
         return orderRepository.findAll();
@@ -64,5 +66,17 @@ public class OrderService {
             checkedOrder = order.get();
         }
         checkedOrder.orderCancel();
+    }
+
+    @Transactional
+    public Long changeOrderStatus(Long orderItemId,OrderStatus orderStatus){
+        Optional<OrderItem> findOrderItem = orderItemRepository.findById(orderItemId);
+        OrderItem checkedOrderItem= new OrderItem();
+        if(findOrderItem.isPresent()){
+            checkedOrderItem = findOrderItem.get();
+        }
+        checkedOrderItem.setOrderStatus(orderStatus);
+
+        return checkedOrderItem.getId();
     }
 }

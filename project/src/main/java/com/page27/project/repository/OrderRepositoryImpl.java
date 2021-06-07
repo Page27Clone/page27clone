@@ -30,7 +30,7 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
     }
 
     @Override
-    public Page<OrderDto> searchAllItem(Pageable pageable) {
+    public Page<OrderDto> searchAllOrder(Pageable pageable) {
         QueryResults<OrderDto> results = queryFactory
                 .select(new QOrderDto(
                         QOrder.order.id,
@@ -45,6 +45,7 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
                 .from(QOrder.order)
                 .leftJoin(QOrderItem.orderItem).on(QOrderItem.orderItem.eq(QOrder.order.orderItemList.any()))
                 .leftJoin(QMember.member).on(QMember.member.eq(QOrder.order.member))
+                .orderBy(QOrderItem.orderItem.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchResults();
@@ -56,7 +57,7 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
     }
 
     @Override
-    public Page<OrderDto> searchByCondition(SearchOrder searchOrder, Pageable pageable) {
+    public Page<OrderDto> searchAllOrderByCondition(SearchOrder searchOrder, Pageable pageable) {
         QueryResults<OrderDto> results = queryFactory
                 .select(new QOrderDto(
                         QOrder.order.id,
@@ -71,11 +72,12 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
                 .from(QOrder.order)
                 .leftJoin(QOrderItem.orderItem).on(QOrderItem.orderItem.eq(QOrder.order.orderItemList.any()))
                 .leftJoin(QMember.member).on(QMember.member.eq(QOrder.order.member))
-                .where(buyerEq(searchOrder.getSinput()),
-                        orderStatusEq(searchOrder.getOmode()),
+                .where(orderStatusEq(searchOrder.getOmode()),
+                        buyerEq(searchOrder.getSinput()),
                         betweenDate(searchOrder.getFirstdate(), searchOrder.getLastdate())
                 )
 //                이게 검색어가 입력이 되어야지 메소드가 실현됨 그래서 getOmode만으로는 메소드가 실행이 안된다.
+                .orderBy(QOrderItem.orderItem.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchResults();
@@ -161,6 +163,8 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
         if(StringUtils.isEmpty(orderStatusCondition)){
             return null;
         }
+        logger.info("selected Orderstatus : " + orderStatusCondition);
+//        return QOrderItem.orderItem.orderStatus.eq(OrderStatus.valueOf(orderStatusCondition));
         return QOrderItem.orderItem.orderStatus.eq(OrderStatus.valueOf(orderStatusCondition));
     }
 }
