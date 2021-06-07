@@ -34,6 +34,7 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
         QueryResults<OrderDto> results = queryFactory
                 .select(new QOrderDto(
                         QOrder.order.id,
+                        QOrderItem.orderItem.id,
                         QMember.member.name,
                         QOrderItem.orderItem.item.itemName,
                         QOrder.order.orderedAt,
@@ -59,6 +60,7 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
         QueryResults<OrderDto> results = queryFactory
                 .select(new QOrderDto(
                         QOrder.order.id,
+                        QOrderItem.orderItem.id,
                         QMember.member.name,
                         QOrderItem.orderItem.item.itemName,
                         QOrder.order.orderedAt,
@@ -87,8 +89,8 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
     private BooleanExpression betweenDate(String firstDate, String lastDate){
         if(StringUtils.isEmpty(firstDate) && StringUtils.isEmpty(lastDate)){
 
-            LocalDate start = LocalDate.MIN;
-            LocalDate end = LocalDate.MAX;
+            LocalDate start = LocalDate.now().minusYears(10L);
+            LocalDate end = LocalDate.now();
 
             logger.info(firstDate);
             logger.info(lastDate);

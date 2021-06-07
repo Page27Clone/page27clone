@@ -54,7 +54,7 @@ public class OrderController {
 
 
     @GetMapping("/admin/orderList")
-    public String getOrderPage(Model model, @PageableDefault(size=2) Pageable pageable, SearchOrder searchOrder){
+    public String getOrderPage(Model model, @PageableDefault(size=4) Pageable pageable, SearchOrder searchOrder){
 
         if(StringUtils.isEmpty(searchOrder.getFirstdate()) && StringUtils.isEmpty(searchOrder.getLastdate()) && StringUtils.isEmpty(searchOrder.getSinput())){
 
