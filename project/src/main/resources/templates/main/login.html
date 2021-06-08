@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -28,7 +27,7 @@
 
     <!--section-->
     <section>
-        <form action="#" th:action="@{/main/login_ok}" class="loginform" method="POST" onsubmit="return sendit()">
+        <form action="/main/loginOk" class="loginform" method="POST" onsubmit="return sendit()">
             <div class="login_caption">LOGIN PAGE</div>
             <div class="login_content">
                 <div class="login_inputs">
@@ -40,7 +39,7 @@
                 </div>
             </div>
             <div class="login_bottom">
-                <a href="#" th:href="@{${/main/register_user}}">회원가입</a>
+                <a href="#" th:href="@{/main/register}">회원가입</a>
                 <i>/</i>
                 <a href="#">아이디찾기</a>
                 <i>/</i>
