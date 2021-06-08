@@ -1,4 +1,4 @@
-package com.page27.project.controller;
+package com.page27.project.controller.admin;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

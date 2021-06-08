@@ -1,4 +1,4 @@
-package com.page27.project.controller;
+package com.page27.project.controller.admin;
 
 import com.page27.project.domain.*;
 import com.page27.project.dto.MemberDto;
@@ -42,7 +42,6 @@ public class OrderController {
         for(Order order : orderList){
             orderInfo.setName(order.getMember().getName());
             orderInfo.setOrderPrice(order.getTotalPrice());
-//            orderInfo.setOrderStatus(order.getOrderStatus());
             orderInfo.setItemName(order.getOrderItemList().get(0).getItem().getItemName());
 
             orderInfoList.add(orderInfo);
@@ -90,13 +89,7 @@ public class OrderController {
     public String orderStatusChangePage(@PathVariable Long id ,@RequestParam OrderStatus status){
 
         logger.info("id : " + id.toString());
-
         orderService.changeOrderStatus(id,status);
-
-//        OrderItem findOrderItem = orderItemRepository.findById(id).get();
-//        logger.info("new status : " + status);
-//        findOrderItem.setOrderStatus(status);
-//        logger.info("find orderItem price : " + findOrderItem.getOrderPrice());
 
         return "OrderItem 확인";
     }

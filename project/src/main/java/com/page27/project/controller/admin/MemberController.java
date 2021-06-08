@@ -1,4 +1,4 @@
-package com.page27.project.controller;
+package com.page27.project.controller.admin;
 
 import com.page27.project.domain.Member;
 import com.page27.project.domain.OrderItem;
