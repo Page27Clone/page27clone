@@ -30,7 +30,7 @@
             MEMBER JOIN
         </div>
         <div class="section_content">
-            <form action="" method="POST" onsubmit="return sendit()">
+            <form th:action="@{/main/register}" method="POST" onsubmit="return sendit()">
                 <table class="basicdata">
                     <colgroup>
                         <col width="120px"/>
@@ -38,11 +38,11 @@
                     </colgroup>
                     <tr>
                         <th><label for="user_id">아이디<span>＊</span></label></th>
-                        <td><input type="text" name="user_id" id="user_id"></td>
+                        <td><input type="text" name="loginId" id="user_id"></td>
                     </tr>
                     <tr>
                         <th><label for="user_password">비밀번호<span>＊</span></label></th>
-                        <td><input type="password" name="user_password" id="user_password">&nbsp; (영문 대소문자/숫자/특수문자 중2가지 이상 조합, 10~16자)</td>
+                        <td><input type="password" name="password" id="user_password">&nbsp; (영문 대소문자/숫자/특수문자 중2가지 이상 조합, 10~16자)</td>
                     </tr>
                     <tr>
                         <th><label for="user_password_ok">비밀번호확인<span>＊</span></label></th>
