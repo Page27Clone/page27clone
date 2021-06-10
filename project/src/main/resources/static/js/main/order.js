@@ -62,15 +62,10 @@ $(function(){
             return false
         }
 
-
         $.ajax({
             type: 'PATCH',
             url: '/main/orderStatusChange/' + id,
-            data: {status: order_status},
-            beforeSend : function(xhr)
-            {   //요청 헤더에 csrf토큰 추가
-                xhr.setRequestHeader("${_csrf.headerName}", "${_csrf.token}");
-            }
+            data: {status: order_status}
         }).done(function(word){
             alert(word);
             location.reload();
