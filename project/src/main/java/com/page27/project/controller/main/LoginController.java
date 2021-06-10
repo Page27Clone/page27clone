@@ -24,9 +24,8 @@ public class LoginController {
     }
 
     @PostMapping("main/register")
-    public String doRegisterPage(){
-        memberService.joinUser(MemberInfoDto.builder().build());
-
+    public String doRegisterPage(MemberInfoDto memberInfoDto){
+        memberService.joinUser(memberInfoDto);
         return "redirect:/main/login";
     }
 }

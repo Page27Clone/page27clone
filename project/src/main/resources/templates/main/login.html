@@ -32,8 +32,12 @@
             <div class="login_caption">LOGIN PAGE</div>
             <div class="login_content">
                 <div class="login_inputs">
-                    <input type="text" name="user_id" placeholder="ID">
-                    <input type="password" name="user_password" placeholder="PW">
+
+<!--                    여기 수정-->
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+
+                    <input type="text" name="loginId" placeholder="ID">
+                    <input type="password" name="password" placeholder="PW">
                 </div>
                 <div class="loginbtn_box">
                     <input type="submit" value="LOGIN">

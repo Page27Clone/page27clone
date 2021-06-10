@@ -10,6 +10,7 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
@@ -58,7 +59,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .formLogin()
                     .loginPage("/main/login")
                     .usernameParameter("loginId")
-                    .defaultSuccessUrl("/main")
+                    .defaultSuccessUrl("/admin/itemList")
                     .permitAll()
                 .and() // 로그아웃 설정
                     .logout()
@@ -68,6 +69,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                     // 403 예외처리 핸들링
                     .exceptionHandling().accessDeniedPage("/user/denied");
+
+        http.sessionManagement()
+                .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
     }
 //    Http 요청에 대한 웹 기반 보안을 구성할 수 있다.
 //    로그인 정보는 기본적으로 HttpSession을 이용한다.
