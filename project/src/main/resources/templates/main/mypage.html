@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -40,31 +40,37 @@
             </div>
         </div>
 
+        <th:block sec:authorize="isAuthenticated()">
+            <span sec:authentication="principal.username"></span>님 반가워요!
+        </th:block>
+
+
+
         <!--myshop_orderstate-->
         <div class="myshop_orderstate">
             <div class="myshop_orderstate_caption">나의 주문처리 현황 (최근 3개월 기준)</div>
             <div class="myshop_orderstate_container">
                 <div class="myshop_orderstate_item">
                     <div class="item_caption">입금전</div>
-                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderstatus.pay_waiting}">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderStatus.payWaitingNum}">0</a></div>
                 </div>
                 <div class="myshop_orderstate_item">
                     <div class="item_caption">배송준비중</div>
-                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderstatus.pay_complete}">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderStatus.preShipNum}">0</a></div>
                 </div>
                 <div class="myshop_orderstate_item">
                     <div class="item_caption">배송중</div>
-                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderstatus.in_ship}">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderStatus.inShipNum}">0</a></div>
                 </div>
                 <div class="myshop_orderstate_item">
                     <div class="item_caption">배송완료</div>
-                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderstatus.complete_ship}">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderStatus.completeShipNum}">0</a></div>
                 </div>
                 <div class="myshop_orderstate_item last_item">
                     <ul>
-                        <li>· 취소 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order/{id}(id=${member.id})}" href="#" th:text="${orderstatus.order_cancel}">0</a></span></li>
-                        <li>· 교환 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order/{id}(id=${member.id})}" href="#" th:text="${orderstatus.order_exchange}">0</a></span></li>
-                        <li>· 반품 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order/{id}(id=${member.id})}" href="#" th:text="${orderstatus.order_return}">0</a></span></li>
+                        <li>· 취소 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order/{id}(id=${member.id})}" href="#" th:text="${orderStatus.orderCancelNum}">0</a></span></li>
+                        <li>· 교환 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order/{id}(id=${member.id})}" href="#" th:text="${orderStatus.orderChangeNum}">0</a></span></li>
+                        <li>· 반품 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order/{id}(id=${member.id})}" href="#" th:text="${orderStatus.orderRefundNum}">0</a></span></li>
                     </ul>
                 </div>
 

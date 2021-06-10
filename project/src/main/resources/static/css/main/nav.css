@@ -47,6 +47,8 @@ nav .nav_content { /*여기를 기준으로 열고닫는 자식버튼 만들면�
 
 
 nav .login_form {
+    margin: 0;
+    border: none;
     border-bottom: 1px solid var(--border-color-basic);
     width: 180px;
     padding: 30px 0;
@@ -66,9 +68,11 @@ nav .login_form .login_join_btn_box .l_jbtn{
     font-size: 12px;
 }
 nav .login_form .login_join_btn_box .loginbtn{
+    margin: 0;
     background-color: #333333;
 }
 nav .login_form .login_join_btn_box .joinbtn{
+    margin: 0;
     background-color: #9c9c9c;
 }
 
@@ -145,17 +149,6 @@ nav .bank .line {
     border: 1px solid black;
     margin-bottom: 30px;
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
