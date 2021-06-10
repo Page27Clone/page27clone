@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/main/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/nav.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/editdata.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>editdata</title>
+    <script src="/js/jquery.js"></script>
+    <script src="/js/main/header.js"></script>
+    <script src="/js/main/nav.js"></script>
+    <script src="/js/main/editdata.js"></script>
+
+</head>
+<body>
+    <!--header start-->
+    <header th:replace="main/header :: main_headerFragment">
+    </header>
+    <!--header end-->
+
+    <!--section-->
+    <section>
+        <div class="section_caption">
+            EDIT DATA
+        </div>
+
+        <div class="member_type">
+            <div class="member_type_img"><img src="img/myshop/member.JPG" alt="사진"></div>
+            <div class="member_type_desc">
+                <div>저희 쇼핑몰을 이용해 주셔서 감사합니다. <b th:text="${member.name}">홍길동</b> 님은 <b>[일반회원]</b> 이십니다</div>
+            </div>
+        </div>
+
+        <div class="section_content">
+            <form action="" method="POST" onsubmit="return sendit()">
+                <input type="hidden" name="_method" value="put">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
+                <table class="basicdata">
+                    <colgroup>
+                        <col width="120px"/>
+                        <col width="auto"/>
+                    </colgroup>
+                    <tr>
+                        <th><label for="user_id">아이디<span>＊</span></label></th>
+                        <td><input type="text" name="loginId" id="user_id" th:value="${member.loginId}" readonly></td>
+                    </tr>
+                    <tr>
+                        <th><label for="user_password">비밀번호<span>＊</span></label></th>
+                        <td><input type="password" name="password" id="user_password">&nbsp; (영문 대소문자/숫자/특수문자 중2가지 이상 조합, 10~16자)</td>
+                    </tr>
+                    <tr>
+                        <th><label for="user_password_ok">비밀번호확인<span>＊</span></label></th>
+                        <td><input type="password" id="user_password_ok"></td>
+                    </tr>
+                    <tr>
+                        <th><label for="user_name">이름<span>＊</span></label></th>
+                        <td><input type="text" name="name" id="user_name" th:value="${member.name}" readonly></td>
+                    </tr>
+                    <tr>
+                        <th><label for="sample6_postcode">주소<span>＊</span></label></th>
+                        <td>
+                            <input type="text" id="sample6_postcode" name="address1" placeholder="우편번호" th:value="{member.address1}">
+                            <button onclick="sample6_execDaumPostcode()" id="postbtn"><span>우편번호</span><i class="fas fa-chevron-right"></i></button><br>
+                            <input type="text" id="sample6_address" name="address2" placeholder="주소" class="address_margin" th:value="{member.address2}"> 기본주소<br>
+                            <input type="text" id="sample6_detailAddress" name="address3" placeholder="상세주소" class="address_margin" th:value="{member.address3}"> 나머지주소
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="home_number">일반전화</label></th>
+                        <td>
+                            <select name="homePhoneNumber[]" id="home_number" class="home_number">
+                                <option value="02" th:selected="${#strings.equals( member.homeNumber1, '02' )}">02</option>
+                                <option value="031" th:selected="${#strings.equals( member.homeNumber1, '031' )}">031</option>
+                                <option value="032" th:selected="${#strings.equals( member.homeNumber1, '032' )}">032</option>
+                                <option value="033" th:selected="${#strings.equals( member.homeNumber1, '033' )}">033</option>
+                                <option value="041" th:selected="${#strings.equals( member.homeNumber1, '041' )}">041</option>
+                                <option value="042" th:selected="${#strings.equals( member.homeNumber1, '042' )}">042</option>
+                                <option value="043" th:selected="${#strings.equals( member.homeNumber1, '043' )}">043</option>
+                                <option value="044" th:selected="${#strings.equals( member.homeNumber1, '044' )}">044</option>
+                                <option value="051" th:selected="${#strings.equals( member.homeNumber1, '051' )}">051</option>
+                                <option value="052" th:selected="${#strings.equals( member.homeNumber1, '052' )}">052</option>
+                                <option value="053" th:selected="${#strings.equals( member.homeNumber1, '053' )}">053</option>
+                                <option value="054" th:selected="${#strings.equals( member.homeNumber1, '054' )}">054</option>
+                                <option value="055" th:selected="${#strings.equals( member.homeNumber1, '055' )}">055</option>
+                            </select>
+                            -
+                            <input type="text" name="homePhoneNumber[]" class="home_number" th:value="${member.homeNumber2}">
+                            -
+                            <input type="text" name="homePhoneNumber[]" class="home_number" th:value="${member.homeNumber3}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="phone_number">휴대전화<span>＊</span></label></th>
+                        <td>
+                            <select name="phoneNumber[]" id="phone_number" class="phone_number">
+                                <option value="010" th:selected="${#strings.equals( member.homeNumber1, '010' )}">010</option>
+                                <option value="011" th:selected="${#strings.equals( member.homeNumber1, '011' )}">011</option>
+                                <option value="016" th:selected="${#strings.equals( member.homeNumber1, '016' )}">016</option>
+                                <option value="017" th:selected="${#strings.equals( member.homeNumber1, '017' )}">017</option>
+                                <option value="018" th:selected="${#strings.equals( member.homeNumber1, '018' )}">018</option>
+                                <option value="019" th:selected="${#strings.equals( member.homeNumber1, '019' )}">019</option>
+                            </select>
+                            -
+                            <input type="text" name="phoneNumber[]" class="phone_number" th:value="${member.phoneNumber2}">
+                            -
+                            <input type="text" name="phoneNumber[]" class="phone_number" th:value="${member.phoneNumber3}">
+                        </td>
+                    </tr>
+                    <tr>
+                        <th><label for="email">이메일<span>＊</span></label></th>
+                        <td><input type="text" name="email" id="email" th:value="${member.email}"></td>
+                    </tr>
+                    <tr>
+                        <th><label>이메일 수신여부<span>＊</span></label></th>
+                        <td>
+                            <label><input type="radio" name="email_receive" value="y"> 수신함</label>&nbsp;
+                            <label><input type="radio" name="email_receive" value="n" checked> 수신안함</label>
+                            <div>쇼핑몰에서 제공하는 유익한 이벤트 소식을 이메일로 받으실 수 있습니다.</div>
+                        </td>
+                    </tr>
+                </table>
+                
+                <div class="additionaldata_caption">추가정보</div>
+                <table class="additionaldata">
+                    <colgroup>
+                        <col width="120px"/>
+                        <col width="auto"/>
+                    </colgroup>
+                    <tr>
+                        <th><label for="birth_year">생년월일</label></th>
+                        <td>
+                            <input type="text" name="birthday[]" id="birth_year" th:value="${member.birthYear}">
+                            년&nbsp;&nbsp;&nbsp;
+                            <input type="text" name="birthday[]" id="birth_month" th:value="${member.birthMonth}">
+                            월&nbsp;&nbsp;&nbsp;
+                            <input type="text" name="birthday[]" id="birth_date" th:value="${member.birthDate}">
+                            일
+                        </td>
+                    </tr>
+                </table>
+                <div class="bottombtn_box">
+                    <input type="submit" class="registerbtn bottombtn" value="회원정보수정" formaction="/update">
+                    <button class="cancelbtn bottombtn" onclick="location.href=''">취소</button>
+                    <input type="submit" class="withdrawbtn bottombtn" value="회원탈퇴" formaction="/withdraw">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!--nav-->
+    <nav th:replace="main/nav :: main_navFragment">
+    </nav>
+
+    <!--footer-->
+    <footer th:replace="main/footer :: main_footerFragment">
+    </footer>
+
+    <!--우편번호 api-->
+    <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+    <script>
+    function sample6_execDaumPostcode() {
+        new daum.Postcode({
+            oncomplete: function(data) {
+                // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                // 각 주소의 노출 규칙에 따라 주소를 조합한다.
+                // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                //사용자가 선택한 주소 타입에 따라 해당 주소 값을 가져온다.
+                if (data.userSelectedType === 'R') { // 사용자가 도로명 주소를 선택했을 경우
+                    addr = data.roadAddress;
+                } else { // 사용자가 지번 주소를 선택했을 경우(J)
+                    addr = data.jibunAddress;
+                }
+
+                // 사용자가 선택한 주소가 도로명 타입일때 참고항목을 조합한다.
+                if(data.userSelectedType === 'R'){
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 표시할 참고항목이 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraAddr !== ''){
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                    // 조합된 참고항목을 해당 필드에 넣는다.
+                    document.getElementById("sample6_detailAddress").value = extraAddr;
+                
+                } else {
+                    document.getElementById("sample6_detailAddress").value = '';
+                }
+
+                // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                document.getElementById('sample6_postcode').value = data.zonecode;
+                document.getElementById("sample6_address").value = addr;
+                // 커서를 상세주소 필드로 이동한다.
+                document.getElementById("sample6_detailAddress").focus();
+            }
+        }).open();
+    }
+    </script>
+</body>
+</html>
