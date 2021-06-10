@@ -84,12 +84,12 @@
                         </thead>
                         <tbody>
                             <tr th:each="order:${orderList}">
-                                <td><span th:text="${#dates.format(order.date, 'yyyy-MM-dd')}">2021-03-18</span><br><span th:text="${order.number}">202103180000205</span></td>
-                                <td><img th:src="@{${order.imgpath}}" src="img/main_newarrivals/newarrival1.JPG" alt="상품 사진" class="orderditemimg"></td>
-                                <td><span th:text="${order.name}">라인 배색 양말(2color)</span><br><span th:text="'[옵션:'+${order.color}+']'">[옵션:화이트]</span></td>
-                                <td th:text="${order.quantity}">1</td>
+                                <td><span th:text="${order.orderedAt}">2021-03-18</span></td>
+                                <td><img th:src="@{${order.url}}" src="img/main_newarrivals/newarrival1.JPG" alt="상품 사진" class="orderditemimg"></td>
+                                <td><span th:text="${order.itemName}">라인 배색 양말(2color)</span><br><span th:text="'[옵션:'+${order.color}+']'">[옵션:화이트]</span></td>
+                                <td th:text="${order.count}">1</td>
                                 <td th:text="'₩'+${order.price}">₩4,000</td>
-                                <td th:text="${order.status}">배송중</td>
+                                <td th:text="${order.orderStatus}">배송중</td>
                                 <td>
                                     <button class="tablebtn orderCancelbtn">주문취소</button>
                                     <button class="tablebtn orderChangebtn">교환</button>

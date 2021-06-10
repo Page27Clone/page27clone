@@ -1,7 +1,9 @@
 package com.page27.project.repository;
 
 import com.page27.project.domain.*;
+import com.page27.project.dto.MainPageOrderDto;
 import com.page27.project.dto.OrderDto;
+import com.page27.project.dto.QMainPageOrderDto;
 import com.page27.project.dto.QOrderDto;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -83,6 +85,37 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
                 .fetchResults();
 
         List<OrderDto> content = results.getResults();
+        long total = results.getTotal();
+
+        return new PageImpl<>(content, pageable, total);
+    }
+
+    @Override
+    public Page<MainPageOrderDto> mainPageSearchAllOrder(Pageable pageable,String loginId) {
+        QueryResults<MainPageOrderDto> results = queryFactory
+                .select(new QMainPageOrderDto(
+                        QOrder.order.id,
+                        QOrderItem.orderItem.id,
+                        QOrderItem.orderItem.item.id,
+                        QMember.member.name,
+                        QOrderItem.orderItem.item.itemName,
+                        QOrder.order.orderedAt,
+                        QOrderItem.orderItem.orderStatus,
+                        QOrderItem.orderItem.orderPrice,
+                        QOrderItem.orderItem.count,
+                        QOrderItem.orderItem.item.imgUrl,
+                        QOrderItem.orderItem.item.color
+                ))
+                .from(QOrder.order)
+                .leftJoin(QOrderItem.orderItem).on(QOrderItem.orderItem.eq(QOrder.order.orderItemList.any()))
+                .leftJoin(QMember.member).on(QMember.member.eq(QOrder.order.member))
+                .where(QMember.member.loginId.eq(loginId),QOrderItem.orderItem.item.rep.eq(true))
+                .orderBy(QOrderItem.orderItem.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetchResults();
+
+        List<MainPageOrderDto> content = results.getResults();
         long total = results.getTotal();
 
         return new PageImpl<>(content, pageable, total);
