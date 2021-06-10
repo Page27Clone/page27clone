@@ -89,7 +89,6 @@
                                 <td><span th:text="${order.itemName}">라인 배색 양말(2color)</span><br><span th:text="'[옵션:'+${order.color}+']'">[옵션:화이트]</span></td>
                                 <td th:text="${order.count}">1</td>
                                 <td th:text="'₩'+${#numbers.formatInteger(order.price, 0, 'COMMA')}">₩4,000</td>
-                                <td th:text="${order.orderStatus}">배송중</td>
                                 <td th:if="${order.orderStatus.toString().equals('PAYWAITING')}">입금전</td>
                                 <td th:if="${order.orderStatus.toString().equals('PRESHIP')}">배송준비중</td>
                                 <td th:if="${order.orderStatus.toString().equals('INSHIP')}">배송중</td>
