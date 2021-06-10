@@ -35,7 +35,7 @@
             <div class="member_type_desc">
                 <div>저희 쇼핑몰을 이용해 주셔서 감사합니다. <b th:text="${member.name}">홍길동</b> 님은 <b th:text="'['+${member.memberGrade}+']'">[일반회원]</b> 이십니다</div>
                 <div class="member_milage">
-                    가용적립금&nbsp;&nbsp;&nbsp;<b>></b>&nbsp;&nbsp;&nbsp;<b th:text="${#numbers.formatInteger(member.mileage, 0, 'COMMA')} + '원'">2,000원</b>&nbsp;&nbsp;&nbsp;<button onclick="location.href='#'" th:onclick="'location.href=\''+ @{/main/mileage/{id}(id=${member.id})} + '\''">조회</button>
+                    가용적립금&nbsp;&nbsp;&nbsp;<b>></b>&nbsp;&nbsp;&nbsp;<b th:text="${#numbers.formatInteger(member.mileage, 0, 'COMMA')} + '원'">2,000원</b>&nbsp;&nbsp;&nbsp;<button onclick="location.href='#'" th:onclick="'location.href=\''+ @{/main/mileage} + '\''">조회</button>
                 </div>          
             </div>
         </div>
@@ -52,25 +52,25 @@
             <div class="myshop_orderstate_container">
                 <div class="myshop_orderstate_item">
                     <div class="item_caption">입금전</div>
-                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderStatus.payWaitingNum}">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order/PAYWAITING}" href="" th:text="${orderStatus.payWaitingNum}">0</a></div>
                 </div>
                 <div class="myshop_orderstate_item">
                     <div class="item_caption">배송준비중</div>
-                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderStatus.preShipNum}">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order/PRESHIP}" href="" th:text="${orderStatus.preShipNum}">0</a></div>
                 </div>
                 <div class="myshop_orderstate_item">
                     <div class="item_caption">배송중</div>
-                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderStatus.inShipNum}">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order/INSHIP}" href="" th:text="${orderStatus.inShipNum}">0</a></div>
                 </div>
                 <div class="myshop_orderstate_item">
                     <div class="item_caption">배송완료</div>
-                    <div class="item_content"><a th:href="@{/main/order/{id}(id=${member.id})}" href="" th:text="${orderStatus.completeShipNum}">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order/COMPLETESHIP}" href="" th:text="${orderStatus.completeShipNum}">0</a></div>
                 </div>
                 <div class="myshop_orderstate_item last_item">
                     <ul>
-                        <li>· 취소 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order/{id}(id=${member.id})}" href="#" th:text="${orderStatus.orderCancelNum}">0</a></span></li>
-                        <li>· 교환 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order/{id}(id=${member.id})}" href="#" th:text="${orderStatus.orderChangeNum}">0</a></span></li>
-                        <li>· 반품 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order/{id}(id=${member.id})}" href="#" th:text="${orderStatus.orderRefundNum}">0</a></span></li>
+                        <li>· 취소 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order/ORDERCANCEL}" href="#" th:text="${orderStatus.orderCancelNum}">0</a></span></li>
+                        <li>· 교환 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order/ORDERCHANGE}" href="#" th:text="${orderStatus.orderChangeNum}">0</a></span></li>
+                        <li>· 반품 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order/ORDERREFUND}" href="#" th:text="${orderStatus.orderRefundNum}">0</a></span></li>
                     </ul>
                 </div>
 
@@ -78,7 +78,7 @@
         </div>
         <!-- myshop_main-->
         <div class="myshop_main">
-            <div class="myshop_main_item" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/order/{id}(id=${member.id})} + '\''">
+            <div class="myshop_main_item" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/order} + '\''">
                 <div class="item_caption">
                     ORDER
                 </div>
@@ -89,7 +89,7 @@
                     </div>
                 </div>
             </div>
-            <div class="myshop_main_item" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/editdata/{id}(id=${member.id})} + '\''">
+            <div class="myshop_main_item" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/editdata} + '\''">
                 <div class="item_caption">
                     PROFILE
                 </div>
@@ -100,7 +100,7 @@
                     </div>
                 </div>
             </div>
-            <div class="myshop_main_item" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/mileage/{id}(id=${member.id})} + '\''">
+            <div class="myshop_main_item" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/mileage} + '\''">
                 <div class="item_caption">
                     MILEAGE
                 </div>
@@ -111,7 +111,7 @@
                     </div>
                 </div>
             </div>
-            <div class="myshop_main_item" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/address/{id}(id=${member.id})} + '\''">
+            <div class="myshop_main_item" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/address} + '\''">
                 <div class="item_caption">
                     ADDRESS
                 </div>
