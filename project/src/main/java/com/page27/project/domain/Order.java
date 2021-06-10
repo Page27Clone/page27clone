@@ -39,7 +39,6 @@ public class Order extends BaseTimeEntity {
     private int totalPrice;
 
     //연관관계 메소드
-
     public void setMember(Member member){
         this.member = member;
         member.getOrderList().add(this);
