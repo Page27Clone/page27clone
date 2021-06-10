@@ -83,7 +83,6 @@ public class OrderService {
 
     public MyPageOrderStatusDto showOrderStatus(String loginId){
         int payWaitingNum = 0;
-        int payCompleteNum = 0;
         int preShipNum = 0;
         int inShipNum = 0;
         int completeShip = 0;
@@ -98,7 +97,6 @@ public class OrderService {
             for(int j= 0;j< order.getOrderItemList().size();j++){
                 OrderItem orderItem = order.getOrderItemList().get(j);
                 if(orderItem.getOrderStatus().equals(OrderStatus.PAYWAITING)) payWaitingNum += 1;
-                if(orderItem.getOrderStatus().equals(OrderStatus.PAYCOMPLETE)) payCompleteNum += 1;
                 if(orderItem.getOrderStatus().equals(OrderStatus.INSHIP)) inShipNum += 1;
                 if(orderItem.getOrderStatus().equals(OrderStatus.PRESHIP)) preShipNum += 1;
                 if(orderItem.getOrderStatus().equals(OrderStatus.COMPLETESHIP)) completeShip += 1;

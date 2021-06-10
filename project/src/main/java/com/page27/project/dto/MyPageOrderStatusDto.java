@@ -7,16 +7,16 @@ public class MyPageOrderStatusDto {
 
     private int payWaitingNum;
     private int preShipNum;
-    private int inShipNUm;
+    private int inShipNum;
     private int completeShipNum;
     private int orderCancelNum;
     private int orderChangeNum;
     private int orderRefundNum;
 
-    public MyPageOrderStatusDto(int payWaitingNum, int preShipNum, int inShipNUm, int completeShipNum, int orderCancelNum, int orderChangeNum, int orderRefundNum) {
+    public MyPageOrderStatusDto(int payWaitingNum, int preShipNum, int inShipNum, int completeShipNum, int orderCancelNum, int orderChangeNum, int orderRefundNum) {
         this.payWaitingNum = payWaitingNum;
         this.preShipNum = preShipNum;
-        this.inShipNUm = inShipNUm;
+        this.inShipNum = inShipNum;
         this.completeShipNum = completeShipNum;
         this.orderCancelNum = orderCancelNum;
         this.orderChangeNum = orderChangeNum;
