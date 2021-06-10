@@ -3,6 +3,7 @@ package com.page27.project.repository;
 import com.page27.project.domain.Address;
 import com.page27.project.domain.Member;
 import com.page27.project.domain.MemberGrade;
+import com.page27.project.domain.Mileage;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,6 +16,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class DataInsertTest {
     @Autowired
     MemberRepository memberRepository;
+
+    @Autowired
+    MileageRepository mileageRepository;
 
     @Test
     @Transactional
@@ -69,6 +73,17 @@ public class DataInsertTest {
         memberRepository.save(member);
     }
     // 여기까지 Member data 삽입
+
+    @Test
+    @Rollback(false)
+    public void mileageTest() throws Exception{
+        Mileage mileage = new Mileage();
+        mileage.setMileageContent("회원가입 적립금");
+        mileage.setMileagePrice(1000);
+        mileage.setMember(memberRepository.findByloginId("skyey94").get());
+
+        mileageRepository.save(mileage);
+    }
 
 
 

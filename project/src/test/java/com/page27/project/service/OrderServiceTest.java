@@ -4,6 +4,7 @@ import com.page27.project.domain.*;
 import com.page27.project.exception.NotEnoughStockException;
 import com.page27.project.repository.ItemRepository;
 import com.page27.project.repository.MemberRepository;
+import com.page27.project.repository.MileageRepository;
 import com.page27.project.repository.OrderRepository;
 
 import org.junit.jupiter.api.Assertions;
@@ -37,11 +38,26 @@ public class OrderServiceTest {
     @Autowired
     private ItemRepository itemRepository;
 
+    @Autowired
+    private MileageRepository mileageRepository;
+
     private Member createTestMember(){
         Member member = new Member();
         member.setName("testMember1");
         member.setAddress(new Address("Seoul","Gangnam","13600"));
         member.setVisitCount(5);
+
+
+        Mileage mileage1 = new Mileage();
+        mileage1.setMileageContent("회원가입 적립금");
+        mileage1.setMileagePrice(1000);
+        mileage1.setMember(member);
+
+        Mileage mileage2 = new Mileage();
+        mileage2.setMileageContent("1주년 기념 적립금");
+        mileage2.setMileagePrice(2000);
+        mileage2.setMember(member);
+
         memberRepository.save(member);
 
         return member;

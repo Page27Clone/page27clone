@@ -26,17 +26,17 @@ class MemberRepositoryTest {
 
     @Autowired
     private MemberRepository memberRepository;
-    @Test
-    public void springDataJpaTest(){
-        Member member = new Member();
-        member.setName("이수형");
-
-        memberRepository.save(member);
-
-        Member findMember = memberRepository.findByName("이수형").get(0);
-        Assertions.assertThat(member.getId()).isEqualTo(findMember.getId());
-        Assertions.assertThat(member).isEqualTo(findMember);
-    }
+//    @Test
+//    public void springDataJpaTest(){
+//        Member member = new Member();
+//        member.setName("이수형");
+//
+//        memberRepository.save(member);
+//
+//        Member findMember = memberRepository.findByName("이수형").get(0);
+//        Assertions.assertThat(member.getId()).isEqualTo(findMember.getId());
+//        Assertions.assertThat(member).isEqualTo(findMember);
+//    }
 
     @Test
     public void Member_QuerydslTest(){

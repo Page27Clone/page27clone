@@ -1,6 +1,7 @@
 package com.page27.project.service;
 
 import com.page27.project.domain.*;
+import com.page27.project.dto.MyPageOrderStatusDto;
 import com.page27.project.repository.ItemRepository;
 import com.page27.project.repository.MemberRepository;
 import com.page27.project.repository.OrderItemRepository;
@@ -78,5 +79,37 @@ public class OrderService {
         checkedOrderItem.setOrderStatus(orderStatus);
 
         return checkedOrderItem.getId();
+    }
+
+    public MyPageOrderStatusDto showOrderStatus(String loginId){
+        int payWaitingNum = 0;
+        int payCompleteNum = 0;
+        int preShipNum = 0;
+        int inShipNum = 0;
+        int completeShip = 0;
+        int orderCancelNum = 0;
+        int orderChangeNum = 0;
+        int orderRefundNum = 0;
+
+        Member member = memberRepository.findByloginId(loginId).get();
+
+        for(int i = 0;i< member.getOrderList().size();i++){
+            Order order = member.getOrderList().get(i);
+            for(int j= 0;j< order.getOrderItemList().size();j++){
+                OrderItem orderItem = order.getOrderItemList().get(j);
+                if(orderItem.getOrderStatus().equals(OrderStatus.PAYWAITING)) payWaitingNum += 1;
+                if(orderItem.getOrderStatus().equals(OrderStatus.PAYCOMPLETE)) payCompleteNum += 1;
+                if(orderItem.getOrderStatus().equals(OrderStatus.INSHIP)) inShipNum += 1;
+                if(orderItem.getOrderStatus().equals(OrderStatus.PRESHIP)) preShipNum += 1;
+                if(orderItem.getOrderStatus().equals(OrderStatus.COMPLETESHIP)) completeShip += 1;
+                if (orderItem.getOrderStatus().equals(OrderStatus.ORDERCANCEL)) orderCancelNum += 1;
+                if (orderItem.getOrderStatus().equals(OrderStatus.ORDERCHANGE)) orderChangeNum += 1;
+                if(orderItem.getOrderStatus().equals(OrderStatus.ORDERREFUND)) orderRefundNum += 1;
+            }
+        }
+
+        MyPageOrderStatusDto myPageOrderStatusDto = new MyPageOrderStatusDto(payWaitingNum,preShipNum,inShipNum,completeShip,orderCancelNum,orderChangeNum,orderRefundNum);
+
+        return myPageOrderStatusDto;
     }
 }
