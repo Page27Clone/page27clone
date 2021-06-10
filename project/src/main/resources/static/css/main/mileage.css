@@ -83,21 +83,24 @@ td {
 
 
 /*pagenation*/
-.mileagelist .pagenation {
+.pagenation {
     margin-top: 50px;
-    text-align: center;
     display: flex;
+    text-align: center;
     justify-content: center;
     align-items: center;
 }
 
+.pagenation li {
+    margin: 0 8px;
+}
+
 .pagenation .bracket {
     font-size: 9px;
-    margin: 8px;
     font-weight: bold;
 }
 
-.pagenation span {
+.pagenation .pagenum {
     display: inline-block;
     font-size: 12px;
     background-color: var(--pagenation-color);
@@ -106,5 +109,9 @@ td {
     height: 25px;
     border-radius: 50%;
     padding-top: 3px;
-    margin: 0 8px;
+    margin: 5px 0px 0px 0px;
+}
+
+.disabled {
+    pointer-events: none;
 }

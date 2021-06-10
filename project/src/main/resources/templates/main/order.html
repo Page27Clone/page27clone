@@ -73,7 +73,7 @@
                         </colgroup>
                         <thead>
                             <tr>
-                                <td>주문일자<br>[주문번호]</td>
+                                <td>주문일자</td>
                                 <td>이미지</td>
                                 <td>상품정보</td>
                                 <td>수량</td>
@@ -88,12 +88,38 @@
                                 <td><img th:src="@{${order.url}}" src="img/main_newarrivals/newarrival1.JPG" alt="상품 사진" class="orderditemimg"></td>
                                 <td><span th:text="${order.itemName}">라인 배색 양말(2color)</span><br><span th:text="'[옵션:'+${order.color}+']'">[옵션:화이트]</span></td>
                                 <td th:text="${order.count}">1</td>
-                                <td th:text="'₩'+${order.price}">₩4,000</td>
+                                <td th:text="'₩'+${#numbers.formatInteger(order.price, 0, 'COMMA')}">₩4,000</td>
                                 <td th:text="${order.orderStatus}">배송중</td>
+                                <td th:if="${order.orderStatus.toString().equals('PAYWAITING')}">입금전</td>
+                                <td th:if="${order.orderStatus.toString().equals('PRESHIP')}">배송준비중</td>
+                                <td th:if="${order.orderStatus.toString().equals('INSHIP')}">배송중</td>
+                                <td th:if="${order.orderStatus.toString().equals('COMPLETESHIP')}">배송완료</td>
+                                <td th:if="${order.orderStatus.toString().equals('ORDERCANCEL')}">주문취소</td>
+                                <td th:if="${order.orderStatus.toString().equals('ORDERCHANGE')}">교환</td>
+                                <td th:if="${order.orderStatus.toString().equals('ORDERREFUND')}">반품</td>
                                 <td>
-                                    <button class="tablebtn orderCancelbtn">주문취소</button>
-                                    <button class="tablebtn orderChangebtn">교환</button>
-                                    <button class="tablebtn orderRefundbtn">반품</button>
+                                    <th:block th:if="${order.orderStatus.toString().equals('PAYWAITING')}">
+                                        <button class="tablebtn orderCancelbtn">주문취소</button>
+                                    </th:block>
+                                    <th:block th:if="${order.orderStatus.toString().equals('PRESHIP')}">
+                                        <button class="tablebtn orderCancelbtn">주문취소</button>
+                                    </th:block>
+                                    <th:block th:if="${order.orderStatus.toString().equals('INSHIP')}">
+                                        상품 배송중
+                                    </th:block>
+                                    <th:block th:if="${order.orderStatus.toString().equals('COMPLETESHIP')}">
+                                        <button class="tablebtn orderChangebtn">교환</button>
+                                        <button class="tablebtn orderRefundbtn">반품</button>
+                                    </th:block>
+                                    <th:block th:if="${order.orderStatus.toString().equals('ORDERCANCEL')}">
+                                        주문취소
+                                    </th:block>
+                                    <th:block th:if="${order.orderStatus.toString().equals('ORDERCHANGE')}">
+                                        교환
+                                    </th:block>
+                                    <th:block th:if="${order.orderStatus.toString().equals('ORDERREFUND')}">
+                                        반품
+                                    </th:block>
                                 </td>
                                 <input type="hidden" value="7" th:value="${order.orderItemId}">
                             </tr>

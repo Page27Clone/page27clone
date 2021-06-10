@@ -46,13 +46,22 @@ $(function(){
     $('.tablebtn').click(function(){
         const id = $(this).closest('tr').find('input[type=hidden]').val()
         let order_status = '';
+        let message = '';
         if($(this).hasClass('orderCancelbtn')){
             order_status = 'ORDERCANCEL';
+            message = '정말로 해당 상품의 주문을 취소하시겠습니까?';
         }else if($(this).hasClass('orderChangebtn')){
             order_status = 'ORDERCHANGE';
+            message = '정말로 해당 상품을 교환 하시겠습니까?';
         }else {
             order_status = 'ORDERREFUND';
+            message = '정말로 해당 상품을 반품 하시겠습니까?';
         }
+
+        if(!confirm(message)){
+            return false
+        }
+
 
         $.ajax({
             type: 'PATCH',
