@@ -181,3 +181,7 @@ td .orderRefundbtn {
     padding-top: 3px;
     margin: 5px 0px 0px 0px;
 }
+
+.disabled {
+    pointer-events: none;
+}

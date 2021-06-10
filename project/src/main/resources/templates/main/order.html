@@ -36,7 +36,7 @@
             </div>
             <form action="#" method="GET">
                 <select name="omode">
-                    <option value="PAYWATING">입금대기</option>
+                    <option value="PAYWAITING">입금대기</option>
                     <option value="PRESHIP">배송준비중</option>
                     <option value="INSHIP">배송중</option>
                     <option value="COMPLETESHIP">배송완료</option>
@@ -106,15 +106,15 @@
                 </div>
                 <ul class="pagenation">
                     <li th:classappend="${1 == orderList.pageable.pageNumber + 1} ? 'disabled'">
-                        <a href="#" class="prev bracket" th:href="@{/main/orderList(page=${orderList.pageable.pageNumber - 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode})}" tabindex="-1" aria-disabled="true">
+                        <a href="#" class="prev bracket" th:href="@{/main/order(page=${orderList.pageable.pageNumber - 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode})}" tabindex="-1" aria-disabled="true">
                             <i class="fas fa-chevron-left"></i> PREV
                         </a>
                     </li>
                     <li th:classappend="${i == orderList.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
-                        <a href="#" class="pagenum" th:href="@{/main/orderList(page=${i - 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode})}" th:text="${i}">1</a>
+                        <a href="#" class="pagenum" th:href="@{/main/order(page=${i - 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode})}" th:text="${i}">1</a>
                     </li>
                     <li th:classappend="${orderList.totalPages == orderList.pageable.pageNumber + 1} ? 'disabled'">
-                        <a href="#" class="next bracket" th:href="@{/main/orderList(page=${orderList.pageable.pageNumber + 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode})}">
+                        <a href="#" class="next bracket" th:href="@{/main/order(page=${orderList.pageable.pageNumber + 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode})}">
                             NEXT <i class="fas fa-chevron-right"></i>
                         </a>
                     </li>

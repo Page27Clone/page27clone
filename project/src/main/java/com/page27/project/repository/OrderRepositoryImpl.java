@@ -7,6 +7,7 @@ import com.page27.project.dto.QMainPageOrderDto;
 import com.page27.project.dto.QOrderDto;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
+import com.querydsl.core.types.dsl.EnumPath;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -121,6 +122,41 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
         return new PageImpl<>(content, pageable, total);
     }
 
+    @Override
+    public Page<MainPageOrderDto> mainPageSearchAllOrderByCondition(SearchOrder searchOrder, Pageable pageable, String loginId) {
+        QueryResults<MainPageOrderDto> results = queryFactory
+                .select(new QMainPageOrderDto(
+                        QOrder.order.id,
+                        QOrderItem.orderItem.id,
+                        QOrderItem.orderItem.item.id,
+                        QMember.member.name,
+                        QOrderItem.orderItem.item.itemName,
+                        QOrder.order.orderedAt,
+                        QOrderItem.orderItem.orderStatus,
+                        QOrderItem.orderItem.orderPrice,
+                        QOrderItem.orderItem.count,
+                        QOrderItem.orderItem.item.imgUrl,
+                        QOrderItem.orderItem.item.color
+                ))
+                .from(QOrder.order)
+                .leftJoin(QOrderItem.orderItem).on(QOrderItem.orderItem.eq(QOrder.order.orderItemList.any()))
+                .leftJoin(QMember.member).on(QMember.member.eq(QOrder.order.member))
+                .where(QMember.member.loginId.eq(loginId),
+                        QOrderItem.orderItem.item.rep.eq(true),
+                        orderStatusEq(searchOrder.getOmode()),
+                        betweenDate(searchOrder.getFirstdate(),searchOrder.getLastdate())
+                        )
+                .orderBy(QOrderItem.orderItem.id.desc())
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetchResults();
+
+        List<MainPageOrderDto> content = results.getResults();
+        long total = results.getTotal();
+
+        return new PageImpl<>(content, pageable, total);
+    }
+
     private BooleanExpression betweenDate(String firstDate, String lastDate){
         if(StringUtils.isEmpty(firstDate) && StringUtils.isEmpty(lastDate)){
 
@@ -193,11 +229,11 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
     }
 
     private BooleanExpression orderStatusEq(String orderStatusCondition){
-        if(StringUtils.isEmpty(orderStatusCondition)){
-            return null;
-        }
+
         logger.info("selected Orderstatus : " + orderStatusCondition);
 //        return QOrderItem.orderItem.orderStatus.eq(OrderStatus.valueOf(orderStatusCondition));
+//        OrderStatus orderStatus = OrderStatus.valueOf(orderStatusCondition);
+
         return QOrderItem.orderItem.orderStatus.eq(OrderStatus.valueOf(orderStatusCondition));
     }
 }
