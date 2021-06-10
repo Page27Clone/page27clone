@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -37,15 +36,13 @@
             </div>
             <form action="#" method="GET">
                 <select name="omode">
-                    <option value="whole">전체 주문처리상태</option>
-                    <option value="pay-waiting">입금대기</option>
-                    <option value="pay-complete">결제완료</option>
-                    <option value="pre-ship">발송준비중</option>
-                    <option value="in-ship">배송중</option>
-                    <option value="complete-ship">배송완료</option>
-                    <option value="order-cancel">주문취소</option>
-                    <option value="order-exchange">주문취소</option>
-                    <option value="order-return">주문취소</option>
+                    <option value="PAYWATING">입금대기</option>
+                    <option value="PRESHIP">배송준비중</option>
+                    <option value="INSHIP">배송중</option>
+                    <option value="COMPLETESHIP">배송완료</option>
+                    <option value="ORDERCANCEL">주문취소</option>
+                    <option value="ORDERCHANGE">교환</option>
+                    <option value="ORDERREFUND">반품</option>
                 </select>
                 <span class="period">
                     <span class="period_item" days="0">오늘</span>
@@ -93,7 +90,12 @@
                                 <td th:text="${order.quantity}">1</td>
                                 <td th:text="'₩'+${order.price}">₩4,000</td>
                                 <td th:text="${order.status}">배송중</td>
-                                <td th:text="${order.status}"></td>
+                                <td>
+                                    <button class="tablebtn orderCancelbtn">주문취소</button>
+                                    <button class="tablebtn orderChangebtn">교환</button>
+                                    <button class="tablebtn orderRefundbtn">반품</button>
+                                </td>
+                                <input type="hidden" value="7" th:value="${order.orderItemId}">
                             </tr>
                         </tbody>
                     </table>
@@ -102,25 +104,21 @@
                         주문내역이 없습니다.
                     </div> -->
                 </div>
-                <div class="pagenation">
-                    <a href="#" class="first bracket">
-                        <i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i>
-                    </a>
-                    <a href="#" class="prev bracket">
-                        <i class="fas fa-chevron-left"></i> PREV
-                    </a>
-                    <a href="#" class="pagenums">
-                        <span class="pagenum">1</span>
-                        <span class="pagenum">2</span>
-                        <span class="pagenum">3</span>
-                    </a>
-                    <a href="#" class="next bracket">
-                        NEXT <i class="fas fa-chevron-right"></i>
-                    </a>
-                    <a href="#" class="last bracket">
-                        <i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i>
-                    </a>
-                </div>
+                <ul class="pagenation">
+                    <li th:classappend="${1 == orderList.pageable.pageNumber + 1} ? 'disabled'">
+                        <a href="#" class="prev bracket" th:href="@{/admin/orderList(page=${orderList.pageable.pageNumber - 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode})}" tabindex="-1" aria-disabled="true">
+                            <i class="fas fa-chevron-left"></i> PREV
+                        </a>
+                    </li>
+                    <li th:classappend="${i == orderList.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                        <a href="#" class="pagenum" th:href="@{/admin/orderList(page=${i - 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode})}" th:text="${i}">1</a>
+                    </li>
+                    <li th:classappend="${orderList.totalPages == orderList.pageable.pageNumber + 1} ? 'disabled'">
+                        <a href="#" class="next bracket" th:href="@{/admin/orderList(page=${orderList.pageable.pageNumber + 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode})}">
+                            NEXT <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                </ul>
             </div>
             
         </div>

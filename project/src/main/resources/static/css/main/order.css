@@ -112,8 +112,35 @@ td {
     padding: 15px;
     border-bottom: 1px solid var(--border-color-basic2);
 }
-.orderlist .orderlist_content table tr td .orderditemimg {
+td .orderditemimg {
     width: 80px;
+    display: block;
+}
+
+td .tablebtn {
+    width: 60px;
+    border: 1px solid var(--border-color-basic2);
+    font-size: 12px;
+    padding: 1px 0px 3px 0px;
+    color: var(--font-color-gray);
+    background-color: white;
+}
+
+td .orderChangebtn {
+    background-color: var(--border-color-basic);
+
+}
+
+td .orderRefundbtn {
+    color: white;
+    border-color: #555555;
+    background-color: #555555;
+}
+
+
+
+.orderlist .orderlist_content table tr td .tablebtn:not(:last-child) {
+    margin-bottom: 2px;
 }
 
 .orderlist .orderlist_content .nosearch {
@@ -128,19 +155,22 @@ td {
 /*pagenation*/
 .orderlist .pagenation {
     margin-top: 50px;
-    text-align: center;
     display: flex;
+    text-align: center;
     justify-content: center;
     align-items: center;
 }
 
+.pagenation li {
+    margin: 0 8px;
+}
+
 .pagenation .bracket {
     font-size: 9px;
-    margin: 8px;
     font-weight: bold;
 }
 
-.pagenation span {
+.pagenation .pagenum {
     display: inline-block;
     font-size: 12px;
     background-color: var(--pagenation-color);
@@ -149,5 +179,5 @@ td {
     height: 25px;
     border-radius: 50%;
     padding-top: 3px;
-    margin: 0 8px;
+    margin: 5px 0px 0px 0px;
 }
