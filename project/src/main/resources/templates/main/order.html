@@ -105,16 +105,16 @@
                     </div> -->
                 </div>
                 <ul class="pagenation">
-                    <li th:classappend="${1 == orderList.pageable.pageNumber + 1} ? 'disabled'">
-                        <a href="#" class="prev bracket" th:href="@{/admin/orderList(page=${orderList.pageable.pageNumber - 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode})}" tabindex="-1" aria-disabled="true">
+                    <li th:classappend="${1 == order.pageable.pageNumber + 1} ? 'disabled'">
+                        <a href="#" class="prev bracket" th:href="@{/main/order(page=${order.pageable.pageNumber - 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode})}" tabindex="-1" aria-disabled="true">
                             <i class="fas fa-chevron-left"></i> PREV
                         </a>
                     </li>
-                    <li th:classappend="${i == orderList.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
-                        <a href="#" class="pagenum" th:href="@{/admin/orderList(page=${i - 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode})}" th:text="${i}">1</a>
+                    <li th:classappend="${i == order.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                        <a href="#" class="pagenum" th:href="@{/admin/order(page=${i - 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode})}" th:text="${i}">1</a>
                     </li>
-                    <li th:classappend="${orderList.totalPages == orderList.pageable.pageNumber + 1} ? 'disabled'">
-                        <a href="#" class="next bracket" th:href="@{/admin/orderList(page=${orderList.pageable.pageNumber + 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode})}">
+                    <li th:classappend="${order.totalPages == order.pageable.pageNumber + 1} ? 'disabled'">
+                        <a href="#" class="next bracket" th:href="@{/admin/order(page=${order.pageable.pageNumber + 1},firstdate=${firstDate},lastdate=${lastDate},omode=${oMode})}">
                             NEXT <i class="fas fa-chevron-right"></i>
                         </a>
                     </li>
