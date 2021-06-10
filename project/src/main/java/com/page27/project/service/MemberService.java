@@ -74,7 +74,7 @@ public class MemberService implements UserDetailsService {
         // 비밀번호 암호화
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         memberInfoDto.setPassword(passwordEncoder.encode(memberInfoDto.getPassword()));
-        //System.out.println("here is joinUser method " + memberInfoDto.toEntity().getId());
+
         return memberRepository.save(memberInfoDto.toEntity()).getId();
     }
 //    회원가입을 처리하는 메소드이며 비밀번호를 암호화하여 저장한다.
@@ -88,13 +88,13 @@ public class MemberService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
-//        System.out.println("Login Id = " + loginId);
+        System.out.println("Login Id = " + loginId);
         Optional<Member> userEntityWrapper = memberRepository.findByloginId(loginId);
-//        System.out.println("why");
-//        System.out.println(memberRepository.findByloginId("here check : " + userEntityWrapper .get().getLoginId()));
+        System.out.println("why");
+        System.out.println(memberRepository.findByloginId(userEntityWrapper .get().getLoginId()));
         Member userEntity = userEntityWrapper.get();
-//        System.out.println("userEntity ID = " + userEntity.getLoginId());
-//        System.out.println("userEntity Password = " + userEntity.getPassword());
+        System.out.println("userEntity ID = " + userEntity.getLoginId());
+        System.out.println("userEntity Password = " + userEntity.getPassword());
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         if (("admin@example.com").equals(loginId)) {

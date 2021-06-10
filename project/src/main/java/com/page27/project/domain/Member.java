@@ -16,13 +16,10 @@ public class Member extends BaseTimeEntity {
     @Column(name = "member_id")
     private Long id;
 
-    @NonNull
     private String loginId;
 
-    @NonNull
     private String password;
 
-    @NonNull
     private String name;
 
     private String sex;
@@ -43,7 +40,7 @@ public class Member extends BaseTimeEntity {
 
     private String phoneNumber;
 
-    private String HomePhoneNumber;
+    private String homePhoneNumber;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Mileage> mileageList = new ArrayList<>();
@@ -59,10 +56,15 @@ public class Member extends BaseTimeEntity {
     }
 
     @Builder
-    public Member(Long id, String loginId, String password){
+    public Member(Long id, String loginId, String password, String name, String homePhoneNumber, String phoneNumber, String email, String birthday){
         this.id = id;
         this.loginId = loginId;
         this.password = password;
+        this.name = name;
+        this.homePhoneNumber = homePhoneNumber;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.birthday = birthday;
     }
 
 }
