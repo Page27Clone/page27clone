@@ -1,13 +1,7 @@
 package com.page27.project.controller.main;
 
-import com.page27.project.domain.Member;
-import com.page27.project.domain.OrderItem;
-import com.page27.project.domain.OrderStatus;
-import com.page27.project.domain.SearchOrder;
-import com.page27.project.dto.MainPageOrderDto;
-import com.page27.project.dto.MyPageDto;
-import com.page27.project.dto.MyPageOrderStatusDto;
-import com.page27.project.dto.OrderDto;
+import com.page27.project.domain.*;
+import com.page27.project.dto.*;
 import com.page27.project.repository.MemberRepository;
 import com.page27.project.repository.MileageRepository;
 import com.page27.project.repository.OrderItemRepository;
@@ -96,6 +90,29 @@ public class MainController {
 
         orderItemRepository.save(orderItem);
         return "주문상품 상태 변경완료";
+    }
+
+    @GetMapping("/main/profile")
+    public String editDataPage(Principal principal,Model model){
+        ProfileDto profileMyDto = new ProfileDto();
+
+        String loginId = principal.getName();
+        Member member = memberRepository.findByloginId(loginId).get();
+
+        profileMyDto.setName(member.getName());
+        profileMyDto.setLoginId(member.getLoginId());
+        profileMyDto.setZipcode(member.getAddress().getZipcode());
+        profileMyDto.setStreet(member.getAddress().getStreet());
+        profileMyDto.setCity(member.getAddress().getCity());
+        profileMyDto.setHomePhoneNumber(member.getHomePhoneNumber());
+        profileMyDto.setPhoneNumber(member.getPhoneNumber());
+        profileMyDto.setEmail(member.getEmail());
+        profileMyDto.setBirthday(member.getBirthday());
+
+
+        model.addAttribute("member",profileMyDto);
+
+        return "main/editdata";
     }
 
 }
