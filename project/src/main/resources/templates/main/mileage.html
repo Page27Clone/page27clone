@@ -32,18 +32,18 @@
         <div class="mileage_summary">
             <div class="mileage_summary_left">
                 <div class="summary_item">
-                    <span><i class="fas fa-chevron-right"></i> <span th:text="${totalmileage}">총 적립금</span></span>
-                    <span>2,000원</span>
+                    <span><i class="fas fa-chevron-right"></i> <span>총 적립금</span></span>
+                    <span th:text="${#numbers.formatInteger(totalmileage, 0, 'COMMA')} + '원'">2,000원</span>
                 </div>
                 <div class="summary_item">
-                    <span><i class="fas fa-chevron-right"></i> <span th:text="${usedmileage}">사용된 적립금</span></span>
-                    <span>0원</span>
+                    <span><i class="fas fa-chevron-right"></i> <span>사용된 적립금</span></span>
+                    <span th:text="${#numbers.formatInteger(usedmileage, 0, 'COMMA')} + '원'">0원</span>
                 </div>
             </div>
             <div class="mileage_summary_right">
                 <div class="summary_item">
-                    <span><i class="fas fa-chevron-right"></i> <span th:text="${restmileage}">사용가능 적립금</span></span>
-                    <span>2,000원</span>
+                    <span><i class="fas fa-chevron-right"></i> <span>사용가능 적립금</span></span>
+                    <span th:text="${#numbers.formatInteger(restmileage, 0, 'COMMA')} + '원'">2,000원</span>
                 </div>
             </div>
         </div>
@@ -69,7 +69,7 @@
                         <tbody>
                             <tr th:each="mileage:${mileageList}">
                                 <td th:text="${#dates.format(mileage.date, 'yyyy-MM-dd')}">2021-05-11</td>
-                                <td th:text="${mileage.price}+'원'">2,000원</td>
+                                <td th:text="${#numbers.formatInteger(mileage.price, 0, 'COMMA')} + '원'">2,000원</td>
                                 <td th:text="${mileage.content}">신규회원 적립금</td>
                             </tr>
                         </tbody>
@@ -82,14 +82,16 @@
 
                 </div>
                 <ul class="pagenation">
-                    <li>
-                        <a href="#" class="prev bracket">
+                    <li th:classappend="${1 == mileageList.pageable.pageNumber + 1} ? 'disabled'">
+                        <a href="#" class="prev bracket" th:href="@{/main/mileage(page=${mileageList.pageable.pageNumber - 1})}" tabindex="-1" aria-disabled="true">
                             <i class="fas fa-chevron-left"></i> PREV
                         </a>
                     </li>
-                    <li><a href="#" class="pagenum">1</a></li>
-                    <li>
-                        <a href="#" class="next bracket">
+                    <li th:classappend="${i == mileageList.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                        <a href="#" class="pagenum" th:href="@{/main/mileage(page=${i - 1})}" th:text="${i}">1</a>
+                    </li>
+                    <li th:classappend="${mileageList.totalPages == mileageList.pageable.pageNumber + 1} ? 'disabled'">
+                        <a href="#" class="next bracket" th:href="@{/main/mileage(page=${orderList.pageable.pageNumber + 1})}">
                             NEXT <i class="fas fa-chevron-right"></i>
                         </a>
                     </li>
