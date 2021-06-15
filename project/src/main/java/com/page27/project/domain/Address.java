@@ -3,12 +3,13 @@ package com.page27.project.domain;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.Embeddable;
 
 @Embeddable
 @Getter
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Setter
 public class Address {
     private String city;
     private String street;
@@ -20,4 +21,7 @@ public class Address {
         this.zipcode = zipcode;
     }
 
+    public Address() {
+
+    }
 }

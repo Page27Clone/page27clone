@@ -6,6 +6,7 @@ import com.page27.project.repository.MemberRepository;
 import com.page27.project.repository.MileageRepository;
 import com.page27.project.repository.OrderItemRepository;
 import com.page27.project.repository.OrderRepository;
+import com.page27.project.service.MemberService;
 import com.page27.project.service.MileageService;
 import com.page27.project.service.OrderService;
 import lombok.RequiredArgsConstructor;
@@ -25,6 +26,7 @@ import java.util.Optional;
 public class MainController {
 
     private final MemberRepository memberRepository;
+    private final MemberService memberService;
 
     //이건 테스트
     private final MileageRepository mileageRepository;
@@ -93,26 +95,45 @@ public class MainController {
     }
 
     @GetMapping("/main/profile")
-    public String editDataPage(Principal principal,Model model){
+    public String editDataPage(Principal principal,Model model,@ModelAttribute("member") Member member){
         ProfileDto profileMyDto = new ProfileDto();
 
         String loginId = principal.getName();
-        Member member = memberRepository.findByloginId(loginId).get();
+        Member findMember = memberRepository.findByloginId(loginId).get();
 
-        profileMyDto.setName(member.getName());
-        profileMyDto.setLoginId(member.getLoginId());
-        profileMyDto.setZipcode(member.getAddress().getZipcode());
-        profileMyDto.setStreet(member.getAddress().getStreet());
-        profileMyDto.setCity(member.getAddress().getCity());
-        profileMyDto.setHomePhoneNumber(member.getHomePhoneNumber());
-        profileMyDto.setPhoneNumber(member.getPhoneNumber());
-        profileMyDto.setEmail(member.getEmail());
-        profileMyDto.setBirthday(member.getBirthday());
+        String homePhoneNumber = findMember.getHomePhoneNumber();
+        String[] homePhoneNumberArr = homePhoneNumber.split(",");
+        String phoneNumber = findMember.getPhoneNumber();
+        String[] phoneNumberArr = phoneNumber.split(",");
+        String birthday = findMember.getBirthday();
+        String[] birthdayArr = birthday.split(",");
+
+        if(findMember.getAddress() == null){
+            findMember.setAddress(new Address("","",""));
+            System.out.println("변경완료");
+        }
+        profileMyDto.setName(findMember.getName());
+        profileMyDto.setLoginId(findMember.getLoginId());
+        profileMyDto.setStreet(findMember.getAddress().getStreet());
+        profileMyDto.setZipcode(findMember.getAddress().getZipcode());
+        profileMyDto.setCity(findMember.getAddress().getCity());
+        profileMyDto.setHomePhoneNumber(homePhoneNumberArr);
+        profileMyDto.setPhoneNumber(phoneNumberArr);
+        profileMyDto.setEmail(findMember.getEmail());
+        profileMyDto.setBirthday(birthdayArr);
 
 
         model.addAttribute("member",profileMyDto);
 
         return "main/editdata";
+    }
+
+    @PutMapping("/update")
+    public String editDataSavePage(Principal principal, @ModelAttribute("member") ProfileDto profileDto){
+
+        memberService.updateProfile(principal.getName(),profileDto);
+
+        return "redirect:/main/myPage";
     }
 
 }

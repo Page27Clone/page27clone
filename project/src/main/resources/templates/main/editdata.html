@@ -66,16 +66,16 @@
                     <tr>
                         <th><label for="sample6_postcode">주소<span>＊</span></label></th>
                         <td>
-                            <input type="text" id="sample6_postcode" name="address1" placeholder="우편번호" th:value="${member.zipcode}">
+                            <input type="text" id="sample6_postcode" name="zipcode" placeholder="우편번호" th:value="${member.zipcode}">
                             <button onclick="sample6_execDaumPostcode()" id="postbtn"><span>우편번호</span><i class="fas fa-chevron-right"></i></button><br>
-                            <input type="text" id="sample6_address" name="address2" placeholder="주소" class="address_margin" th:value="${member.city}"> 기본주소<br>
-                            <input type="text" id="sample6_detailAddress" name="address3" placeholder="상세주소" class="address_margin" th:value="${member.street}"> 나머지주소
+                            <input type="text" id="sample6_address" name="street" placeholder="주소" class="address_margin" th:value="${member.city}"> 기본주소<br>
+                            <input type="text" id="sample6_detailAddress" name="city" placeholder="상세주소" class="address_margin" th:value="${member.street}"> 나머지주소
                         </td>
                     </tr>
                     <tr>
                         <th><label for="home_number">일반전화</label></th>
                         <td>
-                            <select name="homePhoneNumber[]" id="home_number" class="home_number">
+                            <select name="homePhoneNumber" id="home_number" class="home_number">
                                 <option value="02" th:selected="${#strings.equals( member.homePhoneNumber[0], '02' )}">02</option>
                                 <option value="031" th:selected="${#strings.equals( member.homePhoneNumber[0], '031' )}">031</option>
                                 <option value="032" th:selected="${#strings.equals( member.homePhoneNumber[0], '032' )}">032</option>
@@ -91,15 +91,15 @@
                                 <option value="055" th:selected="${#strings.equals( member.homePhoneNumber[0], '055' )}">055</option>
                             </select>
                             -
-                            <input type="text" name="homePhoneNumber[]" class="home_number" th:value="${member.homePhoneNumber[1]}">
+                            <input type="text" name="homePhoneNumber" class="home_number" th:value="${member.homePhoneNumber[1]}">
                             -
-                            <input type="text" name="homePhoneNumber[]" class="home_number" th:value="${member.homePhoneNumber[2]}">
+                            <input type="text" name="homePhoneNumber" class="home_number" th:value="${member.homePhoneNumber[2]}">
                         </td>
                     </tr>
                     <tr>
                         <th><label for="phone_number">휴대전화<span>＊</span></label></th>
                         <td>
-                            <select name="phoneNumber[]" id="phone_number" class="phone_number">
+                            <select name="phoneNumber" id="phone_number" class="phone_number">
                                 <option value="010" th:selected="${#strings.equals( member.phoneNumber[0], '010' )}">010</option>
                                 <option value="011" th:selected="${#strings.equals( member.phoneNumber[0], '011' )}">011</option>
                                 <option value="016" th:selected="${#strings.equals( member.phoneNumber[0], '016' )}">016</option>
@@ -108,9 +108,9 @@
                                 <option value="019" th:selected="${#strings.equals( member.phoneNumber[0], '019' )}">019</option>
                             </select>
                             -
-                            <input type="text" name="phoneNumber[]" class="phone_number" th:value="${member.phoneNumber[1]}">
+                            <input type="text" name="phoneNumber" class="phone_number" th:value="${member.phoneNumber[1]}">
                             -
-                            <input type="text" name="phoneNumber[]" class="phone_number" th:value="${member.phoneNumber[2]}">
+                            <input type="text" name="phoneNumber" class="phone_number" th:value="${member.phoneNumber[2]}">
                         </td>
                     </tr>
                     <tr>
@@ -136,11 +136,11 @@
                     <tr>
                         <th><label for="birth_year">생년월일</label></th>
                         <td>
-                            <input type="text" name="birthday[]" id="birth_year" th:value="${member.birthday[0]}">
+                            <input type="text" name="birthday" id="birth_year" th:value="${member.birthday[0]}">
                             년&nbsp;&nbsp;&nbsp;
-                            <input type="text" name="birthday[]" id="birth_month" th:value="${member.birthday[1]}">
+                            <input type="text" name="birthday" id="birth_month" th:value="${member.birthday[1]}">
                             월&nbsp;&nbsp;&nbsp;
-                            <input type="text" name="birthday[]" id="birth_date" th:value="${member.birthday[2]}">
+                            <input type="text" name="birthday" id="birth_date" th:value="${member.birthday[2]}">
                             일
                         </td>
                     </tr>

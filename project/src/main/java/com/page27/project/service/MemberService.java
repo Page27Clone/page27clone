@@ -1,8 +1,10 @@
 package com.page27.project.service;
 
 import com.page27.project.config.Role;
+import com.page27.project.domain.Address;
 import com.page27.project.domain.Member;
 import com.page27.project.dto.MemberInfoDto;
+import com.page27.project.dto.ProfileDto;
 import com.page27.project.exception.DuplicateException;
 import com.page27.project.repository.MemberRepository;
 
@@ -78,6 +80,26 @@ public class MemberService implements UserDetailsService {
         return memberRepository.save(memberInfoDto.toEntity()).getId();
     }
 //    회원가입을 처리하는 메소드이며 비밀번호를 암호화하여 저장한다.
+
+    @Transactional
+    public Long updateProfile(String loginId, ProfileDto profileDto){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        Member member1 = memberRepository.findByloginId(loginId).get();
+        member1.setLoginId(profileDto.getLoginId());
+        member1.setPassword(passwordEncoder.encode(profileDto.getPassword()));
+        member1.setName(profileDto.getName());
+        String homePhoneNumberResult = profileDto.getHomePhoneNumber()[0] + "," + profileDto.getHomePhoneNumber()[1] + "," + profileDto.getHomePhoneNumber()[2];
+        member1.setHomePhoneNumber(homePhoneNumberResult);
+        String phoneNumberResult = profileDto.getPhoneNumber()[0] + "," + profileDto.getPhoneNumber()[1] + "," + profileDto.getPhoneNumber()[2];
+        member1.setPhoneNumber(phoneNumberResult);
+        member1.setEmail(profileDto.getEmail());
+        Address address = new Address(profileDto.getCity(),profileDto.getStreet(),profileDto.getZipcode());
+        member1.setAddress(address);
+
+        return member1.getId();
+
+    }
 
     @Transactional
     public Long changePassword(Long id , String password){
