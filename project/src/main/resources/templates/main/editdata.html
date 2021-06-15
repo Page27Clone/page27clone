@@ -66,10 +66,10 @@
                     <tr>
                         <th><label for="sample6_postcode">주소<span>＊</span></label></th>
                         <td>
-                            <input type="text" id="sample6_postcode" name="address1" placeholder="우편번호" th:value="{member.zipcode}">
+                            <input type="text" id="sample6_postcode" name="address1" placeholder="우편번호" th:value="${member.zipcode}">
                             <button onclick="sample6_execDaumPostcode()" id="postbtn"><span>우편번호</span><i class="fas fa-chevron-right"></i></button><br>
-                            <input type="text" id="sample6_address" name="address2" placeholder="주소" class="address_margin" th:value="{member.city}"> 기본주소<br>
-                            <input type="text" id="sample6_detailAddress" name="address3" placeholder="상세주소" class="address_margin" th:value="{member.street}"> 나머지주소
+                            <input type="text" id="sample6_address" name="address2" placeholder="주소" class="address_margin" th:value="${member.city}"> 기본주소<br>
+                            <input type="text" id="sample6_detailAddress" name="address3" placeholder="상세주소" class="address_margin" th:value="${member.street}"> 나머지주소
                         </td>
                     </tr>
                     <tr>
