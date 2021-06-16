@@ -53,7 +53,6 @@ public class OrderService {
         }
 
         Order order = Order.createOrder(checkedFindMember,delivery,checkedTestOrderItem);
-
         orderRepository.save(order);
 
         return order.getId();

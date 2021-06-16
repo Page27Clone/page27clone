@@ -68,9 +68,9 @@
                         </thead>
                         <tbody>
                             <tr th:each="mileage:${mileageList}">
-                                <td th:text="${#dates.format(mileage.date, 'yyyy-MM-dd')}">2021-05-11</td>
-                                <td th:text="${#numbers.formatInteger(mileage.price, 0, 'COMMA')} + '원'">2,000원</td>
-                                <td th:text="${mileage.content}">신규회원 적립금</td>
+                                <td th:text="${mileage.createdAt}">2021-05-11</td>
+                                <td th:text="${#numbers.formatInteger(mileage.mileagePrice, 0, 'COMMA')} + '원'">2,000원</td>
+                                <td th:text="${mileage.mileageContent}">신규회원 적립금</td>
                             </tr>
                         </tbody>
                     </table>
@@ -91,7 +91,7 @@
                         <a href="#" class="pagenum" th:href="@{/main/mileage(page=${i - 1})}" th:text="${i}">1</a>
                     </li>
                     <li th:classappend="${mileageList.totalPages == mileageList.pageable.pageNumber + 1} ? 'disabled'">
-                        <a href="#" class="next bracket" th:href="@{/main/mileage(page=${orderList.pageable.pageNumber + 1})}">
+                        <a href="#" class="next bracket" th:href="@{/main/mileage(page=${mileageList.pageable.pageNumber + 1})}">
                             NEXT <i class="fas fa-chevron-right"></i>
                         </a>
                     </li>

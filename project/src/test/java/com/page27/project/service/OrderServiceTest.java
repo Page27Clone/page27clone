@@ -112,7 +112,7 @@ public class OrderServiceTest {
         return item3;
     }
 
-    @Rollback(value = false)
+
     @Test
     public void 상품_주문() throws Exception{
         Member member = createTestMember();

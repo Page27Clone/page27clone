@@ -3,6 +3,7 @@ package com.page27.project.domain;
 import com.page27.project.exception.DeliveryException;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -37,6 +38,9 @@ public class Order extends BaseTimeEntity {
     private String payment;
 
     private int totalPrice;
+
+    @ColumnDefault("100")
+    private int usedMileagePrice;
 
     //연관관계 메소드
     public void setMember(Member member){

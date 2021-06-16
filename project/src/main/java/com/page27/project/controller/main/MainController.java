@@ -199,5 +199,30 @@ public class MainController {
         return "redirect:/main/address";
     }
 
+    @GetMapping("/main/mileage")
+    public String getMileagePage(Principal principal,Model model,@PageableDefault(size=1) Pageable pageable){
+
+        String loginId = principal.getName();
+        Member member = memberRepository.findByloginId(loginId).get();
+
+        int totalMileage = mileageService.getTotalMileage(loginId);
+        int totalUsedMileage = mileageService.getTotalUsedMileage(loginId);
+
+        Page<Mileage> mileageBoards = mileageRepository.findAllByMember(member,pageable);
+        int homeStartPage = Math.max(1,mileageBoards.getPageable().getPageNumber() - 4);
+        int homeEndPage = Math.min(mileageBoards.getTotalPages(),mileageBoards.getPageable().getPageNumber() + 4);
+
+        model.addAttribute("totalmileage",totalMileage);
+        model.addAttribute("usedmileage",totalUsedMileage);
+        model.addAttribute("restmileage",totalMileage - totalUsedMileage);
+
+        model.addAttribute("startPage",homeStartPage);
+        model.addAttribute("endPage",homeEndPage);
+
+        model.addAttribute("mileageList",mileageBoards);
+
+        return "main/mileage";
+    }
+
 
 }

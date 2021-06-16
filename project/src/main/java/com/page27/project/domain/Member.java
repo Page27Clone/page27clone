@@ -42,13 +42,13 @@ public class Member extends BaseTimeEntity {
 
     private String homePhoneNumber;
 
-    @OneToMany(mappedBy = "member", fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<Mileage> mileageList = new ArrayList<>();
 
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<Order> orderList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<DeliveryAddress> deliveryAddressList = new ArrayList<>();
 
     //연관 관계 메소드
