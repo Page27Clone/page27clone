@@ -2,10 +2,12 @@ package com.page27.project.service;
 
 import com.page27.project.domain.DeliveryAddress;
 import com.page27.project.domain.Member;
+import com.page27.project.dto.AddressChangeDto;
 import com.page27.project.dto.AddressDto;
 import com.page27.project.repository.DeliveryAddressRepository;
 import com.page27.project.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
+import org.graalvm.compiler.core.common.type.ArithmeticOpTable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -38,6 +40,17 @@ public class AddressService {
 
         return deliveryAddress.getId();
     }
+
+    public DeliveryAddress findAddressById(Long id){
+        Optional<DeliveryAddress> byId = deliveryAddressRepository.findById(id);
+        DeliveryAddress findDeliveryAddress = byId.get();
+
+        return findDeliveryAddress;
+    }
+
+    public AddressDto getChangeAddressDto(){
+        return null;
+    }//수정중
 
     public List<DeliveryAddress> getDeliveryAddress(){
         return deliveryAddressRepository.findAll();

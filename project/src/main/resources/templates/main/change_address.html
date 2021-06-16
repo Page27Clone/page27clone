@@ -41,7 +41,7 @@
                     </colgroup>
                     <tr>
                         <th><label for="address_name">배송지명<span>＊</span></label></th>
-                        <td><input type="text" name="address_name" id="address_name" th:value="${address.name}"></td>
+                        <td><input type="text" name="address_name" id="address_name" th:value="${address.placeName}"></td>
                     </tr>
                     <tr>
                         <th><label for="address_recipient">성명<span>＊</span></label></th>
@@ -50,11 +50,11 @@
                     <tr>
                         <th><label for="sample6_postcode">주소<span>＊</span></label></th>
                         <td>
-                            <input type="text" id="sample6_postcode" name="address1" placeholder="우편번호" th:value="${address.address1}">
+                            <input type="text" id="sample6_postcode" name="address1" placeholder="우편번호" th:value="${address.zipcode}">
                             <!-- form 안에 버튼이 있으면 default가 submit이기 때문에 type="button"으로 주어야한다.-->
                             <button type="button" onclick="sample6_execDaumPostcode()" id="postbtn"><span>우편번호</span><i class="fas fa-chevron-right"></i></button><br>
-                            <input type="text" id="sample6_address" name="address2" placeholder="주소" class="address_margin" th:value="${address.address2}"> 기본주소<br>
-                            <input type="text" id="sample6_detailAddress" name="address3" placeholder="상세주소" class="address_margin" th:value="${address.address3}"> 나머지주소
+                            <input type="text" id="sample6_address" name="address2" placeholder="주소" class="address_margin" th:value="${address.city}"> 기본주소<br>
+                            <input type="text" id="sample6_detailAddress" name="address3" placeholder="상세주소" class="address_margin" th:value="${address.street}"> 나머지주소
                         </td>
                     </tr>
                     <tr>
