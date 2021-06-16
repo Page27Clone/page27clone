@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -64,7 +63,7 @@
                                 <td th:text="${address.recipient}">김사과</td>
                                 <td th:text="${address.homeNumber}">02-7777-7777</td>
                                 <td th:text="${address.phoneNumber}">010-7777-7777</td>
-                                <td th:text="${address.address1} + ' ' + ${address.address2}+ ' ' + ${address.address3}">(05502)서울특별시 송파구 올림픽로 135 (잠실동) 리센츠</td>
+                                <td th:text="${address.zipcode} + ' ' + ${address.city}+ ' ' + ${address.street}">(05502)서울특별시 송파구 올림픽로 135 (잠실동) 리센츠</td>
                                 <td>
                                     <button class="editaddrbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/change_address/{addressIdx}(addressIdx=${address.addressIdx})} + '\''"><span>수정</span><i class="fas fa-chevron-right"></i></button>
                                 </td>
@@ -73,9 +72,9 @@
                         </tbody>
                     </table>
                     <!--검색결과가 있는 경우 없는 영역-->
-                    <!-- <div class="nosearch">
+                    <div th:if="${#lists.isEmpty(addressList)}" class="nosearch">
                         등록된 배송지가 없습니다.
-                    </div> -->
+                    </div>
                     <div class="bottombtn_box">
                         <button class="deletebtn bottombtn">선택 주소록 삭제</button>
                         <button class="registerbtn bottombtn" onclick="location.href=''" th:onclick="'location.href=\'' + @{/main/register_address} + '\''">배송지 등록</button>
