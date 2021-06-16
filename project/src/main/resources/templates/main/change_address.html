@@ -32,7 +32,7 @@
             ADDRESS
         </div>
         <div class="section_content">
-            <form action="/changeaddress_ok" th:action="/main/changeaddress_ok" method="POST" onsubmit="return sendit()">
+            <form action="/changeaddress_ok" th:action="@{/main/changeaddress_ok}" method="POST" onsubmit="return sendit()">
                 <input type="hidden" name="_method" value="put">
                 <table>
                     <colgroup>
@@ -41,61 +41,61 @@
                     </colgroup>
                     <tr>
                         <th><label for="address_name">배송지명<span>＊</span></label></th>
-                        <td><input type="text" name="address_name" id="address_name" th:value="${address.placeName}"></td>
+                        <td><input type="text" name="placeName" id="address_name" th:value="${address.placeName}"></td>
                     </tr>
                     <tr>
                         <th><label for="address_recipient">성명<span>＊</span></label></th>
-                        <td><input type="text" name="address_recipient" id="address_recipient" th:value="${address.recipient}"></td>
+                        <td><input type="text" name="recipient" id="address_recipient" th:value="${address.recipient}"></td>
                     </tr>
                     <tr>
                         <th><label for="sample6_postcode">주소<span>＊</span></label></th>
                         <td>
-                            <input type="text" id="sample6_postcode" name="address1" placeholder="우편번호" th:value="${address.zipcode}">
+                            <input type="text" id="sample6_postcode" name="zipcode" placeholder="우편번호" th:value="${address.zipcode}">
                             <!-- form 안에 버튼이 있으면 default가 submit이기 때문에 type="button"으로 주어야한다.-->
                             <button type="button" onclick="sample6_execDaumPostcode()" id="postbtn"><span>우편번호</span><i class="fas fa-chevron-right"></i></button><br>
-                            <input type="text" id="sample6_address" name="address2" placeholder="주소" class="address_margin" th:value="${address.city}"> 기본주소<br>
-                            <input type="text" id="sample6_detailAddress" name="address3" placeholder="상세주소" class="address_margin" th:value="${address.street}"> 나머지주소
+                            <input type="text" id="sample6_address" name="city" placeholder="주소" class="address_margin" th:value="${address.city}"> 기본주소<br>
+                            <input type="text" id="sample6_detailAddress" name="street" placeholder="상세주소" class="address_margin" th:value="${address.street}"> 나머지주소
                         </td>
                     </tr>
                     <tr>
                         <th><label for="address_home_number">일반전화<span>＊</span></label></th>
                         <td>
-                            <select name="address_home_number[]" id="address_home_number" class="address_home_number">
-                                <option value="02" th:selected="${#strings.equals(address.homeNumber[0], '02')}">02</option>
-                                <option value="031" th:selected="${#strings.equals(address.homeNumber[0], '031')}">031</option>
-                                <option value="032" th:selected="${#strings.equals(address.homeNumber[0], '032')}">032</option>
-                                <option value="033" th:selected="${#strings.equals(address.homeNumber[0], '033')}">033</option>
-                                <option value="041" th:selected="${#strings.equals(address.homeNumber[0], '041')}">041</option>
-                                <option value="042" th:selected="${#strings.equals(address.homeNumber[0], '042')}">042</option>
-                                <option value="043" th:selected="${#strings.equals(address.homeNumber[0], '043')}">043</option>
-                                <option value="044" th:selected="${#strings.equals(address.homeNumber[0], '044')}">044</option>
-                                <option value="051" th:selected="${#strings.equals(address.homeNumber[0], '051')}">051</option>
-                                <option value="052" th:selected="${#strings.equals(address.homeNumber[0], '052')}">052</option>
-                                <option value="053" th:selected="${#strings.equals(address.homeNumber[0], '053')}">053</option>
-                                <option value="054" th:selected="${#strings.equals(address.homeNumber[0], '054')}">054</option>
-                                <option value="055" th:selected="${#strings.equals(address.homeNumber[0], '055')}">055</option>
+                            <select name="addressHomePhoneNumber[]" id="address_home_number" class="address_home_number">
+                                <option value="02" th:selected="${#strings.equals(address.addressHomePhoneNumber[0], '02')}">02</option>
+                                <option value="031" th:selected="${#strings.equals(address.addressHomePhoneNumber[0], '031')}">031</option>
+                                <option value="032" th:selected="${#strings.equals(address.addressHomePhoneNumber[0], '032')}">032</option>
+                                <option value="033" th:selected="${#strings.equals(address.addressHomePhoneNumber[0], '033')}">033</option>
+                                <option value="041" th:selected="${#strings.equals(address.addressHomePhoneNumber[0], '041')}">041</option>
+                                <option value="042" th:selected="${#strings.equals(address.addressHomePhoneNumber[0], '042')}">042</option>
+                                <option value="043" th:selected="${#strings.equals(address.addressHomePhoneNumber[0], '043')}">043</option>
+                                <option value="044" th:selected="${#strings.equals(address.addressHomePhoneNumber[0], '044')}">044</option>
+                                <option value="051" th:selected="${#strings.equals(address.addressHomePhoneNumber[0], '051')}">051</option>
+                                <option value="052" th:selected="${#strings.equals(address.addressHomePhoneNumber[0], '052')}">052</option>
+                                <option value="053" th:selected="${#strings.equals(address.addressHomePhoneNumber[0], '053')}">053</option>
+                                <option value="054" th:selected="${#strings.equals(address.addressHomePhoneNumber[0], '054')}">054</option>
+                                <option value="055" th:selected="${#strings.equals(address.addressHomePhoneNumber[0], '055')}">055</option>
                             </select>
                             -
-                            <input type="text" name="address_home_number[]" class="address_home_number" th:value="${address.homeNumber[1]}">
+                            <input type="text" name="addressHomePhoneNumber[]" class="address_home_number" th:value="${address.addressHomePhoneNumber[1]}">
                             -
-                            <input type="text" name="address_home_number[]" class="address_home_number" th:value="${address.homeNumber[2]}">
+                            <input type="text" name="addressHomePhoneNumber[]" class="address_home_number" th:value="${address.addressHomePhoneNumber[2]}">
                         </td>
                     </tr>
                     <tr>
                         <th><label for="address_phone_number">휴대전화<span>＊</span></label></th>
                         <td>
                             <select name="address_phone_number[]" id="address_phone_number" class="address_phone_number">
-                                <option value="010" th:selected="${#strings.equals(address.phoneNumber[0], '010')}">010</option>
-                                <option value="011" th:selected="${#strings.equals(address.phoneNumber[0], '011')}">011</option>
-                                <option value="016" th:selected="${#strings.equals(address.phoneNumber[0], '016')}">016</option>
-                                <option value="017" th:selected="${#strings.equals(address.phoneNumber[0], '017')}">017</option>
-                                <option value="018" th:selected="${#strings.equals(address.phoneNumber[0], '018')}">018</option>
-                                <option value="019" th:selected="${#strings.equals(address.phoneNumber[0], '019')}">019</option>
+                                <option value="010" th:selected="${#strings.equals(address.addressPhoneNumber[0], '010')}">010</option>
+                                <option value="011" th:selected="${#strings.equals(address.addressPhoneNumber[0], '011')}">011</option>
+                                <option value="016" th:selected="${#strings.equals(address.addressPhoneNumber[0], '016')}">016</option>
+                                <option value="017" th:selected="${#strings.equals(address.addressPhoneNumber[0], '017')}">017</option>
+                                <option value="018" th:selected="${#strings.equals(address.addressPhoneNumber[0], '018')}">018</option>
+                                <option value="019" th:selected="${#strings.equals(address.addressPhoneNumber[0], '019')}">019</option>
                             </select>
                             -
-                            <input type="text" name="address_phone_number[]" class="address_phone_number" th:value="${address.phoneNumber[1]}">
+                            <input type="text" name="addressPhoneNumber[]" class="address_phone_number" th:value="${address.addressPhoneNumber[1]}">
                             -
-                            <input type="text" name="address_phone_number[]" class="address_phone_number" th:value="${address.phoneNumber[2]}">
+                            <input type="text" name="addressPhoneNumber[]" class="address_phone_number" th:value="${address.addressPhoneNumber[2]}">
                         </td>
                     </tr>
                 </table>
