@@ -168,5 +168,26 @@ public class MainController {
         return "주소 삭제 완료";
     }
 
+    @GetMapping("/main/address/change/{id}")
+    public String changeAddressPage(@PathVariable Long id, Model model){
+        DeliveryAddress addressById = addressService.findAddressById(id);
+
+        String[] addressHomePhoneNumber = addressById.getAddressHomePhoneNumber().split(",");
+        String[] addressPhoneNumber = addressById.getAddressPhoneNumber().split(",");
+
+        AddressChangeDto addressChangeDto = new AddressChangeDto();
+        addressChangeDto.setPlaceName(addressById.getPlaceName());
+        addressChangeDto.setRecipient(addressById.getRecipient());
+        addressChangeDto.setCity(addressById.getCity());
+        addressChangeDto.setZipcode(addressById.getZipcode());
+        addressChangeDto.setStreet(addressById.getStreet());
+        addressChangeDto.setAddressPhoneNumber(addressPhoneNumber);
+        addressChangeDto.setAddressHomePhoneNumber(addressHomePhoneNumber);
+
+        model.addAttribute("address",addressChangeDto);
+
+        return "main/change_address";
+    }
+
 
 }
