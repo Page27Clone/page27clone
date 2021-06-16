@@ -191,10 +191,11 @@ public class MainController {
         return "main/change_address";
     }
 
-    @PutMapping("/main/{id}/ changeaddress_ok")
+    @PutMapping("/main/changeaddress_ok")
     public String changeAddressStatus(@ModelAttribute AddressChangeDto addressChangeDto){
-        DeliveryAddress addressById = addressService.findAddressById(addressChangeDto.getId());
+//        DeliveryAddress addressById = addressService.findAddressById(addressChangeDto.getId());
         System.out.println("here check : " + addressChangeDto.getId());
+        System.out.println(addressChangeDto.getPlaceName());
 
         addressService.updateDeliveryAddress(addressChangeDto.getId(),addressChangeDto);
 
