@@ -155,7 +155,7 @@ public class MainController {
     public String registerAddressPage(Principal principal, @ModelAttribute AddressDto addressDto){
 
         addressService.registerAddress(principal.getName(),addressDto);
-        return "redirect:/main/myPage";
+        return "redirect:/main/address";
     }
 
     @ResponseBody
@@ -193,9 +193,6 @@ public class MainController {
 
     @PutMapping("/main/changeaddress_ok")
     public String changeAddressStatus(@ModelAttribute AddressChangeDto addressChangeDto){
-//        DeliveryAddress addressById = addressService.findAddressById(addressChangeDto.getId());
-        System.out.println("here check : " + addressChangeDto.getId());
-        System.out.println(addressChangeDto.getPlaceName());
 
         addressService.updateDeliveryAddress(addressChangeDto.getId(),addressChangeDto);
 

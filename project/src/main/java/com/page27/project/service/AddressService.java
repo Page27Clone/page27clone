@@ -66,6 +66,9 @@ public class AddressService {
     public Long updateDeliveryAddress(Long id,AddressChangeDto addressChangeDto){
         Optional<DeliveryAddress> byId = deliveryAddressRepository.findById(id);
         DeliveryAddress deliveryAddress = byId.get();
+        System.out.println("address phoneNumber0 : " + addressChangeDto.getAddressPhoneNumber()[0]);
+        System.out.println("address phoneNumber 1: " + addressChangeDto.getAddressPhoneNumber()[1]);
+        System.out.println("address phoneNumber 2: " + addressChangeDto.getAddressPhoneNumber()[2]);
         String addressPhoneNumberResult = addressChangeDto.getAddressPhoneNumber()[0] + "," + addressChangeDto.getAddressPhoneNumber()[1] + "," + addressChangeDto.getAddressPhoneNumber()[2];
         String addressHomePhoneNumberResult = addressChangeDto.getAddressHomePhoneNumber()[0] + "," + addressChangeDto.getAddressHomePhoneNumber()[1] + "," + addressChangeDto.getAddressHomePhoneNumber()[2];
 
