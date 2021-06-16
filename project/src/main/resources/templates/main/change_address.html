@@ -84,7 +84,7 @@
                     <tr>
                         <th><label for="address_phone_number">휴대전화<span>＊</span></label></th>
                         <td>
-                            <select name="address_phone_number[]" id="address_phone_number" class="address_phone_number">
+                            <select name="addressPhoneNumber[]" id="address_phone_number" class="address_phone_number">
                                 <option value="010" th:selected="${#strings.equals(address.addressPhoneNumber[0], '010')}">010</option>
                                 <option value="011" th:selected="${#strings.equals(address.addressPhoneNumber[0], '011')}">011</option>
                                 <option value="016" th:selected="${#strings.equals(address.addressPhoneNumber[0], '016')}">016</option>
@@ -99,7 +99,7 @@
                         </td>
                     </tr>
                 </table>
-                <input type="hidden" name = "addressId" th:value="${address.id}">
+                <input type="hidden" name = "id" th:value="${address.id}">
                 <div class="bottombtn_box">
                     <input type="submit" class="registerbtn bottombtn" value="등록">
                     <button class="cancelbtn bottombtn" onclick="history.back()">취소</button>
