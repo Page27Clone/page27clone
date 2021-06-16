@@ -59,15 +59,15 @@
                         <tbody>
                             <tr th:each="address : ${addressList}">
                                 <td><input type="checkbox" class="check"></td>
-                                <td th:text="${address.name}">우리집</td>
+                                <td th:text="${address.placeName}">우리집</td>
                                 <td th:text="${address.recipient}">김사과</td>
-                                <td th:text="${address.homeNumber}">02-7777-7777</td>
-                                <td th:text="${address.phoneNumber}">010-7777-7777</td>
+                                <td th:text="${address.addressHomePhoneNumber}">02-7777-7777</td>
+                                <td th:text="${address.addressPhoneNumber}">010-7777-7777</td>
                                 <td th:text="${address.zipcode} + ' ' + ${address.city}+ ' ' + ${address.street}">(05502)서울특별시 송파구 올림픽로 135 (잠실동) 리센츠</td>
                                 <td>
-                                    <button class="editaddrbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/change_address/{addressIdx}(addressIdx=${address.addressIdx})} + '\''"><span>수정</span><i class="fas fa-chevron-right"></i></button>
+                                    <button class="editaddrbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/address/change/{addressIdx}(addressIdx=${address.id})} + '\''"><span>수정</span><i class="fas fa-chevron-right"></i></button>
                                 </td>
-                                <input type="hidden" class="address_key" value="1" th:value="${address.addressIdx}"> <!-- 배송지 index-->
+                                <input type="hidden" class="address_key" value="1" th:value="${address.id}"> <!-- 배송지 index-->
                             </tr>
                         </tbody>
                     </table>
@@ -77,7 +77,7 @@
                     </div>
                     <div class="bottombtn_box">
                         <button class="deletebtn bottombtn">선택 주소록 삭제</button>
-                        <button class="registerbtn bottombtn" onclick="location.href=''" th:onclick="'location.href=\'' + @{/main/register_address} + '\''">배송지 등록</button>
+                        <button class="registerbtn bottombtn" onclick="location.href=''" th:onclick="'location.href=\'' + @{/main/address/register} + '\''">배송지 등록</button>
                     </div>
 
 

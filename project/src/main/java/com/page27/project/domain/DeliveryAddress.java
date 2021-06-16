@@ -25,9 +25,9 @@ public class DeliveryAddress {
 
     private String zipcode;
 
-    private String homePhoneNumber;
+    private String addressHomePhoneNumber;
 
-    private String phoneNumber;
+    private String addressPhoneNumber;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "member_id")

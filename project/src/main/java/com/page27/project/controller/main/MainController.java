@@ -2,15 +2,15 @@ package com.page27.project.controller.main;
 
 import com.page27.project.domain.*;
 import com.page27.project.dto.*;
-import com.page27.project.repository.MemberRepository;
-import com.page27.project.repository.MileageRepository;
-import com.page27.project.repository.OrderItemRepository;
-import com.page27.project.repository.OrderRepository;
+import com.page27.project.repository.*;
+import com.page27.project.service.AddressService;
 import com.page27.project.service.MemberService;
 import com.page27.project.service.MileageService;
 import com.page27.project.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
+
+import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -27,6 +28,7 @@ public class MainController {
 
     private final MemberRepository memberRepository;
     private final MemberService memberService;
+    private final AddressService addressService;
 
     //이건 테스트
     private final MileageRepository mileageRepository;
@@ -135,5 +137,26 @@ public class MainController {
         return "redirect:/main/myPage";
     }
 
-    
+    @GetMapping("/main/address")
+    public String getAddressPage(Model model){
+        List<DeliveryAddress> deliveryAddressList = addressService.getDeliveryAddress();
+        System.out.println(deliveryAddressList.size());
+        model.addAttribute("addressList",deliveryAddressList);
+
+        return "main/address";
+    }
+
+    @GetMapping("/main/address/register")
+    public String getRegisterPage(){
+        return "main/register_address";
+    }
+
+    @PostMapping("/main/address/register_ok")
+    public String registerAddressPage(Principal principal, @ModelAttribute AddressDto addressDto){
+
+        addressService.registerAddress(principal.getName(),addressDto);
+        return "redirect:/main/myPage";
+    }
+
+
 }
