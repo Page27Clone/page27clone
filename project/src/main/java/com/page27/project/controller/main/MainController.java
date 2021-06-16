@@ -176,6 +176,8 @@ public class MainController {
         String[] addressPhoneNumber = addressById.getAddressPhoneNumber().split(",");
 
         AddressChangeDto addressChangeDto = new AddressChangeDto();
+
+        addressChangeDto.setId(addressById.getId());
         addressChangeDto.setPlaceName(addressById.getPlaceName());
         addressChangeDto.setRecipient(addressById.getRecipient());
         addressChangeDto.setCity(addressById.getCity());
@@ -187,6 +189,16 @@ public class MainController {
         model.addAttribute("address",addressChangeDto);
 
         return "main/change_address";
+    }
+
+    @PutMapping("/main/{id}/ changeaddress_ok")
+    public String changeAddressStatus(@ModelAttribute AddressChangeDto addressChangeDto){
+        DeliveryAddress addressById = addressService.findAddressById(addressChangeDto.getId());
+        System.out.println("here check : " + addressChangeDto.getId());
+
+        addressService.updateDeliveryAddress(addressChangeDto.getId(),addressChangeDto);
+
+        return "redirect:/main/address";
     }
 
 

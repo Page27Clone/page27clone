@@ -6,6 +6,8 @@ import lombok.Setter;
 @Getter
 @Setter
 public class AddressChangeDto {
+    private Long id;
+
     private String placeName;
 
     private String recipient;
