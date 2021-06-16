@@ -62,4 +62,22 @@ public class AddressService {
         return id;
     }
 
+    @Transactional
+    public Long updateDeliveryAddress(Long id,AddressChangeDto addressChangeDto){
+        Optional<DeliveryAddress> byId = deliveryAddressRepository.findById(id);
+        DeliveryAddress deliveryAddress = byId.get();
+        String addressPhoneNumberResult = addressChangeDto.getAddressPhoneNumber()[0] + "," + addressChangeDto.getAddressPhoneNumber()[1] + "," + addressChangeDto.getAddressPhoneNumber()[2];
+        String addressHomePhoneNumberResult = addressChangeDto.getAddressHomePhoneNumber()[0] + "," + addressChangeDto.getAddressHomePhoneNumber()[1] + "," + addressChangeDto.getAddressHomePhoneNumber()[2];
+
+        deliveryAddress.setPlaceName(addressChangeDto.getPlaceName());
+        deliveryAddress.setRecipient(addressChangeDto.getRecipient());
+        deliveryAddress.setAddressHomePhoneNumber(addressHomePhoneNumberResult);
+        deliveryAddress.setAddressPhoneNumber(addressPhoneNumberResult);
+        deliveryAddress.setZipcode(addressChangeDto.getZipcode());
+        deliveryAddress.setCity(addressChangeDto.getCity());
+        deliveryAddress.setStreet(addressChangeDto.getStreet());
+
+        return deliveryAddress.getId();
+    }
+
 }
