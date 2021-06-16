@@ -158,5 +158,15 @@ public class MainController {
         return "redirect:/main/myPage";
     }
 
+    @ResponseBody
+    @DeleteMapping("/main/address/delete")
+    public String deleteAddressPage(@RequestParam(value = "addressIdList",required = false) List<Long> addressIdList) {
+        for(int i =0 ; i< addressIdList.size();i++){
+            addressService.deleteAddress(addressIdList.get(i));
+        }
+
+        return "주소 삭제 완료";
+    }
+
 
 }
