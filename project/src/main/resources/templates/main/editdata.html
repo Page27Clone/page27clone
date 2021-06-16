@@ -67,7 +67,7 @@
                         <th><label for="sample6_postcode">주소<span>＊</span></label></th>
                         <td>
                             <input type="text" id="sample6_postcode" name="zipcode" placeholder="우편번호" th:value="${member.zipcode}">
-                            <button onclick="sample6_execDaumPostcode()" id="postbtn"><span>우편번호</span><i class="fas fa-chevron-right"></i></button><br>
+                            <button type="button" onclick="sample6_execDaumPostcode()" id="postbtn"><span>우편번호</span><i class="fas fa-chevron-right"></i></button><br>
                             <input type="text" id="sample6_address" name="street" placeholder="주소" class="address_margin" th:value="${member.city}"> 기본주소<br>
                             <input type="text" id="sample6_detailAddress" name="city" placeholder="상세주소" class="address_margin" th:value="${member.street}"> 나머지주소
                         </td>
@@ -91,9 +91,11 @@
                                 <option value="055" th:selected="${#strings.equals( member.homePhoneNumber[0], '055' )}">055</option>
                             </select>
                             -
-                            <input type="text" name="homePhoneNumber" class="home_number" th:value="${member.homePhoneNumber[1]}">
+                            <input th:if="${#lists.size(member.homePhoneNumber) >= 2}" type="text" name="homePhoneNumber" class="home_number" th:value="${member.homePhoneNumber[1]}">
+                            <input th:if="${#lists.size(member.homePhoneNumber) < 2}" type="text" name="homePhoneNumber" class="home_number">
                             -
-                            <input type="text" name="homePhoneNumber" class="home_number" th:value="${member.homePhoneNumber[2]}">
+                            <input th:if="${#lists.size(member.homePhoneNumber) >= 2}" type="text" name="homePhoneNumber" class="home_number" th:value="${member.homePhoneNumber[2]}">
+                            <input th:if="${#lists.size(member.homePhoneNumber) < 2}" type="text" name="homePhoneNumber" class="home_number">
                         </td>
                     </tr>
                     <tr>
@@ -136,11 +138,14 @@
                     <tr>
                         <th><label for="birth_year">생년월일</label></th>
                         <td>
-                            <input type="text" name="birthday" id="birth_year" th:value="${member.birthday[0]}">
+                            <input th:if="${#lists.size(member.birthday) >= 2}" type="text" name="birthday" id="birth_year" th:value="${member.birthday[0]}">
+                            <input th:if="${#lists.size(member.birthday) < 2}" type="text" name="birthday" id="birth_year">
                             년&nbsp;&nbsp;&nbsp;
-                            <input type="text" name="birthday" id="birth_month" th:value="${member.birthday[1]}">
+                            <input th:if="${#lists.size(member.birthday) >= 2}" type="text" name="birthday" id="birth_month" th:value="${member.birthday[1]}">
+                            <input th:if="${#lists.size(member.birthday) < 2}" type="text" name="birthday" id="birth_month">
                             월&nbsp;&nbsp;&nbsp;
-                            <input type="text" name="birthday" id="birth_date" th:value="${member.birthday[2]}">
+                            <input th:if="${#lists.size(member.birthday) >= 2}" type="text" name="birthday" id="birth_date" th:value="${member.birthday[2]}">
+                            <input th:if="${#lists.size(member.birthday) < 2}" type="text" name="birthday" id="birth_date">
                             일
                         </td>
                     </tr>
