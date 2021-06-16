@@ -32,7 +32,7 @@
             ADDRESS
         </div>
         <div class="section_content">
-            <form action="/changeaddress_ok" th:action="/main/changeaddress_ok" method="POST" onsubmit="return sendit()">
+            <form action="/changeaddress_ok" th:action="@{/main/changeaddress_ok}" method="POST" onsubmit="return sendit()">
                 <input type="hidden" name="_method" value="put">
                 <table>
                     <colgroup>
