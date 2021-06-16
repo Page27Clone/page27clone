@@ -43,5 +43,10 @@ public class AddressService {
         return deliveryAddressRepository.findAll();
     }
 
+    public Long deleteAddress(Long id){
+        deliveryAddressRepository.deleteById(id);
+
+        return id;
+    }
 
 }

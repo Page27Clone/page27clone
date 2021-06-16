@@ -15,8 +15,8 @@ $(function(){
         });
         $.ajax({
             type: 'DELETE',
-            url: '/main/address',
-            data: {addressList: addresslist},
+            url: '/main/address/delete',
+            data: {addressIdList: addresslist},
             traditional: true,
 
         }).done(function(word){
