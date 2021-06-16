@@ -1,7 +1,7 @@
 package com.page27.project.repository;
 
-import com.page27.project.domain.Address;
 import com.page27.project.domain.Member;
+import com.page27.project.domain.MemberAddress;
 import com.page27.project.domain.MemberGrade;
 import com.page27.project.domain.Mileage;
 import org.junit.jupiter.api.Test;
@@ -67,8 +67,8 @@ public class DataInsertTest {
         member.setOrderCount(orderCount);
         member.setPhoneNumber(phoneNumber);
         member.setHomePhoneNumber(homePhoneNumber);
-        Address address = new Address("성남시","수내로","13600");
-        member.setAddress(address);
+        MemberAddress memberAddress = new MemberAddress("성남시","수내로","13600");
+        member.setMemberAddress(memberAddress);
 
         memberRepository.save(member);
     }

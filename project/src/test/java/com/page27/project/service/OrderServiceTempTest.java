@@ -40,7 +40,7 @@ class OrderServiceTempTest {
     private Member createTestMember(){
         Member member = new Member();
         member.setName("testMember1");
-        member.setAddress(new Address("Seoul","Gangnam","13600"));
+        member.setMemberAddress(new MemberAddress("Seoul","Gangnam","13600"));
         memberRepository.save(member);
 
         return member;

@@ -25,7 +25,7 @@ class OrderRepositoryTest {
     private Member createTestMember(){
         Member member = new Member();
         member.setName("testMember");
-        member.setAddress(new Address("경기도","수내로","13600"));
+        member.setMemberAddress(new MemberAddress("경기도","수내로","13600"));
         memberRepository.save(member);
 
         return member;

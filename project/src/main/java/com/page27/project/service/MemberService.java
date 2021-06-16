@@ -1,8 +1,8 @@
 package com.page27.project.service;
 
 import com.page27.project.config.Role;
-import com.page27.project.domain.Address;
 import com.page27.project.domain.Member;
+import com.page27.project.domain.MemberAddress;
 import com.page27.project.dto.MemberInfoDto;
 import com.page27.project.dto.ProfileDto;
 import com.page27.project.exception.DuplicateException;
@@ -94,8 +94,8 @@ public class MemberService implements UserDetailsService {
         String phoneNumberResult = profileDto.getPhoneNumber()[0] + "," + profileDto.getPhoneNumber()[1] + "," + profileDto.getPhoneNumber()[2];
         member1.setPhoneNumber(phoneNumberResult);
         member1.setEmail(profileDto.getEmail());
-        Address address = new Address(profileDto.getCity(),profileDto.getStreet(),profileDto.getZipcode());
-        member1.setAddress(address);
+        MemberAddress memberAddress = new MemberAddress(profileDto.getCity(),profileDto.getStreet(),profileDto.getZipcode());
+        member1.setMemberAddress(memberAddress);
 
         return member1.getId();
 

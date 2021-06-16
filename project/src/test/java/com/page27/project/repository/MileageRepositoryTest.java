@@ -1,15 +1,11 @@
 package com.page27.project.repository;
 
-import com.page27.project.domain.Address;
 import com.page27.project.domain.Member;
+import com.page27.project.domain.MemberAddress;
 import com.page27.project.domain.Mileage;
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
@@ -25,7 +21,7 @@ class MileageRepositoryTest {
     private Member createTestMember(){
         Member member = new Member();
         member.setName("testMember1");
-        member.setAddress(new Address("Seoul","Gangnam","13600"));
+        member.setMemberAddress(new MemberAddress("Seoul","Gangnam","13600"));
         member.setVisitCount(5);
 
 

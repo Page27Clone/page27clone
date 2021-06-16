@@ -44,7 +44,7 @@ public class OrderServiceTest {
     private Member createTestMember(){
         Member member = new Member();
         member.setName("testMember1");
-        member.setAddress(new Address("Seoul","Gangnam","13600"));
+        member.setMemberAddress(new MemberAddress("Seoul","Gangnam","13600"));
         member.setVisitCount(5);
 
 
@@ -66,7 +66,7 @@ public class OrderServiceTest {
     private Member createTestMemberSecond(){
         Member member = new Member();
         member.setName("testMember2");
-        member.setAddress(new Address("Seoul","Gangnam","13600"));
+        member.setMemberAddress(new MemberAddress("Seoul","Gangnam","13600"));
         member.setVisitCount(7);
         memberRepository.save(member);
 

@@ -37,11 +37,11 @@ public class OrderService {
         }
 
         Delivery delivery = new Delivery();
-        delivery.setAddress(checkedFindMember.getAddress());
+        delivery.setMemberAddress(checkedFindMember.getMemberAddress());
         delivery.setDeliveryStatus(DeliveryStatus.READY);
 
         //배송 정보 생성
-        //delivery 객체를 만들 때 기본적 요소인 Member와 Address를 이용해서 만든다.
+        //delivery 객체를 만들 때 기본적 요소인 Member와 MemberAddress를 이용해서 만든다.
 
         List<OrderItem> checkedTestOrderItem = new ArrayList<>();
 

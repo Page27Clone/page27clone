@@ -52,7 +52,6 @@ public class MainController {
 
         MyPageOrderStatusDto myPageOrderStatusDto = orderService.showOrderStatus(loginId);
 
-
         model.addAttribute("member",myPageDto);
         model.addAttribute("orderStatus",myPageOrderStatusDto);
 
@@ -108,15 +107,15 @@ public class MainController {
         String birthday = findMember.getBirthday();
         String[] birthdayArr = birthday.split(",");
 
-        if(findMember.getAddress() == null){
-            findMember.setAddress(new Address("","",""));
+        if(findMember.getMemberAddress() == null){
+            findMember.setMemberAddress(new MemberAddress("","",""));
             System.out.println("변경완료");
         }
         profileMyDto.setName(findMember.getName());
         profileMyDto.setLoginId(findMember.getLoginId());
-        profileMyDto.setStreet(findMember.getAddress().getStreet());
-        profileMyDto.setZipcode(findMember.getAddress().getZipcode());
-        profileMyDto.setCity(findMember.getAddress().getCity());
+        profileMyDto.setStreet(findMember.getMemberAddress().getStreet());
+        profileMyDto.setZipcode(findMember.getMemberAddress().getZipcode());
+        profileMyDto.setCity(findMember.getMemberAddress().getCity());
         profileMyDto.setHomePhoneNumber(homePhoneNumberArr);
         profileMyDto.setPhoneNumber(phoneNumberArr);
         profileMyDto.setEmail(findMember.getEmail());
@@ -136,4 +135,5 @@ public class MainController {
         return "redirect:/main/myPage";
     }
 
+    
 }

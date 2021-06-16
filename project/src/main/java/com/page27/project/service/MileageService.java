@@ -18,10 +18,6 @@ public class MileageService {
         Member member = memberRepository.findByloginId(loginId).get();
 
         int totalMileage = 0;
-        System.out.println("여기 들어오긴 함");
-        System.out.println(member.getBirthday());
-        System.out.println(member.getLoginId());
-        System.out.println(member.getMileageList());
 
         for(int i = 0;i< member.getMileageList().size() ; i++){
             totalMileage += member.getMileageList().get(i).getMileagePrice();

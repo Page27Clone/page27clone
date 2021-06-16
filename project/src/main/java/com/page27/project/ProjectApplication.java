@@ -1,6 +1,5 @@
 package com.page27.project;
 
-import com.page27.project.domain.Address;
 import com.page27.project.domain.Member;
 import com.page27.project.domain.MemberGrade;
 import com.page27.project.repository.MemberRepository;

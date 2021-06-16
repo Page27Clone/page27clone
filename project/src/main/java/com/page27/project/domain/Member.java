@@ -32,7 +32,7 @@ public class Member extends BaseTimeEntity {
     private MemberGrade memberGrade;
 
     @Embedded
-    private Address address;
+    private MemberAddress memberAddress;
 
     private int visitCount;
 
@@ -47,6 +47,9 @@ public class Member extends BaseTimeEntity {
 
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<Order> orderList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "member",fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<DeliveryAddress> deliveryAddressList = new ArrayList<>();
 
     //연관 관계 메소드
     public Member(String name, String loginId, String password) {
