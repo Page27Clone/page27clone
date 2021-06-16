@@ -61,8 +61,8 @@
                                 <td><input type="checkbox" class="check"></td>
                                 <td th:text="${address.placeName}">우리집</td>
                                 <td th:text="${address.recipient}">김사과</td>
-                                <td th:text="${address.addressHomePhoneNumber}">02-7777-7777</td>
-                                <td th:text="${address.addressPhoneNumber}">010-7777-7777</td>
+                                <td th:text="${#strings.replace(address.addressHomePhoneNumber, ',', '-')}">02-7777-7777</td>
+                                <td th:text="${#strings.replace(address.addressPhoneNumber, ',', '-')}">010-7777-7777</td>
                                 <td th:text="${address.zipcode} + ' ' + ${address.city}+ ' ' + ${address.street}">(05502)서울특별시 송파구 올림픽로 135 (잠실동) 리센츠</td>
                                 <td>
                                     <button class="editaddrbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/address/change/{addressIdx}(addressIdx=${address.id})} + '\''"><span>수정</span><i class="fas fa-chevron-right"></i></button>
