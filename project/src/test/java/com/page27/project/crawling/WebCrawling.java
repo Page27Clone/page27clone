@@ -93,6 +93,7 @@ public class WebCrawling {
                     Item item = new Item();
                     if (i == 0) {
                         String repUrl = url.get(i);
+//                        디렉토리 생성
                         File newFile = new File("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName);
 //            File newFile = new File("C:\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName);
                         if (newFile.mkdir()) {
@@ -105,6 +106,7 @@ public class WebCrawling {
                         }
                         URL repImgUrl = new URL(repUrl);
                         BufferedImage repImage = ImageIO.read(repImgUrl);
+//                        대표사진 넣기
                         FileOutputStream repOut = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName + "0" + ".jpg");
 //                FileOutputStream out = new FileOutputStream("C:\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName  + i + ".jpg");
 
@@ -140,6 +142,7 @@ public class WebCrawling {
                         }
                         URL imgUrl = new URL(tempUrl);
                         BufferedImage image = ImageIO.read(imgUrl);
+//                        두번째 사진부터 넣기
                         FileOutputStream out = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName + i + ".jpg");
 //                FileOutputStream out = new FileOutputStream("C:\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName  + i + ".jpg");
 
