@@ -49,6 +49,7 @@ public class WebCrawling {
 //        webCrawlingMethod("http://page27.co.kr/product/%EB%A0%88%EC%98%A4-%ED%88%AC%EC%9B%A8%EC%9D%B4-%ED%9B%84%EB%93%9C%EC%A7%91%EC%97%85%EC%A1%B0%EA%B1%B0%ED%8C%AC%EC%B8%A04color/2953/category/45/display/1/",7L);
 //        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%EB%82%98-%EB%B8%94%EB%A0%88%EC%9D%B4%EC%A0%80-%EC%9E%90%EC%BC%932color/2945/category/45/display/1/",8L);
 
+
     }
 
     public void getInfoFromWebCrawling() {
