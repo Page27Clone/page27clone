@@ -26,6 +26,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Locale;
 
 
 @SpringBootTest
@@ -41,7 +42,7 @@ public class WebCrawling {
     @Rollback(false)
     public void webCrawlingTest() {
         webCrawlingMethod("http://page27.co.kr/product/%EC%85%80%EB%A6%B0-%EB%82%98%EC%9D%BC%EB%A1%A0-%EB%B0%94%EB%9E%8C%EB%A7%89%EC%9D%B4-%ED%9B%84%EB%93%9C%EC%9E%90%EC%BC%933color/2989/category/45/display/1/", 1L);
-        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%ED%95%98-%EB%A6%B0%EB%84%A8-%EB%B8%94%EB%A0%88%EC%9D%B4%EC%A0%B8-%EC%9E%90%EC%BC%935color/2593/category/45/display/1/", 2L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%ED%95%98-%EB%A6%B0%EB%84%A8-%EB%B8%94%EB%A0%88%EC%9D%B4%EC%A0%B8-%EC%9E%90%EC%BC%935color/2593/category/45/display/1/", 2L);
 //        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%EC%98%88-%EB%82%98%EC%9D%BC%EB%A1%A0-%EB%B0%94%EB%9E%8C%EB%A7%89%EC%9D%B4-%EC%A7%91%EC%97%8510color/2954/category/45/display/1/",3L);
 //        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%EB%82%98-%EB%B8%94%EB%A0%88%EC%9D%B4%EC%A0%80-%EC%9E%90%EC%BC%932color/2945/category/45/display/1/",4L);
 //        webCrawlingMethod("http://page27.co.kr/product/%EB%9D%BC%EC%9D%BC%EB%9D%BD-%ED%81%AC%EB%A1%AD-%ED%9B%84%EB%93%9C%EC%9E%90%EC%BC%933color/2942/category/45/display/1/",5L);
@@ -98,10 +99,6 @@ public class WebCrawling {
 
     }
 
-    public void getInfoFromWebCrawling() {
-
-    }
-
     public Long webCrawlingMethod(String itemUrl, Long idx) {
         try {
             Document doc = Jsoup.connect(itemUrl).get();
@@ -131,8 +128,9 @@ public class WebCrawling {
                 int quantity = 10;
 
                 Elements Category = doc.select(".xans-product-headcategory:last-child");
-                String firstCategory = Category.select("li:nth-child(2)").text();
-                String secondCategory = Category.select("li:nth-child(3)").text();
+                String firstCategory = Category.select("li:nth-child(2)").text().toLowerCase(Locale.ROOT);
+//                String secondCategory = Category.select("li:nth-child(3)").text();
+                String secondCategory = "jacket";
 
                 String direction = "";
 
@@ -141,7 +139,7 @@ public class WebCrawling {
                     if (i == 0) {
                         String repUrl = url.get(i);
 //                        디렉토리 생성
-                        File newFile = new File("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName);
+                        File newFile = new File("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\jacket\\" + itemName);
 //            File newFile = new File("C:\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName);
                         if (newFile.mkdir()) {
                             logger.info("directory make ok");
@@ -154,10 +152,10 @@ public class WebCrawling {
                         URL repImgUrl = new URL(repUrl);
                         BufferedImage repImage = ImageIO.read(repImgUrl);
 //                        대표사진 넣기
-                        FileOutputStream repOut = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName + "0" + ".jpg");
+                        FileOutputStream repOut = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\jacket\\" + itemName + "\\" + itemName + "0" + ".jpg");
 //                FileOutputStream out = new FileOutputStream("C:\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName  + i + ".jpg");
 
-                        String totalUrl = "/image/Item/OUTER/자켓/" + itemName + "/" + itemName + i + ".jpg";
+                        String totalUrl = "/image/Item/OUTER/jacket/" + itemName + "/" + itemName + i + ".jpg";
 
                         ImageIO.write(repImage, "jpg", repOut);
                         boolean rep = true;
@@ -190,10 +188,10 @@ public class WebCrawling {
                         URL imgUrl = new URL(tempUrl);
                         BufferedImage image = ImageIO.read(imgUrl);
 //                        두번째 사진부터 넣기
-                        FileOutputStream out = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName + i + ".jpg");
+                        FileOutputStream out = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\jacket\\" + itemName + "\\" + itemName + i + ".jpg");
 //                FileOutputStream out = new FileOutputStream("C:\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName  + i + ".jpg");
 
-                        String totalUrl = "/image/Item/OUTER/자켓/" + itemName + "/" + itemName + i + ".jpg";
+                        String totalUrl = "/image/Item/OUTER/jacket/" + itemName + "/" + itemName + i + ".jpg";
 //                    direction += totalUrl + ',';
 
                         ImageIO.write(image, "jpg", out);

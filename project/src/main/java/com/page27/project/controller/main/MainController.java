@@ -29,6 +29,7 @@ public class MainController {
     private final MemberRepository memberRepository;
     private final MemberService memberService;
     private final AddressService addressService;
+    private final ItemRepository itemRepository;
 
     //이건 테스트
     private final MileageRepository mileageRepository;
@@ -222,6 +223,28 @@ public class MainController {
         model.addAttribute("mileageList",mileageBoards);
 
         return "main/mileage";
+    }
+
+    @GetMapping("/main/category")
+    public String categoryTestPage(){
+        return "main/category";
+    }
+
+    @GetMapping("/main/category/{firstCategory}/{secondCategory}")
+    public String getCategoryPage(@PathVariable String firstCategory, @PathVariable String secondCategory, @PageableDefault(size = 4) Pageable pageable, Model model){
+
+        System.out.println("여기는 들어옴!!");
+        Page<ItemDto> itemBoards = itemRepository.findAllItem(pageable, firstCategory, secondCategory);
+
+        int homeStartPage = Math.max(1,itemBoards.getPageable().getPageNumber() - 4);
+        int homeEndPage = Math.min(itemBoards.getTotalPages(),itemBoards.getPageable().getPageNumber() + 4);
+
+        model.addAttribute("startPage",homeStartPage);
+        model.addAttribute("endPage",homeEndPage);
+        model.addAttribute("itemList",itemBoards);
+        model.addAttribute("categoryname",secondCategory);
+
+        return "main/category";
     }
 
 
