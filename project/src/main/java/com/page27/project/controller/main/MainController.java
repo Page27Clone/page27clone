@@ -231,7 +231,7 @@ public class MainController {
     }
 
     @GetMapping("/main/category/{firstCategory}/{secondCategory}")
-    public String getCategoryPage(@PathVariable String firstCategory, @PathVariable String secondCategory, @PageableDefault(size = 4) Pageable pageable, Model model){
+    public String getCategoryPage(@PathVariable String firstCategory, @PathVariable String secondCategory, @PageableDefault(size = 1) Pageable pageable, Model model){
 
         System.out.println("여기는 들어옴!!");
         Page<ItemDto> itemBoards = itemRepository.findAllItem(pageable, firstCategory, secondCategory);
@@ -243,6 +243,8 @@ public class MainController {
         model.addAttribute("endPage",homeEndPage);
         model.addAttribute("itemList",itemBoards);
         model.addAttribute("categoryname",secondCategory);
+
+
 
         return "main/category";
     }

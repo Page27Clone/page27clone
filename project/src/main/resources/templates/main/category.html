@@ -59,7 +59,7 @@
 
         <ul class="pagenation">
             <li th:classappend="${1 == itemList.pageable.pageNumber + 1} ? 'disabled'">
-                <a href="#" class="prev bracket" th:href="@{/main/category(page=${itemList.pageable.pageNumber - 1})}" tabindex="-1" aria-disabled="true">
+                <a href="#" class="prev bracket" th:href="@{/main/category/(page=${itemList.pageable.pageNumber - 1})}" tabindex="-1" aria-disabled="true">
                     <i class="fas fa-chevron-left"></i> PREV
                 </a>
             </li>

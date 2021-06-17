@@ -132,12 +132,6 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                         QItem.item.firstCategory.eq(firstCategory),
                         QItem.item.secondCategory.eq(secondCategory)
                 )
-//                .from(QItem.item)
-//                .where(QItem.item.rep.eq(true),
-//                        QItem.item.saleStatus.eq("onsale"),
-//                        QItem.item.firstCategory.eq(firstCategory),
-//                        QItem.item.secondCategory.eq(secondCategory)
-//                )
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchResults();
