@@ -57,25 +57,21 @@
 
         </div>
 
-        <div class="pagenation">
-            <a href="#" class="first bracket">
-                <i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i>
-            </a>
-            <a href="#" class="prev bracket">
-                <i class="fas fa-chevron-left"></i> PREV
-            </a>
-            <a href="#" class="pagenums">
-                <span class="pagenum">1</span>
-                <span class="pagenum">2</span>
-                <span class="pagenum">3</span>
-            </a>
-            <a href="#" class="next bracket">
-                NEXT <i class="fas fa-chevron-right"></i>
-            </a>
-            <a href="#" class="last bracket">
-                <i class="fas fa-chevron-right"></i><i class="fas fa-chevron-right"></i>
-            </a>
-        </div>
+        <ul class="pagenation">
+            <li th:classappend="${1 == itemList.pageable.pageNumber + 1} ? 'disabled'">
+                <a href="#" class="prev bracket" th:href="@{/main/category(page=${itemList.pageable.pageNumber - 1})}" tabindex="-1" aria-disabled="true">
+                    <i class="fas fa-chevron-left"></i> PREV
+                </a>
+            </li>
+            <li th:classappend="${i == itemList.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
+                <a href="#" class="pagenum" th:href="@{/main/category(page=${i - 1})}" th:text="${i}">1</a>
+            </li>
+            <li th:classappend="${itemList.totalPages == itemList.pageable.pageNumber + 1} ? 'disabled'">
+                <a href="#" class="next bracket" th:href="@{/main/category(page=${itemList.pageable.pageNumber + 1})}">
+                    NEXT <i class="fas fa-chevron-right"></i>
+                </a>
+            </li>
+        </ul>
 
 
     </section>
