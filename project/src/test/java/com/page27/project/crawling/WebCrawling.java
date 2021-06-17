@@ -42,12 +42,58 @@ public class WebCrawling {
     public void webCrawlingTest() {
         webCrawlingMethod("http://page27.co.kr/product/%EC%85%80%EB%A6%B0-%EB%82%98%EC%9D%BC%EB%A1%A0-%EB%B0%94%EB%9E%8C%EB%A7%89%EC%9D%B4-%ED%9B%84%EB%93%9C%EC%9E%90%EC%BC%933color/2989/category/45/display/1/", 1L);
         webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%ED%95%98-%EB%A6%B0%EB%84%A8-%EB%B8%94%EB%A0%88%EC%9D%B4%EC%A0%B8-%EC%9E%90%EC%BC%935color/2593/category/45/display/1/", 2L);
-//        webCrawlingMethod("http://page27.co.kr/product/%EB%9D%BC%EC%9D%B4%ED%8A%B8-%EC%9C%88%EB%93%9C%EB%B8%8C%EB%A0%88%EC%9D%B4%EC%BB%A4%EC%A1%B0%EA%B1%B0%ED%8C%AC%EC%B8%A0-%EC%85%8B%EC%97%852color/2977/category/45/display/1/",3L);
-//        webCrawlingMethod("http://page27.co.kr/product/%EB%B0%94%EC%8A%A4%EB%9D%BD-%ED%80%84%EB%A6%AC%ED%8B%B0-%EC%95%84%EB%85%B8%EB%9D%BD-%EC%85%8B%EC%97%852color-%EB%8B%B9%EC%9D%BC%EB%B0%B0%EC%86%A1/2972/category/45/display/1/",4L);
-//        webCrawlingMethod("http://page27.co.kr/product/%EB%9D%BC%EC%9D%B4%EC%A7%95-%EC%95%84%EB%85%B8%EB%9D%BD-%EB%B0%98%EB%B0%94%EC%A7%80-%EC%85%8B%EC%97%854color/2964/category/45/display/1/",5L);
-//        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%EC%98%88-%EB%82%98%EC%9D%BC%EB%A1%A0-%EB%B0%94%EB%9E%8C%EB%A7%89%EC%9D%B4-%EC%A7%91%EC%97%8510color/2954/category/45/display/1/",6L);
-//        webCrawlingMethod("http://page27.co.kr/product/%EB%A0%88%EC%98%A4-%ED%88%AC%EC%9B%A8%EC%9D%B4-%ED%9B%84%EB%93%9C%EC%A7%91%EC%97%85%EC%A1%B0%EA%B1%B0%ED%8C%AC%EC%B8%A04color/2953/category/45/display/1/",7L);
-//        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%EB%82%98-%EB%B8%94%EB%A0%88%EC%9D%B4%EC%A0%80-%EC%9E%90%EC%BC%932color/2945/category/45/display/1/",8L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%EC%98%88-%EB%82%98%EC%9D%BC%EB%A1%A0-%EB%B0%94%EB%9E%8C%EB%A7%89%EC%9D%B4-%EC%A7%91%EC%97%8510color/2954/category/45/display/1/",3L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%EB%82%98-%EB%B8%94%EB%A0%88%EC%9D%B4%EC%A0%80-%EC%9E%90%EC%BC%932color/2945/category/45/display/1/",4L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%9D%BC%EC%9D%BC%EB%9D%BD-%ED%81%AC%EB%A1%AD-%ED%9B%84%EB%93%9C%EC%9E%90%EC%BC%933color/2942/category/45/display/1/",5L);
+//        webCrawlingMethod("http://page27.co.kr/product/%ED%8F%AC%ED%85%90-%EB%82%98%EC%9D%BC%EB%A1%A0-%EC%88%8F%EC%9E%90%EC%BC%932color/2940/category/45/display/1/",6L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%B8%94%EB%9E%91-%ED%94%BC%EA%B7%B8%EB%A8%BC%ED%8A%B8-%ED%9B%84%EB%93%9C%EC%A7%91%EC%97%854color/2937/category/45/display/1/",7L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A5%B4%EB%B0%98-%EB%A0%88%EB%8D%94-%EC%9E%90%EC%BC%932color/2936/category/45/display/1/",8L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%AC%B4%EB%B8%8C-%EC%98%A4%EB%B2%84%ED%95%8F-%EC%B2%AD%EC%9E%90%EC%BC%932color/2928/category/45/display/1/",9L);
+//        webCrawlingMethod("http://page27.co.kr/product/%ED%94%84%EB%9D%BC%ED%95%98-%ED%88%AC%EC%9B%A8%EC%9D%B4-%ED%9B%84%EB%93%9C%EC%9E%90%EC%BC%934color/2924/category/45/display/1/",10L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A7%88%EC%9D%BC%EB%93%9C-2%EC%98%A8%EC%8A%A4-%EC%95%BC%EC%83%812olor/2895/category/45/display/1/",11L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A9%9C%EB%A1%9C%EC%9D%B4-%EC%9A%B8-%EB%8B%88%ED%8A%B8%EC%9E%90%EC%BC%932color/2880/category/45/display/1/",12L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%B2%84%EB%8B%9D-%EC%88%8F-%ED%8C%A8%EB%94%A9%EC%A0%90%ED%8D%BC5color/2877/category/45/display/1/",13L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EC%BC%80%EC%9D%B4-3m-%EC%94%AC%EC%97%90%EC%96%B4-%ED%8C%A8%EB%94%A94color/2873/category/45/display/1/",14L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%EC%97%98-%ED%97%A4%EB%B9%84-%ED%9B%84%EB%A6%AC%EC%8A%A4-%ED%9B%84%EB%93%9C%EC%A7%91%EC%97%852color/2869/category/45/display/1/",15L);
+//        webCrawlingMethod("http://page27.co.kr/product/%ED%83%80%EC%9D%B4%EC%B9%B8-%EC%9B%B0%EB%A1%A0-%EB%A1%B1%ED%8C%A8%EB%94%A92color/2839/category/45/display/1/",16L);
+
+//        여기까지 자켓 크롤링
+
+//        webCrawlingMethod("http://page27.co.kr/product/%EC%97%98%EB%B9%84%EC%8A%A4-%EB%A6%B0%EB%84%A8-%EA%B0%80%EB%94%94%EA%B1%B46color/2981/category/77/display/1/",17L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EC%A0%9C%EB%83%90-%EB%AF%B9%EC%8A%A4-%EC%A7%91%EC%97%85%EA%B0%80%EB%94%94%EA%B1%B45color/2941/category/77/display/1/",18L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%84%88%EB%93%9C-%EA%B3%A0%EB%B0%80%EB%8F%84-%EA%B0%80%EB%94%94%EA%B1%B410color/2922/category/77/display/1/",19L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%EC%98%88-%EC%8A%A4%ED%94%84%EB%A7%81-%ED%95%98%EC%B0%8C-%EA%B0%80%EB%94%94%EA%B1%B48color/2908/category/77/display/1/",20L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%8B%A4%EC%9A%B4%ED%83%80%EC%9A%B4-%EB%8B%88%ED%8A%B8-%EA%B0%80%EB%94%94%EA%B1%B411color/2902/category/77/display/1/",21L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A3%A8%EC%9D%B4%EB%A5%B4-%EB%B8%8C%EC%9D%B4%EB%84%A5-%EA%B0%80%EB%94%94%EA%B1%B45color/2900/category/77/display/1/",22L);
+//        webCrawlingMethod("http://page27.co.kr/product/%ED%94%84%EB%9E%AD%ED%81%AC-%EB%9D%BC%EC%9D%B8-%EA%B0%80%EB%94%94%EA%B1%B45color/2897/category/77/display/1/",23L);
+//        webCrawlingMethod("http://page27.co.kr/product/%ED%97%A4%EB%B9%84-%EB%9E%A8%EC%8A%A4%EC%9A%B8-%ED%95%98%EC%B0%8C-%EB%8B%88%ED%8A%B8%EC%A7%91%EC%97%855color/2885/category/77/display/1/",24L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A5%B4%EB%A7%9D-%EC%BA%90%EC%8B%9C-%EC%A7%91%EC%97%85-%EA%B0%80%EB%94%94%EA%B1%B45color/2857/category/77/display/1/",25L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EC%8A%A4%ED%83%A0-%EC%B2%B4%ED%81%AC-%EC%98%A4%EB%B2%84%ED%95%8F-%EA%B0%80%EB%94%94%EA%B1%B43color/2769/category/77/display/1/",26L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EC%9B%90%EC%8A%A4-%EB%B0%B0%EC%83%89-%EC%BA%90%EC%8B%9C%EB%AF%B8%EC%96%B4-%EA%B0%80%EB%94%94%EA%B1%B43color/2767/category/77/display/1/",27L);
+//        webCrawlingMethod("http://page27.co.kr/product/%ED%95%98%EB%B2%84-%EC%8A%A4%ED%8B%B0%EC%B9%98-%EC%98%A4%EB%B2%84%ED%95%8F-%EA%B0%80%EB%94%94%EA%B1%B42color/2754/category/77/display/1/",28L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%EC%95%84-%EB%AF%B9%EC%8A%A4-%EB%8B%88%ED%8A%B8-%EC%A7%91%EC%97%85-%EA%B0%80%EB%94%94%EA%B1%B45color/2752/category/77/display/1/",29L);
+//        webCrawlingMethod("http://page27.co.kr/product/%ED%94%84%EB%A6%AC%EB%AF%B8%EC%97%84-%EC%86%8C%ED%94%84%ED%8A%B8-%EA%B0%80%EB%94%94%EA%B1%B411color/2734/category/77/display/1/",30L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A7%88%EB%A1%A0-%EC%BD%94%ED%8A%BC-%EA%B0%80%EB%94%94%EA%B1%B45color/2729/category/77/display/1/",31L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EC%82%AC%EC%9A%B4%EC%A6%88-%EB%A6%B0%EB%84%A8-%EA%B0%80%EB%94%94%EA%B1%B43color/2709/category/77/display/1/",32L);
+
+//        여기가지 가디건 크롤링
+
+//        webCrawlingMethod("http://page27.co.kr/product/%EC%83%8C%EB%93%9C-%EB%B9%84%EC%A1%B0-%EC%BA%90%EC%8B%9C-%EB%8D%94%EB%B8%94%EC%BD%94%ED%8A%B82color-40sale/2825/category/51/display/1/", 33L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A7%88%EA%B0%80%EB%A0%9B-%EC%98%A8%EC%8A%A4-%ED%8C%A8%EB%94%A9%EC%BD%94%ED%8A%B83color/2822/category/51/display/1/", 34L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%9D%BC%EC%9D%B4%ED%94%84-%EB%A1%9C%EB%B8%8C-%ED%95%B8%EB%93%9C%EB%A9%94%EC%9D%B4%EB%93%9C-%EC%BD%94%ED%8A%B83color/2806/category/51/display/1/", 35L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A7%88%EB%A5%B4%EC%BD%94-%ED%95%B8%EB%93%9C%EB%A9%94%EC%9D%B4%EB%93%9C-%EB%8D%94%EB%B8%94%EC%BD%94%ED%8A%B84color/2785/category/51/display/1/", 36L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EC%9D%B4%EB%B8%90-%EC%9B%8C%EC%8B%B1-%EB%A7%A5-%ED%8A%B8%EB%A0%8C%EC%B9%98%EC%BD%94%ED%8A%B83color/2452/category/51/display/1/", 37L);
+//        webCrawlingMethod("http://page27.co.kr/product/%ED%81%B4%EB%9E%98%EC%8B%9D-%ED%97%A4%EB%A7%81%EB%B3%B8-%EB%8D%94%EB%B8%94%EC%BD%94%ED%8A%B82color/2327/category/51/display/1/", 38L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A5%B4%EB%A9%94%EB%A5%B4-%EB%A1%9C%EB%B8%8C-%EB%8D%94%EB%B8%94%EC%BD%94%ED%8A%B83color/2308/category/51/display/1/", 39L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%B0%9C%EB%A7%88%EC%B9%B8-%EC%9A%B8-%EC%BD%94%ED%8A%B84color/2301/category/51/display/1/", 40L);
+//        webCrawlingMethod("http://page27.co.kr/product/%ED%8E%98%EC%9D%B4%EC%A7%8027-%EC%BA%90%EC%8B%9C%EB%AF%B8%EC%96%B4-%EC%98%A4%EB%B2%84%EC%BD%94%ED%8A%B82color-50sale/2276/category/51/display/1/", 41L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%AF%B8%EB%8B%88%EB%A9%80-%EB%A7%81-%EB%A1%9C%EB%B8%8C-%EC%9A%B8%EC%BD%94%ED%8A%B82color/2298/category/51/display/1/", 42L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%B0%9C%EB%A0%8C-%EC%9A%B8-%EB%8D%94%EB%B8%94%EC%BD%94%ED%8A%B82color/2284/category/51/display/1/", 43L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EC%97%98%ED%94%84-%EC%98%A4%EB%B2%84-%EC%9A%B8-%EB%8D%94%EB%B8%94%EC%BD%94%ED%8A%B84color/2281/category/51/display/1/", 44L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EC%95%84%EB%A5%B4%EB%8B%88-%EB%A1%9C%EB%B8%8C-%EC%9A%B8%EC%BD%94%ED%8A%B83color/2250/category/51/display/1/", 45L);
+//        webCrawlingMethod("http://page27.co.kr/product/%ED%8D%BC%ED%8E%99%ED%8A%B8-%EC%9A%B8-%EB%8D%94%EB%B8%94%EC%BD%94%ED%8A%B83color/2239/category/51/display/1/", 46L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A3%A8%EC%9D%B4%EC%8A%A4-%EC%9A%B8-%EC%8B%B1%EA%B8%80%EC%BD%94%ED%8A%B83color/2236/category/51/display/1/", 47L);
+//        webCrawlingMethod("http://page27.co.kr/product/%EB%A9%9C%EB%A1%A0-%EC%98%A4%EB%B2%84-%EC%9A%B8-%EC%8B%B1%EA%B8%80%EC%BD%94%ED%8A%B84color/2216/category/51/display/1/", 48L);
 
 
     }
