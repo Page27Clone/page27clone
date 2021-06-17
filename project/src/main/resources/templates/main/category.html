@@ -43,7 +43,7 @@
             <!--item 40개 이상일시 paging 처리-->
             <div class="product_item" th:each="item:${itemList}">
                 <div class="product_item_img">
-                    <a href="#" th:href="@{/main/product/{itemIdx}(itemIdx=${item.itemIdx})}"><img src="img/main_newarrivals/newarrival1.JPG"></a>
+                    <a href="#" th:href="@{/main/product/{itemIdx}(itemIdx=${item.itemIdx})}"><img th:src="@{${item.imgpath}}" src="img/main_newarrivals/newarrival1.JPG"></a>
                     <div class="product_item_hover">
                         <div class="quickview hoveritem"><i class="far fa-clone" th:onclick="'location.href=\''+ @{/main/product/{itemIdx}(itemIdx=${item.itemIdx})} + '\''"></i></div>
                         <div class="backet hoveritem"><i class="fas fa-shopping-basket" th:onclick="'location.href=\''+ @{/main/basket/{itemIdx}(itemIdx=${item.itemIdx})} + '\''"></i></div>
