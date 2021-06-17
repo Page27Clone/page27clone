@@ -231,10 +231,13 @@ public class MainController {
     }
 
     @GetMapping("/main/category/{firstCategory}/{secondCategory}")
-    public String getCategoryPage(@PathVariable String firstCategory, @PathVariable String secondCategory, @PageableDefault(size = 1) Pageable pageable, Model model){
+    public String getCategoryPage(@PathVariable String firstCategory, @PathVariable String secondCategory, @PageableDefault(size = 8) Pageable pageable, Model model){
 
         System.out.println("여기는 들어옴!!");
         Page<ItemDto> itemBoards = itemRepository.findAllItem(pageable, firstCategory, secondCategory);
+        System.out.println("이것도 사이즈 체크 : " + itemBoards.getTotalElements());//이거 사이즈 받는거같은데
+        System.out.println("이것도 사이즈 체크 : " + itemBoards.getTotalPages());
+
 
         int homeStartPage = Math.max(1,itemBoards.getPageable().getPageNumber() - 4);
         int homeEndPage = Math.min(itemBoards.getTotalPages(),itemBoards.getPageable().getPageNumber() + 4);
@@ -243,8 +246,8 @@ public class MainController {
         model.addAttribute("endPage",homeEndPage);
         model.addAttribute("itemList",itemBoards);
         model.addAttribute("categoryname",secondCategory);
-
-
+        model.addAttribute("firstCategory",firstCategory);
+        model.addAttribute("secondCategory",secondCategory);
 
         return "main/category";
     }

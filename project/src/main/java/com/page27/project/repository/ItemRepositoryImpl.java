@@ -14,6 +14,7 @@ import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
@@ -138,6 +139,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
 
         List<ItemDto> content = results.getResults();
         long total = results.getTotal();
+        System.out.println("여기 사이즈 : " + content.size());
 
         return new PageImpl<>(content, pageable, total);
     }
