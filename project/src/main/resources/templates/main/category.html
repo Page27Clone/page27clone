@@ -59,15 +59,15 @@
 
         <ul class="pagenation">
             <li th:classappend="${1 == itemList.pageable.pageNumber + 1} ? 'disabled'">
-                <a href="#" class="prev bracket" th:href="@{/main/category/{firstCategory}(firstCategory=${firstCategory})/{secondCategory}(secondCategory=${secondCategory})(page=${itemList.pageable.pageNumber - 1})}" tabindex="-1" aria-disabled="true">
+                <a href="#" class="prev bracket" th:href="@{/main/category/{firstCategory}/{secondCategory}(firstCategory=${firstCategory}, secondCategory=${secondCategory}, page=${itemList.pageable.pageNumber - 1})}" tabindex="-1" aria-disabled="true">
                     <i class="fas fa-chevron-left"></i> PREV
                 </a>
             </li>
             <li th:classappend="${i == itemList.pageable.pageNumber + 1} ? 'disabled'" th:each="i : ${#numbers.sequence(startPage, endPage)}">
-                <a href="#" class="pagenum" th:href="@{/main/category/{firstCategory}(firstCategory=${firstCategory})/{secondCategory}(secondCategory=${secondCategory})(page=${i - 1})}" th:text="${i}">1</a>
+                <a href="#" class="pagenum" th:href="@{/main/category/{firstCategory}/{secondCategory}(firstCategory=${firstCategory}, secondCategory=${secondCategory}, page=${i - 1})}" th:text="${i}">1</a>
             </li>
             <li th:classappend="${itemList.totalPages == itemList.pageable.pageNumber + 1} ? 'disabled'">
-                <a href="#" class="next bracket" th:href="@{/main/category/{firstCategory}(firstCategory=${firstCategory})/{secondCategory}(secondCategory=${secondCategory})(page=${itemList.pageable.pageNumber + 1})}">
+                <a href="#" class="next bracket" th:href="@{/main/category/{firstCategory}/{secondCategory}(firstCategory=${firstCategory}, secondCategory=${secondCategory}, page=${itemList.pageable.pageNumber + 1})}">
                     NEXT <i class="fas fa-chevron-right"></i>
                 </a>
             </li>
