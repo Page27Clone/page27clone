@@ -12,6 +12,7 @@ public class ItemDto {
     private Long id;
     private String itemName;
     private String firstCategory;
+    private String secondCategory;
     private int price;
     private String saleStatus;
     private String imgUrl;
@@ -31,6 +32,19 @@ public class ItemDto {
         this.color = color;
         this.rep = rep;
         this.itemIdx = itemIdx;
+    }
+
+    @QueryProjection
+    public ItemDto(Long id, String itemName, String firstCategory, String secondCategory, int price, String saleStatus, String imgUrl, boolean rep, Long itemIdx ){
+        this.id = id;
+        this.itemName = itemName;
+        this.firstCategory = firstCategory;
+        this.secondCategory = secondCategory;
+        this.price = price;
+        this.saleStatus = saleStatus;
+        this.imgUrl = imgUrl;
+        this.itemIdx = itemIdx;
+        this.rep = rep;
     }
 }
 

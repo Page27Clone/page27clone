@@ -8,6 +8,7 @@ import com.page27.project.dto.ItemDto;
 import com.page27.project.dto.MemberDto;
 import com.page27.project.dto.QItemDto;
 import com.page27.project.dto.QMemberDto;
+import com.querydsl.core.QueryFactory;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.JPAExpressions;
@@ -19,6 +20,7 @@ import org.springframework.data.domain.Pageable;
 import org.thymeleaf.util.StringUtils;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import java.util.List;
 
 
@@ -110,6 +112,32 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
 
             return new PageImpl<>(content, pageable, total);
         }
+    }
+
+    @Override
+    public Page<ItemDto> findAllItem(Pageable pageable,String firstCategory, String secondCategory) {
+        QueryResults results = queryFactory
+                .select(new QItemDto(
+                        QItem.item.id,
+                        QItem.item.itemName,
+                        QItem.item.firstCategory,
+                        QItem.item.secondCategory,
+                        QItem.item.price,
+                        QItem.item.saleStatus,
+                        QItem.item.imgUrl,
+                        QItem.item.rep,
+                        QItem.item.itemIdx
+                ))
+                .from(QItem.item)
+                .where(QItem.item.rep.eq(true),QItem.item.saleStatus.eq("onsale"),QItem.item.firstCategory.eq(firstCategory),QItem.item.secondCategory.eq(secondCategory))
+                .offset(pageable.getOffset())
+                .limit(pageable.getPageSize())
+                .fetchResults();
+
+        List<ItemDto> content = results.getResults();
+        long total = results.getTotal();
+
+        return new PageImpl<>(content, pageable, total);
     }
 
     private BooleanExpression saleStatusEq(String saleStatusCondition){
