@@ -117,19 +117,27 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
     @Override
     public Page<ItemDto> findAllItem(Pageable pageable,String firstCategory, String secondCategory) {
         QueryResults results = queryFactory
-                .select(new QItemDto(
-                        QItem.item.id,
+                .selectDistinct(new QItemDto(
+                       QItem.item.itemIdx,
                         QItem.item.itemName,
+                        QItem.item.imgUrl,
+                        QItem.item.price,
                         QItem.item.firstCategory,
                         QItem.item.secondCategory,
-                        QItem.item.price,
                         QItem.item.saleStatus,
-                        QItem.item.imgUrl,
-                        QItem.item.rep,
-                        QItem.item.itemIdx
+                        QItem.item.rep
                 ))
                 .from(QItem.item)
-                .where(QItem.item.rep.eq(true),QItem.item.saleStatus.eq("onsale"),QItem.item.firstCategory.eq(firstCategory),QItem.item.secondCategory.eq(secondCategory))
+                .where(QItem.item.rep.eq(true),
+                        QItem.item.firstCategory.eq(firstCategory),
+                        QItem.item.secondCategory.eq(secondCategory)
+                )
+//                .from(QItem.item)
+//                .where(QItem.item.rep.eq(true),
+//                        QItem.item.saleStatus.eq("onsale"),
+//                        QItem.item.firstCategory.eq(firstCategory),
+//                        QItem.item.secondCategory.eq(secondCategory)
+//                )
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
                 .fetchResults();
