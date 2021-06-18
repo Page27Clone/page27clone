@@ -64,6 +64,7 @@ $(function(){
                 url: '/main/basket/remove/'+ basket_id
             }).done(function(word){
                 alert(word);
+                location.reload();
             }).fail(function(error){
                 alert(JSON.stringify(error));
             })
@@ -82,7 +83,7 @@ $(function(){
         console.log(itemlist);
         $.ajax({
             type: 'DELETE',
-            url: '/main/removefromcart',
+            url: '/main/basket/removeitems',
             data: {itemList : itemlist},
             traditional: true
         }).done(function(word){
@@ -97,7 +98,7 @@ $(function(){
     $('.basketclearbtn').on('click', function(){
         $.ajax({
             type: 'DELETE',
-            url: '/main/clearbasket'
+            url: '/main/basket/removeall'
         }).done(function(word){
             alert(word);
             location.reload();
