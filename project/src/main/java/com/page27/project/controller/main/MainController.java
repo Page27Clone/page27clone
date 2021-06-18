@@ -139,8 +139,8 @@ public class MainController {
     }
 
     @GetMapping("/main/address")
-    public String getAddressPage(Model model){
-        List<DeliveryAddress> deliveryAddressList = addressService.getDeliveryAddress();
+    public String getAddressPage(Principal principal, Model model){
+        List<DeliveryAddress> deliveryAddressList = addressService.getDeliveryAddress(principal.getName());
         System.out.println(deliveryAddressList.size());
         model.addAttribute("addressList",deliveryAddressList);
 
@@ -237,7 +237,6 @@ public class MainController {
         Page<ItemDto> itemBoards = itemRepository.findAllItem(pageable, firstCategory, secondCategory);
         System.out.println("이것도 사이즈 체크 : " + itemBoards.getTotalElements());//이거 사이즈 받는거같은데
         System.out.println("이것도 사이즈 체크 : " + itemBoards.getTotalPages());
-
 
         int homeStartPage = Math.max(1,itemBoards.getPageable().getPageNumber() - 4);
         int homeEndPage = Math.min(itemBoards.getTotalPages(),itemBoards.getPageable().getPageNumber() + 4);

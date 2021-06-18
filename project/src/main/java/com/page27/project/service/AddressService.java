@@ -52,8 +52,8 @@ public class AddressService {
         return null;
     }//수정중
 
-    public List<DeliveryAddress> getDeliveryAddress(){
-        return deliveryAddressRepository.findAll();
+    public List<DeliveryAddress> getDeliveryAddress(String loginId){
+        return deliveryAddressRepository.findAllByMemberLoginId(loginId);
     }
 
     public Long deleteAddress(Long id){
