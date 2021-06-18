@@ -31,7 +31,7 @@ $(function(){
         const item_quantity = parseInt($(this).siblings('.item_quantity').val());
         $.ajax({
             type: 'PATCH',
-            url: '/main/changequantity/' + basket_id + '/' + item_quantity
+            url: '/main/basket/changequantity/' + basket_id + '/' + item_quantity
         }).done(function(word){
             alert(word);
             location.reload();
@@ -61,9 +61,10 @@ $(function(){
             console.log('삭제버튼눌림');
             $.ajax({
                 type: 'DELETE',
-                url: '/main/removefromcart/'+ basket_id
+                url: '/main/basket/remove/'+ basket_id
             }).done(function(word){
                 alert(word);
+                location.reload();
             }).fail(function(error){
                 alert(JSON.stringify(error));
             })
@@ -82,7 +83,7 @@ $(function(){
         console.log(itemlist);
         $.ajax({
             type: 'DELETE',
-            url: '/main/removefromcart',
+            url: '/main/basket/removeitems',
             data: {itemList : itemlist},
             traditional: true
         }).done(function(word){
@@ -97,7 +98,7 @@ $(function(){
     $('.basketclearbtn').on('click', function(){
         $.ajax({
             type: 'DELETE',
-            url: '/main/clearbasket'
+            url: '/main/basket/removeall'
         }).done(function(word){
             alert(word);
             location.reload();

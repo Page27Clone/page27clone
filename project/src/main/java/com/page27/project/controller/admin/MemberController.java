@@ -76,4 +76,6 @@ public class MemberController {
         }
         return "선택 삭제 완료";
     }
+
+
 }

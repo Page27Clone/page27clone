@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Controller
@@ -269,9 +270,53 @@ public class MainController {
 //        이후 이 정보는 List에 담겨서 보내지는 것이다.
         model.addAttribute("member",memberMileage);
         model.addAttribute("itemList",allItemInBasket);
-        model.addAttribute("basketId",basketList);
+        model.addAttribute("basketList",basketList);
 
         return "main/basket";
+    }
+
+    @ResponseBody
+    @PatchMapping("/main/basket/changequantity/{basketId}/{itemQuantity}")
+    public String changeQuantityInBasketPage(@PathVariable Long basketId, @PathVariable int itemQuantity){
+        Basket basket = basketRepository.findById(basketId).get();
+        basket.setBasketCount(itemQuantity);
+        basketRepository.save(basket);
+
+        return "수량 변경 완료";
+    }
+
+    @ResponseBody
+    @DeleteMapping("/main/basket/remove/{basketId}")
+    public String deleteItemInBasketPage(@PathVariable Long basketId){
+        System.out.println("삭제할 상품 장바구니 아이디 : " + basketId);
+        basketRepository.deleteById(basketId);
+
+        return "장바구니 상품 삭제 완료";
+    }
+
+    @ResponseBody
+    @DeleteMapping("/main/basket/removeitems")
+    public String deleteItemsInBaketPage(@RequestParam(value = "itemList",required = false)List<Long> itemList){
+        System.out.println("here check : " + itemList.size());
+        for(int i = 0;i<itemList.size();i++){
+            basketRepository.deleteById(itemList.get(i));
+        }
+        return "장바구니 상품 삭제 완료";
+    }
+
+    @ResponseBody
+    @DeleteMapping("/main/basket/removeall")
+    public String deleteAllItemsInBasketPage(Principal principal){
+        Member member = memberRepository.findByloginId(principal.getName()).get();
+
+        List<Basket> basketList = basketRepository.findAllByMemberId(member.getId());
+        System.out.println("basketList size : " + basketList.size());
+
+        for(int i = 0; i< basketList.size();i++){
+            basketRepository.deleteById(basketList.get(i).getId());
+        }
+
+        return "장바구니 비우기 완료";
     }
 
 

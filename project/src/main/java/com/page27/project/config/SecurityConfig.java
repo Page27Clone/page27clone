@@ -48,7 +48,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .ignoringAntMatchers("/admin/orderList1/**")
                 .ignoringAntMatchers("/admin/userList/**")
                 .ignoringAntMatchers("/main/orderStatusChange/**")
-                .ignoringAntMatchers("/main/address/delete");
+                .ignoringAntMatchers("/main/address/delete")
+                .ignoringAntMatchers("/main/basket/changequantity/**")
+                .ignoringAntMatchers("/main/basket/remove/**")
+                .ignoringAntMatchers("/main/basket/removeitems")
+                .ignoringAntMatchers("/main/basket/removeall");
 
         http
                 .authorizeRequests()

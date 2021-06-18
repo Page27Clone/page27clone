@@ -98,7 +98,7 @@
                                     <button class="buyitbtn optionbtn">주문하기</button><br>
                                     <button class="deleteitbtn optionbtn">삭제</button>
                                 </td>
-                                <input type="hidden" class="basket_id" value="1" th:value="${item.basketIdx}">
+                                <input type="hidden" class="basket_id" value="1" th:value="${basketList[index.index].id}">
                                 <input type="hidden" class="item_price" value="32000" th:value="${item.price}">
                             </tr>
                         </tbody>
