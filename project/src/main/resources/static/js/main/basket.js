@@ -5,12 +5,12 @@ $(function(){
         const tr = $(this).closest('tr');
         let order_price = parseInt($(this).val()) * parseInt($(this).closest('tr').find('.item_quantity').val());
         let order_mileage = order_price / 100;
-        tr.find('.order_price').html(order_price);
-        tr.find('.order_mileage').html(order_mileage);
+        tr.find('.order_price').html(order_price.toLocaleString());
+        tr.find('.order_mileage').html(order_mileage.toLocaleString());
         total_price += order_price;
     })
-    $('#total').html(total_price);
-    $('#tobepaid').html(total_price);
+    $('#total').html(total_price.toLocaleString());
+    $('#tobepaid').html(total_price.toLocaleString());
 
     //총 row수 산출
     let num_rows = $('.orderlist_table tbody tr').length;
@@ -49,7 +49,14 @@ $(function(){
         console.log(basket_id, item_quantity);
         
         if($(this).hasClass('buyitbtn')){ //해당 아이템 주문
-            location.href='/main/buyitem/'+basket_id+'/'+item_quantity;
+            const form = $('<form method="post"></form>')
+            form.attr("action", "/main/buyitems")
+            let itemlist = [];
+            let id_quan = {id: basket_id, quantity:item_quantity}
+            itemlist.push(id_quan)
+            form.append($('<input>', {type: 'hidden', name: 'itemlist', value: JSON.stringify(itemlist)}));
+            form.appendTo('body');
+            form.submit();
         }else if($(this).hasClass('deleteitbtn')){ //해당 아이템 삭제
             console.log('삭제버튼눌림');
             $.ajax({

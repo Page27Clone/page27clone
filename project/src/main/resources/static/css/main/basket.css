@@ -84,6 +84,11 @@ table{
     border-collapse: collapse;
 }
 
+table img {
+    width: 80px;
+    display: block;
+}
+
 td, th {
     text-align: center;
     padding: 10px;
