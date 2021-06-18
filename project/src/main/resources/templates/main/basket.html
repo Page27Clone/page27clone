@@ -78,7 +78,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each = "item:${itemList}">
+                            <tr th:each = "item, index:${itemList}">
                                 <td><input type="checkbox" class="check"></td>
                                 <td><img src="img/basket/basket1.JPG" th:src="@{${item.imgUrl}}" alt="상품사진"></td>
                                 <td>
@@ -87,7 +87,7 @@
                                 </td>
                                 <td><b th:text="'₩'+${#numbers.formatInteger(item.price, 0, 'COMMA')}">₩32,000</b></td>
                                 <td>
-                                    <input type="number" class="item_quantity" min="0" max="100" value="4" th:value="${item.}">
+                                    <input type="number" class="item_quantity" min="0" max="100" value="4" th:value="${basketList[index.index].basketCount}">
                                     <button onclick="" class="numberupdatebtn">변경</button> <!--th:onclick으로 item_key 넘겨주기-->
                                 </td>
                                 <td><span class="order_mileage">320</span>원</td> <!-- js계산 -->
