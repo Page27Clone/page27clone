@@ -31,7 +31,7 @@ $(function(){
         const item_quantity = parseInt($(this).siblings('.item_quantity').val());
         $.ajax({
             type: 'PATCH',
-            url: '/main/changequantity/' + basket_id + '/' + item_quantity
+            url: '/main/basket/changequantity/' + basket_id + '/' + item_quantity
         }).done(function(word){
             alert(word);
             location.reload();
@@ -61,7 +61,7 @@ $(function(){
             console.log('삭제버튼눌림');
             $.ajax({
                 type: 'DELETE',
-                url: '/main/removefromcart/'+ basket_id
+                url: '/main/basket/remove/'+ basket_id
             }).done(function(word){
                 alert(word);
             }).fail(function(error){
