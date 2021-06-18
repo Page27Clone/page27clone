@@ -2,7 +2,6 @@ package com.page27.project.service;
 
 import com.page27.project.domain.Member;
 import com.page27.project.domain.Mileage;
-import com.page27.project.dto.MileageInfoDto;
 import com.page27.project.repository.MemberRepository;
 import com.page27.project.repository.MileageRepository;
 import lombok.RequiredArgsConstructor;

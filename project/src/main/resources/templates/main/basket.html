@@ -39,7 +39,7 @@
                 <div class="benefit_info_desc">
                     <div class="benefit_info_desc_item"><b th:text="${member.name}">홍길동</b> 님은 <b th:text="'['+${member.memberGrade}+']'">[일반회원]</b> 이십니다</div>
                     <div class="benefit_info_mileage benefit_info_desc_item">
-                        가용적립금: <b th:text="${member.mileage} + '원'">2,000원</b>
+                        가용적립금: <b th:text="${member.restMileage} + '원'">2,000원</b>
                     </div>
                 </div>
             </div>
@@ -78,16 +78,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr th:each = "item:${basketList}">
+                            <tr th:each = "item:${itemList}">
                                 <td><input type="checkbox" class="check"></td>
-                                <td><img src="img/basket/basket1.JPG" th:src="@{${item.imgpath}}" alt="상품사진"></td>
+                                <td><img src="img/basket/basket1.JPG" th:src="@{${item.imgUrl}}" alt="상품사진"></td>
                                 <td>
-                                    <div th:text="${item.name}">메카닉 패딩 야상점퍼</div>
+                                    <div th:text="${item.itemName}">메카닉 패딩 야상점퍼</div>
                                     <div th:text="'[옵션:'+${item.color}+']'">[옵션: 그레이]</div>
                                 </td>
                                 <td><b th:text="'₩'+${#numbers.formatInteger(item.price, 0, 'COMMA')}">₩32,000</b></td>
                                 <td>
-                                    <input type="number" class="item_quantity" min="0" max="100" value="4" th:value="${item.quantity}">
+                                    <input type="number" class="item_quantity" min="0" max="100" value="4" th:value="${item.}">
                                     <button onclick="" class="numberupdatebtn">변경</button> <!--th:onclick으로 item_key 넘겨주기-->
                                 </td>
                                 <td><span class="order_mileage">320</span>원</td> <!-- js계산 -->

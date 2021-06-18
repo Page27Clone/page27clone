@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.jdo.annotations.Join;
 import javax.persistence.*;
 import java.awt.*;
 import java.time.LocalDateTime;
@@ -52,8 +53,11 @@ public class Item {
 
     private Boolean rep;
 
-    @OneToMany(mappedBy = "item")
+    @OneToMany(mappedBy = "item",cascade = CascadeType.ALL)
     private List<OrderItem> orderItemList = new ArrayList<>();
+
+    @OneToMany(mappedBy = "item",cascade = CascadeType.ALL)
+    private List<Basket> basketList = new ArrayList<>();
 
     /*비즈니스 로직*/
     public void plusStockQuantity(int plusQuantity){

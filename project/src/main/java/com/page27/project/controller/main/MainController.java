@@ -3,14 +3,10 @@ package com.page27.project.controller.main;
 import com.page27.project.domain.*;
 import com.page27.project.dto.*;
 import com.page27.project.repository.*;
-import com.page27.project.service.AddressService;
-import com.page27.project.service.MemberService;
-import com.page27.project.service.MileageService;
-import com.page27.project.service.OrderService;
+import com.page27.project.service.*;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
-import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -19,8 +15,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Controller
@@ -30,6 +26,7 @@ public class MainController {
     private final MemberService memberService;
     private final AddressService addressService;
     private final ItemRepository itemRepository;
+    private final BasketService basketService;
 
     //이건 테스트
     private final MileageRepository mileageRepository;
@@ -37,6 +34,8 @@ public class MainController {
     private final OrderService orderService;
     private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
+
+    private final BasketRepository basketRepository;
 
 
     @GetMapping("main")
@@ -249,6 +248,30 @@ public class MainController {
         model.addAttribute("secondCategory",secondCategory);
 
         return "main/category";
+    }
+
+    @GetMapping("/main/basket")
+    public String getBasketPage(Principal principal, Model model){
+        String loginId = principal.getName();
+
+        BasketMemberMileageDto memberMileage = basketService.findMemberMileage(loginId);
+
+        Member member = memberRepository.findByloginId(loginId).get();
+//        회원을 아이디를 통해 찾는다
+        List<Basket> basketList = basketRepository.findAllByMemberId(member.getId());
+//        회원 PK를 통해 Basket 테이블에서 각 row를 찾는다.
+        List<ItemDto> allItemInBasket = new ArrayList<ItemDto>();
+        for(int i= 0; i< basketList.size();i++){
+            Long itemId = basketList.get(i).getItem().getId();
+            allItemInBasket.add(itemRepository.findAllItemInBasket(itemId));
+        }
+//        찾은 Basket PK를 활용해 해당 아이템의 PK를 찾고 itemRepository에서 이 PK를 가지고 아이템 정보를 가져온다.
+//        이후 이 정보는 List에 담겨서 보내지는 것이다.
+        model.addAttribute("member",memberMileage);
+        model.addAttribute("itemList",allItemInBasket);
+        model.addAttribute("basketId",basketList);
+
+        return "main/basket";
     }
 
 

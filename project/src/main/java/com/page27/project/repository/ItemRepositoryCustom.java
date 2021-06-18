@@ -6,9 +6,12 @@ import com.page27.project.dto.MemberDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
+
 public interface ItemRepositoryCustom {
     Page<ItemDto> searchAllItem(Pageable pageable);
     Page<ItemDto> searchAllItemByCondition(SearchItem searchItem, Pageable pageable);
     Page<ItemDto> findAllItem(Pageable pageable,String firstCategory, String secondCategory);
     Long searchMaxItemIdx();
+    ItemDto findAllItemInBasket(Long itemId);
 }

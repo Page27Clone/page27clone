@@ -19,6 +19,7 @@ public class ItemDto {
     private String color;
     private boolean rep;
     private Long itemIdx;
+    private int basketCount;
 
 
     @QueryProjection
@@ -44,6 +45,16 @@ public class ItemDto {
         this.secondCategory = secondCategory;
         this.saleStatus = saleStatus;
         this.rep = rep;
+    }
+
+    @QueryProjection
+    public ItemDto(Long itemIdx,String imgUrl,String itemName,String color, int price, int basketCount){
+        this.itemIdx = itemIdx;
+        this.imgUrl = imgUrl;
+        this.itemName = itemName;
+        this.color = color;
+        this.price = price;
+        this.basketCount = basketCount;
     }
 }
 

@@ -1,9 +1,6 @@
 package com.page27.project.repository;
 
-import com.page27.project.domain.Item;
-import com.page27.project.domain.QItem;
-import com.page27.project.domain.QMember;
-import com.page27.project.domain.SearchItem;
+import com.page27.project.domain.*;
 import com.page27.project.dto.ItemDto;
 import com.page27.project.dto.MemberDto;
 import com.page27.project.dto.QItemDto;
@@ -142,6 +139,30 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
         System.out.println("여기 사이즈 : " + content.size());
 
         return new PageImpl<>(content, pageable, total);
+    }
+
+    @Override
+    public ItemDto findAllItemInBasket(Long itemId) {
+        ItemDto results = queryFactory
+                .select(new QItemDto(
+                        QItem.item.itemIdx,
+                        QItem.item.imgUrl,
+                        QItem.item.itemName,
+                        QItem.item.color,
+                        QItem.item.price,
+                        QBasket.basket.basketCount
+                ))
+                .from(QItem.item)
+                .leftJoin(QBasket.basket).on(QBasket.basket.eq(QItem.item.basketList.any()))
+                .where(QItem.item.rep.eq(true),
+                        QItem.item.id.eq(itemId)
+                )
+                .fetchOne();
+
+
+//        List<ItemDto> content = results.getResults();
+
+        return results;
     }
 
     private BooleanExpression saleStatusEq(String saleStatusCondition){
