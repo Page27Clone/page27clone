@@ -37,6 +37,7 @@ public class MainController {
     private final OrderItemRepository orderItemRepository;
 
     private final BasketRepository basketRepository;
+    private final ItemService itemService;
 
 
     @GetMapping("main")
@@ -248,6 +249,8 @@ public class MainController {
         model.addAttribute("firstCategory",firstCategory);
         model.addAttribute("secondCategory",secondCategory);
 
+
+
         return "main/category";
     }
 
@@ -317,6 +320,14 @@ public class MainController {
         }
 
         return "장바구니 비우기 완료";
+    }
+
+    @GetMapping("/main/product/{itemIdx}")
+    public String getProductPage(@PathVariable Long itemIdx, Model model){
+        ItemDetailDto itemDetailDto = itemService.getItemDetailDto(itemIdx);
+        model.addAttribute("item",itemDetailDto);
+
+        return "main/product";
     }
 
 

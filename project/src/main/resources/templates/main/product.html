@@ -28,10 +28,10 @@
     <section>
         <div class="product_container">
             <div class="product_imgbox">
-                <img src="img/product/product1.JPG" th:src="@{${item.mainImgpath}}" alt="상품 메인 사진">
+                <img src="img/product/product1.JPG" th:src="@{${item.imgMainUrl}}" alt="상품 메인 사진">
             </div>
             <div class="product_detail">
-                <div class="product_caption" th:text="${item.name}">
+                <div class="product_caption" th:text="${item.itemName}">
                     브로우 울 체크셔츠(3color)
                 </div>
                 <div class="product_detailinfo">
@@ -47,7 +47,7 @@
                         <label>상품간략설명</label>
                         <span>
                             <font>INFO</font>
-                            <div th:text="${item.info}">
+                            <div th:text="${item.itemInfo}">
                                 톤다운된 매력적인 컬러감의 체크패턴과 따뜻하고 두툼한 원단으로 제작을 한 울 소재의 체크셔츠를 소개합니다. 
                                 여유있는 편안한 핏감으로 티셔츠위에 자켓코디는 물론 아우터와 레이어드하여 더욱 따뜻하게 착용이 가능한 활용도 높은 제품입니다.
                                 간절기에는 아우터로 활용하기 좋고 겨울 시즌에는 아우터 안에 따뜻한 이너로 착용할 수 있어 높은 활용도를 가진 제품입니다.
@@ -127,7 +127,7 @@
         </div>
         <div class="product_imageArea">
             <img src="/image/etc/페이지27-특별한혜택.jpg" alt="특별한 혜택">
-            <img src="./img/items/로하 린넨 블레이져 자켓(5color)0.jpg" th:each="imgpath:${item.imgList}" th:src="@{${imgpath}}" alt="상품 사진">
+            <img src="./img/items/로하 린넨 블레이져 자켓(5color)0.jpg" th:each="imgpath:${item.imgUrlList}" th:src="@{${imgpath}}" alt="상품 사진">
         </div>
 
 

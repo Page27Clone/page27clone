@@ -37,6 +37,7 @@ public class ItemDto {
 
     @QueryProjection
     public ItemDto(Long itemIdx,String itemName, String imgUrl, int price, String firstCategory, String secondCategory, String saleStatus, boolean rep){
+
         this.itemIdx = itemIdx;
         this.itemName = itemName;
         this.imgUrl = imgUrl;

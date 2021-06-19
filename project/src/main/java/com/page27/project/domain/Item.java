@@ -51,7 +51,7 @@ public class Item {
 
     private Long itemIdx;
 
-    private Boolean rep;
+    private boolean rep;
 
     @OneToMany(mappedBy = "item",cascade = CascadeType.ALL)
     private List<OrderItem> orderItemList = new ArrayList<>();

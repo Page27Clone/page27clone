@@ -116,7 +116,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
     public Page<ItemDto> findAllItem(Pageable pageable,String firstCategory, String secondCategory) {
         QueryResults results = queryFactory
                 .selectDistinct(new QItemDto(
-                       QItem.item.itemIdx,
+                        QItem.item.itemIdx,
                         QItem.item.itemName,
                         QItem.item.imgUrl,
                         QItem.item.price,
