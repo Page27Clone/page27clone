@@ -75,11 +75,12 @@ public class DataInsertTest {
     // 여기까지 Member data 삽입
 
     @Test
+    @Transactional
     @Rollback(false)
     public void mileageTest() throws Exception{
         Mileage mileage = new Mileage();
-        mileage.setMileageContent("회원가입 적립금");
-        mileage.setMileagePrice(1000);
+        mileage.setMileageContent("1주년 기념 적립금");
+        mileage.setMileagePrice(2000);
         mileage.setMember(memberRepository.findByloginId("skyey94").get());
 
         mileageRepository.save(mileage);

@@ -1,8 +1,12 @@
 package com.page27.project.service;
 
+import com.page27.project.domain.Basket;
 import com.page27.project.domain.Item;
+import com.page27.project.domain.Member;
 import com.page27.project.dto.ItemDetailDto;
+import com.page27.project.repository.BasketRepository;
 import com.page27.project.repository.ItemRepository;
+import com.page27.project.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +19,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ItemService {
     private final ItemRepository itemRepository;
+    private final MemberRepository memberRepository;
+    private final BasketRepository basketRepository;
 
     @Transactional
     public Long save(Item item){
@@ -123,7 +129,20 @@ public class ItemService {
 //        아이템 마일리지
 //        아이템 사진리스트
 
-
         return itemDetailDto;
+    }
+
+
+    public void moveItemToBasket(String loginId,Long itemIdx,String itemColor,int quantity){
+
+        Basket basket = new Basket();
+        Member findMember = memberRepository.findByloginId(loginId).get();
+        Item findItem = itemRepository.findByItemIdxAndColorAndRep(itemIdx, itemColor, true);
+
+        basket.setMember(findMember);
+        basket.setBasketCount(quantity);
+        basket.setItem(findItem);
+
+        basketRepository.save(basket);
     }
 }

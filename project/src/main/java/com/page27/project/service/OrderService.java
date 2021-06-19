@@ -53,8 +53,8 @@ public class OrderService {
         }
 
         Order order = Order.createOrder(checkedFindMember,delivery,checkedTestOrderItem);
-        orderRepository.save(order);
 
+        orderRepository.save(order);
         return order.getId();
     }// 주문 생성
 

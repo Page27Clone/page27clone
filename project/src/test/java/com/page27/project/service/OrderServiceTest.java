@@ -113,37 +113,21 @@ public class OrderServiceTest {
     }
 
 
+    @Transactional
     @Test
+    @Rollback(value = false)
     public void 상품_주문() throws Exception{
-        Member member = createTestMember();
-        Item itemFirst = createTestItemFirst();
-        Item itemSecond = createTestItemSecond();
-        Item itemThird = createTestItemThird();
+        Member member = memberRepository.findByloginId("skyey94").get();
+        Item itemFirst = itemRepository.findById(371L).get();
 
         List<Long> itemList = new ArrayList<>();
         itemList.add(itemFirst.getId());
-        itemList.add(itemSecond.getId());
-        itemList.add(itemThird.getId());
 
         List<Integer> itemCountList = new ArrayList<>();
-        itemCountList.add(10);
-        itemCountList.add(10);
-        itemCountList.add(10);
+        itemCountList.add(1);
 
-        orderService.doOrder(member.getId(),itemList,itemCountList);
+        orderService.doOrder(member.getId(), itemList, itemCountList);
         //doOrder 메소드 내에서 crateOrderItem 메소드가 실행됨
-
-
-        Member member2 = createTestMemberSecond();
-        List<Long> itemListSecond = new ArrayList<>();
-        itemListSecond.add(itemFirst.getId());
-        itemListSecond.add(itemSecond.getId());
-
-        List<Integer> itemCountListSecond = new ArrayList<>();
-        itemCountListSecond.add(10);
-        itemCountListSecond.add(10);
-
-        orderService.doOrder(member2.getId(),itemListSecond,itemCountListSecond);
     }
 
     @Test

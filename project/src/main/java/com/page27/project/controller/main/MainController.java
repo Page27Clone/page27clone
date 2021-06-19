@@ -52,7 +52,9 @@ public class MainController {
         Member member = memberRepository.findByloginId(loginId).get();
         myPageDto.setName(member.getName());
         myPageDto.setGrade(member.getMemberGrade());
-        myPageDto.setMileage(mileageService.getTotalMileage(loginId));
+        int totalMileage = mileageService.getTotalMileage(loginId);
+        int totalUsedMileage = mileageService.getTotalUsedMileage(loginId);
+        myPageDto.setMileage(totalMileage - totalUsedMileage);
 
         MyPageOrderStatusDto myPageOrderStatusDto = orderService.showOrderStatus(loginId);
 
@@ -331,20 +333,23 @@ public class MainController {
     }
 
     @PostMapping("/main/product/basketadd_ok")
-    public String addItemInBasketPage(Principal principal, ItemToBasket itemToBasket ){
-        System.out.println("여기는 bakset으로 넘어가기 위한 페이지");
-        Basket basket = new Basket();
-        basket.setBasketCount(Integer.parseInt(itemToBasket.getQuantity()));
-        Member findMember = memberRepository.findByloginId(principal.getName()).get();
-        basket.setMember(findMember);
+    public String addItemInBasketPage(Principal principal, ItemToBasket itemToBasket){
+        String loginId = principal.getName();
+        int quantity = Integer.parseInt(itemToBasket.getQuantity());
         Long itemIdx = Long.parseLong(itemToBasket.getItem_idx());
-        Item findItem = itemRepository.findByItemIdxAndColorAndRep(itemIdx, itemToBasket.getItem_color(), true);
-        basket.setItem(findItem);
+        String color = itemToBasket.getItem_color();
 
-        basketRepository.save(basket);
-        System.out.println("basket 페이지의 마지막");
-
+        itemService.moveItemToBasket(loginId,itemIdx,color,quantity);
         return "redirect:/main/basket";
+    }
+
+    @GetMapping("/main/payment")
+    public String getPaymentPage(Principal principal, Model model){
+        String loginId = principal.getName();
+        BasketMemberMileageDto memberMileage = basketService.findMemberMileage(loginId);
+
+        model.addAttribute("member",memberMileage);
+        return "main/payment";
     }
 
 
