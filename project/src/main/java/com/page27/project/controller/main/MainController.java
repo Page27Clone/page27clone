@@ -330,5 +330,22 @@ public class MainController {
         return "main/product";
     }
 
+    @PostMapping("/main/product/basketadd_ok")
+    public String addItemInBasketPage(Principal principal, ItemToBasket itemToBasket ){
+        System.out.println("여기는 bakset으로 넘어가기 위한 페이지");
+        Basket basket = new Basket();
+        basket.setBasketCount(Integer.parseInt(itemToBasket.getQuantity()));
+        Member findMember = memberRepository.findByloginId(principal.getName()).get();
+        basket.setMember(findMember);
+        Long itemIdx = Long.parseLong(itemToBasket.getItem_idx());
+        Item findItem = itemRepository.findByItemIdxAndColorAndRep(itemIdx, itemToBasket.getItem_color(), true);
+        basket.setItem(findItem);
+
+        basketRepository.save(basket);
+        System.out.println("basket 페이지의 마지막");
+
+        return "redirect:/main/basket";
+    }
+
 
 }
