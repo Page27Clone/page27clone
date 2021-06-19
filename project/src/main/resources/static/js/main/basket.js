@@ -55,6 +55,7 @@ $(function(){
             let id_quan = {id: basket_id, quantity:item_quantity}
             itemlist.push(id_quan)
             form.append($('<input>', {type: 'hidden', name: 'itemlist', value: JSON.stringify(itemlist)}));
+            form.append($('<input>', {type: 'hidden', name: 'where', value: 'basket'})); //현재 넘어가는 정보는 basket페이지에서 넘어간다
             form.appendTo('body');
             form.submit();
         }else if($(this).hasClass('deleteitbtn')){ //해당 아이템 삭제
@@ -135,6 +136,7 @@ $(function(){
         }
         console.log(itemlist);
         form.append($('<input>', {type: 'hidden', name: 'itemlist', value: JSON.stringify(itemlist)}));
+        form.append($('<input>', {type: 'hidden', name: 'where', value: 'basket'}));
         form.appendTo('body');
         form.submit();
     })
