@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/main/header.css">
-    <link rel="stylesheet" type="text/css" href="./css/main/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/footer.css">
     <link rel="stylesheet" type="text/css" href="/css/main/nav.css">
-    <link rel="stylesheet" type="text/css" href="./css/main/payment.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/payment.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Antonio&display=swap" rel="stylesheet">
@@ -41,7 +41,7 @@
                         <div class="benefit_info_desc_item"><b th:text="${member.name}">홍길동</b> 님은 <b th:text="'['+${member.memberGrade}+']'">[일반회원]</b> 이십니다</div>
                         <div class="benefit_info_mileage benefit_info_desc_item">
                             가용적립금: <b th:text="${#numbers.formatInteger(member.restMileage, 0, 'COMMA')}">2,000</b>원
-                            <input type="hidden" class="canuse" value="2000" th:value="${member.totalMileage}"> <!--서버로부터 넘어온 데이터-->
+                            <input type="hidden" class="canuse" value="2000" th:value="${member.restMileage}"> <!--서버로부터 넘어온 데이터-->
                         </div>
                     </div>
                 </div>
@@ -216,7 +216,7 @@
                         </colgroup>
                         <th>적립금</th>
                         <td>
-                            <input type="text" name="used_mileage"> 원 (총 사용가능 적립금 : <span th:text="${#numbers.formatInteger(member.mileage, 0, 'COMMA')}">2,000</span>원) <!-- 티임리프로 데이터 넣어주기-->
+                            <input type="text" name="used_mileage"> 원 (총 사용가능 적립금 : <span th:text="${#numbers.formatInteger(member.restMileage, 0, 'COMMA')}">2,000</span>원) <!-- 티임리프로 데이터 넣어주기-->
                             <br>
                             <br>
                             - 적립금은 최소 2,000 이상일 떄 결제가 가능합니다.<br>
