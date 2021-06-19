@@ -19,6 +19,7 @@ section {
 }
 
 .product_container .product_imgbox img{
+    width: 600px;
     display: block;
     position: sticky;
     top: 100px;
