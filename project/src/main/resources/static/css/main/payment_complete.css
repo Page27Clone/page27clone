@@ -1,0 +1,165 @@
+section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.section_caption {
+    padding: 45px 0;
+    font-size: 19px;
+    font-weight: bold;
+}
+
+.section_content {
+    margin-top: 20px;
+    width: 1260px;
+}
+
+/*benefit_info*/
+.benefit_info {
+    display: flex;
+    border: 1px solid var(--border-color-basic);
+    padding: 10px 0;
+}
+.benefit_info .benefit_info_caption {
+    width: 105px;
+    border-right: 1px solid var(--border-color-basic);
+    padding: 17px 25px;
+    font-size: 13px;
+}
+
+.benefit_info .benefit_info_desc {
+    width: 100%;
+    padding: 0px 20px;
+    font-size: 12px;
+}
+
+.benefit_info .benefit_info_desc .benefit_info_desc_item {
+    width: 100%;
+    padding-bottom:8px;
+}
+
+.benefit_info .benefit_info_desc .benefit_info_mileage {
+    border-top: 1px solid var(--border-color-basic);
+    padding-bottom: 0;
+    padding-top: 8px;
+}
+
+/*message_box*/
+.message_box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    margin-top: 50px;
+}
+.message_box .completeimg {
+    margin-right: 20px;
+}
+.message_box .completeimg img{
+    display: block;
+}
+
+/*payment_detial*/
+.payment_detail {
+    margin-top: 50px;
+}
+
+.payment_detail table {
+    border-collapse: collapse;
+    width: 100%;
+    border-top: 1px solid var(--border-color-basic2);
+    border-bottom: 1px solid var(--border-color-basic2);
+}
+
+.payment_detail table th{
+    font-size: 13px;
+    font-weight: normal;
+    padding: 20px;
+    color: black;
+    border-bottom: 1px solid var(--border-color-basic2);
+}
+
+.payment_detail table td{
+    text-align: center;
+    color: black;
+    font-weight: bold;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.payment_detail .payment_detail_mileage {
+    display: flex;
+    border-bottom: 1px solid var(--border-color-basic2);
+    font-size: 13px;
+}
+
+.payment_detail .payment_detail_mileage .mileage_left {
+    width: 120px;
+    padding: 12px 10px;
+    border-right: 1px solid var(--border-color-basic2);
+    color: var(--font-color-gray2);
+}
+
+.payment_detail .payment_detail_mileage .mileage_right {
+    padding: 10px;
+    padding: 12px 10px;
+}
+
+/*배송정보*/
+/*delivery_info*/
+.delivery_info {
+    margin-top: 40px;
+}
+.delivery_info .delivery_info_caption {
+    font-size: 13px;
+    padding: 7px 10px;
+}
+
+.delivery_info table {
+    width: 100%;
+    border-collapse: collapse;
+    border-top: 1px solid var(--border-color-basic2);
+    font-size: 12px;
+    color: var(--font-color-gray2);
+}
+
+.delivery_info th{
+    font-weight: normal;
+    padding: 10px 10px;
+    border-bottom: 1px solid var(--border-color-basic2);
+    border-right: 1px solid var(--border-color-basic2);
+    text-align: left;
+}
+
+.delivery_info td{
+    font-weight: normal;
+    padding: 10px 10px;
+    border-bottom: 1px solid var(--border-color-basic2);
+}
+
+/*bottombtn_box*/
+.bottombtn_box {
+    margin-top: 20px;
+    text-align: right;
+}
+
+.bottombtn_box .bottombtn {
+    font-size: 13px;
+    padding: 10px 50px;
+}
+
+.bottombtn_box .leftbtn {
+    background-color: #333333;
+    border: 1px solid #333333;
+    color: white;
+    margin-right: 5px;
+}
+
+.bottombtn_box .rightbtn {
+    background-color: white;
+    border: 1px solid var(--border-color-basic2);
+}
+
+
+

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/main/header.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/footer.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/payment_complete.css">
+    <link rel="stylesheet" type="text/css" href="/css/main/nav.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
+    <title>payment_complete</title>
+    <script src="/js/main/jquery.js"></script>
+    <script src="/js/main/header.js"></script>
+    <script src="/js/main/nav.js"></script>
+</head>
+<body>
+    <!--header start-->
+    <header th:replace="main/header :: main_headerFragment">
+    </header>
+    <!--header end-->
+
+    <!--section-->
+    <section>
+        <div class="section_caption">
+            ORDER
+        </div>
+        <div class="section_content">
+            <div class="benefit_info">
+                <div class="benefit_info_caption">
+                    혜택정보
+                </div>
+                <div class="benefit_info_desc">
+                    <div class="benefit_info_desc_item"><b>홍길동</b> 님은 <b>[일반회원]</b> 이십니다</div>
+                    <div class="benefit_info_mileage benefit_info_desc_item">
+                        가용적립금: <b>2,000원</b>
+                    </div>
+                </div>
+            </div>
+            <div class="message_box">
+                <div class="completeimg">
+                    <img src="img/check4.png">
+                </div>
+                <div class="complete_message">
+                    <b>고객님의 주문이 완료되었습니다.</b><br>
+                    주문 내역 및 배송에 관한 안내는 주문 조회를 통하여 확인 가능합니다.
+                </div>
+            </div>
+            <div class="payment_detail">
+                <table class="payment_detail_table">
+                    <tr>
+                        <th>총 주문금액</th>
+                        <th>결제금액</th>
+                    </tr>
+                    <tr>
+                        <td>₩<span id="total">118000</span></td>
+                        <td>₩<span id="tobepaid">116000</span></td>
+                    </tr>
+                </table>
+                <div class="payment_detail_mileage">
+                    <div class="mileage_left">총 적립 예정금액</div>
+                    <div class="mileage_right"><b>1180</b>원</div>
+                </div>
+            </div>
+
+            <div class="delivery_info">
+                <div class="delivery_info_caption">배송 정보</div>
+                <table class="delivery_info_table">
+                    <colgroup>
+                        <col width="120px"/>
+                        <col width="auto"/>
+                    </colgroup>
+                    <tr>
+                        <th>받으시는분</th>
+                        <td>홍길동</td>
+                    </tr>
+                    <tr>
+                        <th>우편번호</th>
+                        <td>05050</td>
+                    </tr>
+                    <tr>
+                        <th>주소</th>
+                        <td>서울특별시 강남구 테헤란로 22길 22 (잠실동) 채창완
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>일반전화</th>
+                        <td>02-1111-1111</td>
+                    </tr>
+                    <tr>
+                        <th>휴대전화</th>
+                        <td>010-1111-1111</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="bottombtn_box">
+                <button class="bottombtn leftbtn" th:onclick="'location.href=\''+ @{/main/index} + '\''">쇼핑 계속하기</button>
+                <button class="bottombtn rightbtn" th:onclick="'location.href=\''+ @{/main/index} + '\''">주문 확인하기</button>
+            </div>
+
+        </div>
+    </section>
+
+    <!--nav-->
+    <nav th:replace="main/nav :: main_navFragment">
+    </nav>
+
+    <!--footer-->
+    <footer th:replace="main/footer :: main_footerFragment">
+    </footer>
+</body>
+</html>
