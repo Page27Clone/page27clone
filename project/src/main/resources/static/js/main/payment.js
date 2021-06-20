@@ -69,14 +69,14 @@ $(function(){
             $('.address_phone_number:not(:first-child)').val('');
         }else{
 
-            let addr = {addr_idx : $(this).val()}
+            let addr = $(this).val()
 
             $.ajax({
-                url:"/dataSend",
+                url:"/main/payment/changeaddress/" + addr,
                 type:'POST',
-                data: JSON.stringify(addr),
-                contentType: 'application/json',
+                dataType: 'json',
                 success:function(data){
+                    console.log(data)
                     alert(data);
                     //서버로부터의 응답을 이용해 배송 정보 렌더링.
                 },
