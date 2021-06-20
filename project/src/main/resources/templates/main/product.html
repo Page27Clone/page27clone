@@ -85,7 +85,7 @@
                 </div>
                 <form action="" method="POST" id="buyform" onsubmit="return sendorder()"> <!-- 상품명, 색상, 수량 데이터 전송 -->
                     <input type="hidden" class="price" value="35000" th:value="${item.price}"> <!-- 상품 1개의 가격이다(jquery에서 가격을 뽑기위해 선언)-->
-                    <input type="hidden" name="item_idx" value="" th:value="${item.itemIdx}"> <!-- 넘어갈 데이터 -->
+                    <input type="hidden" name="item_idx" value="1" th:value="${item.itemIdx}"> <!-- 넘어갈 데이터 -->
                     <input type="hidden" name="where" value="product"> <!-- 현재 넘어가는 정보는 product 페이지에서 넘어간다 -->
                     <table> <!-- table을 thead와 tbody로 나눠주지 않으면 jquery 정상작동 X-->
                         <colgroup>

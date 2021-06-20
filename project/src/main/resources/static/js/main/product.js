@@ -5,6 +5,15 @@ function sendorder(){
         alert('상품 옵션을 선택해주세요');
         return false;
     }
+
+    const itemIdx = $('input[name=item_idx]').val()
+    const color = $('select[name=item_color]').val()
+    const quantity = $('input[name=quantity]').val()
+    console.log(itemIdx, color, quantity)
+    const itemlist = {idx : itemIdx, color, quantity}
+    console.log(JSON.stringify(itemlist))
+    $('input[name=itemlist]').val(itemlist)
+
 }
 
 function quantitychange(){ //함수는 가장 밖에서 선언해야 알아먹는다.
