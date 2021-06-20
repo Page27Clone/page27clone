@@ -14,6 +14,7 @@ function sendorder(){
     console.log(JSON.stringify(itemlist))
     $('input[name=itemlist]').val(JSON.stringify(itemlist))
 
+
 }
 
 function quantitychange(){ //함수는 가장 밖에서 선언해야 알아먹는다.
