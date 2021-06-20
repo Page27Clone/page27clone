@@ -51,9 +51,9 @@
                     <span class="period_item" days="90">3개월</span>
                     <span class="period_item lastitem" days="180">6개월</span>
                 </span>
-                <input type="date" name="firstdate" class="firstdate">
+                <input type="date" name="firstdate" class="firstdate" th:value="${firstdateStatus}">
                 &nbsp;~&nbsp;
-                <input type="date" name="lastdate" class="lastdate">
+                <input type="date" name="lastdate" class="lastdate" th:value="${lastdateStatus}">
                 <input type="submit" value="조회">
             </form>
             <div class="order_desc">· 기본적으로 최근 3개월간의 자료가 조회되며, 기간 검색 시 지난 주문내역을 조회하실 수 있습니다.<br>· 주문번호를 클릭하시면 해당 주문에 대한 상세내역을 확인하실 수 있습니다.</div>
