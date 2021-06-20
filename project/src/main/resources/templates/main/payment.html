@@ -98,7 +98,7 @@
                                     </td>
                                     <input type="hidden" class="item_idx" value="1" th:value="${item.itemIdx}">
                                     <input type="hidden" class="item_color" value="네이비" th:value="${item.color}">
-                                    <input type="hidden" class="item_quantity" value="7" th:value="${item.quantity}">
+                                    <input type="hidden" class="item_quantity" value="7" th:value="${item.basketCount}">
                                     <input type="hidden" class="item_price" value="39000" th:value="${item.price}">
                                 </tr>
                                 
@@ -131,8 +131,8 @@
                             <td>
                                 <div class="address_choice"> <!-- 타임리프 값 넣어주기-->
                                     <div><input type="radio" name="address_name" value="new_addr" id = "0" checked> <label for="0">새로운 배송지</label></div>
-                                    <div th:each="address, i:${addressList}"><input type="radio" name="address_name" value="home" id="2" th:value="${address.addressIdx}" th:id="${i.count}">
-                                        <label for="2" th:for="${i.count}" th:text="${address.name}">우리집</label>
+                                    <div th:each="address, i:${addressList}"><input type="radio" name="address_name" value="home" id="2" th:value="${address.id}" th:id="${i.count}">
+                                        <label for="2" th:for="${i.count}" th:text="${address.placeName}">우리집</label>
                                     </div>
                                 </div>
                             </td>
