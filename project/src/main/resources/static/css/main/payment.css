@@ -95,7 +95,10 @@ table{
     border-bottom: 1px solid var(--border-color-basic2);
 }
 
-
+.orderlist table img {
+    width: 80px;
+    display: block;
+}
 
 input[type=number] {
     width: 50px;
