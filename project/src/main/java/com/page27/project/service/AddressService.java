@@ -41,11 +41,22 @@ public class AddressService {
         return deliveryAddress.getId();
     }
 
-    public DeliveryAddress findAddressById(Long id){
+    public AddressDto findAddressById(Long id){
         Optional<DeliveryAddress> byId = deliveryAddressRepository.findById(id);
         DeliveryAddress findDeliveryAddress = byId.get();
 
-        return findDeliveryAddress;
+        AddressDto addressDto = new AddressDto();
+
+        addressDto.setId(findDeliveryAddress.getId());
+        addressDto.setPlaceName(findDeliveryAddress.getPlaceName());
+        addressDto.setRecipient(findDeliveryAddress.getRecipient());
+        addressDto.setZipcode(findDeliveryAddress.getZipcode());
+        addressDto.setStreet(findDeliveryAddress.getStreet());
+        addressDto.setCity(findDeliveryAddress.getCity());
+        addressDto.setAddressHomePhoneNumber(findDeliveryAddress.getAddressHomePhoneNumber());
+        addressDto.setAddressPhoneNumber(findDeliveryAddress.getAddressPhoneNumber());
+
+        return addressDto;
     }
 
     public AddressDto getChangeAddressDto(){

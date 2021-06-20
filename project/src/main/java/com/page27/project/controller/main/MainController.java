@@ -178,7 +178,7 @@ public class MainController {
 
     @GetMapping("/main/address/change/{id}")
     public String changeAddressPage(@PathVariable Long id, Model model){
-        DeliveryAddress addressById = addressService.findAddressById(id);
+        AddressDto addressById = addressService.findAddressById(id);
 
         String[] addressHomePhoneNumber = addressById.getAddressHomePhoneNumber().split(",");
         String[] addressPhoneNumber = addressById.getAddressPhoneNumber().split(",");
@@ -347,8 +347,6 @@ public class MainController {
         return "redirect:/main/basket";
     }
 
-
-
     @PostMapping("/main/payment")
     public String getPaymentDataPage(Principal principal , ItemToBasket itemToBasket, Model model,@RequestParam(value = "itemlist") String itemlist, @RequestParam(value = "where") String where){
 
@@ -371,15 +369,23 @@ public class MainController {
             itemDtoList.add(itemRepository.findAllItemInBasket(itemId));
         }
 
-
-
         String loginId = principal.getName();
         BasketMemberMileageDto memberMileage = basketService.findMemberMileage(loginId);
+        List<DeliveryAddress> deliveryAddressList = addressService.getDeliveryAddress(loginId);
 
+        model.addAttribute("addressList",deliveryAddressList);
         model.addAttribute("member",memberMileage);
         model.addAttribute("orderList",itemDtoList);
 
         return "main/payment";
+    }
+
+    @ResponseBody
+    @PostMapping("/main/payment/changeaddress/{deliveryAddressId}")
+    public AddressDto chnageDeliveryAddressInfo(@PathVariable Long deliveryAddressId){
+        AddressDto addressById = addressService.findAddressById(deliveryAddressId);
+
+        return addressById;
     }
 
 }
