@@ -126,7 +126,7 @@ public class OrderServiceTest {
         List<Integer> itemCountList = new ArrayList<>();
         itemCountList.add(1);
 
-        orderService.doOrder(member.getId(), itemList, itemCountList);
+//        orderService.doOrder(member.getId(), itemList, itemCountList);
         //doOrder 메소드 내에서 crateOrderItem 메소드가 실행됨
     }
 

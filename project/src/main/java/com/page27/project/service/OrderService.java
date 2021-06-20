@@ -2,6 +2,7 @@ package com.page27.project.service;
 
 import com.page27.project.domain.*;
 import com.page27.project.dto.MyPageOrderStatusDto;
+import com.page27.project.dto.PaymentAddressDto;
 import com.page27.project.repository.ItemRepository;
 import com.page27.project.repository.MemberRepository;
 import com.page27.project.repository.OrderItemRepository;
@@ -28,7 +29,7 @@ public class OrderService {
     }
 
     @Transactional
-    public Long doOrder(Long memberId, List<Long> itemId, List<Integer> count) {
+    public Long doOrder(Long memberId, List<Long> itemId, List<Integer> count, PaymentAddressDto paymentAddressDto) {
         Optional<Member> findMember = memberRepository.findById(memberId);
 
         Member checkedFindMember = new Member();
@@ -37,7 +38,12 @@ public class OrderService {
         }
 
         Delivery delivery = new Delivery();
-        delivery.setMemberAddress(checkedFindMember.getMemberAddress());
+
+        MemberAddress memberAddress = new MemberAddress();
+        memberAddress.setCity(paymentAddressDto.getCity());
+        memberAddress.setStreet(paymentAddressDto.getStreet());
+        memberAddress.setZipcode(paymentAddressDto.getZipcode());
+        delivery.setMemberAddress(memberAddress);
         delivery.setDeliveryStatus(DeliveryStatus.READY);
 
         //배송 정보 생성

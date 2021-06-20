@@ -56,8 +56,8 @@
                         <th>결제금액</th>
                     </tr>
                     <tr>
-                        <td>₩<span id="total" th:text="${#numbers.formatInteger(payment.totalPrice, 0, 'COMMA')}">118000</span></td>
-                        <td>₩<span id="tobepaid" th:text="${#numbers.formatInteger(payment.chargedPrice, 0, 'COMMA')}">116000</span></td>
+                        <td>₩<span id="total" th:text="${#numbers.formatInteger(payment.total_price, 0, 'COMMA')}">118000</span></td>
+                        <td>₩<span id="tobepaid" th:text="${#numbers.formatInteger(payment.tobepaid_price, 0, 'COMMA')}">116000</span></td>
                     </tr>
                 </table>
                 <div class="payment_detail_mileage">
@@ -75,7 +75,7 @@
                     </colgroup>
                     <tr>
                         <th>받으시는분</th>
-                        <td th:text="${address.recipient}">홍길동</td>
+                        <td th:text="${address.address_recipient}">홍길동</td>
                     </tr>
                     <tr>
                         <th>우편번호</th>

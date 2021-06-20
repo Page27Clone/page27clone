@@ -419,7 +419,7 @@ public class MainController {
     }
 
     @PostMapping("main/payment_ok")
-    public String doPaymentPage(Principal principal,@RequestParam(value = "orderiteminfo") String orderItemInfo){
+    public String doPaymentPage(Principal principal,@RequestParam(value = "orderiteminfo") String orderItemInfo,PaymentAddressDto paymentAddressDto,PaymentPriceDto paymentPriceDto,Model model){
         String loginId = principal.getName();
         Member member = memberRepository.findByloginId(loginId).get();
 
@@ -428,24 +428,37 @@ public class MainController {
         JsonParser jsonParser = new JsonParser();
         JsonArray jsonArray = (JsonArray) jsonParser.parse(orderItemInfo);
 
-        JsonObject object = (JsonObject) jsonArray.get(0);
-        String item_idx = object.get("item_idx").getAsString();
-        String item_color = object.get("item_color").getAsString();
-        String item_quantity = object.get("item_quantity").getAsString();
-
-        Long itemIdx = Long.parseLong(item_idx);
-        int itemOrderCount = Integer.parseInt(item_quantity);
-
-        Item findItem = itemRepository.
-
         List<Long> itemList = new ArrayList<>();
-        itemList.add(itemFirst.getId());
-
         List<Integer> itemCountList = new ArrayList<>();
-        itemCountList.add(1);
 
-        orderService.doOrder(member.getId(), itemList, itemCountList);
-        return null;
+        for(int i= 0; i< jsonArray.size();i++) {
+            JsonObject object = (JsonObject) jsonArray.get(i);
+            String item_idx = object.get("item_idx").getAsString();
+            String item_color = object.get("item_color").getAsString();
+            String item_quantity = object.get("item_quantity").getAsString();
+
+            Long itemIdx = Long.parseLong(item_idx);
+            int itemOrderCount = Integer.parseInt(item_quantity);
+
+            Item findItem = itemRepository.findByItemIdxAndColorAndRep(itemIdx, item_color, true);
+
+            itemList.add(findItem.getId());
+            itemCountList.add(itemOrderCount);
+        }
+
+        orderService.doOrder(member.getId(), itemList, itemCountList,paymentAddressDto);
+
+        System.out.println(paymentAddressDto.getAddress_id());
+
+
+        BasketMemberMileageDto memberMileage = basketService.findMemberMileage(loginId);
+
+        paymentPriceDto.setEarnMileage(paymentPriceDto.getTobepaid_price() * 0.01);
+        model.addAttribute("member",memberMileage);
+        model.addAttribute("payment",paymentPriceDto);
+        model.addAttribute("address",paymentAddressDto);
+
+        return "main/payment_complete";
     }
 
 }
