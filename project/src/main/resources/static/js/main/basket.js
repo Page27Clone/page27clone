@@ -111,7 +111,7 @@ $(function(){
     //전체, 선택 상품 주문
     $('.buymanybtn').on('click', function(){
         const form = $('<form method="post"></form>');
-        form.attr("action", "/main/buyitems")
+        form.attr("action", "/main/payment")
         let itemlist = [];
         const basket_id_list = $('.basket_id').get();
         const item_quantity_list = $('.item_quantity').get();

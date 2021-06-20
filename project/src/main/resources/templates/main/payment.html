@@ -81,13 +81,13 @@
                             <tbody> 
                                 <tr th:each="item:${orderList}">
                                     <td><input type="checkbox" class="check"></td>
-                                    <td><img src="img/basket/basket1.JPG" th:src="@{${item.imgpath}}"></td>
+                                    <td><img src="img/basket/basket1.JPG" th:src="@{${item.imgUrl}}"></td>
                                     <td>
-                                        <div th:text="${item.name}">메카닉 패딩 야상점퍼</div>
+                                        <div th:text="${item.itemName}">메카닉 패딩 야상점퍼</div>
                                         <div th:text="'[옵션:'+${item.color}+']'">[옵션: 그레이]</div>
                                     </td>
                                     <td><b th:text="'₩'+${#numbers.formatInteger(item.price, 0, 'COMMA')}">₩39,000</b></td>
-                                    <td th:text="${item.quantity}">
+                                    <td th:text="${item.basketCount}">
                                         7
                                     </td>
                                     <td><span class="order_mileage">390</span>원</td> <!--js 계산. 한 아이템에 대한 총 예상 적립 마일리지-->

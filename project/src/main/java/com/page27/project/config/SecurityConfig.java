@@ -53,7 +53,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .ignoringAntMatchers("/main/basket/remove/**")
                 .ignoringAntMatchers("/main/basket/removeitems")
                 .ignoringAntMatchers("/main/basket/removeall")
-                .ignoringAntMatchers("/main/product/**");
+                .ignoringAntMatchers("/main/**");
 
         http
                 .authorizeRequests()

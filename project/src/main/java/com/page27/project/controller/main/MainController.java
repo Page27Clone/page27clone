@@ -1,5 +1,8 @@
 package com.page27.project.controller.main;
 
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 import com.page27.project.domain.*;
 import com.page27.project.dto.*;
 import com.page27.project.repository.*;
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -343,14 +347,39 @@ public class MainController {
         return "redirect:/main/basket";
     }
 
-    @GetMapping("/main/payment")
-    public String getPaymentPage(Principal principal, Model model){
+
+
+    @PostMapping("/main/payment")
+    public String getPaymentDataPage(Principal principal , ItemToBasket itemToBasket, Model model,@RequestParam(value = "itemlist") String itemlist, @RequestParam(value = "where") String where){
+
+        JsonParser jsonParser = new JsonParser();
+        JsonArray jsonArray = (JsonArray) jsonParser.parse(itemlist);
+
+        List<Long> basketIdList = new ArrayList<>();
+        List<Integer> basketQuantityList = new ArrayList<>();
+        List<ItemDto> itemDtoList = new ArrayList<>();
+        for(int i = 0; i< jsonArray.size();i++){
+            JsonObject object = (JsonObject) jsonArray.get(i);
+            String id = object.get("id").getAsString();
+            basketIdList.add(Long.parseLong(id));
+            String quantity = object.get("quantity").getAsString();
+            basketQuantityList.add(Integer.parseInt(quantity));
+        }
+
+        for(int i = 0;i< basketIdList.size();i++){
+            Long itemId = basketRepository.findById(basketIdList.get(i)).get().getItem().getId();
+            itemDtoList.add(itemRepository.findAllItemInBasket(itemId));
+        }
+
+
+
         String loginId = principal.getName();
         BasketMemberMileageDto memberMileage = basketService.findMemberMileage(loginId);
 
         model.addAttribute("member",memberMileage);
+        model.addAttribute("orderList",itemDtoList);
+
         return "main/payment";
     }
-
 
 }
