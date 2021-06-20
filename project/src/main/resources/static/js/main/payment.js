@@ -77,8 +77,31 @@ $(function(){
                 dataType: 'json',
                 success:function(data){
                     console.log(data)
-                    alert(data);
-                    //서버로부터의 응답을 이용해 배송 정보 렌더링.
+                    const address_obj = JSON.parse(data)
+                    $('#address_recipient').val(address_obj.recipient)
+                    $('#sample6_postcode').val(address_obj.zipcode)
+                    $('#sample6_address').val(address_obj.city)
+                    $('#sample6_detailAddress').val(address_obj.street)
+                    const homenumber = address_obj.addressHomePhoneNumber
+                    const homenumberSplit = homenumber.split(',');
+                    $("#address_home_number").val(homenumberSplit[0]).prop('selected', true)
+                    $(".address_home_number").each(function(idx, item){
+                        if(idx == 0){
+                            continue
+                        }
+                        $(item).val(homenumberSplit[idx])
+                    })
+
+                    const phonenumber = address_obj.addressPhoneNumber
+                    const phonenumberSplit = phonenumber.split(',');
+                    $("#address_phone_number").val(phonenumberSplit[0]).prop('selected', true)
+                    $(".address_phone_number").each(function(idx, item){
+                        if(idx == 0){
+                            continue
+                        }
+                        $(item).val(phonenumberSplit[idx])
+                    })
+
                 },
                 error:function(e){
                     alert(e.responseText);
