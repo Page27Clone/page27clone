@@ -12,7 +12,7 @@ function sendorder(){
     console.log(itemIdx, color, quantity)
     const itemlist = {idx : itemIdx, color, quantity}
     console.log(JSON.stringify(itemlist))
-    $('input[name=itemlist]').val(itemlist)
+    $('input[name=itemlist]').val(JSON.stringify(itemlist))
 
 }
 
