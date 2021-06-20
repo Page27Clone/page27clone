@@ -55,7 +55,7 @@ function sendit(){
         item_obj = {item_idx:key, item_color: color, item_quantity:quan}
         orderiteminfo.push(item_obj);
     }
-    alert(JSON.stringify(orderiteminfo));
+
     $('input[name=orderiteminfo]').val(JSON.stringify(orderiteminfo));
 
 
