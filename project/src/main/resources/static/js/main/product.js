@@ -9,9 +9,8 @@ function sendorder(){
     const itemIdx = $('input[name=item_idx]').val()
     const color = $('select[name=item_color]').val()
     const quantity = $('input[name=quantity]').val()
-    console.log(itemIdx, color, quantity)
-    const itemlist = {idx : itemIdx, color, quantity}
-    console.log(JSON.stringify(itemlist))
+    const itemlist = [{idx : itemIdx, color, quantity}]
+
     $('input[name=itemlist]').val(JSON.stringify(itemlist))
 
 
