@@ -350,23 +350,53 @@ public class MainController {
     @PostMapping("/main/payment")
     public String getPaymentDataPage(Principal principal , ItemToBasket itemToBasket, Model model,@RequestParam(value = "itemlist") String itemlist, @RequestParam(value = "where") String where){
 
-        JsonParser jsonParser = new JsonParser();
-        JsonArray jsonArray = (JsonArray) jsonParser.parse(itemlist);
-
-        List<Long> basketIdList = new ArrayList<>();
-        List<Integer> basketQuantityList = new ArrayList<>();
         List<ItemDto> itemDtoList = new ArrayList<>();
-        for(int i = 0; i< jsonArray.size();i++){
-            JsonObject object = (JsonObject) jsonArray.get(i);
-            String id = object.get("id").getAsString();
-            basketIdList.add(Long.parseLong(id));
-            String quantity = object.get("quantity").getAsString();
-            basketQuantityList.add(Integer.parseInt(quantity));
-        }
 
-        for(int i = 0;i< basketIdList.size();i++){
-            Long itemId = basketRepository.findById(basketIdList.get(i)).get().getItem().getId();
-            itemDtoList.add(itemRepository.findAllItemInBasket(itemId));
+        if(where.equals("basket")) {
+            JsonParser jsonParser = new JsonParser();
+            JsonArray jsonArray = (JsonArray) jsonParser.parse(itemlist);
+
+            List<Long> basketIdList = new ArrayList<>();
+            List<Integer> basketQuantityList = new ArrayList<>();
+            for (int i = 0; i < jsonArray.size(); i++) {
+                JsonObject object = (JsonObject) jsonArray.get(i);
+                String id = object.get("id").getAsString();
+                basketIdList.add(Long.parseLong(id));
+                String quantity = object.get("quantity").getAsString();
+                basketQuantityList.add(Integer.parseInt(quantity));
+            }
+
+            for (int i = 0; i < basketIdList.size(); i++) {
+                Long itemId = basketRepository.findById(basketIdList.get(i)).get().getItem().getId();
+                itemDtoList.add(itemRepository.findAllItemInBasket(itemId));
+            }
+            model.addAttribute("orderList",itemDtoList);
+        }
+        else if(where.equals("product")) {
+            ItemDto itemDto = new ItemDto();
+
+            JsonParser jsonParser = new JsonParser();
+            JsonArray jsonArray = (JsonArray) jsonParser.parse(itemlist);
+
+            JsonObject object = (JsonObject) jsonArray.get(0);
+            String id = object.get("idx").getAsString();
+            Long itemIdx = Long.parseLong(id);
+            String color = object.get("color").getAsString();
+            String quantity = object.get("quantity").getAsString();
+            int orderCount = Integer.parseInt(quantity);
+
+            Item byItemIdxAndColorAndRep = itemRepository.findByItemIdxAndColorAndRep(itemIdx, color, true);
+            itemDto.setItemIdx(byItemIdxAndColorAndRep.getItemIdx());
+            itemDto.setItemName(byItemIdxAndColorAndRep.getItemName());
+            itemDto.setColor(byItemIdxAndColorAndRep.getColor());
+            itemDto.setBasketCount(orderCount);
+            itemDto.setId(byItemIdxAndColorAndRep.getId());
+            itemDto.setPrice(byItemIdxAndColorAndRep.getPrice());
+            itemDto.setImgUrl(byItemIdxAndColorAndRep.getImgUrl());
+
+            itemDtoList.add(itemDto);
+
+            model.addAttribute("orderList",itemDtoList);
         }
 
         String loginId = principal.getName();
@@ -375,7 +405,7 @@ public class MainController {
 
         model.addAttribute("addressList",deliveryAddressList);
         model.addAttribute("member",memberMileage);
-        model.addAttribute("orderList",itemDtoList);
+
 
         return "main/payment";
     }
