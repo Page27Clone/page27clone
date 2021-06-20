@@ -89,6 +89,11 @@ public class MainController {
         model.addAttribute("startPage", homeStartPage);
         model.addAttribute("endPage", homeEndPage);
         model.addAttribute("orderList", mainPageOrderBoards);
+        model.addAttribute("omode",searchOrder.getOmode());
+        model.addAttribute("firstdate",searchOrder.getFirstdate());
+        model.addAttribute("lastdate",searchOrder.getLastdate());
+        model.addAttribute("omodeStatus",searchOrder.getOmode());
+
         return "main/order";
     }
 

@@ -78,6 +78,7 @@ public class OrderController {
         model.addAttribute("oMode",searchOrder.getOmode());
         model.addAttribute("sMode","buyer");
         model.addAttribute("sInput",searchOrder.getSinput());
+        model.addAttribute("oModeStatus",searchOrder.getOmode());
 
 
         return "admin/admin_order";
