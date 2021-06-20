@@ -446,7 +446,7 @@ public class MainController {
             itemCountList.add(itemOrderCount);
         }
 
-        orderService.doOrder(member.getId(), itemList, itemCountList,paymentAddressDto);
+        orderService.doOrder(member.getId(), itemList, itemCountList,paymentAddressDto,paymentPriceDto);
 
         System.out.println(paymentAddressDto.getAddress_id());
 

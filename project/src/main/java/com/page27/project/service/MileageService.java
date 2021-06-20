@@ -49,4 +49,16 @@ public class MileageService {
         return mileageList;
     }
 
+    public Long joinUserMileage(Long id){
+        Member member = memberRepository.findById(id).get();
+        Mileage mileage = new Mileage();
+        mileage.setMileagePrice(1000);
+        mileage.setMileageContent("회원가입 적립금");
+        mileage.setMember(member);
+
+        mileageRepository.save(mileage);
+
+        return mileage.getId();
+    }
+
 }

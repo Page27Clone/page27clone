@@ -3,10 +3,8 @@ package com.page27.project.service;
 import com.page27.project.domain.*;
 import com.page27.project.dto.MyPageOrderStatusDto;
 import com.page27.project.dto.PaymentAddressDto;
-import com.page27.project.repository.ItemRepository;
-import com.page27.project.repository.MemberRepository;
-import com.page27.project.repository.OrderItemRepository;
-import com.page27.project.repository.OrderRepository;
+import com.page27.project.dto.PaymentPriceDto;
+import com.page27.project.repository.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,13 +21,14 @@ public class OrderService {
     private final OrderRepository orderRepository;
     private final ItemRepository itemRepository;
     private final OrderItemRepository orderItemRepository;
+    private final MileageRepository mileageRepository;
 
     public List<Order> findAllOrders() {
         return orderRepository.findAll();
     }
 
     @Transactional
-    public Long doOrder(Long memberId, List<Long> itemId, List<Integer> count, PaymentAddressDto paymentAddressDto) {
+    public Long doOrder(Long memberId, List<Long> itemId, List<Integer> count, PaymentAddressDto paymentAddressDto, PaymentPriceDto paymentPriceDto) {
         Optional<Member> findMember = memberRepository.findById(memberId);
 
         Member checkedFindMember = new Member();
@@ -59,7 +58,14 @@ public class OrderService {
         }
 
         Order order = Order.createOrder(checkedFindMember,delivery,checkedTestOrderItem);
+        order.setUsedMileagePrice(paymentPriceDto.getUsed_mileage());
 
+        Mileage mileage = new Mileage();
+        mileage.setMileageContent("구매 적립금");
+        mileage.setMileagePrice(paymentPriceDto.getTobepaid_price() / 100);
+        mileage.setMember(checkedFindMember);
+
+        mileageRepository.save(mileage);
         orderRepository.save(order);
         return order.getId();
     }// 주문 생성

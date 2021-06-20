@@ -3,6 +3,7 @@ package com.page27.project.service;
 import com.page27.project.config.Role;
 import com.page27.project.domain.Member;
 import com.page27.project.domain.MemberAddress;
+import com.page27.project.domain.Mileage;
 import com.page27.project.dto.MemberInfoDto;
 import com.page27.project.dto.ProfileDto;
 import com.page27.project.exception.DuplicateException;
