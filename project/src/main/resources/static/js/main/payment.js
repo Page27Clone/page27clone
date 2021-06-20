@@ -58,7 +58,7 @@ $(function(){
     })
 
     // 배송정보 선택 AJAX
-    $('input[name=address_name]').click(function(){
+    $('input[name=address_id]').click(function(){
         console.log($(this).val());
         if($(this).val() == 'new_addr'){
             $('#address_recipient').val('');

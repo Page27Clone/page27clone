@@ -130,8 +130,8 @@
                             <th>배송지 선택</th>
                             <td>
                                 <div class="address_choice"> <!-- 타임리프 값 넣어주기-->
-                                    <div><input type="radio" name="address_name" value="new_addr" id = "0" checked> <label for="0">새로운 배송지</label></div>
-                                    <div th:each="address, i:${addressList}"><input type="radio" name="address_name" value="home" id="2" th:value="${address.id}" th:id="${i.count}">
+                                    <div><input type="radio" name="address_id" value="new_addr" id = "0" checked> <label for="0">새로운 배송지</label></div>
+                                    <div th:each="address, i:${addressList}"><input type="radio" name="address_id" value="home" id="2" th:value="${address.id}" th:id="${i.count}">
                                         <label for="2" th:for="${i.count}" th:text="${address.placeName}">우리집</label>
                                     </div>
                                 </div>

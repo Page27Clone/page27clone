@@ -34,9 +34,9 @@
                     혜택정보
                 </div>
                 <div class="benefit_info_desc">
-                    <div class="benefit_info_desc_item"><b>홍길동</b> 님은 <b>[일반회원]</b> 이십니다</div>
+                    <div class="benefit_info_desc_item"><b th:text="${member.name}">홍길동</b> 님은 <b th:text="'['+${member.memberGrade}+']'">[일반회원]</b> 이십니다</div>
                     <div class="benefit_info_mileage benefit_info_desc_item">
-                        가용적립금: <b>2,000원</b>
+                        가용적립금: <b th:text="${#numbers.formatInteger(member.restMileage, 0, 'COMMA')}">2,000원</b>
                     </div>
                 </div>
             </div>
@@ -56,13 +56,13 @@
                         <th>결제금액</th>
                     </tr>
                     <tr>
-                        <td>₩<span id="total">118000</span></td>
-                        <td>₩<span id="tobepaid">116000</span></td>
+                        <td>₩<span id="total" th:text="${#numbers.formatInteger(payment.totalPrice, 0, 'COMMA')}">118000</span></td>
+                        <td>₩<span id="tobepaid" th:text="${#numbers.formatInteger(payment.chargedPrice, 0, 'COMMA')}">116000</span></td>
                     </tr>
                 </table>
                 <div class="payment_detail_mileage">
                     <div class="mileage_left">총 적립 예정금액</div>
-                    <div class="mileage_right"><b>1180</b>원</div>
+                    <div class="mileage_right"><b th:text="${#numbers.formatInteger(payment.earnMileage, 0, 'COMMA')}">1180</b>원</div>
                 </div>
             </div>
 
@@ -75,30 +75,30 @@
                     </colgroup>
                     <tr>
                         <th>받으시는분</th>
-                        <td>홍길동</td>
+                        <td th:text="${address.recipient}">홍길동</td>
                     </tr>
                     <tr>
                         <th>우편번호</th>
-                        <td>05050</td>
+                        <td th:text="${address.zipcode}">05050</td>
                     </tr>
                     <tr>
                         <th>주소</th>
-                        <td>서울특별시 강남구 테헤란로 22길 22 (잠실동) 채창완
+                        <td th:text="${address.city} + ' ' + ${address.street}">서울특별시 강남구 테헤란로 22길 22 (잠실동) 채창완
                         </td>
                     </tr>
                     <tr>
                         <th>일반전화</th>
-                        <td>02-1111-1111</td>
+                        <td th:text="${#strings.replace(address.addressHomePhoneNumber, ',', '-')}">02-1111-1111</td>
                     </tr>
                     <tr>
                         <th>휴대전화</th>
-                        <td>010-1111-1111</td>
+                        <td th:text="${#strings.replace(address.addressPhoneNumber, ',', '-')}">010-1111-1111</td>
                     </tr>
                 </table>
             </div>
             <div class="bottombtn_box">
                 <button class="bottombtn leftbtn" th:onclick="'location.href=\''+ @{/main/index} + '\''">쇼핑 계속하기</button>
-                <button class="bottombtn rightbtn" th:onclick="'location.href=\''+ @{/main/index} + '\''">주문 확인하기</button>
+                <button class="bottombtn rightbtn" th:onclick="'location.href=\''+ @{/main/order} + '\''">주문 확인하기</button>
             </div>
 
         </div>
