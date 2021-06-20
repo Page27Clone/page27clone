@@ -75,9 +75,9 @@ $(function(){
                 url:"/main/payment/changeaddress/" + addr,
                 type:'POST',
                 dataType: 'json',
-                success:function(data){
-                    console.log(data)
-                    const address_obj = JSON.parse(data)
+                success:function(address_obj){
+                    console.log(address_obj)
+                    console.log(typeof(address_obj))
                     $('#address_recipient').val(address_obj.recipient)
                     $('#sample6_postcode').val(address_obj.zipcode)
                     $('#sample6_address').val(address_obj.city)
@@ -87,7 +87,7 @@ $(function(){
                     $("#address_home_number").val(homenumberSplit[0]).prop('selected', true)
                     $(".address_home_number").each(function(idx, item){
                         if(idx == 0){
-                            continue
+                            return true
                         }
                         $(item).val(homenumberSplit[idx])
                     })
@@ -97,7 +97,7 @@ $(function(){
                     $("#address_phone_number").val(phonenumberSplit[0]).prop('selected', true)
                     $(".address_phone_number").each(function(idx, item){
                         if(idx == 0){
-                            continue
+                            return true
                         }
                         $(item).val(phonenumberSplit[idx])
                     })
