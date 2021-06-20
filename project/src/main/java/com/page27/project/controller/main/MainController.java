@@ -93,6 +93,8 @@ public class MainController {
         model.addAttribute("firstdate",searchOrder.getFirstdate());
         model.addAttribute("lastdate",searchOrder.getLastdate());
         model.addAttribute("omodeStatus",searchOrder.getOmode());
+        model.addAttribute("firstdateStatus",searchOrder.getFirstdate());
+        model.addAttribute("lastdateStatus",searchOrder.getLastdate());
 
         return "main/order";
     }
