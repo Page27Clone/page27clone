@@ -7,7 +7,6 @@ import com.page27.project.dto.QMainPageOrderDto;
 import com.page27.project.dto.QOrderDto;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.core.types.dsl.EnumPath;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -233,8 +232,10 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
         logger.info("selected Orderstatus : " + orderStatusCondition);
 //        return QOrderItem.orderItem.orderStatus.eq(OrderStatus.valueOf(orderStatusCondition));
 //        OrderStatus orderStatus = OrderStatus.valueOf(orderStatusCondition);
+//        String orderStatus = QOrderItem.orderItem.orderStatus.toString();
 
-        return QOrderItem.orderItem.orderStatus.eq(OrderStatus.valueOf(orderStatusCondition));
+
+        return QOrderItem.orderItem.orderStatus.stringValue().eq(orderStatusCondition);
     }
 }
 //SELECT * FROM ORDERS LEFT JOIN MEMBER ON ORDERS.MEMBER_ID = MEMBER.MEMBER_ID JOIN ORDER_ITEM ON ORDERS.ORDER_ID = ORDER_ITEM.ORDER_ID

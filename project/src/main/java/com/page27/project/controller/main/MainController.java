@@ -454,7 +454,6 @@ public class MainController {
 
         System.out.println(paymentAddressDto.getAddress_id());
 
-
         BasketMemberMileageDto memberMileage = basketService.findMemberMileage(loginId);
 
         paymentPriceDto.setEarnMileage(paymentPriceDto.getTobepaid_price() * 0.01);
