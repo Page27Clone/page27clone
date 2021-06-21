@@ -44,11 +44,6 @@ public class MainController {
     private final ItemService itemService;
 
 
-    @GetMapping("main")
-    public String getMainPage(){
-        return "main/index";
-    }
-
     @GetMapping("main/myPage")
     public String getMyPage(Principal principal , Model model){
         MyPageDto myPageDto = new MyPageDto();
@@ -340,6 +335,8 @@ public class MainController {
         ItemDetailDto itemDetailDto = itemService.getItemDetailDto(itemIdx);
         model.addAttribute("item",itemDetailDto);
 
+        System.out.println(itemDetailDto.getImgMainUrl());
+
         return "main/product";
     }
 
@@ -468,5 +465,31 @@ public class MainController {
         return "main/payment_complete";
     }
 
+    @GetMapping("/main/index")
+    public String getMainPage(Model model){
+
+        List<Item> mainCarouselList = new ArrayList<>();
+
+        Item firstItem = itemRepository.findByItemIdxAndColorAndRep(94L, "블루", true);
+        Item seconodItem = itemRepository.findByItemIdxAndColorAndRep(95L, "블랙", true);
+        Item thirdItem = itemRepository.findByItemIdxAndColorAndRep(96L, "네이비", true);
+        Item fourthItem = itemRepository.findByItemIdxAndColorAndRep(97L, "블랙 M size", true);
+        Item fifthItem = itemRepository.findByItemIdxAndColorAndRep(98L, "아이보리", true);
+
+        mainCarouselList.add(firstItem);
+        mainCarouselList.add(seconodItem);
+        mainCarouselList.add(thirdItem);
+        mainCarouselList.add(fourthItem);
+        mainCarouselList.add(fifthItem);
+
+        model.addAttribute("mainCarousel",mainCarouselList);
+
+        return "main/index";
+    }
+
+    @GetMapping("/test")
+    public String getTestPage(){
+        return "main/test";
+    }
 
 }
