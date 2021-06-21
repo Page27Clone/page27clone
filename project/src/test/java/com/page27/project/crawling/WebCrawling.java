@@ -158,6 +158,14 @@ public class WebCrawling {
 
 //        여기까지가 SHOES 크롤링
 
+//        webCrawlingMethod("https://page27.co.kr/product/11%EB%8D%B0%EC%98%A4%EB%93%9C%EB%9E%80%ED%8A%B8-%EB%A6%B0%EB%84%A8-%EB%B0%98%ED%8C%94%EB%8B%88%ED%8A%B810color/3020/category/25/display/2/", 94L);
+//        webCrawlingMethod("https://page27.co.kr/product/11%EB%A7%88%EC%95%BD-%EC%95%84%EC%9D%B4%EC%8A%A4-%EC%B9%B4%EA%B3%A0-%EB%B0%B4%EB%94%A9%EB%B0%98%EB%B0%94%EC%A7%804color/3033/category/26/display/2/", 95L);
+//        webCrawlingMethod("https://page27.co.kr/product/%EC%98%A4%EC%85%98-%EC%BF%A8-%ED%97%A8%EB%A6%AC%EB%84%A5-%EC%85%94%EC%B8%A03color/1983/category/1/display/3/", 96L);
+//        webCrawlingMethod("https://page27.co.kr/product/%EB%9D%BC%EC%9D%B4%ED%8A%B8-%EC%9C%88%EB%93%9C%EB%B8%8C%EB%A0%88%EC%9D%B4%EC%BB%A4%EC%A1%B0%EA%B1%B0%ED%8C%AC%EC%B8%A0-%EC%85%8B%EC%97%852color/2977/category/1/display/3/", 97L);
+//        webCrawlingMethod("https://page27.co.kr/product/%ED%8E%98%EC%9D%B4%EC%A7%8027%EC%98%A4%EB%94%94%EB%84%88%EB%A6%AC-%EC%9B%8C%EC%8B%B1-%ED%9B%84%EB%93%9C-%EC%9E%90%EC%BC%93-%ED%95%9C%EC%A0%95%EC%88%98%EB%9F%8930sale/2701/category/1/display/7/", 97L);
+
+//        여기까지가 메인 CAROUSEL 크롤링
+
     }
 
     public Long webCrawlingMethod(String itemUrl, Long idx) {

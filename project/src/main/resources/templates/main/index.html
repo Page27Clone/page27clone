@@ -37,11 +37,11 @@
             <input type="radio" id="radio5" name="radio">
 
             <!--서버로부터 main_carousel 배열 받기 -->
-            <a href="#" class="first_img"><img th:src="@{${main_carousel[0]}}" src="img/main_carousel/carousel1.jpg" alt="메인 캐러샐 이미지1"></a>
-            <a href="#"><img th:src="@{${main_carousel[1]}}" src="img/main_carousel/carousel2.jpg" alt="메인 캐러샐 이미지2"></a>
-            <a href="#"><img th:src="@{${main_carousel[2]}}" src="img/main_carousel/carousel3.jpg" alt="메인 캐러샐 이미지3"></a>
-            <a href="#"><img th:src="@{${main_carousel[3]}}" src="img/main_carousel/carousel4.jpg" alt="메인 캐러샐 이미지4"></a>
-            <a href="#"><img th:src="@{${main_carousel[4]}}" src="img/main_carousel/carousel5.jpg" alt="메인 캐러샐 이미지5"></a>
+            <a href="#" th:href="@{/main/product/{itemIdx}(itemIdx=${mainCarousel[0].itemIdx})}" class="first_img"><img th:src="@{/image/etc/main_carousel/main_carousel1.jpg}" src="img/main_carousel/carousel1.jpg" alt="메인 캐러샐 이미지1"></a>
+            <a href="#" th:href="@{/main/product/{itemIdx}(itemIdx=${mainCarousel[1].itemIdx})}"><img th:src="@{/image/etc/main_carousel/main_carousel2.jpg}" src="img/main_carousel/carousel2.jpg" alt="메인 캐러샐 이미지2"></a>
+            <a href="#" th:href="@{/main/product/{itemIdx}(itemIdx=${mainCarousel[2].itemIdx})}"><img th:src="@{/image/etc/main_carousel/main_carousel3.jpg}" src="img/main_carousel/carousel3.jpg" alt="메인 캐러샐 이미지3"></a>
+            <a href="#" th:href="@{/main/product/{itemIdx}(itemIdx=${mainCarousel[3].itemIdx})}"><img th:src="@{/image/etc/main_carousel/main_carousel4.jpg}" src="img/main_carousel/carousel4.jpg" alt="메인 캐러샐 이미지4"></a>
+            <a href="#" th:href="@{/main/product/{itemIdx}(itemIdx=${mainCarousel[4].itemIdx})}"><img th:src="@{/image/etc/main_carousel/main_carousel5.jpg}" src="img/main_carousel/carousel5.jpg" alt="메인 캐러샐 이미지5"></a>
             
 
             <div class="manualbtns">
@@ -58,10 +58,10 @@
             
         </div>
         <div class="main_bottom">
-            <a href="#"><img th:src="@{${bestitem_img}}" src="img/bestitem.JPG" alt="best item"></a>
-            <a href="#"><img th:src="@{${joinus_img}}" src="img/joinus.JPG" alt="join us"></a>
+            <a href="#"><img src="/image/etc/bestitem.JPG" alt="best item"></a>
+            <a href="#"><img src="/image/etc/joinus.JPG" alt="join us"></a>
             <div class="main_bottom_board">
-                <img th:src="@{${qanda_img}}" src="img/qanda.JPG" alt="Q and A">
+                <img src="/image/etc/qanda.JPG" alt="Q and A">
                 <div class="notice">
                     <a href="#" id="more">+</a>
                     <a href="#">+ 사이즈 측정 방법</a>
