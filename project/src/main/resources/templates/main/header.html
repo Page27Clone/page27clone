@@ -1,11 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      lang="en">
 <header th:fragment="main_headerFragment">
     <div class="top_menuArea">
         <div class="top_menu">
             <div class="top_list">
-                <a href="/main/login" class="top_list_first">로그인</a>
-                <a href="/main/register" class="arrow_box_wrapper">
+                <a sec:authorize="isAnonymous()" href="/main/login" class="top_list_first">로그인</a>
+                <a sec:authorize="isAuthenticated()" href="/main/logout" class="top_list_first">로그아웃</a>
+                <a sec:authorize="isAnonymous()" href="/main/register" class="arrow_box_wrapper">
                     회원가입
                     <div class="arrow_box_wrap">
                         <div class="arrow_box">
@@ -13,6 +16,7 @@
                         </div>
                     </div>
                 </a>
+                <a sec:autorize="isAuthenticated()" href="/main/profile">정보수정</a>
                 <a href="/main/basket">장바구니</a>
                 <a href="/main/order">주문조회</a>
                 <a href="/main/myPage">마이페이지</a>

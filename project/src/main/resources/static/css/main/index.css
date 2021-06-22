@@ -343,6 +343,11 @@ section {
     position: relative;
 }
 
+.newarrivals_container .newarrivals_item .newarrivals_item_img img{
+    display: block;
+    width: 405px;
+}
+
 .newarrivals_container .newarrivals_item .newarrivals_item_img:hover .newarrivals_item_hover{
     visibility: visible;
 }
