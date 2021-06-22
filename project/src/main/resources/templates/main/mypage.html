@@ -33,7 +33,7 @@
         <div class="member_type">
             <div class="member_type_img"><img src="/image/etc/member.JPG" alt="사진"></div>
             <div class="member_type_desc">
-                <div>저희 쇼핑몰을 이용해 주셔서 감사합니다. <b th:text="${member.name}">홍길동</b> 님은 <b>[일반회원]</b> 이십니다</div>
+                <div>저희 쇼핑몰을 이용해 주셔서 감사합니다. <b th:text="${member.name}">홍길동</b> 님은 <b sec:authorize="hasRole('ROLE_ADMIN')">[관리자]</b><b sec:authorize="hasRole('ROLE_MEMBER')">[일반회원]</b> 이십니다</div>
                 <div class="member_milage">
                     가용적립금&nbsp;&nbsp;&nbsp;<b>></b>&nbsp;&nbsp;&nbsp;<b th:text="${#numbers.formatInteger(member.mileage, 0, 'COMMA')} + '원'">2,000원</b>&nbsp;&nbsp;&nbsp;<button onclick="location.href='#'" th:onclick="'location.href=\''+ @{/main/mileage} + '\''">조회</button>
                 </div>          
