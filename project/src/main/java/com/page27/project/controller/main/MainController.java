@@ -483,8 +483,8 @@ public class MainController {
         List<WeeklyBestDto> topList = itemRepository.findWeeklyBestItem("top","longsleeve", true);
         List<WeeklyBestDto> shirtList = itemRepository.findWeeklyBestItem("shirts","basic", true);
         List<WeeklyBestDto> knitList = itemRepository.findWeeklyBestItem("top","knit", true);
-        List<WeeklyBestDto> shoesList = itemRepository.findWeeklyBestItem("bottom","cotton", true);
-        List<WeeklyBestDto> bottomList = itemRepository.findWeeklyBestItem("shoes","shoes", true);
+        List<WeeklyBestDto> bottomList = itemRepository.findWeeklyBestItem("bottom","cotton", true);
+        List<WeeklyBestDto> shoesList = itemRepository.findWeeklyBestItem("shoes","shoes", true);
 
         model.addAttribute("mainCarousel",mainCarouselList);
         model.addAttribute("outerList",outerList);
