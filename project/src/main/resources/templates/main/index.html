@@ -256,16 +256,16 @@
                     <div class="w_carousel_mdpick">
                         <div class="mdpick_caption"><b>MD's</b> PICK</div>
                         <div class="mdpick_img">
-                            <a href="#" th:href="@{/main/product/{itemIdx}(itemIdx=shoesLIst[0].itemIdx)}">
-                                <img th:src="@{${shoesLIst[0].imgpath}}" src="./img/main_weeklybest/md_pick1.JPG" alt="md's pick">
+                            <a href="#" th:href="@{/main/product/{itemIdx}(itemIdx=shoesList[0].itemIdx)}">
+                                <img th:src="@{${shoesList[0].imgpath}}" src="./img/main_weeklybest/md_pick1.JPG" alt="md's pick">
                             </a>
                         </div>
-                        <div class="mdpick_name"><a href="#" th:href="@{/main/product/{itemIdx}(itemIdx=shoesLIst[0].itemIdx)}" th:text="${shoesLIst[0].itemName}">로예 나일론 바람막이 집업</a></div>
-                        <div class="mdpick_info" th:text="${shoesLIst[0].itemInfo}">10컬러의 다양한 색감들과 가격대비 퀄리티 좋은 제품으로 간절기시즌에 가볍고</div>
-                        <div class="mdpick_price"><b th:text="'₩'+${#numbers.formatInteger(shoesLIst[0].price, 0, 'COMMA')}">₩27,000</b></div>
+                        <div class="mdpick_name"><a href="#" th:href="@{/main/product/{itemIdx}(itemIdx=shoesList[0].itemIdx)}" th:text="${shoesList[0].itemName}">로예 나일론 바람막이 집업</a></div>
+                        <div class="mdpick_info" th:text="${shoesList[0].itemInfo}">10컬러의 다양한 색감들과 가격대비 퀄리티 좋은 제품으로 간절기시즌에 가볍고</div>
+                        <div class="mdpick_price"><b th:text="'₩'+${#numbers.formatInteger(shoesList[0].price, 0, 'COMMA')}">₩27,000</b></div>
                     </div>
                     <div class="w_carousel_item_box">
-                        <div class="w_carousel_item" th:each="item, i : ${shoesLIst}" th:if="${i} >= 1">
+                        <div class="w_carousel_item" th:each="item, i : ${shoesList}" th:if="${i} >= 1">
                             <img th:src="@{${item.imagepath}}" src="./img/main_weeklybest/main_weeklybest1.JPG" alt="상품사진">
                             <a href="@{/main/product/{itemIdx}(itemIdx=${item.itemIdx})}">
                                 <div class="w_carousel_item_desc">
