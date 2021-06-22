@@ -20,8 +20,6 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @RequiredArgsConstructor
 @Controller
@@ -481,12 +479,12 @@ public class MainController {
         mainCarouselList.add(fourthItem);
         mainCarouselList.add(fifthItem);
 
-        List<Item> outerList = itemRepository.findDistinctTop9ByFirstCategoryAndRep("outer", true);
-        List<Item> topList = itemRepository.findDistinctTop9ByFirstCategoryAndRep("top", true);
-        List<Item> shirtList = itemRepository.findDistinctTop9ByFirstCategoryAndRep("shirt", true);
-        List<Item> knitList = itemRepository.findDistinctTop9ByFirstCategoryAndRep("knit", true);
-        List<Item> bottomList = itemRepository.findDistinctTop9ByFirstCategoryAndRep("bottom", true);
-        List<Item> shoesList = itemRepository.findDistinctTop9ByFirstCategoryAndRep("shoes", true);
+        List<WeeklyBestDto> outerList = itemRepository.findWeeklyBestItem("outer","jacket", true);
+        List<WeeklyBestDto> topList = itemRepository.findWeeklyBestItem("top","longsleeve", true);
+        List<WeeklyBestDto> shirtList = itemRepository.findWeeklyBestItem("shirts","basic", true);
+        List<WeeklyBestDto> knitList = itemRepository.findWeeklyBestItem("top","knit", true);
+        List<WeeklyBestDto> shoesList = itemRepository.findWeeklyBestItem("bottom","cotton", true);
+        List<WeeklyBestDto> bottomList = itemRepository.findWeeklyBestItem("shoes","shoes", true);
 
         model.addAttribute("mainCarousel",mainCarouselList);
         model.addAttribute("outerList",outerList);
@@ -495,7 +493,7 @@ public class MainController {
         model.addAttribute("knitList",knitList);
         model.addAttribute("bottomList",bottomList);
         model.addAttribute("shoesList",shoesList);
-        
+
         return "main/index";
     }
 

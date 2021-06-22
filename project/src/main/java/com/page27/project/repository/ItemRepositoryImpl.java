@@ -1,10 +1,7 @@
 package com.page27.project.repository;
 
 import com.page27.project.domain.*;
-import com.page27.project.dto.ItemDto;
-import com.page27.project.dto.MemberDto;
-import com.page27.project.dto.QItemDto;
-import com.page27.project.dto.QMemberDto;
+import com.page27.project.dto.*;
 import com.querydsl.core.QueryFactory;
 import com.querydsl.core.QueryResults;
 import com.querydsl.core.types.dsl.BooleanExpression;
@@ -163,6 +160,29 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
 //        List<ItemDto> content = results.getResults();
 
         return results;
+    }
+
+    @Override
+    public List<WeeklyBestDto> findWeeklyBestItem(String firstCategory,String secondCategory, boolean rep) {
+        QueryResults<WeeklyBestDto> results = queryFactory
+                .selectDistinct(new QWeeklyBestDto(
+                        QItem.item.itemIdx,
+                        QItem.item.itemName,
+                        QItem.item.price,
+                        QItem.item.itemInfo,
+                        QItem.item.imgUrl
+                ))
+                .from(QItem.item)
+                .where(QItem.item.rep.eq(true),
+                        QItem.item.firstCategory.eq(firstCategory),
+                        QItem.item.secondCategory.eq(secondCategory)
+                )
+                .limit(9L)
+                .fetchResults();
+
+        List<WeeklyBestDto> content = results.getResults();
+
+        return content;
     }
 
     private BooleanExpression saleStatusEq(String saleStatusCondition){
