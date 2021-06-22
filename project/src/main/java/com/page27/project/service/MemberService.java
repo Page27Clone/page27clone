@@ -10,6 +10,7 @@ import com.page27.project.exception.DuplicateException;
 import com.page27.project.repository.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
+import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -111,13 +112,9 @@ public class MemberService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
-        System.out.println("Login Id = " + loginId);
+
         Optional<Member> userEntityWrapper = memberRepository.findByloginId(loginId);
-        System.out.println("why");
-        System.out.println(memberRepository.findByloginId(userEntityWrapper .get().getLoginId()));
         Member userEntity = userEntityWrapper.get();
-        System.out.println("userEntity ID = " + userEntity.getLoginId());
-        System.out.println("userEntity Password = " + userEntity.getPassword());
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         if (("admin@example.com").equals(loginId)) {
@@ -125,6 +122,9 @@ public class MemberService implements UserDetailsService {
         } else {
             authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
         }
+        System.out.println("here authority check : " + authorities.size());
+        System.out.println("here authority check : " + authorities.get(0).getAuthority());
+
         return new User(userEntity.getLoginId(), userEntity.getPassword(), authorities);
     }
 //    상세정보를 조회하는 메소드이며 사용자의 계정정보와 권한을 갖는 UserDetails 인터페이스를 반환해야한다.
