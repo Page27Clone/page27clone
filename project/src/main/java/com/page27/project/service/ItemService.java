@@ -4,6 +4,7 @@ import com.page27.project.domain.Basket;
 import com.page27.project.domain.Item;
 import com.page27.project.domain.Member;
 import com.page27.project.dto.ItemDetailDto;
+import com.page27.project.dto.WeeklyBestDto;
 import com.page27.project.repository.BasketRepository;
 import com.page27.project.repository.ItemRepository;
 import com.page27.project.repository.MemberRepository;
@@ -144,5 +145,12 @@ public class ItemService {
         basket.setItem(findItem);
 
         basketRepository.save(basket);
+    }
+
+    public void getWeeklyBestItem(){
+
+
+
+
     }
 }
