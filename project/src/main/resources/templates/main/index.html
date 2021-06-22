@@ -89,7 +89,7 @@
                     <div class="w_carousel_mdpick">
                         <div class="mdpick_caption"><b>MD's</b> PICK</div>
                         <div class="mdpick_img">
-                            <a href="#" th:href="@{/main/product/{itemIdx}(itemIdx=outerList[0].itemIdx)}">
+                            <a href="#" th:href="@{/main/product/{itemIdx}(itemIdx=${outerList[0].itemIdx})}">
                                 <img th:src="@{${outerList[0].imgUrl}}" src="./img/main_weeklybest/md_pick1.JPG" alt="md's pick">
                             </a>
                         </div>
