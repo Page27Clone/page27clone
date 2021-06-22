@@ -215,6 +215,11 @@ section {
     margin-bottom: 20px;
 }
 
+.weeklybest_carousel .w_carousel_mdpick .mdpick_img img{
+    display: block;
+    width: 250px;
+}
+
 .weeklybest_carousel .w_carousel_mdpick .mdpick_name {
     margin-bottom: 20px;
     font-size: 15px;
@@ -230,16 +235,16 @@ section {
     font-size: 12px;
     text-align: center;
     /*overflow시 숨기기*/
-    white-space: nowrap; 
-    overflow: hidden; 
-    text-overflow: ellipsis; 
-    /* 여러 줄 자르기 추가 스타일 */ 
-    white-space: normal; 
-    line-height: 1.4; 
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* 여러 줄 자르기 추가 스타일 */
+    white-space: normal;
+    line-height: 1.4;
     height: 2.8em;
     /* 숨김 부분 처리 스타일*/
     word-wrap: break-word;
-    display: -webkit-box; 
+    display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
 }
@@ -261,6 +266,11 @@ section {
 .weeklybest_carousel .w_carousel_item_box .w_carousel_item {
     height: 215px; /*div안에 img가 들어갈때 아래 여백을 없애주기 위함*/
     position:relative;
+}
+
+.weeklybest_carousel .w_carousel_item_box .w_carousel_item img{
+    display: block;
+    width: 220px;
 }
 
 .w_carousel_item .w_carousel_item_desc {
