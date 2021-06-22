@@ -16,4 +16,5 @@ public interface ItemRepositoryCustom {
     Long searchMaxItemIdx();
     ItemDto findAllItemInBasket(Long itemId);
     List<WeeklyBestDto> findWeeklyBestItem(String firstCategory,String secondCategory, boolean rep);
+    List<WeeklyBestDto> findNewArrivalItem(String firstCategory, String secondCategory, boolean rep);
 }

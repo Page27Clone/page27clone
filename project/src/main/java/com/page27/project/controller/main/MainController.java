@@ -486,13 +486,21 @@ public class MainController {
         List<WeeklyBestDto> bottomList = itemRepository.findWeeklyBestItem("bottom","cotton", true);
         List<WeeklyBestDto> shoesList = itemRepository.findWeeklyBestItem("shoes","shoes", true);
 
+        List<WeeklyBestDto> newArrivalList = itemRepository.findNewArrivalItem("outer","jacket",true);
+        for(int i = 0; i< newArrivalList.size();i++){
+            newArrivalList.get(i).setMileage(newArrivalList.get(i).getPrice() / 100);
+        }
+
         model.addAttribute("mainCarousel",mainCarouselList);
+
         model.addAttribute("outerList",outerList);
         model.addAttribute("topList",topList);
         model.addAttribute("shirtList",shirtList);
         model.addAttribute("knitList",knitList);
         model.addAttribute("bottomList",bottomList);
         model.addAttribute("shoesList",shoesList);
+
+        model.addAttribute("newarrivals",newArrivalList);
 
         return "main/index";
     }

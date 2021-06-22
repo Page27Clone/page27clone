@@ -12,6 +12,7 @@ public class WeeklyBestDto {
     private int price;
     private String itemInfo;
     private String imgUrl;
+    private int mileage;
 
     @QueryProjection
     public WeeklyBestDto(Long itemIdx, String itemName, int price, String itemInfo, String imgUrl) {
@@ -19,6 +20,14 @@ public class WeeklyBestDto {
         this.itemName = itemName;
         this.price = price;
         this.itemInfo = itemInfo;
+        this.imgUrl = imgUrl;
+    }
+
+    @QueryProjection
+    public WeeklyBestDto(Long itemIdx, String itemName, int price, String imgUrl) {
+        this.itemIdx = itemIdx;
+        this.itemName = itemName;
+        this.price = price;
         this.imgUrl = imgUrl;
     }
 }
