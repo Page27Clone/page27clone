@@ -481,14 +481,24 @@ public class MainController {
         mainCarouselList.add(fourthItem);
         mainCarouselList.add(fifthItem);
 
-        model.addAttribute("mainCarousel",mainCarouselList);
+        List<Item> outerList = itemRepository.findDistinctTop9ByFirstCategoryAndRep("outer", true);
+        List<Item> topList = itemRepository.findDistinctTop9ByFirstCategoryAndRep("top", true);
+        List<Item> shirtList = itemRepository.findDistinctTop9ByFirstCategoryAndRep("shirt", true);
+        List<Item> knitList = itemRepository.findDistinctTop9ByFirstCategoryAndRep("knit", true);
+        List<Item> bottomList = itemRepository.findDistinctTop9ByFirstCategoryAndRep("bottom", true);
+        List<Item> shoesList = itemRepository.findDistinctTop9ByFirstCategoryAndRep("shoes", true);
 
+        model.addAttribute("mainCarousel",mainCarouselList);
+        model.addAttribute("outerList",outerList);
+        model.addAttribute("topList",topList);
+        model.addAttribute("shirtList",shirtList);
+        model.addAttribute("knitList",knitList);
+        model.addAttribute("bottomList",bottomList);
+        model.addAttribute("shoesList",shoesList);
+        
         return "main/index";
     }
 
-    @GetMapping("/test")
-    public String getTestPage(){
-        return "main/test";
-    }
+
 
 }
