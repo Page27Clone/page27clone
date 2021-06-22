@@ -18,4 +18,5 @@ public interface ItemRepository extends JpaRepository<Item, Long>,ItemRepository
     List<Item> findAllByItemIdxAndRep(Long itemIdx,boolean rep);
     Item findTopByItemIdxAndRep(Long itemIdx,boolean rep);
     Item findByItemIdxAndColorAndRep(Long itemIdx,String color,boolean rep);
+    List<Item> findDistinctTop9ByFirstCategoryAndRep(String firstCategory, boolean rep);
 }
