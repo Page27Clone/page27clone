@@ -1,5 +1,6 @@
 $(function(){
     //일정 스크롤 시 헤더 fixed, 맨위 로고 나타남
+    console.log('헤더 js 작동중')
     let top_menuArea = $('.top_menuArea').offset().top;
     let top_categoryArea = $('.top_categoryArea').offset().top;
     $(window).on('scroll', function(){
@@ -50,4 +51,8 @@ $(function(){
         $('.search_form_dropdown').submit();
     })
 
+    //로그아웃 버튼 클릭 시
+    $('#logoutBtn').click(function(){
+        $('#logoutForm').submit();
+    })
 })
