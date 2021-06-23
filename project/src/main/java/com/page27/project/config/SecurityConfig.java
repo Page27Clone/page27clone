@@ -71,7 +71,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and() // 로그아웃 설정
                     .logout()
                     .logoutRequestMatcher(new AntPathRequestMatcher("/main/index"))
-                    .logoutSuccessUrl("/main/index")
                     .invalidateHttpSession(true)
                 .and()
                     // 403 예외처리 핸들링
