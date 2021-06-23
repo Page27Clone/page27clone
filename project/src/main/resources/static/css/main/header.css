@@ -24,6 +24,7 @@ ul {
     list-style-type: none;
 }
 
+
 /*top_menuArea*/
 .top_menuArea {
     width: 100%;
@@ -424,4 +425,9 @@ ul {
 @-ms-keyframes motion { /*IE*/
 	0% {margin-top: 0px;}
 	100% {margin-top: 5px;}
+}
+
+/*로그아웃 폼*/
+#logoutForm {
+    display: none;
 }
