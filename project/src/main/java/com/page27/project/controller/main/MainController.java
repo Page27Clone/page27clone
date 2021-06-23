@@ -42,7 +42,7 @@ public class MainController {
     private final ItemService itemService;
 
 
-    @GetMapping("main/myPage")
+    @GetMapping("main/mypage")
     public String getMyPage(Principal principal , Model model){
         MyPageDto myPageDto = new MyPageDto();
         String loginId = principal.getName();

@@ -13,6 +13,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 
@@ -34,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // static 디렉터리의 하위 파일 목록은 인증 무시 ( = 항상통과 )
         web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/lib/**");
     }
+
 //    WebSecurity는 FilterChainProxy를 생성하는 필터이다.
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -59,14 +61,17 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 // 페이지 권한 설정
                     .antMatchers("/admin/**").hasRole("ADMIN")
-                    .antMatchers("/main/**").permitAll()
-//                    .antMatchers("/user/myinfo").hasRole("MEMBER")
-                    .antMatchers("/**").permitAll()
+                    .antMatchers("/main/order","/main/profile","/main/mileage","/main/address",
+                    "/main/basket","/main/payment","/main/product/basketadd_ok").hasRole("MEMBER")
+                    .antMatchers("/main/index","/main/category/**","/main/product/**").permitAll()
+
                 .and() // 로그인 설정
                     .formLogin()
-                    .loginPage("/main/login")
-                    .usernameParameter("loginId")
-                    .defaultSuccessUrl("/main/myPage")
+                        .loginPage("/main/login")
+                        .successHandler(successHandler())
+                        .usernameParameter("loginId")
+//                        .defaultSuccessUrl("/main/mypage")
+
                     .permitAll()
                 .and() // 로그아웃 설정
                     .logout()
@@ -79,6 +84,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler successHandler() {
+        return new CustomLoginSuccessHandler("/defaultUrl");
     }
 //    Http 요청에 대한 웹 기반 보안을 구성할 수 있다.
 //    로그인 정보는 기본적으로 HttpSession을 이용한다.

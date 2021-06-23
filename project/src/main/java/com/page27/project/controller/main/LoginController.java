@@ -9,6 +9,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 @RequiredArgsConstructor
 public class LoginController {
@@ -17,7 +19,10 @@ public class LoginController {
     private final MileageService mileageService;
 
     @GetMapping("main/login")
-    public String getLoginPage(){
+    public String getLoginPage(HttpServletRequest request){
+        String referer = request.getHeader("Referer");
+        request.getSession().setAttribute("prevPage",referer);
+
         return "main/login";
     }
 
