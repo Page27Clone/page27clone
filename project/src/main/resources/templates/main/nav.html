@@ -18,10 +18,10 @@
         </div>
 
 
-        <form class="login_form">
+        <form action = "/main/login" class="login_form" method="POST" onsubmit="return sendit()">
             <div class="login_inputs">
-                <input type="text" name="userid" placeholder="ID">
-                <input type="password" name="userpw" placeholder="PW">
+                <input type="text" name="loginId" placeholder="ID">
+                <input type="password" name="password" placeholder="PW">
             </div>
             <div class="login_join_btn_box">
                 <input type="submit" class="loginbtn l_jbtn" value="LOGIN">
