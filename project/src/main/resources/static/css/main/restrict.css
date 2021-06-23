@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Arvo', serif;
+    font-family: 'Cairo', sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+section {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+section h1 {
+    font-size: 150px;
+    font-weight: normal;
+    font-family: 'Cairo', sans-serif;
+    display: flex;
+    align-items: center;
+}
+
+section h1 img {
+    width: 140px;
+    animation: gear 5s linear infinite;
+}
+
+@keyframes gear {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+section div{
+    margin-top: -30px;
+    font-size: 18px;
+    text-align: center;
+}
+
+section a{
+    display: block;
+    text-decoration: none;
+    color: black;
+    border: 2px solid black;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-top: 20px;
+}

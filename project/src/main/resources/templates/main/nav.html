@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
 <nav th:fragment="main_navFragment">
     <div class="nav_content">
         <div class="sidebtn_box">
@@ -11,6 +11,9 @@
             </div>
             <div class="scrolldown sidebtn">
                 <i class="fas fa-chevron-down"></i>
+            </div>
+            <div sec:authorize="hasRole('ROLE_ADMIN')" class="sidebtn adminbtn" th:onclick="location.href='/admin/main'">
+                <i class="fas fa-cog"></i>
             </div>
         </div>
 

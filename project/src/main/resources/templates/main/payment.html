@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -38,7 +38,7 @@
                         혜택정보
                     </div>
                     <div class="benefit_info_desc">
-                        <div class="benefit_info_desc_item"><b th:text="${member.name}">홍길동</b> 님은 <b th:text="'['+${member.memberGrade}+']'">[일반회원]</b> 이십니다</div>
+                        <div class="benefit_info_desc_item"><b th:text="${member.name}">홍길동</b> 님은 <b sec:authorize="hasRole('ROLE_ADMIN')">[관리자]</b><b sec:authorize="hasRole('ROLE_MEMBER')">[일반회원]</b> 이십니다</div>
                         <div class="benefit_info_mileage benefit_info_desc_item">
                             가용적립금: <b th:text="${#numbers.formatInteger(member.restMileage, 0, 'COMMA')}">2,000</b>원
                             <input type="hidden" class="canuse" value="2000" th:value="${member.restMileage}"> <!--서버로부터 넘어온 데이터-->
