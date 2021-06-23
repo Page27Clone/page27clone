@@ -68,11 +68,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and() // 로그인 설정
                     .formLogin()
                         .loginPage("/main/login")
-                        .successHandler(successHandler())
                         .usernameParameter("loginId")
-//                        .defaultSuccessUrl("/main/mypage")
+                        .successHandler(successHandler())
 
-                    .permitAll()
                 .and() // 로그아웃 설정
                     .logout()
                     .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
@@ -80,7 +78,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .invalidateHttpSession(true)
                 .and()
                     // 403 예외처리 핸들링
-                    .exceptionHandling().accessDeniedPage("/user/denied");
+                    .exceptionHandling().accessDeniedPage("/main/restrict");
 
         http.sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);

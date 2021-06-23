@@ -505,6 +505,11 @@ public class MainController {
         return "main/index";
     }
 
+    @GetMapping("/main/restrict")
+    public String getRestrictPage(){
+        return "main/restrict";
+    }
+
 
 
 }
