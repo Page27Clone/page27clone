@@ -114,6 +114,7 @@ public class MemberService implements UserDetailsService {
     public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
 
         Optional<Member> userEntityWrapper = memberRepository.findByloginId(loginId);
+
         Member userEntity = userEntityWrapper.get();
         List<GrantedAuthority> authorities = new ArrayList<>();
 

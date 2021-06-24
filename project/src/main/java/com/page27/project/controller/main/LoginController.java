@@ -6,10 +6,14 @@ import com.page27.project.service.MemberService;
 import com.page27.project.service.MileageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
 
 @Controller
 @RequiredArgsConstructor
@@ -19,7 +23,7 @@ public class LoginController {
     private final MileageService mileageService;
 
     @GetMapping("main/login")
-    public String getLoginPage(HttpServletRequest request){
+    public String getLoginPage(HttpServletRequest request, @RequestParam(value = "error",required = false) String error, @RequestParam(value = "exception", required = false) String exception , Model model){
         String referer = request.getHeader("Referer");
         if(referer != null){
             request.getSession().setAttribute("prevPage",referer);
@@ -28,6 +32,8 @@ public class LoginController {
             referer = "http://localhost:8080/main/index";
             request.getSession().setAttribute("prevPage",referer);
         }
+        model.addAttribute("error",error);
+        model.addAttribute("exception",exception);
         return "main/login";
     }
 
@@ -47,13 +53,10 @@ public class LoginController {
     @GetMapping("/defaultUrl")
     public String loginRedirectPage(HttpServletRequest request){
         String referer = request.getHeader("Referer");
-        if(referer != null){
-            request.getSession().setAttribute("prevPage",referer);
-        }
-        else {
-            referer = "http://localhost:8080/main/index";
-            request.getSession().setAttribute("prevPage",referer);
-        }
+
+        referer = "http://localhost:8080/main/index";
+        request.getSession().setAttribute("prevPage",referer);
+
         return "redirect:/main/index";
     }
 //    nav bar 로그인 구현
