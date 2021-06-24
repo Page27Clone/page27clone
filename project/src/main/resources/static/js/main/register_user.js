@@ -67,7 +67,8 @@ function sendit(){
         $('#user_password').focus();
         return false
     }
-    if($('#flag').val == 'false'){
+    if($('#flag').val() == 'false'){
+        alert('아이디 중복확인을 해주세요')
         return false
     }
 
@@ -77,6 +78,7 @@ $(function(){
 
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
+    //아이디 중복확인 ajax
     $('#double_check').on('click', function(){
         $.ajax({
             type: 'POST',
@@ -94,4 +96,8 @@ $(function(){
         })
 
     })
+    $('#user_id').on('change', function(){
+        $('#flag').val('false');
+    })
+
 })
