@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -27,7 +27,9 @@
 
     <!--section-->
     <section>
-        <input type="hidden" th:authorize="isAuthenticated()" value="loginTrue" id="loginTrue">
+        <!-- 로그인 되어있는 상태에서 로그인 페이지 들어오면 튕겨내기 위함-->
+        <input type="hidden" sec:authorize="isAuthenticated()" value="loginTrue" id="loginTrue">
+
         <form action="/main/login" class="loginform" method="POST" onsubmit="return sendit()">
 
             <div class="login_caption">LOGIN PAGE</div>
