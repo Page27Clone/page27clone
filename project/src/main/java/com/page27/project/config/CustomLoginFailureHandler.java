@@ -16,14 +16,14 @@ public class CustomLoginFailureHandler extends SimpleUrlAuthenticationFailureHan
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        String message = "유효하지 않은 아이디,비밀번호입니다.";
+        String message = "Invaild Username or Password";
         if(exception instanceof BadCredentialsException){
 
         }else if(exception instanceof InsufficientAuthenticationException){
             message = "Invalid Secret Key";
         }
 
-        setDefaultFailureUrl("/login?error=true&exception=" + message);
+        setDefaultFailureUrl("/main/login?error=true&exception=" + message);
 
         super.onAuthenticationFailure(request, response, exception);
     }
