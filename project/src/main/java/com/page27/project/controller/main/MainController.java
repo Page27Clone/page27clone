@@ -513,10 +513,10 @@ public class MainController {
     @PostMapping("/main/register/doublecheck")
     public String idDoubleCheckPage(@RequestParam(value = "registerId") String registerId){
         if(memberService.doubleCheckId(registerId)){
-            return "사용할 수 있는 아이디입니다.";
+            return "사용할 수 없는 아이디입니다.";
         }
         else{
-            return "사용할 수 없는 아이디입니다.";
+            return "사용할 수 있는 아이디입니다.";
         }
     }
 
