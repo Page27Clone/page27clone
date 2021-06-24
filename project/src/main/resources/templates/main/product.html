@@ -88,7 +88,7 @@
                     <input type="hidden" name="item_idx" value="1" th:value="${item.itemIdx}"> <!-- 넘어갈 데이터 -->
                     <input type="hidden" name="itemlist">
                     <input type="hidden" name="where" value="product"> <!-- 현재 넘어가는 정보는 product 페이지에서 넘어간다 -->
-
+                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}" />
                     <table> <!-- table을 thead와 tbody로 나눠주지 않으면 jquery 정상작동 X-->
                         <colgroup>
                             <col width="60%"/>

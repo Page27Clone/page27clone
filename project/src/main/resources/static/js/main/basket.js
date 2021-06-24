@@ -26,12 +26,21 @@ $(function(){
     });
 
     //수량변경
+
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+
     $('.numberupdatebtn').on('click', function(){
         const basket_id = parseInt($(this).closest('tr').find('.basket_id').val());
         const item_quantity = parseInt($(this).siblings('.item_quantity').val());
+
         $.ajax({
             type: 'PATCH',
-            url: '/main/basket/changequantity/' + basket_id + '/' + item_quantity
+            url: '/main/basket/changequantity/' + basket_id + '/' + item_quantity,
+            beforeSend : function(xhr)
+            {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                xhr.setRequestHeader(header, token);
+            }
         }).done(function(word){
             alert(word);
             location.reload();
@@ -50,19 +59,24 @@ $(function(){
         
         if($(this).hasClass('buyitbtn')){ //해당 아이템 주문
             const form = $('<form method="post"></form>')
-            form.attr("action", "/main/buyitems")
+            form.attr("action", "/main/payment")
             let itemlist = [];
             let id_quan = {id: basket_id, quantity:item_quantity}
             itemlist.push(id_quan)
             form.append($('<input>', {type: 'hidden', name: 'itemlist', value: JSON.stringify(itemlist)}));
             form.append($('<input>', {type: 'hidden', name: 'where', value: 'basket'})); //현재 넘어가는 정보는 basket페이지에서 넘어간다
+            form.append($('#form_csrf_token'));
             form.appendTo('body');
             form.submit();
         }else if($(this).hasClass('deleteitbtn')){ //해당 아이템 삭제
             console.log('삭제버튼눌림');
             $.ajax({
                 type: 'DELETE',
-                url: '/main/basket/remove/'+ basket_id
+                url: '/main/basket/remove/'+ basket_id,
+                beforeSend : function(xhr)
+                {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                    xhr.setRequestHeader(header, token);
+                }
             }).done(function(word){
                 alert(word);
                 location.reload();
@@ -86,6 +100,10 @@ $(function(){
             type: 'DELETE',
             url: '/main/basket/removeitems',
             data: {itemList : itemlist},
+            beforeSend : function(xhr)
+            {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                xhr.setRequestHeader(header, token);
+            },
             traditional: true
         }).done(function(word){
             alert(word);
@@ -99,7 +117,11 @@ $(function(){
     $('.basketclearbtn').on('click', function(){
         $.ajax({
             type: 'DELETE',
-            url: '/main/basket/removeall'
+            url: '/main/basket/removeall',
+            beforeSend : function(xhr)
+            {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                xhr.setRequestHeader(header, token);
+            }
         }).done(function(word){
             alert(word);
             location.reload();
@@ -137,6 +159,7 @@ $(function(){
         console.log(itemlist);
         form.append($('<input>', {type: 'hidden', name: 'itemlist', value: JSON.stringify(itemlist)}));
         form.append($('<input>', {type: 'hidden', name: 'where', value: 'basket'}));
+        form.append($('#form_csrf_token'));
         form.appendTo('body');
         form.submit();
     })

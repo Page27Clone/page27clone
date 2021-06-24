@@ -50,14 +50,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .ignoringAntMatchers("/admin/itemList3")
                 .ignoringAntMatchers("/admin/register")
                 .ignoringAntMatchers("/admin/orderList1/**")
-                .ignoringAntMatchers("/admin/userList/**")
-                .ignoringAntMatchers("/main/orderStatusChange/**")
-                .ignoringAntMatchers("/main/address/delete")
-                .ignoringAntMatchers("/main/basket/changequantity/**")
-                .ignoringAntMatchers("/main/basket/remove/**")
-                .ignoringAntMatchers("/main/basket/removeitems")
-                .ignoringAntMatchers("/main/basket/removeall")
-                .ignoringAntMatchers("/main/**");
+                .ignoringAntMatchers("/admin/userList/**");
+//                .ignoringAntMatchers("/main/orderStatusChange/**");
+//                .ignoringAntMatchers("/main/address/delete")
+//                .ignoringAntMatchers("/main/basket/changequantity/**")
+//                .ignoringAntMatchers("/main/basket/remove/**")
+//                .ignoringAntMatchers("/main/basket/removeitems")
+//                .ignoringAntMatchers("/main/basket/removeall");
+//                .ignoringAntMatchers("/main/**");
 
         http
                 .authorizeRequests()
