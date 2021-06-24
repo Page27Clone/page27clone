@@ -23,17 +23,22 @@ public class LoginController {
     private final MileageService mileageService;
 
     @GetMapping("main/login")
-    public String getLoginPage(HttpServletRequest request, @RequestParam(value = "error",required = false) String error, @RequestParam(value = "exception", required = false) String exception , Model model){
+    public String getLoginPage(HttpServletRequest request, @RequestParam(value = "error",required = false) String error, Model model){
         String referer = request.getHeader("Referer");
         if(referer != null){
             request.getSession().setAttribute("prevPage",referer);
+//            if(referer.equals("http://localhost:8080/main/login?error=true")){
+//                referer = "http://localhost:8080/main/index";
+//                request.getSession().setAttribute("prevPage",referer);
+//            }
         }
         else {
             referer = "http://localhost:8080/main/index";
             request.getSession().setAttribute("prevPage",referer);
         }
+
+
         model.addAttribute("error",error);
-        model.addAttribute("exception",exception);
         return "main/login";
     }
 
