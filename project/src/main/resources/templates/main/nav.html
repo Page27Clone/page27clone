@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
 <nav th:fragment="main_navFragment">
+    <input type="hidden" id="loginFail" th:value="${param.error}">
     <div class="nav_content">
         <div class="sidebtn_box">
             <div class="slidebtn sidebtn">

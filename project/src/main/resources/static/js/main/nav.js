@@ -17,6 +17,12 @@ $(function(){
     $('.scrolldown').click(function(){
         $('html, body').animate({scrollTop : $(document).height()}, 500);
     })
+
+    /*로그인 실패 시 alert창 띄우기*/
+    if($('#loginFail').val() === true){
+        alert('아이디 또는 비밀번호가 일치하지 않습니다');
+   }
+
 })
 
 function sendit(){
