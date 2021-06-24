@@ -51,7 +51,7 @@
                 <td><input type="checkbox" class="checkbox-select"></td>
                 <td th:text = "${user.name} + '(' + ${user.loginId}+ ')'">채창완(sejchae)</td>
                 <td th:text = "${user.memberGrade}">일반회원</td>
-                <td th:text = "${#string.replace(user.phoneNumber, ',', '-')}">010-1234-5678</td>
+                <td th:text = "${#strings.replace(user.phoneNumber, ',', '-')}">010-1234-5678</td>
                 <td th:text = "${user.visitCount}">11</td>
                 <td th:text = "${user.orderCount}">2</td>
                 <td>2000원</td>
