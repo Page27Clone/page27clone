@@ -68,3 +68,27 @@ function sendit(){
     }
 
 }
+$(function(){
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
+
+    $('.withdrawbtn').on('click', function(){
+        if(confirm('탈퇴하면 적립금도 함께 삭제됩니다. 정말로 탈퇴 하시겠습니까?')){
+            const user_pw_temp = $('#user_password').val();
+            $.ajax({
+                type: 'DELETE',
+                url: '/main/withdrawal',
+                data: {user_pw : user_pw_temp},
+                beforeSend : function(xhr)
+                {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                    xhr.setRequestHeader(header, token);
+                }
+            }).done(function(word){
+                alert(word); //정상적으로 회원탈퇴 되었습니다. or 비밀번호가 올바르지 않습니다.
+                location.reload();
+            }).fail(function (error){
+                alert(JSON.stringify(error));
+            })
+        }
+    })
+})
