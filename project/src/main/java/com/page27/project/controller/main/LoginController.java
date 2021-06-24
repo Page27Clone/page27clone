@@ -33,8 +33,6 @@ public class LoginController {
             referer = "http://localhost:8080/main/index";
             request.getSession().setAttribute("prevPage",referer);
         }
-
-
         model.addAttribute("error",error);
         return "main/login";
     }

@@ -6,6 +6,7 @@ public class LoginIdNotFoundException extends RuntimeException {
     }
 
     public LoginIdNotFoundException(String s) {
+        super(s);
     }
 
     public LoginIdNotFoundException(String message, Throwable cause) {

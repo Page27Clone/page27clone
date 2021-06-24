@@ -10,6 +10,7 @@ import com.page27.project.service.*;
 import lombok.RequiredArgsConstructor;
 import org.apache.commons.lang3.StringUtils;
 
+import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -49,6 +50,7 @@ public class MainController {
         Member member = memberRepository.findByloginId(loginId).get();
         myPageDto.setName(member.getName());
         myPageDto.setGrade(member.getMemberGrade());
+        System.out.println("here check : " + member.getMemberGrade());
         int totalMileage = mileageService.getTotalMileage(loginId);
         int totalUsedMileage = mileageService.getTotalUsedMileage(loginId);
         myPageDto.setMileage(totalMileage - totalUsedMileage);
@@ -447,10 +449,10 @@ public class MainController {
             itemList.add(findItem.getId());
             itemCountList.add(itemOrderCount);
         }
-
+//        paymentAddressDto.setAddress_id(Long.parseLong(paymentAddressDto.getAddress_id()));
         orderService.doOrder(member.getId(), itemList, itemCountList,paymentAddressDto,paymentPriceDto);
 
-        System.out.println(paymentAddressDto.getAddress_id());
+//        System.out.println(paymentAddressDto.getAddress_id());
 
         BasketMemberMileageDto memberMileage = basketService.findMemberMileage(loginId);
 
