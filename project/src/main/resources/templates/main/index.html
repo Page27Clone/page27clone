@@ -104,7 +104,7 @@
                                     <div class="w_carousel_item_price"><b th:text="'₩'+${#numbers.formatInteger(item.price, 0, 'COMMA')}">₩39,900</b></div>
                                     <div class="w_carouesl_item_button">
                                         <button class="buyitnowbtn hoverbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/product/{itemIdx}(itemIdx=${item.itemIdx})} + '\''">BUY IT NOW</button>
-                                        <button class="basketbtn hoverbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/basket/{itemIdx}(itemIdx=${item.itemIdx})} + '\''"><i class="fas fa-shopping-basket"></i></button>
+                                        <button class="basketbtn hoverbtn"><i class="fas fa-shopping-basket"></i></button>
                                     </div>
                                 </div>
                             </a>
@@ -132,7 +132,7 @@
                                     <div class="w_carousel_item_price"><b th:text="'₩'+${#numbers.formatInteger(item.price, 0, 'COMMA')}">₩39,900</b></div>
                                     <div class="w_carouesl_item_button">
                                         <button class="buyitnowbtn hoverbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/product/{itemIdx}(itemIdx=${item.itemIdx})} + '\''">BUY IT NOW</button>
-                                        <button class="basketbtn hoverbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/basket/{itemIdx}(itemIdx=${item.itemIdx})} + '\''"><i class="fas fa-shopping-basket"></i></button>
+                                        <button class="basketbtn hoverbtn"><i class="fas fa-shopping-basket"></i></button>
                                     </div>
                                 </div>
                             </a>
@@ -160,7 +160,7 @@
                                     <div class="w_carousel_item_price"><b th:text="'₩'+${#numbers.formatInteger(item.price, 0, 'COMMA')}">₩39,900</b></div>
                                     <div class="w_carouesl_item_button">
                                         <button class="buyitnowbtn hoverbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/product/{itemIdx}(itemIdx=${item.itemIdx})} + '\''">BUY IT NOW</button>
-                                        <button class="basketbtn hoverbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/basket/{itemIdx}(itemIdx=${item.itemIdx})} + '\''"><i class="fas fa-shopping-basket"></i></button>
+                                        <button class="basketbtn hoverbtn"><i class="fas fa-shopping-basket"></i></button>
                                     </div>
                                 </div>
                             </a>
@@ -188,7 +188,7 @@
                                     <div class="w_carousel_item_price"><b th:text="'₩'+${#numbers.formatInteger(item.price, 0, 'COMMA')}">₩39,900</b></div>
                                     <div class="w_carouesl_item_button">
                                         <button class="buyitnowbtn hoverbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/product/{itemIdx}(itemIdx=${item.itemIdx})} + '\''">BUY IT NOW</button>
-                                        <button class="basketbtn hoverbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/basket/{itemIdx}(itemIdx=${item.itemIdx})} + '\''"><i class="fas fa-shopping-basket"></i></button>
+                                        <button class="basketbtn hoverbtn"><i class="fas fa-shopping-basket"></i></button>
                                     </div>
                                 </div>
                             </a>
@@ -216,7 +216,7 @@
                                     <div class="w_carousel_item_price"><b th:text="'₩'+${#numbers.formatInteger(item.price, 0, 'COMMA')}">₩39,900</b></div>
                                     <div class="w_carouesl_item_button">
                                         <button class="buyitnowbtn hoverbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/product/{itemIdx}(itemIdx=${item.itemIdx})} + '\''">BUY IT NOW</button>
-                                        <button class="basketbtn hoverbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/basket/{itemIdx}(itemIdx=${item.itemIdx})} + '\''"><i class="fas fa-shopping-basket"></i></button>
+                                        <button class="basketbtn hoverbtn"><i class="fas fa-shopping-basket"></i></button>
                                     </div>
                                 </div>
                             </a>
@@ -245,7 +245,7 @@
                                     <div class="w_carousel_item_price"><b th:text="'₩'+${#numbers.formatInteger(item.price, 0, 'COMMA')}">₩39,900</b></div>
                                     <div class="w_carouesl_item_button">
                                         <button class="buyitnowbtn hoverbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/product/{itemIdx}(itemIdx=${item.itemIdx})} + '\''">BUY IT NOW</button>
-                                        <button class="basketbtn hoverbtn" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/basket/{itemIdx}(itemIdx=${item.itemIdx})} + '\''"><i class="fas fa-shopping-basket"></i></button>
+                                        <button class="basketbtn hoverbtn"><i class="fas fa-shopping-basket"></i></button>
                                     </div>
                                 </div>
                             </a>
@@ -271,7 +271,7 @@
                         <a href="#" th:href="@{/main/product/{itemIdx}(itemIdx=${item.itemIdx})}"><img th:src="@{${item.imgUrl}}" src="img/main_newarrivals/newarrival1.JPG" alt="상품사진"></a>
                         <div class="newarrivals_item_hover">
                             <div class="quickview hoveritem"><i class="far fa-clone" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/product/{itemIdx}(itemIdx=${item.itemIdx})} + '\''"></i></div>
-                            <div class="backet hoveritem"><i class="fas fa-shopping-basket" onclick="location.href=''" th:onclick="'location.href=\''+ @{/main/basket/{itemIdx}(itemIdx=${item.itemIdx})} + '\''"></i></div>
+                            <div class="backet hoveritem"><i class="fas fa-shopping-basket"></i></div>
                             <div class="priview hoveritem"><i class="far fa-sticky-note"></i></div>
                         </div>
                     </div>

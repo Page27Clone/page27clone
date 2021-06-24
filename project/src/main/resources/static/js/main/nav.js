@@ -20,14 +20,14 @@ $(function(){
 })
 
 function sendit(){
-    if($('input[name=user_id]').val() == ''){
+    if($('input[name=loginId]').val() == ''){
         alert('아이디를 입력해주세요');
-        $('input[name=user_id]').focus();
+        $('input[name=loginId]').focus();
         return false;
     }
-    if($('input[name=user_password]').val() == ''){
+    if($('input[name=password]').val() == ''){
         alert('비밀번호를 입력해주세요');
-        $('input[name=user_password]').focus();
+        $('input[name=password]').focus();
         return false;
     }
 }
