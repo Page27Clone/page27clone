@@ -126,6 +126,9 @@ public class MemberService implements UserDetailsService {
         System.out.println("here authority check : " + authorities.size());
         System.out.println("here authority check : " + authorities.get(0).getAuthority());
 
+        int visitCount = userEntity.getVisitCount();
+        userEntity.setVisitCount(visitCount++);
+
         return new User(userEntity.getLoginId(), userEntity.getPassword(), authorities);
     }
 //    상세정보를 조회하는 메소드이며 사용자의 계정정보와 권한을 갖는 UserDetails 인터페이스를 반환해야한다.
