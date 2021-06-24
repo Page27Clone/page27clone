@@ -18,7 +18,7 @@
         </div>
 
 
-        <form action = "/main/login" class="login_form" method="POST" onsubmit="return sendit()">
+        <form action = "/main/login" sec:authorize="isAuthenticated()" class="login_form" method="POST" onsubmit="return sendit()">
             <div class="login_inputs">
                 <input type="text" name="loginId" placeholder="ID">
                 <input type="password" name="password" placeholder="PW">
