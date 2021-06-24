@@ -75,6 +75,10 @@ function sendit(){
 }
 
 $(function(){
+    //로그인 되어있는 경우면 인덱스로 튕겨내기
+    if($('#loginTrue').val() == 'loginTrue'){
+        location.href = '/main/index';
+    }
 
     var token = $("meta[name='_csrf']").attr("content");
     var header = $("meta[name='_csrf_header']").attr("content");
