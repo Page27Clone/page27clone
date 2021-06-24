@@ -28,11 +28,13 @@ public class MemberController {
     private final OrderItemRepository orderItemRepository;
 
     @GetMapping("/userList")
-    public String pageList(Model model, @PageableDefault(size=8) Pageable pageable, SearchMember searchMember) {
+    public String pageList(Model model, @PageableDefault(size=4) Pageable pageable, SearchMember searchMember) {
+        int homeEndPage = 0;
+        int homeStartPage = 0;
         if(searchMember.getSearchKeyword() == null){
             Page<Member> memberBoards = memberRepository.findAll(pageable);
-            int homeStartPage = Math.max(1,memberBoards.getPageable().getPageNumber() - 4);
-            int homeEndPage = Math.min(memberBoards.getTotalPages(),memberBoards.getPageable().getPageNumber() + 4);
+            homeStartPage = Math.max(1, memberBoards.getPageable().getPageNumber());
+            homeEndPage = Math.min(memberBoards.getTotalPages(), memberBoards.getPageable().getPageNumber() + 5);
             model.addAttribute("startPage",homeStartPage);
             model.addAttribute("endPage",homeEndPage);
             model.addAttribute("memberList",memberBoards);
@@ -41,8 +43,8 @@ public class MemberController {
         }
         Page<MemberDto> memberBoards = memberRepository.searchByCondition(searchMember, pageable);
 
-        int startPage = Math.max(1,memberBoards.getPageable().getPageNumber() - 4);
-        int endPage = Math.min(memberBoards.getTotalPages(),memberBoards.getPageable().getPageNumber() + 4);
+        int startPage = Math.max(1,memberBoards.getPageable().getPageNumber()-2);
+        int endPage = Math.min(memberBoards.getTotalPages(),startPage + 4);
         model.addAttribute("startPage",startPage);
         model.addAttribute("endPage",endPage);
         model.addAttribute("memberList",memberBoards);

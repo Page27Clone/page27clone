@@ -39,6 +39,7 @@ public class MemberService implements UserDetailsService {
 
     private final MemberRepository memberRepository;
 
+
     private void validateMember(Member member) {
         List<Member> findMembers = memberRepository.findAll();
         if (!findMembers.isEmpty()) {
@@ -149,11 +150,18 @@ public class MemberService implements UserDetailsService {
     public void showMySimpleInfo(String loginId){
         MyPageDto myPageDto = new MyPageDto();
 
-        Optional<Member> findMember = memberRepository.findByloginId(loginId);
+        Member findMember = memberRepository.findByloginId(loginId).orElseThrow(
+                () -> new LoginIdNotFoundException("해당하는 회원이 존재하지 않습니다")
+        );
 
-        if(findMember == null){
+        myPageDto.setName(findMember.getName());
+        myPageDto.setGrade(findMember.getMemberGrade());
+//        myPageDto.setMileage(findMember.getm);
 
-        }
+    }
 
+    public boolean doubleCheckId(String registerId){
+        Optional<Member> findMember = memberRepository.findByloginId(registerId);
+        return findMember.isPresent();
     }
 }

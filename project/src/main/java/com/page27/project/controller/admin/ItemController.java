@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,7 +58,8 @@ public class ItemController {
                                  ,@RequestParam("model")String itemModel
     ){
 
-        String folderPath = "C:\\image\\temp\\" + firstCategory + "\\" + secondCategory + "\\" + thirdCategory + "\\";
+        String folderPath = "C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\" + firstCategory + "\\" + secondCategory + "\\" + itemName + "\\";
+
         File newFile = new File(folderPath);
         if(newFile.mkdirs()){
             logger.info("directory make ok");
@@ -70,18 +72,19 @@ public class ItemController {
 
         for(int i = 0; i< fileList.size();i++){
             String originFileName = fileList.get(i).getOriginalFilename();
-//            long fileSize = fileList.get(i).getSize();
             String safeFile = folderPath + originFileName;
 
             Item item = new Item(firstCategory,secondCategory,thirdCategory,itemName,itemPrice,itemInfo,itemColor,itemFabric,itemModel,itemSize,itemQuantity,safeFile,saleStatus,newItemIdx + 1,true);
 
             if(i == 0){
-                itemRepository.save(item);
+                item.setRep(true);
             }
             else{
                 item.setRep(false);
-                itemRepository.save(item);
             }
+
+            itemRepository.save(item);
+
             try{
                 fileList.get(i).transferTo(new File(safeFile));
             }catch(IllegalStateException e){
@@ -90,16 +93,21 @@ public class ItemController {
                 e.printStackTrace();
             }
         }
-        return "redirect:/";
+        return "redirect:/admin/itemList";
     }
 
     @GetMapping("/admin/itemList")
-    public String itemListPage(Model model, @PageableDefault(size=3) Pageable pageable, SearchItem searchItem){
+    public String itemListPage(Model model, @PageableDefault(size=8) Pageable pageable, SearchItem searchItem){
+        int homeEndPage= 0;
+        int homeStartPage = 0;
         if(searchItem.getItem_name() == null) {
             Page<ItemDto> itemBoards = itemRepository.searchAllItem(pageable);
 
-            int homeStartPage = Math.max(1, itemBoards.getPageable().getPageNumber() - 4);
-            int homeEndPage = Math.min(itemBoards.getTotalPages(), itemBoards.getPageable().getPageNumber() + 4);
+            homeStartPage = Math.max(1, itemBoards.getPageable().getPageNumber());
+            homeEndPage = Math.min(itemBoards.getTotalPages(), itemBoards.getPageable().getPageNumber() + 5);
+            System.out.println("이게 현재?" + itemBoards.getPageable());
+            System.out.println("start page : " + homeStartPage);
+            System.out.println(homeEndPage);
             model.addAttribute("startPage", homeStartPage);
             model.addAttribute("endPage", homeEndPage);
             model.addAttribute("productList", itemBoards);
@@ -108,8 +116,10 @@ public class ItemController {
         }
         Page<ItemDto> itemBoards = itemRepository.searchAllItemByCondition(searchItem,pageable);
 
-        int startPage = Math.max(1,itemBoards.getPageable().getPageNumber() - 4);
-        int endPage = Math.min(itemBoards.getTotalPages(),itemBoards.getPageable().getPageNumber() + 4);
+        int startPage = Math.max(1,itemBoards.getPageable().getPageNumber());
+        int endPage = startPage + 4;
+        System.out.println("start page : " + startPage);
+        System.out.println(endPage);
         model.addAttribute("startPage", startPage);
         model.addAttribute("endPage", endPage);
         model.addAttribute("productList", itemBoards);
