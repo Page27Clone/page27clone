@@ -449,10 +449,7 @@ public class MainController {
             itemList.add(findItem.getId());
             itemCountList.add(itemOrderCount);
         }
-//        paymentAddressDto.setAddress_id(Long.parseLong(paymentAddressDto.getAddress_id()));
         orderService.doOrder(member.getId(), itemList, itemCountList,paymentAddressDto,paymentPriceDto);
-
-//        System.out.println(paymentAddressDto.getAddress_id());
 
         BasketMemberMileageDto memberMileage = basketService.findMemberMileage(loginId);
 
@@ -510,6 +507,17 @@ public class MainController {
     @GetMapping("/main/restrict")
     public String getRestrictPage(){
         return "main/restrict";
+    }
+
+    @ResponseBody
+    @PostMapping("/main/register/doublecheck")
+    public String idDoubleCheckPage(@RequestParam(value = "registerId") String registerId){
+        if(memberService.doubleCheckId(registerId)){
+            return "사용할 수 있는 아이디입니다.";
+        }
+        else{
+            return "사용할 수 없는 아이디입니다.";
+        }
     }
 
 
