@@ -27,6 +27,7 @@
 
     <!--section-->
     <section>
+        <input type="hidden" th:authorize="isAuthenticated()" value="loginTrue" id="loginTrue">
         <form action="/main/login" class="loginform" method="POST" onsubmit="return sendit()">
 
             <div class="login_caption">LOGIN PAGE</div>

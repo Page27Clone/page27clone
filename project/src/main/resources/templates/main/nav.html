@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
 <nav th:fragment="main_navFragment">
-
+    <!-- 로그인 실패시 alert에 출력하기위함-->
     <input type="hidden" id="loginFail" th:value="${param.error}" value="">
     <div class="nav_content">
         <div class="sidebtn_box">
