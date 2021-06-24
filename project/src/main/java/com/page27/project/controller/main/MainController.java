@@ -20,6 +20,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
@@ -525,18 +527,19 @@ public class MainController {
 
     @ResponseBody
     @DeleteMapping("/main/withdrawal")
-    public String withdrawalMember(Principal principal,@RequestParam(value = "user_pw") String password){
+    public String withdrawalMember(HttpServletRequest request,Principal principal, @RequestParam(value = "user_pw") String password){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
         String loginId = principal.getName();
         Member findMember = memberRepository.findByloginId(loginId).get();
 
         System.out.println(findMember.getPassword());
-
-
         boolean result = passwordEncoder.matches(password,findMember.getPassword());
 
         if(result){
             memberService.deleteMemberByLoginId(loginId);
+            HttpSession session = request.getSession();
+            session.invalidate();
+            
             return "정상적으로 회원탈퇴되었습니다.";
         }else{
             return "비밀번호가 올바르지 않습니다";
