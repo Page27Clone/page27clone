@@ -164,4 +164,9 @@ public class MemberService implements UserDetailsService {
         Optional<Member> findMember = memberRepository.findByloginId(registerId);
         return findMember.isPresent();
     }
+
+    @Transactional
+    public void deleteMemberByLoginId(String loginId){
+        memberRepository.deleteByLoginId(loginId);
+    }
 }

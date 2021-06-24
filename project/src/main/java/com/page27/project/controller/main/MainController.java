@@ -14,6 +14,7 @@ import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Controller
@@ -517,6 +519,22 @@ public class MainController {
         }
         else{
             return "사용할 수 있는 아이디입니다.";
+        }
+    }
+
+    @ResponseBody
+    @DeleteMapping("/main/withdrawal")
+    public String withdrawalMember(Principal principal,@RequestParam(value = "user_pw") String password){
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
+        String loginId = principal.getName();
+        Member findMember = memberRepository.findByloginId(loginId).get();
+        String encodePassword = passwordEncoder.encode(password);
+        if(findMember.getPassword().equals(encodePassword)){
+            memberService.deleteMemberByLoginId(loginId);
+            return "정상적으로 회원탈퇴되었습니다.";
+        }else{
+            return "비밀번호가 올바르지 않습니다";
         }
     }
 
