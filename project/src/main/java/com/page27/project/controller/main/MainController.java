@@ -14,6 +14,7 @@ import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -526,11 +527,15 @@ public class MainController {
     @DeleteMapping("/main/withdrawal")
     public String withdrawalMember(Principal principal,@RequestParam(value = "user_pw") String password){
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-
         String loginId = principal.getName();
         Member findMember = memberRepository.findByloginId(loginId).get();
-        String encodePassword = passwordEncoder.encode(password);
-        if(findMember.getPassword().equals(encodePassword)){
+
+        System.out.println(findMember.getPassword());
+
+
+        boolean result = passwordEncoder.matches(password,findMember.getPassword());
+
+        if(result){
             memberService.deleteMemberByLoginId(loginId);
             return "정상적으로 회원탈퇴되었습니다.";
         }else{
