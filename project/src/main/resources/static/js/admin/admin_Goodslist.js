@@ -1,4 +1,6 @@
 function changeStatus(manage_option, idlist){ //ajax로 처리;
+    var token = $("meta[name='_csrf']").attr("content");
+    var header = $("meta[name='_csrf_header']").attr("content");
     const json = JSON.stringify(idlist)
     console.log(json);
     switch(manage_option){
@@ -7,6 +9,10 @@ function changeStatus(manage_option, idlist){ //ajax로 처리;
                 type: 'PATCH',
                 url: '/admin/itemList1',
                 data: json,
+                beforeSend : function(xhr)
+                {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                    xhr.setRequestHeader(header, token);
+                },
                 contentType : "application/json; charset=UTF-8"
             }).done(function(word){
                 alert(word);
@@ -20,6 +26,10 @@ function changeStatus(manage_option, idlist){ //ajax로 처리;
                 type: 'PATCH',
                 url: '/admin/itemList2',
                 data: json,
+                beforeSend : function(xhr)
+                {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                    xhr.setRequestHeader(header, token);
+                },
                 contentType : "application/json; charset=UTF-8"
             }).done(function(word){
                 alert(word);
@@ -33,6 +43,10 @@ function changeStatus(manage_option, idlist){ //ajax로 처리;
                 type: 'DELETE',
                 url: '/admin/itemList3',
                 data: json,
+                beforeSend : function(xhr)
+                {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                    xhr.setRequestHeader(header, token);
+                },
                 contentType : "application/json; charset=UTF-8"
             }).done(function(word){
                 alert(word);

@@ -31,7 +31,7 @@
                     <tbody>
                         <tr th:each="user:${memberList}">
                             <td th:text = "${user.name} + '(' + ${user.loginId}+ ')'">홍길동(gildong000)</td>
-                            <td th:text = "${user.phoneNumber}">010-2222-6666</td>
+                            <td th:text = "${#strings.replace(user.phoneNumber, ',', '-')}">010-2222-6666</td>
                             <td th:text="${#temporals.format(user.createdAt, 'yyyy-MM-dd')}">2021-06-07</td>
                             <td th:text = "${user.visitCount}">3</td>
                         </tr>

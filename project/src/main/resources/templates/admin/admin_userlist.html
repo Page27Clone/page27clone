@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>admin userlist</title>
     <script src="https://kit.fontawesome.com/e6f78261b2.js" crossorigin="anonymous"></script>
     <script src="/js/jquery.js"></script>
@@ -49,7 +51,7 @@
                 <td><input type="checkbox" class="checkbox-select"></td>
                 <td th:text = "${user.name} + '(' + ${user.loginId}+ ')'">채창완(sejchae)</td>
                 <td th:text = "${user.memberGrade}">일반회원</td>
-                <td th:text = "${user.phoneNumber}">010-1234-5678</td>
+                <td th:text = "${#string.replace(user.phoneNumber, ',', '-')}">010-1234-5678</td>
                 <td th:text = "${user.visitCount}">11</td>
                 <td th:text = "${user.orderCount}">2</td>
                 <td>2000원</td>
