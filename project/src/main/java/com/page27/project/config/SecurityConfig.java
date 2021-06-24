@@ -41,16 +41,16 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    WebSecurity는 FilterChainProxy를 생성하는 필터이다.
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
-                .csrf().ignoringAntMatchers("/admin/changepassword")
+//        http
+//                .csrf().ignoringAntMatchers("/admin/changepassword");
 
-                .ignoringAntMatchers("/admin/changepassword_ok")
-                .ignoringAntMatchers("/admin/itemList1")
-                .ignoringAntMatchers("/admin/itemList2")
-                .ignoringAntMatchers("/admin/itemList3")
-                .ignoringAntMatchers("/admin/register")
-                .ignoringAntMatchers("/admin/orderList1/**")
-                .ignoringAntMatchers("/admin/userList/**");
+//                .ignoringAntMatchers("/admin/changepassword_ok");
+//                .ignoringAntMatchers("/admin/itemList1")
+//                .ignoringAntMatchers("/admin/itemList2")
+//                .ignoringAntMatchers("/admin/itemList3");
+//                .ignoringAntMatchers("/admin/register");
+//                .ignoringAntMatchers("/admin/orderList1/**")
+//                .ignoringAntMatchers("/admin/userList/**");
 //                .ignoringAntMatchers("/main/orderStatusChange/**");
 //                .ignoringAntMatchers("/main/address/delete")
 //                .ignoringAntMatchers("/main/basket/changequantity/**")

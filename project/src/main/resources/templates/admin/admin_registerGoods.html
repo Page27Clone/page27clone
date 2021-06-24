@@ -14,7 +14,7 @@
 <body>
     <nav th:replace="admin/admin_nav :: navFragment"></nav>
     <section>
-        <form action="/admin/register" method="POST" enctype="multipart/form-data" onsubmit="return sendToServer()">
+        <form action="/admin/register" th:action="@{/admin/register}" method="POST" enctype="multipart/form-data" onsubmit="return sendToServer()">
         <!-- 상품 기본정보 -->
         <div class="basic-info item">
             <div class="item-caption">
