@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5" lang="en">
 <nav th:fragment="main_navFragment">
 
-<!--    <input type="hidden" id="loginFail" th:value="${param.error}">-->
+    <input type="hidden" id="loginFail" th:value="${param.error}" value="">
     <div class="nav_content">
         <div class="sidebtn_box">
             <div class="slidebtn sidebtn">
@@ -37,7 +37,6 @@
         <div sec:authorize="isAuthenticated()">
             환영합니다 고객님
         </div>
-        <div th:text = "${param.error}"></div>
         <div class="rightmenu">
             <input type="button" class="delivery_check" value="배송조회">
             <input type="button" class="rightmenubtn" value="쿠폰">
