@@ -39,6 +39,23 @@ td {
     border-right: none;
 }
 
+#double_check {
+    color: var(--font-color-gray2);
+    font-size: 12px;
+    padding: 3px 5px;
+    background-color: white;
+    border: 1px solid var(--border-color-basic2);
+    border-radius: 5px;
+}
+#double_check i {
+    color: red;
+    margin-left: 5px;
+}
+#double_check:active {
+    filter:brightness(90%);
+}
+
+
 th label span {
     font-size: 10px;
     color: red;
