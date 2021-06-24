@@ -22,4 +22,6 @@ public interface MemberRepository extends JpaRepository<Member, Long>,MemberRepo
 
     @Query("select sum(m.visitCount) from Member m")
     int visitCountResult();
+
+    void deleteByLoginId(String loginId);
 }
