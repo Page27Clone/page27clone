@@ -63,11 +63,11 @@
                     </tr>
                     <tr>
                         <th>휴대전화</th>
-                        <td th:text="${Member.phoneNumber}">010-1234-5678</td>
+                        <td th:text="${#strings.replace(Member.phoneNumber, ',', '-')}">010-1234-5678</td>
                     </tr>
                     <tr>
                         <th>일반전화</th>
-                        <td th:text="${Member.homePhoneNumber}">02-1234-5678</td>
+                        <td th:text="${#strings.replace(Member.homePhoneNumber, ',', '-')}">02-1234-5678</td>
                     </tr>
                 </table>
             </div>
