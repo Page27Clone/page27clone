@@ -9,4 +9,11 @@ function sendit(){
         $('input[name=password]').focus();
         return false;
     }
+
 }
+$(function(){
+    if($('#loginTrue').val() == 'loginTrue'){
+        location.href = '/main/index';
+    }
+
+})
