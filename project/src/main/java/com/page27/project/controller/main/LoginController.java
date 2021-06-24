@@ -47,13 +47,10 @@ public class LoginController {
     @GetMapping("/defaultUrl")
     public String loginRedirectPage(HttpServletRequest request){
         String referer = request.getHeader("Referer");
-        if(referer != null){
-            request.getSession().setAttribute("prevPage",referer);
-        }
-        else {
-            referer = "http://localhost:8080/main/index";
-            request.getSession().setAttribute("prevPage",referer);
-        }
+
+        referer = "http://localhost:8080/main/index";
+        request.getSession().setAttribute("prevPage",referer);
+        
         return "redirect:/main/index";
     }
 //    nav bar 로그인 구현
