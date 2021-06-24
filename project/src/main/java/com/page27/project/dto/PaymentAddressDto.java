@@ -6,7 +6,7 @@ import lombok.Setter;
 @Getter
 @Setter
 public class PaymentAddressDto {
-    private Long address_id;
+
     private String address_recipient;
     private String zipcode;
     private String city;

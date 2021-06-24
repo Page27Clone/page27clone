@@ -3,10 +3,13 @@ package com.page27.project.service;
 import com.page27.project.config.Role;
 import com.page27.project.domain.Member;
 import com.page27.project.domain.MemberAddress;
+import com.page27.project.domain.MemberGrade;
 import com.page27.project.domain.Mileage;
 import com.page27.project.dto.MemberInfoDto;
+import com.page27.project.dto.MyPageDto;
 import com.page27.project.dto.ProfileDto;
 import com.page27.project.exception.DuplicateException;
+import com.page27.project.exception.LoginIdNotFoundException;
 import com.page27.project.repository.MemberRepository;
 
 import lombok.RequiredArgsConstructor;
@@ -110,6 +113,7 @@ public class MemberService implements UserDetailsService {
         return oneMember.getId();
     }
 
+    @Transactional
     @Override
     public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
 
@@ -119,15 +123,17 @@ public class MemberService implements UserDetailsService {
         List<GrantedAuthority> authorities = new ArrayList<>();
 
         if (("admin@example.com").equals(loginId)) {
-            authorities.add(new SimpleGrantedAuthority(Role.ADMIN.getValue()));
+            authorities.add(new SimpleGrantedAuthority(MemberGrade.ADMIN.getValue()));
+            userEntity.setMemberGrade(MemberGrade.ADMIN);
         } else {
-            authorities.add(new SimpleGrantedAuthority(Role.MEMBER.getValue()));
+            authorities.add(new SimpleGrantedAuthority(MemberGrade.MEMBER.getValue()));
+            userEntity.setMemberGrade(MemberGrade.MEMBER);
         }
         System.out.println("here authority check : " + authorities.size());
         System.out.println("here authority check : " + authorities.get(0).getAuthority());
 
         int visitCount = userEntity.getVisitCount();
-        userEntity.setVisitCount(visitCount++);
+        userEntity.setVisitCount(++visitCount);
 
         return new User(userEntity.getLoginId(), userEntity.getPassword(), authorities);
     }
@@ -139,4 +145,15 @@ public class MemberService implements UserDetailsService {
 //    return은 스프링 시큐리티에서 제공하는 UserDetails를 구현한 User를 반환한다.
 //    생성자의 각 매개변수는 순서대로 아이디, 비밀번호, 권한리스트이다.
 
+
+    public void showMySimpleInfo(String loginId){
+        MyPageDto myPageDto = new MyPageDto();
+
+        Optional<Member> findMember = memberRepository.findByloginId(loginId);
+
+        if(findMember == null){
+
+        }
+
+    }
 }
