@@ -32,6 +32,9 @@
                 <input type="button" class="findbtn" value="FIND PW">
             </div>
         </form>
+        <div sec:authorize="isAuthenticated()">
+            환영합니다 고객님
+        </div>
         <div class="rightmenu">
             <input type="button" class="delivery_check" value="배송조회">
             <input type="button" class="rightmenubtn" value="쿠폰">
