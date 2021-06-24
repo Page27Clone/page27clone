@@ -50,7 +50,7 @@ public class LoginController {
 
         referer = "http://localhost:8080/main/index";
         request.getSession().setAttribute("prevPage",referer);
-        
+
         return "redirect:/main/index";
     }
 //    nav bar 로그인 구현
