@@ -75,7 +75,7 @@ public class AdminController {
     }
 
     @GetMapping("/admin/main")
-    public String getMemberMainPage(Model model, @PageableDefault(size = 5) Pageable pageable){
+    public String getMemberMainPage(Model model, @PageableDefault(size = 4) Pageable pageable){
         Page<Member> memberBoards = memberRepository.findAllByOrderByCreatedAt(pageable);
 //        memberRepository.searchAll(pageable);
         Page<ItemDto> itemBoards = itemRepository.searchAllItem(pageable);

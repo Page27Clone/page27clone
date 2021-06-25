@@ -539,7 +539,7 @@ public class MainController {
             memberService.deleteMemberByLoginId(loginId);
             HttpSession session = request.getSession();
             session.invalidate();
-            
+
             return "정상적으로 회원탈퇴되었습니다.";
         }else{
             return "비밀번호가 올바르지 않습니다";

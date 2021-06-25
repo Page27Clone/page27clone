@@ -97,7 +97,7 @@ public class ItemController {
     }
 
     @GetMapping("/admin/itemList")
-    public String itemListPage(Model model, @PageableDefault(size=8) Pageable pageable, SearchItem searchItem){
+    public String itemListPage(Model model, @PageableDefault(size=5) Pageable pageable, SearchItem searchItem){
         int homeEndPage= 0;
         int homeStartPage = 0;
         if(searchItem.getItem_name() == null) {
