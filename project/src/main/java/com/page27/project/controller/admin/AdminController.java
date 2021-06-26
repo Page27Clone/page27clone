@@ -6,18 +6,11 @@ import com.page27.project.dto.OrderDto;
 import com.page27.project.repository.ItemRepository;
 import com.page27.project.repository.MemberRepository;
 import com.page27.project.repository.OrderRepository;
-import com.page27.project.service.MemberService;
+import com.page27.project.service.MemberServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.tool.schema.internal.exec.ScriptTargetOutputToFile;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,7 +24,7 @@ import java.util.Optional;
 public class AdminController {
 
     private final MemberRepository memberRepository;
-    private final MemberService memberService;
+    private final MemberServiceImpl memberServiceImpl;
     private final ItemRepository itemRepository;
     private final OrderRepository orderRepository;
 
@@ -67,7 +60,7 @@ public class AdminController {
         tempMember.setPassword(newPassword);
 
         BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
-        Long resultId = memberService.changePassword(tempMember.getId(), passwordEncoder.encode(newPassword));
+        Long resultId = memberServiceImpl.changePassword(tempMember.getId(), passwordEncoder.encode(newPassword));
 
         System.out.println(resultId);
 

@@ -1,14 +1,11 @@
 package com.page27.project.controller.admin;
 
 import com.page27.project.domain.Item;
-import com.page27.project.domain.Member;
 import com.page27.project.domain.SearchItem;
 import com.page27.project.dto.ItemDto;
-import com.page27.project.dto.QItemDto;
 import com.page27.project.repository.ItemRepository;
-import com.page27.project.service.ItemService;
+import com.page27.project.service.ItemServiceImpl;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.io.FilenameUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -20,11 +17,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
-import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -36,7 +30,7 @@ public class ItemController {
     private final Logger logger = LoggerFactory.getLogger(this.getClass().getSimpleName());
 
     private final ItemRepository itemRepository;
-    private final ItemService itemService;
+    private final ItemServiceImpl itemServiceImpl;
 
     @GetMapping("/admin/register")
     public String getRegisterItemPage(){
@@ -133,7 +127,7 @@ public class ItemController {
     @PatchMapping("/admin/itemList1")
     public String itemStatusOnSalePage(@RequestBody List<Map<String,String>> allData){
         for(Map<String,String> temp : allData){
-            itemService.changeItemStatusOnSale(temp.get("itemIdx"),temp.get("itemColor"));
+            itemServiceImpl.changeItemStatusOnSale(temp.get("itemIdx"),temp.get("itemColor"));
         }
         return "상품 상태 판매 변경완료";
     }
@@ -143,7 +137,7 @@ public class ItemController {
     public String itemStatusSoldOutPage(@RequestBody List<Map<String,String>> allData ){
 
         for(Map<String,String> temp : allData){
-            itemService.changeItemStatusSoldOut(temp.get("itemIdx"),temp.get("itemColor"));
+            itemServiceImpl.changeItemStatusSoldOut(temp.get("itemIdx"),temp.get("itemColor"));
         }
         return "상품 상태 품절 변경완료";
     }
@@ -152,7 +146,7 @@ public class ItemController {
     @DeleteMapping("/admin/itemList3")
     public String itemdeletePage(@RequestBody List<Map<String,String>> allData){
         for(Map<String,String> temp : allData){
-            itemService.deleteItemById(temp.get("itemIdx"),temp.get("itemColor"));
+            itemServiceImpl.deleteItemById(temp.get("itemIdx"),temp.get("itemColor"));
         }
         return "상품 삭제 완료";
     }

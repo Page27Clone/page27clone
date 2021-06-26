@@ -1,13 +1,12 @@
 package com.page27.project.controller.admin;
 
 import com.page27.project.domain.Member;
-import com.page27.project.domain.OrderItem;
 import com.page27.project.domain.SearchMember;
 import com.page27.project.dto.MemberDto;
 import com.page27.project.repository.MemberRepository;
 import com.page27.project.repository.OrderItemRepository;
 import com.page27.project.repository.OrderRepository;
-import com.page27.project.service.MemberService;
+import com.page27.project.service.MemberServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -22,7 +21,7 @@ import java.util.List;
 @RequiredArgsConstructor
 @RequestMapping("/admin")
 public class MemberController {
-    private final MemberService memberService;
+    private final MemberServiceImpl memberServiceImpl;
     private final MemberRepository memberRepository;
     private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
@@ -56,7 +55,7 @@ public class MemberController {
 
     @GetMapping("/userList/user/{id}")
     public String pageUser(@PathVariable Long id, Model model){
-        model.addAttribute("Member",memberService.findOneMember(id));
+        model.addAttribute("Member", memberServiceImpl.findMemberById(id));
 
         return "admin/admin_user";
     }
@@ -64,7 +63,7 @@ public class MemberController {
     @DeleteMapping("/userList/{id}")
     public @ResponseBody String test(@PathVariable Long id){
         System.out.println("here delete part");
-        memberService.deleteById(id);
+        memberServiceImpl.deleteById(id);
 //        orderRepository.find
         return "Ajax 통신완료";
     }
@@ -74,7 +73,7 @@ public class MemberController {
         int size = idList.size();
 
         for(int i = 0;i < size;i++){
-            memberService.deleteById(idList.get(i));
+            memberServiceImpl.deleteById(idList.get(i));
         }
         return "선택 삭제 완료";
     }

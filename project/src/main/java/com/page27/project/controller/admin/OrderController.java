@@ -1,13 +1,11 @@
 package com.page27.project.controller.admin;
 
 import com.page27.project.domain.*;
-import com.page27.project.dto.MemberDto;
 import com.page27.project.dto.OrderDto;
 import com.page27.project.dto.OrderInfo;
 import com.page27.project.repository.OrderItemRepository;
 import com.page27.project.repository.OrderRepository;
-import com.page27.project.service.MemberService;
-import com.page27.project.service.OrderService;
+import com.page27.project.service.OrderServiceImpl;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
@@ -28,7 +26,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class OrderController {
 
-    private final OrderService orderService;
+    private final OrderServiceImpl orderServiceImpl;
     private final OrderRepository orderRepository;
     private final OrderItemRepository orderItemRepository;
 
@@ -36,7 +34,7 @@ public class OrderController {
 
     @GetMapping("orders/list")
     public String showOrderList(Model model){
-        List<Order> orderList = orderService.findAllOrders();
+        List<Order> orderList = orderServiceImpl.findAllOrders();
         OrderInfo orderInfo = new OrderInfo();
         List<OrderInfo> orderInfoList = new ArrayList<>();
         for(Order order : orderList){
@@ -90,7 +88,7 @@ public class OrderController {
     public String orderStatusChangePage(@PathVariable Long id ,@RequestParam OrderStatus status){
 
         logger.info("id : " + id.toString());
-        orderService.changeOrderStatus(id,status);
+        orderServiceImpl.changeOrderStatus(id,status);
 
         return "OrderItem 확인";
     }
