@@ -156,9 +156,6 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 )
                 .fetchOne();
 
-
-//        List<ItemDto> content = results.getResults();
-
         return results;
     }
 

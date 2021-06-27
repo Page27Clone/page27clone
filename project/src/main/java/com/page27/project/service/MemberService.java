@@ -1,7 +1,9 @@
 package com.page27.project.service;
 
 import com.page27.project.domain.Member;
+import com.page27.project.domain.SearchMember;
 import com.page27.project.dto.MemberInfoDto;
+import com.page27.project.dto.MemberPageDto;
 import com.page27.project.dto.MyPageDto;
 import com.page27.project.dto.ProfileDto;
 import org.springframework.data.domain.Page;
@@ -40,6 +42,10 @@ public interface MemberService {
 
     Page<Member> findAllMemberByOrderByCreatedAt(Pageable pageable);
 //    등록 순서에 따라 회원 조회하는 메소드
+
+    MemberPageDto findAllMemberByPaging(Pageable pageable);
+
+    MemberPageDto findAllMemberByConditionByPaging(SearchMember searchMember, Pageable pageable);
 
     int getVisitCount();
 //    전체 방문자 수 구하는 기능

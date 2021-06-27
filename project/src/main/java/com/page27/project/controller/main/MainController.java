@@ -48,7 +48,7 @@ public class MainController {
     @GetMapping("/main/order")
     public String getOrderPage(Principal principal, @PageableDefault(size = 2) Pageable pageable, Model model, SearchOrder searchOrder) {
         String loginId = principal.getName();
-        OrderPageDto orderPagingDto = orderServiceImpl.getOrderPagingDto(searchOrder, pageable, loginId);
+        OrderMainPageDto orderPagingDto = orderServiceImpl.getOrderPagingDto(searchOrder, pageable, loginId);
 
         model.addAttribute("startPage", orderPagingDto.getHomeStartPage());
         model.addAttribute("endPage", orderPagingDto.getHomeEndPage());

@@ -78,7 +78,6 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
                         buyerEq(searchOrder.getSinput()),
                         betweenDate(searchOrder.getFirstdate(), searchOrder.getLastdate())
                 )
-//                이게 검색어가 입력이 되어야지 메소드가 실현됨 그래서 getOmode만으로는 메소드가 실행이 안된다.
                 .orderBy(QOrderItem.orderItem.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -162,63 +161,29 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
             LocalDate start = LocalDate.now().minusYears(10L);
             LocalDate end = LocalDate.now();
 
-            logger.info(firstDate);
-            logger.info(lastDate);
-
-            logger.info("here none both parmeter");
-            logger.info("start = " + start);
-            logger.info("end = " + end);
-
             return QOrder.order.orderedAt.between(start,end);
         }
         else if(StringUtils.isNotEmpty(firstDate) && StringUtils.isEmpty(lastDate)){
-
-            logger.info("here none lastDate parmeter");
-
-            logger.info(firstDate);
-            logger.info(lastDate);
-
             LocalDate start = LocalDate.parse(firstDate,DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             LocalDate end = LocalDate.now();
-
-            logger.info("start = " + start);
-            logger.info("end = " + end);
 
             return QOrder.order.orderedAt.between(start,end);
         }
         else if(StringUtils.isEmpty(firstDate) && StringUtils.isNotEmpty(lastDate)){
 
-            logger.info("here none firstDate parmeter");
-
-            logger.info(firstDate);
-            logger.info(lastDate);
-
             LocalDate start = LocalDate.now().minusYears(10L);
-//           LocalDate 와 LocalDateTime의 차이로 인하여 min을 하면 형식이 이것이 아니라 변하게 된다. 그래서 임의로 10년 전으로 계산한다.
             LocalDate end = LocalDate.parse(lastDate,DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-
-            logger.info("start = " + start);
-            logger.info("end = " + end);
+//           LocalDate 와 LocalDateTime의 차이로 인하여 min을 하면 형식이 이것이 아니라 변하게 된다. 그래서 임의로 10년 전으로 계산한다.
 
             return QOrder.order.orderedAt.between(start,end);
         }
         else{
-            logger.info("here both parmeter");
-
-            logger.info(firstDate);
-            logger.info(lastDate);
-
             LocalDate start = LocalDate.parse(firstDate,DateTimeFormatter.ofPattern("yyyy-MM-dd"));
-            logger.info("start ok");
-
             LocalDate end = LocalDate.parse(lastDate);
-
-            logger.info("start = " + start);
-            logger.info("end = " + end);
 
             return QOrder.order.orderedAt.between(start,end);
         }
-    }//날짜 비교 지금 안됨
+    }
 
     private BooleanExpression buyerEq(String buyerCondition){
         if(StringUtils.isEmpty(buyerCondition)){

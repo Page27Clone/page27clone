@@ -54,25 +54,45 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
 
     @Override
     public Page<MemberDto> searchByCondition(SearchMember search, Pageable pageable) {
+        QueryResults<MemberDto> results = null;
 
-        QueryResults<MemberDto> results = queryFactory
-                .select(new QMemberDto(
-                        QMember.member.id,
-                        QMember.member.name,
-                        QMember.member.loginId,
-                        QMember.member.memberGrade,
-                        QMember.member.phoneNumber,
-                        QMember.member.visitCount,
-                        QMember.member.orderCount,
-                        QMember.member.createdAt
-                ))
-                .from(QMember.member)
-                .where(nameEq(search.getSearchKeyword()),loginIdEq(search.getSearchKeyword()))
-                .orderBy(QMember.member.createdAt.desc())
-                .offset(pageable.getOffset())
-                .limit(pageable.getPageSize())
-                .fetchResults();
-
+        if(search.getSearchCondition().equals("userid")){
+            results = queryFactory
+                    .select(new QMemberDto(
+                            QMember.member.id,
+                            QMember.member.name,
+                            QMember.member.loginId,
+                            QMember.member.memberGrade,
+                            QMember.member.phoneNumber,
+                            QMember.member.visitCount,
+                            QMember.member.orderCount,
+                            QMember.member.createdAt
+                    ))
+                    .from(QMember.member)
+                    .where(loginIdEq(search.getSearchKeyword()))
+                    .orderBy(QMember.member.createdAt.desc())
+                    .offset(pageable.getOffset())
+                    .limit(pageable.getPageSize())
+                    .fetchResults();
+        }else if(search.getSearchCondition().equals("username")){
+            results = queryFactory
+                    .select(new QMemberDto(
+                            QMember.member.id,
+                            QMember.member.name,
+                            QMember.member.loginId,
+                            QMember.member.memberGrade,
+                            QMember.member.phoneNumber,
+                            QMember.member.visitCount,
+                            QMember.member.orderCount,
+                            QMember.member.createdAt
+                    ))
+                    .from(QMember.member)
+                    .where(nameEq(search.getSearchKeyword()))
+                    .orderBy(QMember.member.createdAt.desc())
+                    .offset(pageable.getOffset())
+                    .limit(pageable.getPageSize())
+                    .fetchResults();
+        }
 
         List<MemberDto> content = results.getResults();
         long total = results.getTotal();

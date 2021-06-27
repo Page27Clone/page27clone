@@ -132,8 +132,8 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public OrderPageDto getOrderPagingDto(SearchOrder searchOrder, Pageable pageable, String loginId){
-        OrderPageDto orderPageDto = new OrderPageDto();
+    public OrderMainPageDto getOrderPagingDto(SearchOrder searchOrder, Pageable pageable, String loginId){
+        OrderMainPageDto orderPageDto = new OrderMainPageDto();
         Page<MainPageOrderDto> mainPageOrderBoards = null;
 
         if(StringUtils.isEmpty(searchOrder.getFirstdate()) && StringUtils.isEmpty(searchOrder.getLastdate())) {
@@ -148,6 +148,36 @@ public class OrderServiceImpl implements OrderService{
         orderPageDto.setMainPageOrderBoards(mainPageOrderBoards);
         orderPageDto.setHomeStartPage(homeStartPage);
         orderPageDto.setHomeEndPage(homeEndPage);
+
+        return orderPageDto;
+    }
+
+    @Override
+    public OrderPageDto findAllOrderByPaging(Pageable pageable) {
+        OrderPageDto orderPageDto = new OrderPageDto();
+
+        Page<OrderDto> orderBoards = orderRepository.searchAllOrder(pageable);
+        int homeStartPage = Math.max(1,orderBoards.getPageable().getPageNumber() - 4);
+        int homeEndPage = Math.min(orderBoards.getTotalPages(),orderBoards.getPageable().getPageNumber() + 4);
+
+        orderPageDto.setOrderBoards(orderBoards);
+        orderPageDto.setHomeStartPage(homeStartPage);
+        orderPageDto.setHomeEndPage(homeEndPage);
+
+        return orderPageDto;
+    }
+
+    @Override
+    public OrderPageDto findAllOrderByConditionByPaging(SearchOrder searchOrder, Pageable pageable) {
+        OrderPageDto orderPageDto = new OrderPageDto();
+
+        Page<OrderDto> orderBoards = orderRepository.searchAllOrderByCondition(searchOrder, pageable);
+        int startPage = Math.max(1,orderBoards.getPageable().getPageNumber() - 4);
+        int endPage = Math.min(orderBoards.getTotalPages(),orderBoards.getPageable().getPageNumber() + 4);
+
+        orderPageDto.setOrderBoards(orderBoards);
+        orderPageDto.setHomeStartPage(startPage);
+        orderPageDto.setHomeEndPage(endPage);
 
         return orderPageDto;
     }

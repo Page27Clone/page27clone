@@ -312,8 +312,8 @@ public class ItemServiceImpl implements ItemService{
         ItemPageDto itemPageDto = new ItemPageDto();
         Page<ItemDto> itemBoards = itemRepository.searchAllItem(pageable);
 
-        int homeStartPage = Math.max(1, itemBoards.getPageable().getPageNumber() - 4);
-        int homeEndPage = Math.min(itemBoards.getTotalPages(), itemBoards.getPageable().getPageNumber() + 4);
+        int homeStartPage = Math.max(1, itemBoards.getPageable().getPageNumber() - 1);
+        int homeEndPage = Math.min(itemBoards.getTotalPages(), itemBoards.getPageable().getPageNumber() + 3);
 
         itemPageDto.setItemBoards(itemBoards);
         itemPageDto.setHomeStartPage(homeStartPage);
@@ -327,8 +327,8 @@ public class ItemServiceImpl implements ItemService{
         ItemPageDto itemPageDto = new ItemPageDto();
         Page<ItemDto> itemBoards = itemRepository.searchAllItemByCondition(searchItem, pageable);
 
-        int homeStartPage = Math.max(1, itemBoards.getPageable().getPageNumber() - 4);
-        int homeEndPage = Math.min(itemBoards.getTotalPages(), itemBoards.getPageable().getPageNumber() + 4);
+        int homeStartPage = Math.max(1, itemBoards.getPageable().getPageNumber() - 1);
+        int homeEndPage = Math.min(itemBoards.getTotalPages(), itemBoards.getPageable().getPageNumber() + 3);
 
         itemPageDto.setItemBoards(itemBoards);
         itemPageDto.setHomeStartPage(homeStartPage);

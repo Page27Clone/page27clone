@@ -1,6 +1,7 @@
 package com.page27.project.repository;
 
 import com.page27.project.domain.Member;
+import com.page27.project.dto.MemberDto;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -12,13 +13,9 @@ import java.util.Optional;
 
 
 public interface MemberRepository extends JpaRepository<Member, Long>,MemberRepositoryCustom{
-    List<Member> findByName(String name);
-
-    //Optional<Member> findByLoginId(String loginId);
     Optional<Member> findByloginId(String loginId);
-    Page<Member> findAllByCreatedAt(LocalDate createdAt, Pageable pageable);
+
     Page<Member> findAllByOrderByCreatedAt(Pageable pageable);
-    Page<Member> findAll(Pageable pageable);
 
     @Query("select sum(m.visitCount) from Member m")
     int visitCountResult();

@@ -1,13 +1,8 @@
 package com.page27.project.service;
 
 import com.page27.project.config.Role;
-import com.page27.project.domain.Member;
-import com.page27.project.domain.MemberAddress;
-import com.page27.project.domain.MemberGrade;
-import com.page27.project.domain.Mileage;
-import com.page27.project.dto.MemberInfoDto;
-import com.page27.project.dto.MyPageDto;
-import com.page27.project.dto.ProfileDto;
+import com.page27.project.domain.*;
+import com.page27.project.dto.*;
 import com.page27.project.exception.DuplicateException;
 import com.page27.project.exception.LoginIdNotFoundException;
 import com.page27.project.repository.MemberRepository;
@@ -105,8 +100,36 @@ public class MemberServiceImpl implements UserDetailsService, MemberService {
 
     @Override
     public Page<Member> findAllMemberByOrderByCreatedAt(Pageable pageable) {
-
         return memberRepository.findAllByOrderByCreatedAt(pageable);
+    }
+
+    @Override
+    public MemberPageDto findAllMemberByPaging(Pageable pageable) {
+        MemberPageDto memberPageDto = new MemberPageDto();
+        Page<MemberDto> memberBoards = memberRepository.searchAll(pageable);
+        int homeStartPage = Math.max(1, memberBoards.getPageable().getPageNumber());
+        int homeEndPage = Math.min(memberBoards.getTotalPages(), memberBoards.getPageable().getPageNumber() + 5);
+
+        memberPageDto.setMemberBoards(memberBoards);
+        memberPageDto.setHomeStartPage(homeStartPage);
+        memberPageDto.setHomeEndPage(homeEndPage);
+
+        return memberPageDto;
+    }
+
+    @Override
+    public MemberPageDto findAllMemberByConditionByPaging(SearchMember searchMember, Pageable pageable) {
+        MemberPageDto memberPageDto = new MemberPageDto();
+        Page<MemberDto> memberBoards = memberRepository.searchByCondition(searchMember, pageable);
+
+        int startPage = Math.max(1,memberBoards.getPageable().getPageNumber()-2);
+        int endPage = Math.min(memberBoards.getTotalPages(),startPage + 4);
+
+        memberPageDto.setMemberBoards(memberBoards);
+        memberPageDto.setHomeStartPage(startPage);
+        memberPageDto.setHomeEndPage(endPage);
+
+        return memberPageDto;
     }
 
     @Override

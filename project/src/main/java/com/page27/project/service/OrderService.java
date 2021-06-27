@@ -26,7 +26,11 @@ public interface OrderService {
     MyPageOrderStatusDto showOrderStatus(String loginId);
 //    주문상태 보여주는 메소드
 
-    OrderPageDto getOrderPagingDto(SearchOrder searchOrder, Pageable pageable, String loginId);
+    OrderMainPageDto getOrderPagingDto(SearchOrder searchOrder, Pageable pageable, String loginId);
+
+    OrderPageDto findAllOrderByPaging(Pageable pageable);
+
+    OrderPageDto findAllOrderByConditionByPaging(SearchOrder searchOrder, Pageable pageable);
 
     Page<OrderDto> findAllOrder(Pageable pageable);
 }

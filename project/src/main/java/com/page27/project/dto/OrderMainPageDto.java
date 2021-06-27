@@ -6,8 +6,8 @@ import org.springframework.data.domain.Page;
 
 @Getter
 @Setter
-public class OrderPageDto {
-    Page<OrderDto> orderBoards;
+public class OrderMainPageDto {
+    Page<MainPageOrderDto> mainPageOrderBoards;
     int homeStartPage;
     int homeEndPage;
 }

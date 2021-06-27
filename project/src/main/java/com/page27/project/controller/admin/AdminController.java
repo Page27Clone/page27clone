@@ -1,11 +1,7 @@
 package com.page27.project.controller.admin;
 
-import com.page27.project.domain.Item;
-import com.page27.project.domain.Member;
-import com.page27.project.domain.SearchItem;
-import com.page27.project.dto.ItemDto;
-import com.page27.project.dto.ItemPageDto;
-import com.page27.project.dto.OrderDto;
+import com.page27.project.domain.*;
+import com.page27.project.dto.*;
 import com.page27.project.repository.ItemRepository;
 import com.page27.project.repository.MemberRepository;
 import com.page27.project.repository.OrderRepository;
@@ -13,6 +9,7 @@ import com.page27.project.service.ItemServiceImpl;
 import com.page27.project.service.MemberServiceImpl;
 import com.page27.project.service.OrderServiceImpl;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
@@ -28,6 +25,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -176,5 +174,94 @@ public class AdminController {
             itemServiceImpl.deleteItemById(temp.get("itemIdx"),temp.get("itemColor"));
         }
         return "상품 삭제 완료";
+    }
+
+    @GetMapping("/admin/userList")
+    public String pageList(Model model, @PageableDefault(size=4) Pageable pageable, SearchMember searchMember) {
+        MemberPageDto memberPageDto = new MemberPageDto();
+
+        if(searchMember.getSearchKeyword() == null){
+            memberPageDto = memberServiceImpl.findAllMemberByPaging(pageable);
+        }
+        else{
+            memberPageDto = memberServiceImpl.findAllMemberByConditionByPaging(searchMember,pageable);
+        }
+
+        int homeStartPage = memberPageDto.getHomeStartPage();
+        int homeEndPage = memberPageDto.getHomeEndPage();
+        Page<MemberDto> memberBoards = memberPageDto.getMemberBoards();
+
+        model.addAttribute("startPage",homeStartPage);
+        model.addAttribute("endPage",homeEndPage);
+        model.addAttribute("memberList",memberBoards);
+        model.addAttribute("searchCondition",searchMember.getSearchCondition());
+        model.addAttribute("searchKeyword",searchMember.getSearchKeyword());
+
+        return "admin/admin_userlist";
+    }
+
+    @GetMapping("/admin/userList/user/{id}")
+    public String pageUser(@PathVariable Long id, Model model){
+        model.addAttribute("Member", memberServiceImpl.findMemberById(id));
+
+        return "admin/admin_user";
+    }
+
+    @ResponseBody
+    @DeleteMapping("/admin/userList/{id}")
+    public String deleteMember(@PathVariable Long id){
+        memberServiceImpl.deleteById(id);
+
+        return "회원 삭제 완료";
+    }
+
+    @ResponseBody
+    @DeleteMapping("/admin/userList")
+    public String deleteChecked(@RequestParam(value="idList", required = false) List<Long> idList) {
+        int size = idList.size();
+
+        for(int i = 0;i < size;i++){
+            memberServiceImpl.deleteById(idList.get(i));
+        }
+        return "선택된 회원 삭제 완료";
+    }
+
+    @GetMapping("/admin/orderList")
+    public String getOrderPage(Model model, @PageableDefault(size=4) Pageable pageable, SearchOrder searchOrder){
+
+        OrderPageDto orderPageDto = new OrderPageDto();
+
+        if(StringUtils.isEmpty(searchOrder.getFirstdate()) && StringUtils.isEmpty(searchOrder.getLastdate()) && StringUtils.isEmpty(searchOrder.getSinput())){
+            orderPageDto = orderServiceImpl.findAllOrderByPaging(pageable);
+        }
+        else{
+            orderPageDto = orderServiceImpl.findAllOrderByConditionByPaging(searchOrder,pageable);
+        }
+
+        Page<OrderDto> orderBoards = orderPageDto.getOrderBoards();
+        int homeStartPage = orderPageDto.getHomeStartPage();
+        int homeEndPage = orderPageDto.getHomeEndPage();
+
+        model.addAttribute("orderList",orderBoards);
+        model.addAttribute("startPage",homeStartPage);
+        model.addAttribute("endPage",homeEndPage);
+
+        model.addAttribute("firstDate", searchOrder.getFirstdate());
+        model.addAttribute("lastDate",searchOrder.getLastdate());
+        model.addAttribute("oMode",searchOrder.getOmode());
+        model.addAttribute("sMode","buyer");
+        model.addAttribute("sInput",searchOrder.getSinput());
+        model.addAttribute("oModeStatus",searchOrder.getOmode());
+
+        return "admin/admin_order";
+
+    }
+
+    @ResponseBody
+    @PatchMapping("/admin/orderList1/{id}")
+    public String orderStatusChangePage(@PathVariable Long id ,@RequestParam OrderStatus status){
+        orderServiceImpl.changeOrderStatus(id,status);
+
+        return "주문 상품 상태 변경완료";
     }
 }
