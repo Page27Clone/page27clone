@@ -265,6 +265,7 @@ ul {
 
 .menu_cell_category_drop .menu_cell_category_dropdown .category_img_box img{
     display: block;
+    width: 250px;
 }
 
 
