@@ -6,6 +6,7 @@ import com.google.gson.JsonParser;
 import com.page27.project.domain.Basket;
 import com.page27.project.domain.Item;
 import com.page27.project.domain.Member;
+import com.page27.project.domain.SearchItem;
 import com.page27.project.dto.*;
 import com.page27.project.repository.BasketRepository;
 import com.page27.project.repository.ItemRepository;
@@ -13,12 +14,12 @@ import com.page27.project.repository.MemberRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -29,7 +30,7 @@ public class ItemServiceImpl implements ItemService{
 
     @Transactional
     @Override
-    public Long save(Item item){
+    public Long saveItem(Item item){
         itemRepository.save(item);
 
         return item.getId();
@@ -155,7 +156,7 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
-    public ItemPageDto getItemPagingDto(Pageable pageable, String firstCategory, String secondCategory) {
+    public ItemPageDto getItemPagingDtoByCategory(Pageable pageable, String firstCategory, String secondCategory) {
         ItemPageDto itemPageDto = new ItemPageDto();
 
         Page<ItemDto> itemBoards = itemRepository.findAllItem(pageable, firstCategory, secondCategory);
@@ -300,5 +301,51 @@ public class ItemServiceImpl implements ItemService{
 
         return newArrivalList;
     }
+
+    @Override
+    public Page<ItemDto> findAllItem(Pageable pageable) {
+        return itemRepository.searchAllItem(pageable);
+    }
+
+    @Override
+    public ItemPageDto findAllItemByPaging(Pageable pageable){
+        ItemPageDto itemPageDto = new ItemPageDto();
+        Page<ItemDto> itemBoards = itemRepository.searchAllItem(pageable);
+
+        int homeStartPage = Math.max(1, itemBoards.getPageable().getPageNumber() - 4);
+        int homeEndPage = Math.min(itemBoards.getTotalPages(), itemBoards.getPageable().getPageNumber() + 4);
+
+        itemPageDto.setItemBoards(itemBoards);
+        itemPageDto.setHomeStartPage(homeStartPage);
+        itemPageDto.setHomeEndPage(homeEndPage);
+
+        return itemPageDto;
+    }
+
+    @Override
+    public ItemPageDto findAllItemByConditionByPaging(SearchItem searchItem, Pageable pageable) {
+        ItemPageDto itemPageDto = new ItemPageDto();
+        Page<ItemDto> itemBoards = itemRepository.searchAllItemByCondition(searchItem, pageable);
+
+        int homeStartPage = Math.max(1, itemBoards.getPageable().getPageNumber() - 4);
+        int homeEndPage = Math.min(itemBoards.getTotalPages(), itemBoards.getPageable().getPageNumber() + 4);
+
+        itemPageDto.setItemBoards(itemBoards);
+        itemPageDto.setHomeStartPage(homeStartPage);
+        itemPageDto.setHomeEndPage(homeEndPage);
+
+        return itemPageDto;
+    }
+
+    @Override
+    public Page<ItemDto> findAllItemByCondition(SearchItem searchItem, Pageable pageable){
+        return itemRepository.searchAllItemByCondition(searchItem,pageable);
+    }
+
+    @Override
+    public Long getMaxItemIdx() {
+        return itemRepository.searchMaxItemIdx();
+    }
+
 
 }

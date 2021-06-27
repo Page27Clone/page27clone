@@ -103,6 +103,17 @@ public class MemberServiceImpl implements UserDetailsService, MemberService {
         return myProfileDto;
     }
 
+    @Override
+    public Page<Member> findAllMemberByOrderByCreatedAt(Pageable pageable) {
+
+        return memberRepository.findAllByOrderByCreatedAt(pageable);
+    }
+
+    @Override
+    public int getVisitCount() {
+        return memberRepository.visitCountResult();
+    }
+
     @Transactional
     @Override
     public void updateProfile(String loginId, ProfileDto profileDto) {

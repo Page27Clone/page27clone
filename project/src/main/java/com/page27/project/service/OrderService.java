@@ -3,10 +3,8 @@ package com.page27.project.service;
 import com.page27.project.domain.Order;
 import com.page27.project.domain.OrderStatus;
 import com.page27.project.domain.SearchOrder;
-import com.page27.project.dto.MyPageOrderStatusDto;
-import com.page27.project.dto.OrderPageDto;
-import com.page27.project.dto.PaymentAddressDto;
-import com.page27.project.dto.PaymentPriceDto;
+import com.page27.project.dto.*;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -29,4 +27,6 @@ public interface OrderService {
 //    주문상태 보여주는 메소드
 
     OrderPageDto getOrderPagingDto(SearchOrder searchOrder, Pageable pageable, String loginId);
+
+    Page<OrderDto> findAllOrder(Pageable pageable);
 }

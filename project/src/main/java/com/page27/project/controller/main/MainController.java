@@ -26,12 +26,9 @@ public class MainController {
     private final DeliveryAddressServiceImpl deliveryAddressServiceImpl;
     private final OrderItemServiceImpl orderItemServiceImpl;
     private final BasketServiceImpl basketServiceImpl;
-
-
     //이건 테스트
     private final MileageServiceImpl mileageServiceImpl;
     private final OrderServiceImpl orderServiceImpl;
-
     private final ItemServiceImpl itemServiceImpl;
 
 
@@ -168,7 +165,7 @@ public class MainController {
 
     @GetMapping("/main/category/{firstCategory}/{secondCategory}")
     public String getCategoryPage(@PathVariable String firstCategory, @PathVariable String secondCategory, @PageableDefault(size = 8) Pageable pageable, Model model) {
-        ItemPageDto itemPagingDto = itemServiceImpl.getItemPagingDto(pageable, firstCategory, secondCategory);
+        ItemPageDto itemPagingDto = itemServiceImpl.getItemPagingDtoByCategory(pageable, firstCategory, secondCategory);
 
         model.addAttribute("startPage", itemPagingDto.getHomeStartPage());
         model.addAttribute("endPage", itemPagingDto.getHomeEndPage());

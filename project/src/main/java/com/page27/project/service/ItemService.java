@@ -2,14 +2,16 @@ package com.page27.project.service;
 
 import com.page27.project.domain.Basket;
 import com.page27.project.domain.Item;
+import com.page27.project.domain.SearchItem;
 import com.page27.project.dto.*;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 public interface ItemService {
 
-    Long save(Item item);
+    Long saveItem(Item item);
 //    상품 저장하는 메소드
 
     Long changeItemStatusSoldOut(String idx, String color);
@@ -27,8 +29,12 @@ public interface ItemService {
     void moveItemToBasket(String loginId,Long itemIdx,String itemColor,int quantity);
 //    상품을 장바구니에 담는 메소드
 
-    ItemPageDto getItemPagingDto(Pageable pageable, String firstCategory, String secondCategory);
+    ItemPageDto getItemPagingDtoByCategory(Pageable pageable, String firstCategory, String secondCategory);
 //    상품을 페이징해서 조회하는 메소드
+
+    ItemPageDto findAllItemByPaging(Pageable pageable);
+
+    ItemPageDto findAllItemByConditionByPaging(SearchItem searchItem, Pageable pageable);
 
     List<ItemDto> getAllItemInBasket(List<Basket> basketList);
 //    장바구니에 있는 모든 아이템 조회
@@ -56,4 +62,11 @@ public interface ItemService {
     List<WeeklyBestDto> getTopKnitWeeklyBestItem();
 
     List<WeeklyBestDto> getNewArrivalItem();
+
+    Page<ItemDto> findAllItem(Pageable pageable);
+
+    Page<ItemDto> findAllItemByCondition(SearchItem searchItem, Pageable pageable);
+
+    Long getMaxItemIdx();
+//    새로운 상품 등록을 위해 마지막 등록 인덱스 구하는 메소드
 }

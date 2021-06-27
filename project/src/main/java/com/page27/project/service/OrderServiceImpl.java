@@ -151,5 +151,10 @@ public class OrderServiceImpl implements OrderService{
 
         return orderPageDto;
     }
+
+    @Override
+    public Page<OrderDto> findAllOrder(Pageable pageable) {
+        return orderRepository.searchAllOrder(pageable);
+    }
 //    order 페이지의 페이징 관련 메소드
 }

@@ -7,7 +7,7 @@ function changeStatus(manage_option, idlist){ //ajax로 처리;
         case 'onsale': //수정 사항 있음.
             $.ajax({
                 type: 'PATCH',
-                url: '/admin/itemList1',
+                url: '/admin/itemList/onsale',
                 data: json,
                 beforeSend : function(xhr)
                 {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
@@ -24,7 +24,7 @@ function changeStatus(manage_option, idlist){ //ajax로 처리;
         case 'soldout':
             $.ajax({
                 type: 'PATCH',
-                url: '/admin/itemList2',
+                url: '/admin/itemList/soldout',
                 data: json,
                 beforeSend : function(xhr)
                 {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
@@ -41,7 +41,7 @@ function changeStatus(manage_option, idlist){ //ajax로 처리;
         case 'deletegoods':
             $.ajax({
                 type: 'DELETE',
-                url: '/admin/itemList3',
+                url: '/admin/itemList/remove',
                 data: json,
                 beforeSend : function(xhr)
                 {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/

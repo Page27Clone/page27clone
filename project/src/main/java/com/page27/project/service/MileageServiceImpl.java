@@ -61,7 +61,7 @@ public class MileageServiceImpl implements MileageService{
     public Long joinUserMileage(Long id){
         Member member = memberRepository.findById(id).get();
         Mileage mileage = new Mileage();
-        mileage.setMileagePrice(1000);
+        mileage.setMileagePrice(2000);
         mileage.setMileageContent("회원가입 적립금");
         mileage.setMember(member);
 

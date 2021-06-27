@@ -4,6 +4,8 @@ import com.page27.project.domain.Member;
 import com.page27.project.dto.MemberInfoDto;
 import com.page27.project.dto.MyPageDto;
 import com.page27.project.dto.ProfileDto;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public interface MemberService {
 
@@ -34,4 +36,11 @@ public interface MemberService {
 //    Pk를 이용한 회원 삭제 기능
     
     ProfileDto showProfileData(String loginId);
+//    개인 상세정보 보여주는 메소드
+
+    Page<Member> findAllMemberByOrderByCreatedAt(Pageable pageable);
+//    등록 순서에 따라 회원 조회하는 메소드
+
+    int getVisitCount();
+//    전체 방문자 수 구하는 기능
 }
