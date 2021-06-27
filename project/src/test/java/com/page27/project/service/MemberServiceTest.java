@@ -1,7 +1,6 @@
 package com.page27.project.service;
 
 import com.page27.project.domain.Member;
-import com.page27.project.exception.DuplicateException;
 import com.page27.project.repository.MemberRepository;
 
 import org.junit.jupiter.api.Assertions;
@@ -10,7 +9,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 
@@ -21,7 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class MemberServiceTest {
 
     @Autowired
-    MemberService memberService;
+    MemberServiceImpl memberServiceImpl;
 
     @Autowired
     MemberRepository memberRepository;
@@ -31,9 +29,9 @@ public class MemberServiceTest {
         Member member = new Member();
         member.setName("test1");
 
-        Long saveCheckId = memberService.join(member);
+        Long saveCheckId = memberServiceImpl.join(member);
 
-        Assertions.assertEquals(member,memberService.findOneMember(saveCheckId));
+        Assertions.assertEquals(member, memberServiceImpl.findOneMember(saveCheckId));
     }
 
     @Test//(expected = DuplicateException.class)
@@ -44,8 +42,8 @@ public class MemberServiceTest {
         Member member2 = new Member();
         member2.setName("kim");
         //When
-        memberService.join(member1);
-        memberService.join(member2); //예외가 발생해야 한다.
+        memberServiceImpl.join(member1);
+        memberServiceImpl.join(member2); //예외가 발생해야 한다.
         //Then
 
     }

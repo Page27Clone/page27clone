@@ -1,64 +1,28 @@
 package com.page27.project.service;
 
-import com.page27.project.domain.Member;
 import com.page27.project.domain.Mileage;
-import com.page27.project.repository.MemberRepository;
-import com.page27.project.repository.MileageRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
+import com.page27.project.dto.MileagePageDto;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
-@RequiredArgsConstructor
-@Service
-public class MileageService {
+public interface MileageService {
 
-    private final MemberRepository memberRepository;
-    private final MileageRepository mileageRepository;
+    int getTotalMileage(String loginId);
+//    전체 마일리지 조회하는 메소드
 
-    public int getTotalMileage(String loginId){
-        Member member = memberRepository.findByloginId(loginId).get();
+    int getTotalUsedMileage(String loginId);
+//    사용한 마일리지 조회하는 메소드
 
-        int totalMileage = 0;
+    int availableMileage(int totalMileage, int totalUsedMileage);
+//    사용가능한 마일리지 조회하는 메소드
 
-        for(int i = 0;i< member.getMileageList().size() ; i++){
-            totalMileage += member.getMileageList().get(i).getMileagePrice();
-            System.out.println(totalMileage);
-        }
-        return totalMileage;
-    }
+    List<Mileage> findAllMileageInfo(String loginId);
+//    해당하는 회원의 모든 마일리지 정보 조회하는 메소드
 
-    public int getTotalUsedMileage(String loginId){
-        Member member = memberRepository.findByloginId(loginId).get();
-        int totalUsedMileage = 0;
+    Long joinUserMileage(Long id);
+//    회원가입하게될 경우 마일리지 주는 메소드
 
-        for(int i= 0; i< member.getOrderList().size();i++){
-            totalUsedMileage += member.getOrderList().get(i).getUsedMileagePrice();
-        }
-        return totalUsedMileage;
-    }
-
-    public int availableMileage(int totalMileage, int totalUsedMileage){
-        return totalMileage - totalUsedMileage;
-    }
-
-    public List<Mileage> findAllMileageInfo(String loginId){
-        Member member = memberRepository.findByloginId(loginId).get();
-        System.out.println("check : " + member.getMileageList().size());
-        List<Mileage> mileageList = member.getMileageList();
-        return mileageList;
-    }
-
-    public Long joinUserMileage(Long id){
-        Member member = memberRepository.findById(id).get();
-        Mileage mileage = new Mileage();
-        mileage.setMileagePrice(1000);
-        mileage.setMileageContent("회원가입 적립금");
-        mileage.setMember(member);
-
-        mileageRepository.save(mileage);
-
-        return mileage.getId();
-    }
-
+    MileagePageDto getMileagePagingDto(String loginId, Pageable pageable);
+//    마일리지 조회 및 페이징 하는 메소드
 }

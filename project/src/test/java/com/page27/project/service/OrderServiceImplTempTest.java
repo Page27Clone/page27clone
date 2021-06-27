@@ -1,11 +1,9 @@
 package com.page27.project.service;
 
 import com.page27.project.domain.*;
-import com.page27.project.exception.NotEnoughStockException;
 import com.page27.project.repository.ItemRepository;
 import com.page27.project.repository.MemberRepository;
 import com.page27.project.repository.OrderRepository;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,17 +12,14 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
-
 import static org.aspectj.bridge.MessageUtil.fail;
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
-class OrderServiceTempTest {
+class OrderServiceImplTempTest {
 
     @Autowired
-    private OrderService orderService;
+    private OrderServiceImpl orderServiceImpl;
 
     @Autowired
     private OrderRepository orderRepository;

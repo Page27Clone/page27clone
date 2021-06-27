@@ -228,13 +228,6 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
     }
 
     private BooleanExpression orderStatusEq(String orderStatusCondition){
-
-        logger.info("selected Orderstatus : " + orderStatusCondition);
-//        return QOrderItem.orderItem.orderStatus.eq(OrderStatus.valueOf(orderStatusCondition));
-//        OrderStatus orderStatus = OrderStatus.valueOf(orderStatusCondition);
-//        String orderStatus = QOrderItem.orderItem.orderStatus.toString();
-
-
         return QOrderItem.orderItem.orderStatus.stringValue().eq(orderStatusCondition);
     }
 }

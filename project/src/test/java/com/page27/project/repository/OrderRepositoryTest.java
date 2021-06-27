@@ -1,17 +1,12 @@
 package com.page27.project.repository;
 
 import com.page27.project.domain.*;
-import com.page27.project.service.OrderService;
-import org.assertj.core.api.Assertions;
+import com.page27.project.service.OrderServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.Rollback;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @Transactional
@@ -20,7 +15,8 @@ class OrderRepositoryTest {
     @Autowired OrderRepository orderRepository;
     @Autowired MemberRepository memberRepository;
     @Autowired ItemRepository itemRepository;
-    @Autowired OrderService orderService;
+    @Autowired
+    OrderServiceImpl orderServiceImpl;
 
     private Member createTestMember(){
         Member member = new Member();

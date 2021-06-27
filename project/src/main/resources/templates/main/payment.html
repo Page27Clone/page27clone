@@ -42,8 +42,8 @@
                     <div class="benefit_info_desc">
                         <div class="benefit_info_desc_item"><b th:text="${member.name}">홍길동</b> 님은 <b sec:authorize="hasRole('ROLE_ADMIN')">[관리자]</b><b sec:authorize="hasRole('ROLE_MEMBER')">[일반회원]</b> 이십니다</div>
                         <div class="benefit_info_mileage benefit_info_desc_item">
-                            가용적립금: <b th:text="${#numbers.formatInteger(member.restMileage, 0, 'COMMA')}">2,000</b>원
-                            <input type="hidden" class="canuse" value="2000" th:value="${member.restMileage}"> <!--서버로부터 넘어온 데이터-->
+                            가용적립금: <b th:text="${#numbers.formatInteger(member.mileage, 0, 'COMMA')}">2,000</b>원
+                            <input type="hidden" class="canuse" value="2000" th:value="${member.mileage}"> <!--서버로부터 넘어온 데이터-->
                         </div>
                     </div>
                 </div>
@@ -218,7 +218,7 @@
                         </colgroup>
                         <th>적립금</th>
                         <td>
-                            <input type="text" name="used_mileage"> 원 (총 사용가능 적립금 : <span th:text="${#numbers.formatInteger(member.restMileage, 0, 'COMMA')}">2,000</span>원) <!-- 티임리프로 데이터 넣어주기-->
+                            <input type="text" name="used_mileage"> 원 (총 사용가능 적립금 : <span th:text="${#numbers.formatInteger(member.mileage, 0, 'COMMA')}">2,000</span>원) <!-- 티임리프로 데이터 넣어주기-->
                             <br>
                             <br>
                             - 적립금은 최소 2,000 이상일 떄 결제가 가능합니다.<br>

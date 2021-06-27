@@ -1,13 +1,10 @@
 package com.page27.project.service;
 
 import com.page27.project.domain.*;
-import com.page27.project.exception.NotEnoughStockException;
 import com.page27.project.repository.ItemRepository;
 import com.page27.project.repository.MemberRepository;
 import com.page27.project.repository.MileageRepository;
 import com.page27.project.repository.OrderRepository;
-
-import org.junit.jupiter.api.Assertions;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,16 +15,15 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 import static org.aspectj.bridge.MessageUtil.fail;
 
 
 @SpringBootTest
 @Transactional
-public class OrderServiceTest {
+public class OrderServiceImplTest {
     @Autowired
-    private OrderService orderService;
+    private OrderServiceImpl orderServiceImpl;
 
     @Autowired
     private OrderRepository orderRepository;

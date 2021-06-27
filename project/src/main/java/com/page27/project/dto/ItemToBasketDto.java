@@ -8,7 +8,7 @@ import java.util.Map;
 
 @Getter
 @Setter
-public class ItemToBasket {
+public class ItemToBasketDto {
     private Long id;
     private String item_color;
     private String item_idx;

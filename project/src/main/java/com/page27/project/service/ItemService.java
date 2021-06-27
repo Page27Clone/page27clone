@@ -2,155 +2,58 @@ package com.page27.project.service;
 
 import com.page27.project.domain.Basket;
 import com.page27.project.domain.Item;
-import com.page27.project.domain.Member;
-import com.page27.project.dto.ItemDetailDto;
-import com.page27.project.dto.WeeklyBestDto;
-import com.page27.project.repository.BasketRepository;
-import com.page27.project.repository.ItemRepository;
-import com.page27.project.repository.MemberRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+import com.page27.project.dto.*;
+import org.springframework.data.domain.Pageable;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
-@Service
-@RequiredArgsConstructor
-public class ItemService {
-    private final ItemRepository itemRepository;
-    private final MemberRepository memberRepository;
-    private final BasketRepository basketRepository;
+public interface ItemService {
 
-    @Transactional
-    public Long save(Item item){
-        itemRepository.save(item);
+    Long save(Item item);
+//    상품 저장하는 메소드
 
-        return item.getId();
-    }// 상품 저장
+    Long changeItemStatusSoldOut(String idx, String color);
+//    상품 상태 품절로 변경하는 메소드
 
-    @Transactional
-    public Long changeItemStatusSoldOut(String idx, String color){
-        Long itemIdx = Long.parseLong(idx);
-        List<Item> findItem = itemRepository.findAllByItemIdxAndColor(itemIdx,color);
-        for(Item changeItem : findItem){
-            changeItem.setSaleStatus("soldout");
-        }
-        return itemIdx;
-    }
+    Long changeItemStatusOnSale(String idx, String color);
+//    상품 상태 판매중으로 변경하는 메소드
 
-    @Transactional
-    public Long changeItemStatusOnSale(String idx, String color){
-        Long itemIdx = Long.parseLong(idx);
-        List<Item> findItem = itemRepository.findAllByItemIdxAndColor(itemIdx,color);
-        for(Item changeItem : findItem){
-            changeItem.setSaleStatus("onsale");
-        }
-        return itemIdx;
-    }
+    Long deleteItemById(String idx,String color);
+//    Pk 이용해서 아이템 삭제하는 메소드
 
-    @Transactional
-    public Long deleteItemById(String idx,String color){
-        Long itemIdx = Long.parseLong(idx);
-        List<Item> findItem = itemRepository.findAllByItemIdxAndColor(itemIdx,color);
-        for(Item changeItem : findItem){
-            itemRepository.deleteById(changeItem.getId());
-        }
-        return itemIdx;
-    }
+    ItemDetailDto getItemDetailDto(Long itemIdx);
+//    상품 정보 찾는 메소드
 
+    void moveItemToBasket(String loginId,Long itemIdx,String itemColor,int quantity);
+//    상품을 장바구니에 담는 메소드
 
+    ItemPageDto getItemPagingDto(Pageable pageable, String firstCategory, String secondCategory);
+//    상품을 페이징해서 조회하는 메소드
 
-    public ItemDetailDto getItemDetailDto(Long itemIdx){
+    List<ItemDto> getAllItemInBasket(List<Basket> basketList);
+//    장바구니에 있는 모든 아이템 조회
 
-        List<Item> itemListByItemIdx = itemRepository.findAllByItemIdx(itemIdx);
-//        모든 색깔 다 나옴 근데 사진은 여기서 뽑으면 중복으로 나옴
+    List<ItemDto> itemToPayment(String itemList);
+//    결제 페이지로 넘어가는 상품 준비
 
-//        SELECT * FROM ITEM WHERE REP = TRUE AND ITEM_IDX = 1;
-        List<Item> findItemByitemIdxAndRep = itemRepository.findAllByItemIdxAndRep(itemIdx, true);
-        String imgMainUrl = findItemByitemIdxAndRep.get(0).getImgUrl();
-//        메인 이미지 완료
-        List<String> getColorList = new ArrayList<>();
-        for(int i = 0; i< findItemByitemIdxAndRep.size();i++){
-            getColorList.add(findItemByitemIdxAndRep.get(i).getColor());
-        }
-//        색깔 리스트 완료
+    ItemListToOrderDto itemToOrder(String orderItemInfo);
+//    주문하기 위한 상품 데이터 준비
 
-        Item topItemByItemIdxAndRep = itemRepository.findTopByItemIdxAndRep(itemIdx, true);
-        String itemName = topItemByItemIdxAndRep.getItemName();
-//        아이템 이름 완료
-        int price = topItemByItemIdxAndRep.getPrice();
-//        아이템 가격 완료
-        String itemInfo = topItemByItemIdxAndRep.getItemInfo();
-//        아이템 정보 완료
-        String itemFabric = topItemByItemIdxAndRep.getFabric();
-//        아이템 원단 완료
-        String itemModel = topItemByItemIdxAndRep.getModel();
-//        아이템 모델 완료
-        double mileage = topItemByItemIdxAndRep.getPrice() * 0.01;
-//        아이템 마일리지 완료
+    List<Item> getMainCarouselItemList();
+//    Main Carousel에 상품을 담아 반환하는 메소드
 
-        List<Long> idList = new ArrayList<>();
-        for(int i = 0; i< itemListByItemIdx.size();i++){
-            idList.add(itemListByItemIdx.get(i).getId());
-        }
-//        아이템 고유 번호 완료
+    List<WeeklyBestDto> getOuterWeeklyBestItem();
+//    Outer 위클리 베스트 상품 반환하는 메소드
 
-        List<String> imgUrlList = new ArrayList<>();
-        List<Item> itemByItemIdxAndColor = itemRepository.findAllByItemIdxAndColor(itemIdx, topItemByItemIdxAndRep.getColor());
+    List<WeeklyBestDto> getSleeveTopWeeklyBestItem();
 
-        for(int i = 0; i< itemByItemIdxAndColor.size();i++){
-            imgUrlList.add(itemByItemIdxAndColor.get(i).getImgUrl());
-        }
-//        아이템 사진리스트 완료
+    List<WeeklyBestDto> getShirtsWeeklyBestItem();
 
-        ItemDetailDto itemDetailDto = new ItemDetailDto();
-        itemDetailDto.setImgMainUrl(imgMainUrl);
-        itemDetailDto.setColorList(getColorList);
-        itemDetailDto.setItemName(itemName);
-        itemDetailDto.setPrice(price);
-        itemDetailDto.setItemInfo(itemInfo);
-        itemDetailDto.setFabric(itemFabric);
-        itemDetailDto.setModel(itemModel);
-        itemDetailDto.setItemIdx(itemIdx);
-        itemDetailDto.setItemId(idList);
-        itemDetailDto.setMileage(mileage);
-        itemDetailDto.setImgUrlList(imgUrlList);
+    List<WeeklyBestDto> getBottomWeeklyBestItem();
 
-//        대표 사진
-//        아이템 색깔리스트
-//        아이템 이름
-//        아이템 가격
-//        아이템 정보
-//        아이템 원단
-//        아이템 모델
-//        아이템 번호
-//        아이템 고유번호
-//        아이템 마일리지
-//        아이템 사진리스트
+    List<WeeklyBestDto> getShoesWeeklyBestItem();
 
-        return itemDetailDto;
-    }
+    List<WeeklyBestDto> getTopKnitWeeklyBestItem();
 
-
-    public void moveItemToBasket(String loginId,Long itemIdx,String itemColor,int quantity){
-
-        Basket basket = new Basket();
-        Member findMember = memberRepository.findByloginId(loginId).get();
-        Item findItem = itemRepository.findByItemIdxAndColorAndRep(itemIdx, itemColor, true);
-
-        basket.setMember(findMember);
-        basket.setBasketCount(quantity);
-        basket.setItem(findItem);
-
-        basketRepository.save(basket);
-    }
-
-    public void getWeeklyBestItem(){
-
-
-
-
-    }
+    List<WeeklyBestDto> getNewArrivalItem();
 }

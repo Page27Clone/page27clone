@@ -1,7 +1,7 @@
 package com.page27.project.config;
 
 
-import com.page27.project.service.MemberService;
+import com.page27.project.service.MemberServiceImpl;
 import lombok.RequiredArgsConstructor;
 
 import org.springframework.context.annotation.Bean;
@@ -22,7 +22,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 //@EnableWebSecurity
 @RequiredArgsConstructor
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
-    private final MemberService memberService;
+    private final MemberServiceImpl memberServiceImpl;
     private final AuthenticationFailureHandler customFailureHandler;
 
     @Bean
@@ -41,24 +41,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    WebSecurity는 FilterChainProxy를 생성하는 필터이다.
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-//        http
-//                .csrf().ignoringAntMatchers("/admin/changepassword");
-
-//                .ignoringAntMatchers("/admin/changepassword_ok");
-//                .ignoringAntMatchers("/admin/itemList1")
-//                .ignoringAntMatchers("/admin/itemList2")
-//                .ignoringAntMatchers("/admin/itemList3");
-//                .ignoringAntMatchers("/admin/register");
-//                .ignoringAntMatchers("/admin/orderList1/**")
-//                .ignoringAntMatchers("/admin/userList/**");
-//                .ignoringAntMatchers("/main/orderStatusChange/**");
-//                .ignoringAntMatchers("/main/address/delete")
-//                .ignoringAntMatchers("/main/basket/changequantity/**")
-//                .ignoringAntMatchers("/main/basket/remove/**")
-//                .ignoringAntMatchers("/main/basket/removeitems")
-//                .ignoringAntMatchers("/main/basket/removeall");
-//                .ignoringAntMatchers("/main/**");
-
         http
                 .authorizeRequests()
                 // 페이지 권한 설정
@@ -103,7 +85,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(memberService).passwordEncoder(passwordEncoder());
+        auth.userDetailsService(memberServiceImpl).passwordEncoder(passwordEncoder());
     }
 //   스프링 시큐리티에서 모든 인증은 AuthenticationiManager를 통해 이루어지면 이를 생성하기 위해서는 ~Builder를 사용해야한다.
 //    로그인 처리 즉, 인증을 위해서는 UserDetailService를 통해서 필요한 정보들을 가져온다. 여기서는 memberService에서 처리한다.
