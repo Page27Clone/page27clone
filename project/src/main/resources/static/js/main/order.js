@@ -44,6 +44,8 @@ $(function(){
 
     // 취소, 교환, 반품 ajax
     $('.tablebtn').click(function(){
+        var token = $("meta[name='_csrf']").attr("content");
+        var header = $("meta[name='_csrf_header']").attr("content");
         const id = $(this).closest('tr').find('input[type=hidden]').val()
         let order_status = '';
         let message = '';
@@ -65,7 +67,11 @@ $(function(){
         $.ajax({
             type: 'PATCH',
             url: '/main/orderStatusChange/' + id,
-            data: {status: order_status}
+            data: {status: order_status},
+            beforeSend : function(xhr)
+            {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                xhr.setRequestHeader(header, token);
+            }
         }).done(function(word){
             alert(word);
             location.reload();

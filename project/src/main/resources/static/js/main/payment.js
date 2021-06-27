@@ -70,11 +70,16 @@ $(function(){
         }else{
 
             let addr = $(this).val()
-
+            var token = $("meta[name='_csrf']").attr("content");
+            var header = $("meta[name='_csrf_header']").attr("content");
             $.ajax({
                 url:"/main/payment/changeaddress/" + addr,
                 type:'POST',
                 dataType: 'json',
+                beforeSend : function(xhr)
+                {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
+                    xhr.setRequestHeader(header, token);
+                },
                 success:function(address_obj){
                     console.log(address_obj)
                     console.log(typeof(address_obj))

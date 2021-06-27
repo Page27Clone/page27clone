@@ -45,25 +45,25 @@
             <div class="myshop_orderstate_container">
                 <div class="myshop_orderstate_item">
                     <div class="item_caption">입금전</div>
-                    <div class="item_content"><a th:href="@{/main/order?omode=PAYWAITING&firstdate=2020-12-22&lastdate=2021-06-26}" href="" th:text="${orderStatus.payWaitingNum}">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order(omode='PAYWAITING',firstdate='2020-12-22',lastdate=${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd')})}" href="" th:text="${orderStatus.payWaitingNum}">0</a></div>
                 </div>
                 <div class="myshop_orderstate_item">
                     <div class="item_caption">배송준비중</div>
-                    <div class="item_content"><a th:href="@{/main/order?omode=PRESHIP&firstdate=2020-12-22&lastdate=2021-06-26}" href="" th:text="${orderStatus.preShipNum}">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order(omode='PRESHIP',firstdate='2020-12-22',lastdate=${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd')})}" href="" th:text="${orderStatus.preShipNum}">0</a></div>
                 </div>
                 <div class="myshop_orderstate_item">
                     <div class="item_caption">배송중</div>
-                    <div class="item_content"><a th:href="@{/main/order?omode=INSHIP&firstdate=2020-12-22&lastdate=2021-06-26}" href="" th:text="${orderStatus.inShipNum}">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order(omode='INSHIP',firstdate='2020-12-22',lastdate=${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd')})}">0</a></div>
                 </div>
                 <div class="myshop_orderstate_item">
                     <div class="item_caption">배송완료</div>
-                    <div class="item_content"><a th:href="@{/main/order?omode=COMPLETESHIP&firstdate=2020-12-22&lastdate=2021-06-26}" href="" th:text="${orderStatus.completeShipNum}">0</a></div>
+                    <div class="item_content"><a th:href="@{/main/order(omode='COMPLETESHIP',firstdate='2020-12-22',lastdate=${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd')})}">0</a></div>
                 </div>
                 <div class="myshop_orderstate_item last_item">
                     <ul>
-                        <li>· 취소 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order?omode=ORDERCANCEL&firstdate=2020-12-22&lastdate=2021-06-26}" href="#" th:text="${orderStatus.orderCancelNum}">0</a></span></li>
-                        <li>· 교환 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order?omode=ORDERCHANGE&firstdate=2020-12-22&lastdate=2021-06-26}" href="#" th:text="${orderStatus.orderChangeNum}">0</a></span></li>
-                        <li>· 반품 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order?omode=ORDERREFUND&firstdate=2020-12-22&lastdate=2021-06-26}" href="#" th:text="${orderStatus.orderRefundNum}">0</a></span></li>
+                        <li>· 취소 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order(omode='ORDERCANCEL',firstdate='2020-12-22',lastdate=${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd')})}" href="#" th:text="${orderStatus.orderCancelNum}">0</a></span></li>
+                        <li>· 교환 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order(omode='ORDERCHANGE',firstdate='2020-12-22',lastdate=${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd')})}">0</a></span></li>
+                        <li>· 반품 &nbsp;:&nbsp;&nbsp; <span><a th:href="@{/main/order(omode='ORDERREFUND',firstdate='2020-12-22',lastdate=${#calendars.format(#calendars.createNow(), 'yyyy-MM-dd')})}" href="#" th:text="${orderStatus.orderRefundNum}">0</a></span></li>
                     </ul>
                 </div>
 
