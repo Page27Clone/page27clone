@@ -1,14 +1,18 @@
 package com.page27.project.dto;
 
+
 import com.page27.project.domain.MemberGrade;
 import com.querydsl.core.annotations.QueryProjection;
-import lombok.Data;
+
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
-@Data
+
+@Getter
+@Setter
 @NoArgsConstructor
 public class MemberDto {
     private Long id;

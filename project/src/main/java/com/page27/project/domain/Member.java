@@ -55,11 +55,6 @@ public class Member extends BaseTimeEntity {
     @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private List<Basket> basketList = new ArrayList<>();
 
-//    @OneToOne
-//    @JoinColumn(name = "basket_id")
-//    private Basket basket;
-
-    //연관 관계 메소드
     public Member(String name, String loginId, String password) {
         this.name = name;
         this.loginId = loginId;

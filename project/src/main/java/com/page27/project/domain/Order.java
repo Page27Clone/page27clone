@@ -42,7 +42,6 @@ public class Order extends BaseTimeEntity {
     @ColumnDefault("100")
     private int usedMileagePrice;
 
-    //연관관계 메소드
     public void setMember(Member member){
         this.member = member;
         member.getOrderList().add(this);
@@ -67,7 +66,6 @@ public class Order extends BaseTimeEntity {
         for(OrderItem orderItem : orderItems){
             order.addOrderItem(orderItem);
         }
-//        order.setOrderStatus(OrderStatus.READY);
         order.setOrderedAt(LocalDate.now());
         order.setPayment("카드결제");
         order.setTotalPrice(order.getCalTotalPrice());

@@ -1,10 +1,11 @@
 package com.page27.project.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 public class MyPageOrderStatusDto {
-
     private int payWaitingNum;
     private int preShipNum;
     private int inShipNum;

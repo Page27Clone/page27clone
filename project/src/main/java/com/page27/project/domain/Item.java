@@ -2,6 +2,7 @@ package com.page27.project.domain;
 
 import com.page27.project.exception.NotEnoughStockException;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -12,6 +13,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+@NoArgsConstructor
 @Entity
 @Getter
 @Setter
@@ -59,15 +61,6 @@ public class Item {
     @OneToMany(mappedBy = "item",cascade = CascadeType.ALL)
     private List<Basket> basketList = new ArrayList<>();
 
-    /*비즈니스 로직*/
-    public void plusStockQuantity(int plusQuantity){
-        this.stockQuantity += plusQuantity;
-    }// 재고가 증가하는 메소드
-
-    public Item(){
-
-    }
-
     public Item(String firstCategory, String secondCategory, String thirdCategory, String itemName, int price, String itemInfo, String color, String fabric, String model, String size, int stockQuantity, String imgUrl, String saleStatus,Long itemIdx, Boolean rep) {
         this.firstCategory = firstCategory;
         this.secondCategory = secondCategory;
@@ -85,6 +78,11 @@ public class Item {
         this.itemIdx = itemIdx;
         this.rep = rep;
     }
+
+    /*비즈니스 로직*/
+    public void plusStockQuantity(int plusQuantity){
+        this.stockQuantity += plusQuantity;
+    }// 재고가 증가하는 메소드
 
     public void minusStockQuantity(int minusQuantity){
         int resultStock = this.stockQuantity - minusQuantity;

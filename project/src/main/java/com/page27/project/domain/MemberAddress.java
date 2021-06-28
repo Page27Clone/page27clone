@@ -7,6 +7,7 @@ import lombok.Setter;
 
 import javax.persistence.Embeddable;
 
+@NoArgsConstructor
 @Embeddable
 @Getter
 @Setter
@@ -19,9 +20,5 @@ public class MemberAddress {
         this.city = city;
         this.street = street;
         this.zipcode = zipcode;
-    }
-
-    public MemberAddress() {
-
     }
 }

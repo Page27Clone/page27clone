@@ -3,11 +3,14 @@ package com.page27.project.dto;
 import com.page27.project.domain.OrderStatus;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.jpa.repository.Query;
 
 import java.time.LocalDate;
 
-@Data
+@Getter
+@Setter
 public class MainPageOrderDto {
     private Long id;
     private Long orderItemId;

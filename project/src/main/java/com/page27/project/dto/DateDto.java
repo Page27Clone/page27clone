@@ -1,9 +1,11 @@
 package com.page27.project.dto;
 
-import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 
-@Data
+@Getter
+@Setter
 public class DateDto {
     private String startDate;
     private String endDate;

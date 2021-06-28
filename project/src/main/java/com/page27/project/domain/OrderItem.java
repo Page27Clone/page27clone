@@ -32,8 +32,6 @@ public class OrderItem {
     private OrderStatus orderStatus;
 
     // 관계 메소드
-    // 근데 어차피 Item에서는 OrderItem에 CRUD를 할 일이 없을 것 같기는 한데...
-    // Order를 하게 되면 OrderItem에 Item이 들어가게 된다.
     public void setItem(Item item){
         this.item = item;
         item.getOrderItemList().add(this);

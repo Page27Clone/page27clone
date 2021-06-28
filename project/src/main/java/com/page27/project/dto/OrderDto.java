@@ -6,19 +6,22 @@ import com.page27.project.domain.OrderItem;
 import com.page27.project.domain.OrderStatus;
 import com.querydsl.core.annotations.QueryProjection;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
 
-@Data
+@Getter
+@Setter
 public class OrderDto {
     private Long id;
     private Long orderItemId;
     private String name;
     private String itemName;
-    private LocalDate orderedAt;//이거 LocalDateTime이었는데 String으로 해보자 지금 LocalDateTime으로 하니까 order1.orderedAt이렇게 나온다. 안읽히는듯
+    private LocalDate orderedAt;
     private String payment;
     private int orderPrice;
     private OrderStatus orderStatus;
