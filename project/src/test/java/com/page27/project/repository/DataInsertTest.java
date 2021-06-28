@@ -62,7 +62,7 @@ public class DataInsertTest {
         member.setSex(sex);
         member.setEmail(email);
         member.setBirthday(birthday);
-        member.setMemberGrade(MemberGrade.ROLE_USER);
+        member.setMemberGrade(MemberGrade.MEMBER);
         member.setVisitCount(visitCount);
         member.setOrderCount(orderCount);
         member.setPhoneNumber(phoneNumber);
