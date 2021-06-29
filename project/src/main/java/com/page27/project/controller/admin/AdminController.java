@@ -53,7 +53,7 @@ public class AdminController {
         findMember.setPassword(newPassword);
         Long resultId = memberServiceImpl.changePassword(findMember.getId(), passwordEncoder.encode(newPassword));
 
-        return "ajax 수정 완료";
+        return "관리자 비밀번호 수정 완료";
     }
 
     @GetMapping("/admin/main")

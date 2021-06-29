@@ -3,9 +3,12 @@ package com.page27.project.repository;
 import com.page27.project.domain.Member;
 import com.page27.project.domain.MemberAddress;
 import com.page27.project.domain.Mileage;
+import org.assertj.core.api.Assertions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Optional;
 
 @SpringBootTest
 @Transactional
@@ -35,7 +38,13 @@ class MileageRepositoryTest {
         mileage2.setMileagePrice(2000);
         mileage2.setMember(member);
 
+        Mileage byId = mileageRepository.findById(mileage1.getId()).get();
+        Mileage byId2 = mileageRepository.findById(mileage2.getId()).get();
+
         memberRepository.save(member);
+
+        Assertions.assertThat(byId).isEqualTo(mileage1);
+        Assertions.assertThat(byId2).isEqualTo(mileage2);
 
         return member;
     }

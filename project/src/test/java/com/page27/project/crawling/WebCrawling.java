@@ -45,7 +45,7 @@ public class WebCrawling {
 //        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%EC%98%88-%EB%82%98%EC%9D%BC%EB%A1%A0-%EB%B0%94%EB%9E%8C%EB%A7%89%EC%9D%B4-%EC%A7%91%EC%97%8510color/2954/category/45/display/1/",3L);
 //        webCrawlingMethod("http://page27.co.kr/product/%EB%A1%9C%EB%82%98-%EB%B8%94%EB%A0%88%EC%9D%B4%EC%A0%80-%EC%9E%90%EC%BC%932color/2945/category/45/display/1/",4L);
 //        webCrawlingMethod("http://page27.co.kr/product/%EB%9D%BC%EC%9D%BC%EB%9D%BD-%ED%81%AC%EB%A1%AD-%ED%9B%84%EB%93%9C%EC%9E%90%EC%BC%933color/2942/category/45/display/1/",5L);
-        webCrawlingMethod("http://page27.co.kr/product/%ED%8F%AC%ED%85%90-%EB%82%98%EC%9D%BC%EB%A1%A0-%EC%88%8F%EC%9E%90%EC%BC%932color/2940/category/45/display/1/",6L);
+//        webCrawlingMethod("http://page27.co.kr/product/%ED%8F%AC%ED%85%90-%EB%82%98%EC%9D%BC%EB%A1%A0-%EC%88%8F%EC%9E%90%EC%BC%932color/2940/category/45/display/1/",6L);
 //        webCrawlingMethod("http://page27.co.kr/product/%EB%B8%94%EB%9E%91-%ED%94%BC%EA%B7%B8%EB%A8%BC%ED%8A%B8-%ED%9B%84%EB%93%9C%EC%A7%91%EC%97%854color/2937/category/45/display/1/",7L);
 //        webCrawlingMethod("http://page27.co.kr/product/%EB%A5%B4%EB%B0%98-%EB%A0%88%EB%8D%94-%EC%9E%90%EC%BC%932color/2936/category/45/display/1/",8L);
 //        webCrawlingMethod("http://page27.co.kr/product/%EB%AC%B4%EB%B8%8C-%EC%98%A4%EB%B2%84%ED%95%8F-%EC%B2%AD%EC%9E%90%EC%BC%932color/2928/category/45/display/1/",9L);
@@ -88,12 +88,12 @@ public class WebCrawling {
 //        webCrawlingMethod("http://page27.co.kr/product/%EB%B0%9C%EB%A7%88%EC%B9%B8-%EC%9A%B8-%EC%BD%94%ED%8A%B84color/2301/category/51/display/1/", 40L);
 //        webCrawlingMethod("http://page27.co.kr/product/%ED%8E%98%EC%9D%B4%EC%A7%8027-%EC%BA%90%EC%8B%9C%EB%AF%B8%EC%96%B4-%EC%98%A4%EB%B2%84%EC%BD%94%ED%8A%B82color-50sale/2276/category/51/display/1/", 41L);
 //        webCrawlingMethod("http://page27.co.kr/product/%EB%AF%B8%EB%8B%88%EB%A9%80-%EB%A7%81-%EB%A1%9C%EB%B8%8C-%EC%9A%B8%EC%BD%94%ED%8A%B82color/2298/category/51/display/1/", 42L);
-//        webCrawlingMethod("http://page27.co.kr/product/%EB%B0%9C%EB%A0%8C-%EC%9A%B8-%EB%8D%94%EB%B8%94%EC%BD%94%ED%8A%B82color/2284/category/51/display/1/", 43L);
-//        webCrawlingMethod("http://page27.co.kr/product/%EC%97%98%ED%94%84-%EC%98%A4%EB%B2%84-%EC%9A%B8-%EB%8D%94%EB%B8%94%EC%BD%94%ED%8A%B84color/2281/category/51/display/1/", 44L);
-//        webCrawlingMethod("http://page27.co.kr/product/%EC%95%84%EB%A5%B4%EB%8B%88-%EB%A1%9C%EB%B8%8C-%EC%9A%B8%EC%BD%94%ED%8A%B83color/2250/category/51/display/1/", 45L);
-//        webCrawlingMethod("http://page27.co.kr/product/%ED%8D%BC%ED%8E%99%ED%8A%B8-%EC%9A%B8-%EB%8D%94%EB%B8%94%EC%BD%94%ED%8A%B83color/2239/category/51/display/1/", 46L);
-//        webCrawlingMethod("http://page27.co.kr/product/%EB%A3%A8%EC%9D%B4%EC%8A%A4-%EC%9A%B8-%EC%8B%B1%EA%B8%80%EC%BD%94%ED%8A%B83color/2236/category/51/display/1/", 47L);
-//        webCrawlingMethod("http://page27.co.kr/product/%EB%A9%9C%EB%A1%A0-%EC%98%A4%EB%B2%84-%EC%9A%B8-%EC%8B%B1%EA%B8%80%EC%BD%94%ED%8A%B84color/2216/category/51/display/1/", 48L);
+        webCrawlingMethod("http://page27.co.kr/product/%EB%B0%9C%EB%A0%8C-%EC%9A%B8-%EB%8D%94%EB%B8%94%EC%BD%94%ED%8A%B82color/2284/category/51/display/1/", 43L);
+        webCrawlingMethod("http://page27.co.kr/product/%EC%97%98%ED%94%84-%EC%98%A4%EB%B2%84-%EC%9A%B8-%EB%8D%94%EB%B8%94%EC%BD%94%ED%8A%B84color/2281/category/51/display/1/", 44L);
+        webCrawlingMethod("http://page27.co.kr/product/%EC%95%84%EB%A5%B4%EB%8B%88-%EB%A1%9C%EB%B8%8C-%EC%9A%B8%EC%BD%94%ED%8A%B83color/2250/category/51/display/1/", 45L);
+        webCrawlingMethod("http://page27.co.kr/product/%ED%8D%BC%ED%8E%99%ED%8A%B8-%EC%9A%B8-%EB%8D%94%EB%B8%94%EC%BD%94%ED%8A%B83color/2239/category/51/display/1/", 46L);
+        webCrawlingMethod("http://page27.co.kr/product/%EB%A3%A8%EC%9D%B4%EC%8A%A4-%EC%9A%B8-%EC%8B%B1%EA%B8%80%EC%BD%94%ED%8A%B83color/2236/category/51/display/1/", 47L);
+        webCrawlingMethod("http://page27.co.kr/product/%EB%A9%9C%EB%A1%A0-%EC%98%A4%EB%B2%84-%EC%9A%B8-%EC%8B%B1%EA%B8%80%EC%BD%94%ED%8A%B84color/2216/category/51/display/1/", 48L);
 
 //        여기까지 코트 크롤링
 
@@ -210,7 +210,7 @@ public class WebCrawling {
 //                String firstCategory = Category.select("li:nth-child(2)").text().toLowerCase(Locale.ROOT);
 //                String secondCategory = Category.select("li:nth-child(3)").text();
                 String firstCategory = "outer";
-                String secondCategory = "jacket";
+                String secondCategory = "coat";
 
                 String direction = "";
 
@@ -219,7 +219,7 @@ public class WebCrawling {
                     if (i == 0) {
                         String repUrl = url.get(i);
 //                        디렉토리 생성
-                        File newFile = new File("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\jacket\\" + itemName);
+                        File newFile = new File("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\coat\\" + itemName);
 //            File newFile = new File("C:\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName);
                         if (newFile.mkdir()) {
                             logger.info("directory make ok");
@@ -232,10 +232,10 @@ public class WebCrawling {
                         URL repImgUrl = new URL(repUrl);
                         BufferedImage repImage = ImageIO.read(repImgUrl);
 //                        대표사진 넣기
-                        FileOutputStream repOut = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\jacket\\" + itemName + "\\" + itemName + "0" + ".jpg");
+                        FileOutputStream repOut = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\coat\\" + itemName + "\\" + itemName + "0" + ".jpg");
 //                FileOutputStream out = new FileOutputStream("C:\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName  + i + ".jpg");
 
-                        String totalUrl = "/image/Item/OUTER/jacket/" + itemName + "/" + itemName + i + ".jpg";
+                        String totalUrl = "/image/Item/OUTER/coat/" + itemName + "/" + itemName + i + ".jpg";
 
 
                         ImageIO.write(repImage, "jpg", repOut);
@@ -269,10 +269,10 @@ public class WebCrawling {
                         URL imgUrl = new URL(tempUrl);
                         BufferedImage image = ImageIO.read(imgUrl);
 //                        두번째 사진부터 넣기
-                        FileOutputStream out = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\jacket\\" + itemName + "\\" + itemName + i + ".jpg");
+                        FileOutputStream out = new FileOutputStream("C:\\Users\\skyey\\Desktop\\페이지27 프로젝트\\프로젝트\\project\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\coat\\" + itemName + "\\" + itemName + i + ".jpg");
 //                FileOutputStream out = new FileOutputStream("C:\\page27clone\\project\\src\\main\\resources\\static\\image\\Item\\OUTER\\자켓\\" + itemName + "\\" + itemName  + i + ".jpg");
 
-                        String totalUrl = "/image/Item/OUTER/jacket/" + itemName + "/" + itemName + i + ".jpg";
+                        String totalUrl = "/image/Item/OUTER/coat/" + itemName + "/" + itemName + i + ".jpg";
 //                    direction += totalUrl + ',';
 
                         ImageIO.write(image, "jpg", out);

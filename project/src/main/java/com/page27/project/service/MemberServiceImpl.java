@@ -184,8 +184,6 @@ public class MemberServiceImpl implements UserDetailsService, MemberService {
             authorities.add(new SimpleGrantedAuthority(MemberGrade.MEMBER.getValue()));
             userEntity.setMemberGrade(MemberGrade.MEMBER);
         }
-        System.out.println("here authority check : " + authorities.size());
-        System.out.println("here authority check : " + authorities.get(0).getAuthority());
 
         int visitCount = userEntity.getVisitCount();
         userEntity.setVisitCount(++visitCount);
@@ -237,6 +235,4 @@ public class MemberServiceImpl implements UserDetailsService, MemberService {
         memberRepository.deleteByLoginId(loginId);
     }
     //    회원탈퇴 기능
-
-
 }

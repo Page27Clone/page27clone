@@ -68,14 +68,6 @@ public class QuerydslBasicTest {
     @Test
     public void simpleProjection(){
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
-//        List<String> result = queryFactory
-//                .select(QMember.member.name)
-//                .from(QMember.member)
-//                .fetch();
-//
-//        for(String s : result) {
-//            System.out.println("result = " + s);
-//        }
 
         List<Member> resultMember = queryFactory
                 .select(QMember.member)
