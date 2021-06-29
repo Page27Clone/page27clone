@@ -15,18 +15,18 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @Service
-public class MileageServiceImpl implements MileageService{
+public class MileageServiceImpl implements MileageService {
 
     private final MemberRepository memberRepository;
     private final MileageRepository mileageRepository;
 
     @Override
-    public int getTotalMileage(String loginId){
+    public int getTotalMileage(String loginId) {
         Member member = memberRepository.findByloginId(loginId).get();
 
         int totalMileage = 0;
 
-        for(int i = 0;i< member.getMileageList().size() ; i++){
+        for (int i = 0; i < member.getMileageList().size(); i++) {
             totalMileage += member.getMileageList().get(i).getMileagePrice();
             System.out.println(totalMileage);
         }
@@ -34,23 +34,23 @@ public class MileageServiceImpl implements MileageService{
     }
 
     @Override
-    public int getTotalUsedMileage(String loginId){
+    public int getTotalUsedMileage(String loginId) {
         Member member = memberRepository.findByloginId(loginId).get();
         int totalUsedMileage = 0;
 
-        for(int i= 0; i< member.getOrderList().size();i++){
+        for (int i = 0; i < member.getOrderList().size(); i++) {
             totalUsedMileage += member.getOrderList().get(i).getUsedMileagePrice();
         }
         return totalUsedMileage;
     }
 
     @Override
-    public int availableMileage(int totalMileage, int totalUsedMileage){
+    public int availableMileage(int totalMileage, int totalUsedMileage) {
         return totalMileage - totalUsedMileage;
     }
 
     @Override
-    public List<Mileage> findAllMileageInfo(String loginId){
+    public List<Mileage> findAllMileageInfo(String loginId) {
         Member member = memberRepository.findByloginId(loginId).get();
         System.out.println("check : " + member.getMileageList().size());
         List<Mileage> mileageList = member.getMileageList();
@@ -58,7 +58,7 @@ public class MileageServiceImpl implements MileageService{
     }
 
     @Override
-    public Long joinUserMileage(Long id){
+    public Long joinUserMileage(Long id) {
         Member member = memberRepository.findById(id).get();
         Mileage mileage = new Mileage();
         mileage.setMileagePrice(2000);
@@ -74,7 +74,7 @@ public class MileageServiceImpl implements MileageService{
     public MileagePageDto getMileagePagingDto(String loginId, Pageable pageable) {
         MileagePageDto mileagePageDto = new MileagePageDto();
 
-        Member findMember =memberRepository.findByloginId(loginId).orElseThrow(
+        Member findMember = memberRepository.findByloginId(loginId).orElseThrow(
                 () -> new LoginIdNotFoundException("해당하는 회원이 존재하지 않습니다")
         );
         Page<Mileage> mileageBoards = mileageRepository.findAllByMember(findMember, pageable);

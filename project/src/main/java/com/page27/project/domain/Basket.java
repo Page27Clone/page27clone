@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
-public class Basket{
+public class Basket {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "basket_id")
@@ -33,7 +33,7 @@ public class Basket{
         item.getBasketList().add(this);
     }
 
-    public void setMember(Member member){
+    public void setMember(Member member) {
         this.member = member;
         member.getBasketList().add(this);
     }

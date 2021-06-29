@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-public class OrderItemServiceImpl implements OrderItemService{
+public class OrderItemServiceImpl implements OrderItemService {
 
     private final OrderItemRepository orderItemRepository;
 
@@ -27,7 +27,7 @@ public class OrderItemServiceImpl implements OrderItemService{
     @Transactional
     public void chagneOrderStatus(Long id, OrderStatus orderStatus) {
         OrderItem findOrderItem = orderItemRepository.findById(id).orElseThrow(
-                ()-> new ItemNotFoundException("해당한느 상품이 존재하지 않습니다")
+                () -> new ItemNotFoundException("해당하는 상품이 존재하지 않습니다")
         );
         findOrderItem.setOrderStatus(orderStatus);
     }

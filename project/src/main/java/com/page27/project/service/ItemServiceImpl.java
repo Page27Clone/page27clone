@@ -23,7 +23,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ItemServiceImpl implements ItemService{
+public class ItemServiceImpl implements ItemService {
 
     private final ItemRepository itemRepository;
     private final MemberRepository memberRepository;
@@ -31,7 +31,7 @@ public class ItemServiceImpl implements ItemService{
 
     @Transactional
     @Override
-    public Long saveItem(Item item){
+    public Long saveItem(Item item) {
         itemRepository.save(item);
 
         return item.getId();
@@ -39,10 +39,10 @@ public class ItemServiceImpl implements ItemService{
 
     @Transactional
     @Override
-    public Long changeItemStatusSoldOut(String idx, String color){
+    public Long changeItemStatusSoldOut(String idx, String color) {
         Long itemIdx = Long.parseLong(idx);
-        List<Item> findItem = itemRepository.findAllByItemIdxAndColor(itemIdx,color);
-        for(Item changeItem : findItem){
+        List<Item> findItem = itemRepository.findAllByItemIdxAndColor(itemIdx, color);
+        for (Item changeItem : findItem) {
             changeItem.setSaleStatus("soldout");
         }
         return itemIdx;
@@ -50,10 +50,10 @@ public class ItemServiceImpl implements ItemService{
 
     @Transactional
     @Override
-    public Long changeItemStatusOnSale(String idx, String color){
+    public Long changeItemStatusOnSale(String idx, String color) {
         Long itemIdx = Long.parseLong(idx);
-        List<Item> findItem = itemRepository.findAllByItemIdxAndColor(itemIdx,color);
-        for(Item changeItem : findItem){
+        List<Item> findItem = itemRepository.findAllByItemIdxAndColor(itemIdx, color);
+        for (Item changeItem : findItem) {
             changeItem.setSaleStatus("onsale");
         }
         return itemIdx;
@@ -61,17 +61,17 @@ public class ItemServiceImpl implements ItemService{
 
     @Transactional
     @Override
-    public Long deleteItemById(String idx,String color){
+    public Long deleteItemById(String idx, String color) {
         Long itemIdx = Long.parseLong(idx);
-        List<Item> findItem = itemRepository.findAllByItemIdxAndColor(itemIdx,color);
-        for(Item changeItem : findItem){
+        List<Item> findItem = itemRepository.findAllByItemIdxAndColor(itemIdx, color);
+        for (Item changeItem : findItem) {
             itemRepository.deleteById(changeItem.getId());
         }
         return itemIdx;
     }
 
     @Override
-    public ItemDetailDto getItemDetailDto(Long itemIdx){
+    public ItemDetailDto getItemDetailDto(Long itemIdx) {
 
         List<Item> itemListByItemIdx = itemRepository.findAllByItemIdx(itemIdx);
 //        모든 색깔 다 나옴 근데 사진은 여기서 뽑으면 중복으로 나옴
@@ -81,7 +81,7 @@ public class ItemServiceImpl implements ItemService{
         String imgMainUrl = findItemByitemIdxAndRep.get(0).getImgUrl();
 //        메인 이미지 완료
         List<String> getColorList = new ArrayList<>();
-        for(int i = 0; i< findItemByitemIdxAndRep.size();i++){
+        for (int i = 0; i < findItemByitemIdxAndRep.size(); i++) {
             getColorList.add(findItemByitemIdxAndRep.get(i).getColor());
         }
 //        색깔 리스트 완료
@@ -101,7 +101,7 @@ public class ItemServiceImpl implements ItemService{
 //        아이템 마일리지 완료
 
         List<Long> idList = new ArrayList<>();
-        for(int i = 0; i< itemListByItemIdx.size();i++){
+        for (int i = 0; i < itemListByItemIdx.size(); i++) {
             idList.add(itemListByItemIdx.get(i).getId());
         }
 //        아이템 고유 번호 완료
@@ -109,7 +109,7 @@ public class ItemServiceImpl implements ItemService{
         List<String> imgUrlList = new ArrayList<>();
         List<Item> itemByItemIdxAndColor = itemRepository.findAllByItemIdxAndColor(itemIdx, topItemByItemIdxAndRep.getColor());
 
-        for(int i = 0; i< itemByItemIdxAndColor.size();i++){
+        for (int i = 0; i < itemByItemIdxAndColor.size(); i++) {
             imgUrlList.add(itemByItemIdxAndColor.get(i).getImgUrl());
         }
 //        아이템 사진리스트 완료
@@ -141,9 +141,9 @@ public class ItemServiceImpl implements ItemService{
 
         return itemDetailDto;
     }
-    
+
     @Override
-    public void moveItemToBasket(String loginId,Long itemIdx,String itemColor,int quantity){
+    public void moveItemToBasket(String loginId, Long itemIdx, String itemColor, int quantity) {
 
         Basket basket = new Basket();
         Member findMember = memberRepository.findByloginId(loginId).get();
@@ -175,7 +175,7 @@ public class ItemServiceImpl implements ItemService{
     public List<ItemDto> getAllItemInBasket(List<Basket> basketList) {
         List<ItemDto> allItemInBasket = new ArrayList<>();
 
-        for(int i= 0; i< basketList.size();i++){
+        for (int i = 0; i < basketList.size(); i++) {
             Long itemId = basketList.get(i).getItem().getId();
             allItemInBasket.add(itemRepository.findAllItemInBasket(itemId));
         }
@@ -309,7 +309,7 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
-    public ItemPageDto findAllItemByPaging(Pageable pageable){
+    public ItemPageDto findAllItemByPaging(Pageable pageable) {
         ItemPageDto itemPageDto = new ItemPageDto();
         Page<ItemDto> itemBoards = itemRepository.searchAllItem(pageable);
 
@@ -339,8 +339,8 @@ public class ItemServiceImpl implements ItemService{
     }
 
     @Override
-    public Page<ItemDto> findAllItemByCondition(SearchItem searchItem, Pageable pageable){
-        return itemRepository.searchAllItemByCondition(searchItem,pageable);
+    public Page<ItemDto> findAllItemByCondition(SearchItem searchItem, Pageable pageable) {
+        return itemRepository.searchAllItemByCondition(searchItem, pageable);
     }
 
     @Override

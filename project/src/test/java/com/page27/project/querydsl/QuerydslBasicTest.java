@@ -25,7 +25,7 @@ public class QuerydslBasicTest {
 
 
     @Test
-    public void startQuerydsl(){
+    public void startQuerydsl() {
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
         Member findMember = queryFactory
@@ -38,7 +38,7 @@ public class QuerydslBasicTest {
     }
 
     @Test
-    public void search(){
+    public void search() {
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
         Member findMember = queryFactory
                 .select(QMember.member)
@@ -51,7 +51,7 @@ public class QuerydslBasicTest {
     }
 
     @Test
-    public void searchAndParam(){
+    public void searchAndParam() {
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
         Member findMember = queryFactory
                 .select(QMember.member)
@@ -66,7 +66,7 @@ public class QuerydslBasicTest {
     }
 
     @Test
-    public void simpleProjection(){
+    public void simpleProjection() {
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
         List<Member> resultMember = queryFactory
@@ -74,13 +74,13 @@ public class QuerydslBasicTest {
                 .from(QMember.member)
                 .fetch();
 
-        for(Member m : resultMember){
+        for (Member m : resultMember) {
             System.out.println("Member result = " + resultMember);
         }
     }
 
     @Test
-    public void findDtoBySetter(){
+    public void findDtoBySetter() {
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
         List<MemberDto> result = queryFactory
@@ -90,13 +90,13 @@ public class QuerydslBasicTest {
                 .from(QMember.member)
                 .fetch();
 
-        for(MemberDto memberDto : result){
+        for (MemberDto memberDto : result) {
             System.out.println("memberDto = " + memberDto);
         }
     }
 
     @Test
-    public void findDtoByField(){
+    public void findDtoByField() {
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
         List<MemberDto> result = queryFactory
@@ -106,7 +106,7 @@ public class QuerydslBasicTest {
                 .from(QMember.member)
                 .fetch();
 
-        for(MemberDto memberDto : result){
+        for (MemberDto memberDto : result) {
             System.out.println("memberDto = " + memberDto);
         }
     }
@@ -127,14 +127,14 @@ public class QuerydslBasicTest {
 //    }
 
     @Test
-    public void dynamicQuery_BooleanBuilder(){
+    public void dynamicQuery_BooleanBuilder() {
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
 
         String usernameParam = "memberA";
         String loginIdParam = "memberA_Id";
 
-        List<Member> result = searchMember1(usernameParam,loginIdParam);
+        List<Member> result = searchMember1(usernameParam, loginIdParam);
         Assertions.assertThat(result.size()).isEqualTo(1);
 
 
@@ -144,10 +144,10 @@ public class QuerydslBasicTest {
         JPAQueryFactory queryFactory = new JPAQueryFactory(em);
 
         BooleanBuilder builder = new BooleanBuilder();
-        if(usernameCond != null){
+        if (usernameCond != null) {
             builder.and(QMember.member.name.eq(usernameCond));
         }
-        if(loginIdCond!= null){
+        if (loginIdCond != null) {
             builder.and(QMember.member.loginId.eq(loginIdCond));
         }
 
@@ -156,13 +156,13 @@ public class QuerydslBasicTest {
                 .where(builder)
                 .fetch();
     }
-    
+
     @Test
-    public void dynamicQuery_WhereParam(){
+    public void dynamicQuery_WhereParam() {
         String usernameParam = "memberA";
         String loginIdParam = "memberA_Id";
 
-        List<Member> result = searchMember2(usernameParam,loginIdParam);
+        List<Member> result = searchMember2(usernameParam, loginIdParam);
         Assertions.assertThat(result.size()).isEqualTo(1);
     }
 
@@ -172,26 +172,26 @@ public class QuerydslBasicTest {
         return queryFactory
                 .selectFrom(QMember.member)
                 //.where(usernameEq(usernameCond),loginIdEq(loginIdCond))
-                .where(allEq(usernameCond,loginIdCond))
+                .where(allEq(usernameCond, loginIdCond))
                 .fetch();
     }
 
     private BooleanExpression usernameEq(String usernameCond) {
-        if(usernameCond != null){
+        if (usernameCond != null) {
             return QMember.member.name.eq(usernameCond);
-        }else{
+        } else {
             return null;
         }
     }
 
     private BooleanExpression loginIdEq(String loginIdCond) {
-        if(loginIdCond == null) {
+        if (loginIdCond == null) {
             return null;
         }
         return QMember.member.loginId.eq(loginIdCond);
     }
 
-    private BooleanExpression allEq(String usernameCond, String loginIdCOnd){
+    private BooleanExpression allEq(String usernameCond, String loginIdCOnd) {
         return usernameEq(usernameCond).and(loginIdEq(loginIdCOnd));
     }
 

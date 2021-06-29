@@ -55,13 +55,13 @@ public class Item {
 
     private boolean rep;
 
-    @OneToMany(mappedBy = "item",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
     private List<OrderItem> orderItemList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "item",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "item", cascade = CascadeType.ALL)
     private List<Basket> basketList = new ArrayList<>();
 
-    public Item(String firstCategory, String secondCategory, String thirdCategory, String itemName, int price, String itemInfo, String color, String fabric, String model, String size, int stockQuantity, String imgUrl, String saleStatus,Long itemIdx, Boolean rep) {
+    public Item(String firstCategory, String secondCategory, String thirdCategory, String itemName, int price, String itemInfo, String color, String fabric, String model, String size, int stockQuantity, String imgUrl, String saleStatus, Long itemIdx, Boolean rep) {
         this.firstCategory = firstCategory;
         this.secondCategory = secondCategory;
         this.thirdCategory = thirdCategory;
@@ -80,15 +80,15 @@ public class Item {
     }
 
     /*비즈니스 로직*/
-    public void plusStockQuantity(int plusQuantity){
+    public void plusStockQuantity(int plusQuantity) {
         this.stockQuantity += plusQuantity;
     }// 재고가 증가하는 메소드
 
-    public void minusStockQuantity(int minusQuantity){
+    public void minusStockQuantity(int minusQuantity) {
         int resultStock = this.stockQuantity - minusQuantity;
-        if(resultStock < 0){
+        if (resultStock < 0) {
             throw new NotEnoughStockException("재고가 부족합니다.");
-        }else{
+        } else {
             this.stockQuantity = +resultStock;
         }
     }// 재고가 감소하는 메소드

@@ -1,5 +1,5 @@
 package com.page27.project.domain;
 
 public enum DeliveryStatus {
-    READY,COMPLETE,CANCEL
+    READY, COMPLETE, CANCEL
 }

@@ -17,7 +17,7 @@ public class BasketDto {
 
 
     @QueryProjection
-    public BasketDto(Long basketId, int basketCount, Long itemId, String itemName, String color, String imgUrl,int price) {
+    public BasketDto(Long basketId, int basketCount, Long itemId, String itemName, String color, String imgUrl, int price) {
         this.basketId = basketId;
         this.basketCount = basketCount;
         this.itemId = itemId;

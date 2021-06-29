@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface MileageRepository extends JpaRepository<Mileage,Long>{
+public interface MileageRepository extends JpaRepository<Mileage, Long> {
     Page<Mileage> findAllByMember(Member member, Pageable pageable);
 }

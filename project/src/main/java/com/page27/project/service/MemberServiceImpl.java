@@ -122,8 +122,8 @@ public class MemberServiceImpl implements UserDetailsService, MemberService {
         MemberPageDto memberPageDto = new MemberPageDto();
         Page<MemberDto> memberBoards = memberRepository.searchByCondition(searchMember, pageable);
 
-        int startPage = Math.max(1,memberBoards.getPageable().getPageNumber()-2);
-        int endPage = Math.min(memberBoards.getTotalPages(),startPage + 4);
+        int startPage = Math.max(1, memberBoards.getPageable().getPageNumber() - 2);
+        int endPage = Math.min(memberBoards.getTotalPages(), startPage + 4);
 
         memberPageDto.setMemberBoards(memberBoards);
         memberPageDto.setHomeStartPage(startPage);

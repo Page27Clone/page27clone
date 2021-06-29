@@ -1,6 +1,6 @@
 package com.page27.project.exception;
 
-public class NotEnoughStockException extends RuntimeException{
+public class NotEnoughStockException extends RuntimeException {
     public NotEnoughStockException() {
     }
 

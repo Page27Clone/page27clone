@@ -1,6 +1,6 @@
 package com.page27.project.exception;
 
-public class DuplicateException extends RuntimeException{
+public class DuplicateException extends RuntimeException {
     public DuplicateException() {
         super();
     }

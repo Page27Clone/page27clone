@@ -1,6 +1,6 @@
 package com.page27.project.exception;
 
-public class ItemNotFoundException extends RuntimeException{
+public class ItemNotFoundException extends RuntimeException {
     public ItemNotFoundException() {
     }
 

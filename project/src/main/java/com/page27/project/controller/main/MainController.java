@@ -26,7 +26,6 @@ public class MainController {
     private final DeliveryAddressServiceImpl deliveryAddressServiceImpl;
     private final OrderItemServiceImpl orderItemServiceImpl;
     private final BasketServiceImpl basketServiceImpl;
-    //이건 테스트
     private final MileageServiceImpl mileageServiceImpl;
     private final OrderServiceImpl orderServiceImpl;
     private final ItemServiceImpl itemServiceImpl;
@@ -200,7 +199,7 @@ public class MainController {
     @ResponseBody
     @PatchMapping("/main/basket/changequantity/{basketId}/{itemQuantity}")
     public String changeQuantityInBasketPage(@PathVariable Long basketId, @PathVariable int itemQuantity) {
-        basketServiceImpl.changeBasketItemQuantity(basketId,itemQuantity);
+        basketServiceImpl.changeBasketItemQuantity(basketId, itemQuantity);
 
         return "수량 변경 완료";
     }

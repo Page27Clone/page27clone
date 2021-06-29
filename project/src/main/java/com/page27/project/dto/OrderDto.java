@@ -27,7 +27,7 @@ public class OrderDto {
     private OrderStatus orderStatus;
 
     @QueryProjection
-    public OrderDto(Long id,Long orderItemId, String name, String itemName, LocalDate orderedAt,String payment, int orderPrice,OrderStatus orderStatus) {
+    public OrderDto(Long id, Long orderItemId, String name, String itemName, LocalDate orderedAt, String payment, int orderPrice, OrderStatus orderStatus) {
         this.id = id;
         this.orderItemId = orderItemId;
         this.name = name;

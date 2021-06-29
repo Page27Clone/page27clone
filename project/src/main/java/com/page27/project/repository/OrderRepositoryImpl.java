@@ -14,6 +14,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.Pageable;
+
 import javax.persistence.EntityManager;
 import java.time.LocalDate;
 
@@ -90,7 +91,7 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
     }
 
     @Override
-    public Page<MainPageOrderDto> mainPageSearchAllOrder(Pageable pageable,String loginId) {
+    public Page<MainPageOrderDto> mainPageSearchAllOrder(Pageable pageable, String loginId) {
         QueryResults<MainPageOrderDto> results = queryFactory
                 .select(new QMainPageOrderDto(
                         QOrder.order.id,
@@ -108,7 +109,7 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
                 .from(QOrder.order)
                 .leftJoin(QOrderItem.orderItem).on(QOrderItem.orderItem.eq(QOrder.order.orderItemList.any()))
                 .leftJoin(QMember.member).on(QMember.member.eq(QOrder.order.member))
-                .where(QMember.member.loginId.eq(loginId),QOrderItem.orderItem.item.rep.eq(true))
+                .where(QMember.member.loginId.eq(loginId), QOrderItem.orderItem.item.rep.eq(true))
                 .orderBy(QOrderItem.orderItem.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -142,8 +143,8 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
                 .where(QMember.member.loginId.eq(loginId),
                         QOrderItem.orderItem.item.rep.eq(true),
                         orderStatusEq(searchOrder.getOmode()),
-                        betweenDate(searchOrder.getFirstdate(),searchOrder.getLastdate())
-                        )
+                        betweenDate(searchOrder.getFirstdate(), searchOrder.getLastdate())
+                )
                 .orderBy(QOrderItem.orderItem.id.desc())
                 .offset(pageable.getOffset())
                 .limit(pageable.getPageSize())
@@ -155,44 +156,41 @@ public class OrderRepositoryImpl implements OrderRepositoryCustom {
         return new PageImpl<>(content, pageable, total);
     }
 
-    private BooleanExpression betweenDate(String firstDate, String lastDate){
-        if(StringUtils.isEmpty(firstDate) && StringUtils.isEmpty(lastDate)){
+    private BooleanExpression betweenDate(String firstDate, String lastDate) {
+        if (StringUtils.isEmpty(firstDate) && StringUtils.isEmpty(lastDate)) {
 
             LocalDate start = LocalDate.now().minusYears(10L);
             LocalDate end = LocalDate.now();
 
-            return QOrder.order.orderedAt.between(start,end);
-        }
-        else if(StringUtils.isNotEmpty(firstDate) && StringUtils.isEmpty(lastDate)){
-            LocalDate start = LocalDate.parse(firstDate,DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            return QOrder.order.orderedAt.between(start, end);
+        } else if (StringUtils.isNotEmpty(firstDate) && StringUtils.isEmpty(lastDate)) {
+            LocalDate start = LocalDate.parse(firstDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             LocalDate end = LocalDate.now();
 
-            return QOrder.order.orderedAt.between(start,end);
-        }
-        else if(StringUtils.isEmpty(firstDate) && StringUtils.isNotEmpty(lastDate)){
+            return QOrder.order.orderedAt.between(start, end);
+        } else if (StringUtils.isEmpty(firstDate) && StringUtils.isNotEmpty(lastDate)) {
 
             LocalDate start = LocalDate.now().minusYears(10L);
-            LocalDate end = LocalDate.parse(lastDate,DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            LocalDate end = LocalDate.parse(lastDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
 //           LocalDate 와 LocalDateTime의 차이로 인하여 min을 하면 형식이 이것이 아니라 변하게 된다. 그래서 임의로 10년 전으로 계산한다.
 
-            return QOrder.order.orderedAt.between(start,end);
-        }
-        else{
-            LocalDate start = LocalDate.parse(firstDate,DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+            return QOrder.order.orderedAt.between(start, end);
+        } else {
+            LocalDate start = LocalDate.parse(firstDate, DateTimeFormatter.ofPattern("yyyy-MM-dd"));
             LocalDate end = LocalDate.parse(lastDate);
 
-            return QOrder.order.orderedAt.between(start,end);
+            return QOrder.order.orderedAt.between(start, end);
         }
     }
 
-    private BooleanExpression buyerEq(String buyerCondition){
-        if(StringUtils.isEmpty(buyerCondition)){
+    private BooleanExpression buyerEq(String buyerCondition) {
+        if (StringUtils.isEmpty(buyerCondition)) {
             return null;
         }
         return QMember.member.name.likeIgnoreCase("%" + buyerCondition + "%");
     }
 
-    private BooleanExpression orderStatusEq(String orderStatusCondition){
+    private BooleanExpression orderStatusEq(String orderStatusCondition) {
         return QOrderItem.orderItem.orderStatus.stringValue().eq(orderStatusCondition);
     }
 }

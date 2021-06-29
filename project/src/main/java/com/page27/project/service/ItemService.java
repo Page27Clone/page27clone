@@ -20,13 +20,13 @@ public interface ItemService {
     Long changeItemStatusOnSale(String idx, String color);
 //    상품 상태 판매중으로 변경하는 메소드
 
-    Long deleteItemById(String idx,String color);
+    Long deleteItemById(String idx, String color);
 //    Pk 이용해서 아이템 삭제하는 메소드
 
     ItemDetailDto getItemDetailDto(Long itemIdx);
 //    상품 정보 찾는 메소드
 
-    void moveItemToBasket(String loginId,Long itemIdx,String itemColor,int quantity);
+    void moveItemToBasket(String loginId, Long itemIdx, String itemColor, int quantity);
 //    상품을 장바구니에 담는 메소드
 
     ItemPageDto getItemPagingDtoByCategory(Pageable pageable, String firstCategory, String secondCategory);

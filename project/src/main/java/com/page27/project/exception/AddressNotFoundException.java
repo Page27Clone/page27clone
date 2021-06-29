@@ -1,6 +1,6 @@
 package com.page27.project.exception;
 
-public class AddressNotFoundException extends RuntimeException{
+public class AddressNotFoundException extends RuntimeException {
     public AddressNotFoundException() {
     }
 

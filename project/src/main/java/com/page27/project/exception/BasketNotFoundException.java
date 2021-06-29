@@ -1,6 +1,6 @@
 package com.page27.project.exception;
 
-public class BasketNotFoundException extends RuntimeException{
+public class BasketNotFoundException extends RuntimeException {
     public BasketNotFoundException() {
     }
 

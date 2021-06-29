@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Optional;
 
 
-public interface MemberRepository extends JpaRepository<Member, Long>,MemberRepositoryCustom{
+public interface MemberRepository extends JpaRepository<Member, Long>, MemberRepositoryCustom {
     Optional<Member> findByloginId(String loginId);
 
     Page<Member> findAllByOrderByCreatedAt(Pageable pageable);

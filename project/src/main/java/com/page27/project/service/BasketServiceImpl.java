@@ -18,7 +18,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
-public class BasketServiceImpl implements BasketService{
+public class BasketServiceImpl implements BasketService {
 
     private final BasketRepository basketRepository;
     private final ItemRepository itemRepository;

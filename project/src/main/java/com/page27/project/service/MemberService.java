@@ -36,7 +36,7 @@ public interface MemberService {
 
     Long deleteById(Long id);
 //    Pk를 이용한 회원 삭제 기능
-    
+
     ProfileDto showProfileData(String loginId);
 //    개인 상세정보 보여주는 메소드
 

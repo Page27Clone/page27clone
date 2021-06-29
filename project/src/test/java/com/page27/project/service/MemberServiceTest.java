@@ -12,8 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 
-
-
 @SpringBootTest
 @Transactional
 public class MemberServiceTest {
@@ -26,7 +24,7 @@ public class MemberServiceTest {
 
 
     @Test
-    public void 멤버_찾기() throws Exception{
+    public void 멤버_찾기() throws Exception {
         Member member1 = new Member();
         member1.setName("kim");
         Member member2 = new Member();
@@ -34,7 +32,7 @@ public class MemberServiceTest {
 
         member2 = memberRepository.findById(1L).get();
 
-        Assertions.assertEquals(member1,member2);
+        Assertions.assertEquals(member1, member2);
 
     }
 }

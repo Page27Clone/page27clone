@@ -11,7 +11,10 @@ import org.springframework.data.domain.Pageable;
 
 public interface OrderRepositoryCustom {
     Page<OrderDto> searchAllOrder(Pageable pageable);
+
     Page<OrderDto> searchAllOrderByCondition(SearchOrder searchOrder, Pageable pageable);
-    Page<MainPageOrderDto> mainPageSearchAllOrder(Pageable pageable,String loginId);
+
+    Page<MainPageOrderDto> mainPageSearchAllOrder(Pageable pageable, String loginId);
+
     Page<MainPageOrderDto> mainPageSearchAllOrderByCondition(SearchOrder searchOrder, Pageable pageable, String loginId);
 }

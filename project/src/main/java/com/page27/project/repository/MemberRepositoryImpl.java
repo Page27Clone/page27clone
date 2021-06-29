@@ -56,7 +56,7 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
     public Page<MemberDto> searchByCondition(SearchMember search, Pageable pageable) {
         QueryResults<MemberDto> results = null;
 
-        if(search.getSearchCondition().equals("userid")){
+        if (search.getSearchCondition().equals("userid")) {
             results = queryFactory
                     .select(new QMemberDto(
                             QMember.member.id,
@@ -74,7 +74,7 @@ public class MemberRepositoryImpl implements MemberRepositoryCustom {
                     .offset(pageable.getOffset())
                     .limit(pageable.getPageSize())
                     .fetchResults();
-        }else if(search.getSearchCondition().equals("username")){
+        } else if (search.getSearchCondition().equals("username")) {
             results = queryFactory
                     .select(new QMemberDto(
                             QMember.member.id,

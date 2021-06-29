@@ -21,10 +21,10 @@ class MileageRepositoryTest {
     MemberRepository memberRepository;
 
 
-    private Member createTestMember(){
+    private Member createTestMember() {
         Member member = new Member();
         member.setName("testMember1");
-        member.setMemberAddress(new MemberAddress("Seoul","Gangnam","13600"));
+        member.setMemberAddress(new MemberAddress("Seoul", "Gangnam", "13600"));
         member.setVisitCount(5);
 
 
@@ -48,7 +48,6 @@ class MileageRepositoryTest {
 
         return member;
     }
-
 
 
 }

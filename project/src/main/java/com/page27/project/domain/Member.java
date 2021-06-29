@@ -43,16 +43,16 @@ public class Member extends BaseTimeEntity {
 
     private String homePhoneNumber;
 
-    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Mileage> mileageList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Order> orderList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<DeliveryAddress> deliveryAddressList = new ArrayList<>();
 
-    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
     private List<Basket> basketList = new ArrayList<>();
 
     public Member(String name, String loginId, String password) {
@@ -62,7 +62,7 @@ public class Member extends BaseTimeEntity {
     }
 
     @Builder
-    public Member(Long id, String loginId, String password, String name, String homePhoneNumber, String phoneNumber, String email, String birthday){
+    public Member(Long id, String loginId, String password, String name, String homePhoneNumber, String phoneNumber, String email, String birthday) {
         this.id = id;
         this.loginId = loginId;
         this.password = password;

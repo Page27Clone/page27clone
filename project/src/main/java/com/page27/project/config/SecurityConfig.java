@@ -33,38 +33,38 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    Service에서 비밀번호를 암호화할 수 있도록 Bean으로 등록한다.
 
     @Override
-    public void configure(WebSecurity web) throws Exception{
+    public void configure(WebSecurity web) throws Exception {
         // static 디렉터리의 하위 파일 목록은 인증 무시 ( = 항상통과 )
         web.ignoring().antMatchers("/css/**", "/js/**", "/img/**", "/lib/**");
     }
 
-//    WebSecurity는 FilterChainProxy를 생성하는 필터이다.
+    //    WebSecurity는 FilterChainProxy를 생성하는 필터이다.
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
                 // 페이지 권한 설정
-                    .antMatchers("/admin/**").hasRole("ADMIN")
-                    .antMatchers("/main/order","/main/profile","/main/mileage","/main/address",
-                    "/main/basket","/main/payment","/main/product/basketadd_ok").authenticated()
-                    .antMatchers("/main/index","/main/category/**","/main/product/**").permitAll()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/main/order", "/main/profile", "/main/mileage", "/main/address",
+                        "/main/basket", "/main/payment", "/main/product/basketadd_ok").authenticated()
+                .antMatchers("/main/index", "/main/category/**", "/main/product/**").permitAll()
 
                 .and() // 로그인 설정
-                    .formLogin()
-                        .loginPage("/main/login")
-                        .usernameParameter("loginId")
-                        .successHandler(successHandler())
-                        .failureHandler(customFailureHandler)
+                .formLogin()
+                .loginPage("/main/login")
+                .usernameParameter("loginId")
+                .successHandler(successHandler())
+                .failureHandler(customFailureHandler)
 
 
                 .and() // 로그아웃 설정
-                    .logout()
-                    .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                    .logoutSuccessUrl("/main/index")
-                    .invalidateHttpSession(true)
+                .logout()
+                .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
+                .logoutSuccessUrl("/main/index")
+                .invalidateHttpSession(true)
                 .and()
-                    // 403 예외처리 핸들링
-                    .exceptionHandling().accessDeniedPage("/main/restrict");
+                // 403 예외처리 핸들링
+                .exceptionHandling().accessDeniedPage("/main/restrict");
 
         http.sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.ALWAYS);

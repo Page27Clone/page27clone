@@ -185,7 +185,7 @@ public class WebCrawling {
             for (int j = 2; j < color.size(); j++) {
 
                 String tempItemName = doc.select(".name").get(0).text();
-                String itemName = tempItemName.replaceAll("\\%","-").replaceAll("\\[","").replaceAll("\\]","");
+                String itemName = tempItemName.replaceAll("\\%", "-").replaceAll("\\[", "").replaceAll("\\]", "");
 
 
                 Elements img = doc.select(".cont img");

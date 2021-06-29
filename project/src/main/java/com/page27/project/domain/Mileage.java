@@ -23,7 +23,7 @@ public class Mileage extends BaseTimeEntity {
     private Member member;
 
     //연관 관계 메소드
-    public void setMember(Member member){
+    public void setMember(Member member) {
         this.member = member;
         member.getMileageList().add(this);
     }

@@ -58,7 +58,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
     @Override
     public Page<ItemDto> searchAllItemByCondition(SearchItem search, Pageable pageable) {
 
-        if(search.getCmode().equals("whole")){
+        if (search.getCmode().equals("whole")) {
             QueryResults results = queryFactory
                     .select(new QItemDto(
                             QItem.item.id,
@@ -72,7 +72,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                             QItem.item.itemIdx
                     ))
                     .from(QItem.item)
-                    .where(QItem.item.rep.eq(true),saleStatusEq(search.getSalestatus()),itemNameEq(search.getItem_name()))
+                    .where(QItem.item.rep.eq(true), saleStatusEq(search.getSalestatus()), itemNameEq(search.getItem_name()))
                     .orderBy(QItem.item.id.desc())
                     .offset(pageable.getOffset())
                     .limit(pageable.getPageSize())
@@ -82,8 +82,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
             long total = results.getTotal();
 
             return new PageImpl<>(content, pageable, total);
-        }
-        else {
+        } else {
             QueryResults results = queryFactory
                     .select(new QItemDto(
                             QItem.item.id,
@@ -97,7 +96,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                             QItem.item.itemIdx
                     ))
                     .from(QItem.item)
-                    .where(QItem.item.rep.eq(true), saleStatusEq(search.getSalestatus()),cmodeEq(search.getCmode()), itemNameEq(search.getItem_name()))
+                    .where(QItem.item.rep.eq(true), saleStatusEq(search.getSalestatus()), cmodeEq(search.getCmode()), itemNameEq(search.getItem_name()))
                     .offset(pageable.getOffset())
                     .limit(pageable.getPageSize())
                     .fetchResults();
@@ -110,7 +109,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
     }
 
     @Override
-    public Page<ItemDto> findAllItem(Pageable pageable,String firstCategory, String secondCategory) {
+    public Page<ItemDto> findAllItem(Pageable pageable, String firstCategory, String secondCategory) {
         QueryResults results = queryFactory
                 .selectDistinct(new QItemDto(
                         QItem.item.itemIdx,
@@ -160,7 +159,7 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
     }
 
     @Override
-    public List<WeeklyBestDto> findWeeklyBestItem(String firstCategory,String secondCategory, boolean rep) {
+    public List<WeeklyBestDto> findWeeklyBestItem(String firstCategory, String secondCategory, boolean rep) {
         QueryResults<WeeklyBestDto> results = queryFactory
                 .selectDistinct(new QWeeklyBestDto(
                         QItem.item.itemIdx,
@@ -204,25 +203,25 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
         return content;
     }
 
-    private BooleanExpression saleStatusEq(String saleStatusCondition){
-        if(StringUtils.isEmpty(saleStatusCondition)){
+    private BooleanExpression saleStatusEq(String saleStatusCondition) {
+        if (StringUtils.isEmpty(saleStatusCondition)) {
             return null;
         }
         return QItem.item.saleStatus.equalsIgnoreCase(saleStatusCondition);
     }
 
-    private BooleanExpression cmodeEq(String cmodeCondition){
-        if(StringUtils.isEmpty(cmodeCondition)){
+    private BooleanExpression cmodeEq(String cmodeCondition) {
+        if (StringUtils.isEmpty(cmodeCondition)) {
             return null;
         }
         return QItem.item.firstCategory.equalsIgnoreCase(cmodeCondition);
     }
 
-    private BooleanExpression itemNameEq(String itemNameCondition){
-       if(StringUtils.isEmpty(itemNameCondition)){
-           return null;
-       }
-       return QItem.item.itemName.likeIgnoreCase("%" + itemNameCondition + "%");
+    private BooleanExpression itemNameEq(String itemNameCondition) {
+        if (StringUtils.isEmpty(itemNameCondition)) {
+            return null;
+        }
+        return QItem.item.itemName.likeIgnoreCase("%" + itemNameCondition + "%");
     }
 
     @Override
@@ -232,13 +231,12 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 .selectFrom(QItem.item)
                 .where(QItem.item.itemIdx.eq(
                         JPAExpressions
-                        .select(itemSub.itemIdx.max())
-                        .from(itemSub)
+                                .select(itemSub.itemIdx.max())
+                                .from(itemSub)
                 ))
                 .fetch();
         return findItem.get(0).getItemIdx();
     }
-
 
 
 }

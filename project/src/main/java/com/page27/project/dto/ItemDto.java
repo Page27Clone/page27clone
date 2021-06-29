@@ -39,7 +39,7 @@ public class ItemDto {
     }
 
     @QueryProjection
-    public ItemDto(Long itemIdx,String itemName, String imgUrl, int price, String firstCategory, String secondCategory, String saleStatus, boolean rep){
+    public ItemDto(Long itemIdx, String itemName, String imgUrl, int price, String firstCategory, String secondCategory, String saleStatus, boolean rep) {
 
         this.itemIdx = itemIdx;
         this.itemName = itemName;
@@ -52,7 +52,7 @@ public class ItemDto {
     }
 
     @QueryProjection
-    public ItemDto(Long itemIdx,String imgUrl,String itemName,String color, int price, int basketCount){
+    public ItemDto(Long itemIdx, String imgUrl, String itemName, String color, int price, int basketCount) {
         this.itemIdx = itemIdx;
         this.imgUrl = imgUrl;
         this.itemName = itemName;

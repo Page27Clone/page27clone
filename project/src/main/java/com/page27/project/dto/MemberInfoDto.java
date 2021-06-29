@@ -19,7 +19,7 @@ public class MemberInfoDto {
     private String email;
     private String birthday;
 
-    public Member toEntity(){
+    public Member toEntity() {
         return Member.builder()
                 .id(id)
                 .loginId(loginId)

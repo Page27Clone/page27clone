@@ -10,8 +10,8 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface MemberRepositoryCustom {
     Page<MemberDto> searchAll(Pageable pageable);
-    Page<MemberDto> searchByCondition(SearchMember search, Pageable pageable);
 
+    Page<MemberDto> searchByCondition(SearchMember search, Pageable pageable);
 
 
 }

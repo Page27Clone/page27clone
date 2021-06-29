@@ -1,6 +1,6 @@
 package com.page27.project.exception;
 
-public class DeliveryException extends RuntimeException{
+public class DeliveryException extends RuntimeException {
 
     public DeliveryException() {
         super();

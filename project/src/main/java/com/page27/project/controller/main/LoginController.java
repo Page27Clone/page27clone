@@ -20,27 +20,26 @@ public class LoginController {
     private final MileageServiceImpl mileageServiceImpl;
 
     @GetMapping("main/login")
-    public String getLoginPage(HttpServletRequest request, @RequestParam(value = "error",required = false) String error, Model model){
+    public String getLoginPage(HttpServletRequest request, @RequestParam(value = "error", required = false) String error, Model model) {
         String referer = request.getHeader("Referer");
 
-        if(referer != null){
-            request.getSession().setAttribute("prevPage",referer);
-        }
-        else {
+        if (referer != null) {
+            request.getSession().setAttribute("prevPage", referer);
+        } else {
             referer = "http://localhost:8080/main/index";
-            request.getSession().setAttribute("prevPage",referer);
+            request.getSession().setAttribute("prevPage", referer);
         }
-        model.addAttribute("error",error);
+        model.addAttribute("error", error);
         return "main/login";
     }
 
     @GetMapping("main/register")
-    public String getRegisterPage(){
+    public String getRegisterPage() {
         return "main/register_user";
     }
 
     @PostMapping("main/register")
-    public String doRegisterPage(MemberInfoDto memberInfoDto){
+    public String doRegisterPage(MemberInfoDto memberInfoDto) {
         Long memberId = memberServiceImpl.joinUser(memberInfoDto);
         mileageServiceImpl.joinUserMileage(memberId);
 
@@ -48,11 +47,11 @@ public class LoginController {
     }
 
     @GetMapping("/defaultUrl")
-    public String loginRedirectPage(HttpServletRequest request){
+    public String loginRedirectPage(HttpServletRequest request) {
         String referer = request.getHeader("Referer");
 
         referer = "http://localhost:8080/main/index";
-        request.getSession().setAttribute("prevPage",referer);
+        request.getSession().setAttribute("prevPage", referer);
 
         return "redirect:/main/index";
     }
