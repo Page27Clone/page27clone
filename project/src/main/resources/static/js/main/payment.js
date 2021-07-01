@@ -88,23 +88,21 @@ $(function(){
                     $('#sample6_address').val(address_obj.city)
                     $('#sample6_detailAddress').val(address_obj.street)
                     const homenumber = address_obj.addressHomePhoneNumber
-                    const homenumberSplit = homenumber.split(',');
-                    $("#address_home_number").val(homenumberSplit[0]).prop('selected', true)
+                    $("#address_home_number").val(homenumber[0]).prop('selected', true)
                     $(".address_home_number").each(function(idx, item){
                         if(idx == 0){
                             return true
                         }
-                        $(item).val(homenumberSplit[idx])
+                        $(item).val(homenumber[idx])
                     })
 
                     const phonenumber = address_obj.addressPhoneNumber
-                    const phonenumberSplit = phonenumber.split(',');
-                    $("#address_phone_number").val(phonenumberSplit[0]).prop('selected', true)
+                    $("#address_phone_number").val(phonenumber[0]).prop('selected', true)
                     $(".address_phone_number").each(function(idx, item){
                         if(idx == 0){
                             return true
                         }
-                        $(item).val(phonenumberSplit[idx])
+                        $(item).val(phonenumber[idx])
                     })
 
                 },
