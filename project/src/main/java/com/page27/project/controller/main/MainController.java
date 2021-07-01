@@ -163,7 +163,7 @@ public class MainController {
     }
 
     @GetMapping("/main/category/{firstCategory}/{secondCategory}")
-    public String getCategoryPage(@PathVariable String firstCategory, @PathVariable String secondCategory, @PageableDefault(size = 8) Pageable pageable, Model model) {
+    public String getCategoryPage(@PathVariable String firstCategory, @PathVariable String secondCategory, @PageableDefault(size = 12) Pageable pageable, Model model) {
         ItemPageDto itemPagingDto = itemServiceImpl.getItemPagingDtoByCategory(pageable, firstCategory, secondCategory);
 
         model.addAttribute("startPage", itemPagingDto.getHomeStartPage());

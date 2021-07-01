@@ -49,7 +49,6 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
                 .fetchResults();
 
         List<ItemDto> content = results.getResults();
-//        System.out.println(content);
         long total = results.getTotal();
 
         return new PageImpl<>(content, pageable, total);
@@ -132,7 +131,6 @@ public class ItemRepositoryImpl implements ItemRepositoryCustom {
 
         List<ItemDto> content = results.getResults();
         long total = results.getTotal();
-        System.out.println("여기 사이즈 : " + content.size());
 
         return new PageImpl<>(content, pageable, total);
     }

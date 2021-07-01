@@ -161,8 +161,10 @@ public class ItemServiceImpl implements ItemService {
         ItemPageDto itemPageDto = new ItemPageDto();
 
         Page<ItemDto> itemBoards = itemRepository.findAllItem(pageable, firstCategory, secondCategory);
-        int homeStartPage = Math.max(1, itemBoards.getPageable().getPageNumber() - 1);
-        int homeEndPage = Math.min(itemBoards.getTotalPages(), itemBoards.getPageable().getPageNumber() + 3);
+//        int homeStartPage = Math.max(1, itemBoards.getPageable().getPageNumber() - 1);
+        int homeStartPage = 1;
+//        int homeEndPage = Math.min(itemBoards.getTotalPages(), itemBoards.getPageable().getPageNumber() + 3);
+        int homeEndPage = 2;
 
         itemPageDto.setItemBoards(itemBoards);
         itemPageDto.setHomeStartPage(homeStartPage);
