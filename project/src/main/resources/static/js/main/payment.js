@@ -69,7 +69,7 @@ $(function(){
             $('.address_phone_number:not(:first-child)').val('');
         }else{
 
-            let addr = $(this).val()
+            let addr = $(this).val();
             var token = $("meta[name='_csrf']").attr("content");
             var header = $("meta[name='_csrf_header']").attr("content");
             $.ajax({
