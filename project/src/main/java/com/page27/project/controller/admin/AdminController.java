@@ -25,10 +25,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import java.io.File;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 
 @Controller
 @RequiredArgsConstructor
@@ -107,11 +104,15 @@ public class AdminController {
         for (int i = 0; i < fileList.size(); i++) {
             String originFileName = fileList.get(i).getOriginalFilename();
             String safeFile = folderPath + originFileName;
-            System.out.println("check here");
-            System.out.println(folderPath);
-            System.out.println(originFileName);
+//            System.out.println("check here");
+//            System.out.println(folderPath);
+//            System.out.println(originFileName);
 
-            Item item = new Item(firstCategory, secondCategory, thirdCategory, itemName, itemPrice, itemInfo, itemColor, itemFabric, itemModel, itemSize, itemQuantity, safeFile, saleStatus, newItemIdx + 1, true);
+            String upperFirstCategory = firstCategory.toUpperCase(Locale.ROOT);
+            String newUrl = "/image/Item/" + upperFirstCategory + "/" +  secondCategory  + "/" + itemName + "/" + originFileName;
+//            System.out.println("newUrl : " + newUrl);
+
+            Item item = new Item(firstCategory, secondCategory, thirdCategory, itemName, itemPrice, itemInfo, itemColor, itemFabric, itemModel, itemSize, itemQuantity, newUrl, saleStatus, newItemIdx + 1, true);
 
             if (i == 0) {
                 item.setRep(true);
