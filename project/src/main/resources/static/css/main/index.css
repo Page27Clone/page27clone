@@ -264,7 +264,6 @@ section {
 
 
 .weeklybest_carousel .w_carousel_item_box .w_carousel_item {
-    height: 215px; /*div안에 img가 들어갈때 아래 여백을 없애주기 위함*/
     position:relative;
 }
 
