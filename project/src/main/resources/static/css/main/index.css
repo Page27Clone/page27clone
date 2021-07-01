@@ -270,6 +270,7 @@ section {
 .weeklybest_carousel .w_carousel_item_box .w_carousel_item img{
     display: block;
     width: 220px;
+    height: 220px;
 }
 
 .w_carousel_item .w_carousel_item_desc {
