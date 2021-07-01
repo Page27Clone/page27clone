@@ -75,7 +75,7 @@ $(function(){
             $.ajax({
                 url:"/main/payment/changeaddress/" + addr,
                 type:'POST',
-                dataType: 'json',
+                // dataType: 'json',
                 beforeSend : function(xhr)
                 {   /*데이터를 전송하기 전에 헤더에 csrf값을 설정한다*/
                     xhr.setRequestHeader(header, token);

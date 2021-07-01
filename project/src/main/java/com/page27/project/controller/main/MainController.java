@@ -277,8 +277,17 @@ public class MainController {
 
     @ResponseBody
     @PostMapping("/main/payment/changeaddress/{deliveryAddressId}")
-    public DeliveryAddress chnageDeliveryAddressInfo(@PathVariable Long deliveryAddressId) {
-        DeliveryAddress findDeliveryAddress = deliveryAddressServiceImpl.findAddressById(deliveryAddressId);
+    public AddressChangeDto chnageDeliveryAddressInfo(@PathVariable Long deliveryAddressId) {
+        AddressChangeDto findDeliveryAddress = deliveryAddressServiceImpl.showAddressToChange(deliveryAddressId);
+//        AddressChangeDto addressChangeDto = new AddressChangeDto();
+//        addressChangeDto.setId(findDeliveryAddress.getId());
+//        addressChangeDto.setCity(findDeliveryAddress.getCity());
+//        addressChangeDto.setRecipient(findDeliveryAddress.getRecipient());
+//        addressChangeDto.setStreet(findDeliveryAddress.getStreet());
+//        addressChangeDto.setZipcode(findDeliveryAddress.getZipcode());
+//        addressChangeDto.setPlaceName(findDeliveryAddress.getPlaceName());
+//        addressChangeDto.setAddressPhoneNumber(findDeliveryAddress.getAddressPhoneNumber());
+
 
         return findDeliveryAddress;
     }

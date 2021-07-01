@@ -44,7 +44,7 @@ public class DeliveryAddressServiceImpl implements DeliveryAddressService {
     @Override
     public DeliveryAddress findAddressById(Long id) {
         DeliveryAddress findDeliveryAddress = deliveryAddressRepository.findById(id).orElseThrow(
-                () -> new AddressNotFoundException("해당하는 주소가 존재하지 않습니다")
+                () -> new AddressNotFoundException("해당하는 주소가 없습니다")
         );
 
         return findDeliveryAddress;
