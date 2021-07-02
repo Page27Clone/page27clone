@@ -171,7 +171,6 @@ page27 클론코딩 프로젝트입니다.
 
 🔍 (메인페이지) 회원정보 수정
 + 회원정보 수정 가능
-+ 
 <p align = "center">
   <img src = "https://user-images.githubusercontent.com/69083280/124263763-a0777180-db6e-11eb-91f9-e4879f27b6db.JPG" height = "400px" width = "90%">
 </p>
