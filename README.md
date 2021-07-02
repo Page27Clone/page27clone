@@ -46,7 +46,13 @@ page27 클론코딩 프로젝트입니다.
 
 📙  프론트 엔드
 
++ HTML
 
++ CSS
+
++ JavaScript
+
++ Thymeleaf
 
 
 📙 백엔드
