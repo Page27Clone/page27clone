@@ -218,7 +218,7 @@
                         </colgroup>
                         <th>적립금</th>
                         <td>
-                            <input type="text" name="used_mileage"> 원 (총 사용가능 적립금 : <span th:text="${#numbers.formatInteger(member.mileage, 0, 'COMMA')}">2,000</span>원) <!-- 티임리프로 데이터 넣어주기-->
+                            <input type="text" name="used_mileage" value="0"> 원 (총 사용가능 적립금 : <span th:text="${#numbers.formatInteger(member.mileage, 0, 'COMMA')}">2,000</span>원) <!-- 티임리프로 데이터 넣어주기-->
                             <br>
                             <br>
                             - 적립금은 최소 2,000 이상일 떄 결제가 가능합니다.<br>
