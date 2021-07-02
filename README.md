@@ -1,4 +1,4 @@
-# 27clone ⚡
+# Page27 clone Project ⚡
 
 
 page27 클론코딩 프로젝트입니다.
@@ -72,8 +72,10 @@ page27 클론코딩 프로젝트입니다.
 
 + h2
 
+<br/>
 
-#### 📙 개발 환경
+
+## 📙 개발 환경
 
 
 + IntelliJ
@@ -84,8 +86,10 @@ page27 클론코딩 프로젝트입니다.
 
 + VS Code
 
+<br/>
 
-#### 📙 ScreenShot 및 기능
+
+## 📙 ScreenShot 및 기능
 
 
 
