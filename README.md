@@ -5,6 +5,10 @@ page27 클론코딩 프로젝트입니다.
 
 <br/>
 
+📺 [유튜브](https://www.youtube.com/watch?v=5hiaTp0KghU)
+
+<br/>
+
 ## ✔️ Part     
 
 총 3명
